@@ -7,8 +7,7 @@ use Exception;
 use ReflectionClass;
 
 /**
- * Class PhpHelper
- * @package Forever2077\PhpHelper
+ * Class PhpHelper PHP辅助类
  * @method static Algorithm()   提供各种算法相关的功能
  * @method static Array()       数组处理工具库
  * @method static Bloom()       布隆过滤器相关的功能
