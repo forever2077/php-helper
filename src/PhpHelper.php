@@ -39,6 +39,9 @@ use ReflectionClass;
  * @method static VersionHelper Version()       版本比较和处理的功能
  * @method static XmlHelper Xml()               XML解析和生成的功能
  * @method static ZipHelper Zip()               处理ZIP压缩文件的功能
+ * @method static SmsHelper Sms()               短信相关的功能
+ * @method static PayHelper Pay()               支付相关的功能
+ * @method static LruCacheHelper LruCache()     LRU缓存相关的功能
  */
 class PhpHelper
 {
