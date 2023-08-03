@@ -35,8 +35,8 @@ use ReflectionClass;
  * @method static Str()         字符串操作的功能
  * @method static System()      系统相关的功能
  * @method static Tools()       各种工具和辅助功能
- * @method static Tree()        树结构处理的功能
- * @method static Validate()    验证功能
+ * @method static Tree()        打印数据树结构处理的功能
+ * @method static Validate()    内容验证功能
  * @method static Version()     版本比较和处理的功能
  * @method static Xml()         XML解析和生成的功能
  * @method static Zip()         处理ZIP压缩文件的功能
