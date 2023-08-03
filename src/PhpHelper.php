@@ -6,6 +6,41 @@ use Error;
 use Exception;
 use ReflectionClass;
 
+/**
+ * Class PhpHelper
+ * @package Forever2077\PhpHelper
+ * @method static Algorithm()   提供各种算法相关的功能
+ * @method static Array()       数组处理工具库
+ * @method static Bloom()       布隆过滤器相关的功能
+ * @method static Cache()       缓存相关的功能
+ * @method static Captcha()     验证码生成和验证功能
+ * @method static Crypto()      加密技术相关的功能
+ * @method static Csv()         用于处理CSV文件的功能
+ * @method static DateTime()    日期和时间相关的功能
+ * @method static Dfa()         DFA字符串匹配算法相关的功能
+ * @method static Email()       邮件发送和验证的功能
+ * @method static Error()       错误处理的功能
+ * @method static File()        文件操作的功能
+ * @method static Http()        HTTP相关的功能
+ * @method static Image()       图片处理的功能
+ * @method static Ip()          IP地址处理的功能
+ * @method static Jwt()         JSON Web令牌(JWT)相关的功能
+ * @method static Log()         日志相关的功能
+ * @method static Map()         地图相关的功能
+ * @method static Math()        数学函数相关的功能
+ * @method static Net()         网络相关的功能
+ * @method static Office()      处理Office文档的功能
+ * @method static Random()      生成随机值的功能
+ * @method static Runtime()     运行时和性能测量功能
+ * @method static Str()         字符串操作的功能
+ * @method static System()      系统相关的功能
+ * @method static Tools()       各种工具和辅助功能
+ * @method static Tree()        树结构处理的功能
+ * @method static Validate()    验证功能
+ * @method static Version()     版本比较和处理的功能
+ * @method static Xml()         XML解析和生成的功能
+ * @method static Zip()         处理ZIP压缩文件的功能
+ */
 class PhpHelper
 {
     /**
