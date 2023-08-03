@@ -7,7 +7,10 @@
     "autoload": {
         "psr-4": {
             "Forever2077\\PhpHelper\\": "src/"
-        }
+        },
+        "files": [
+            "src/functions.php"
+        ]
     },
     "authors": [
         {

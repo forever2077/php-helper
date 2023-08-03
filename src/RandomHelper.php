@@ -2,7 +2,7 @@
 
 namespace Forever2077\PhpHelper;
 
-class ExcelExportData
+class RandomHelper
 {
 
 }
