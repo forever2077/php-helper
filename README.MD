@@ -2,15 +2,23 @@
 
 ## 安装
 
-```
+```php
 composer require forever2077/php-helper:"@dev"
+```
+
+## 懒加载+单例模式
+
+```php
+// 冒泡排序
+$arr = [1, 3, 2, 5, 4];
+PhpHelper::Algorithm()::BubbleSort($arr);
 ```
 
 ## Algorithm
 
 algorithm 算法包实现一些基本算法，sort，search
 
-```
+```php
 // 冒泡排序
 $arr = [1, 3, 2, 5, 4];
 AlgorithmHelper::BubbleSort($arr);
