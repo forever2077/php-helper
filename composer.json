@@ -1,7 +1,9 @@
 {
     "name": "forever2077/php-helper",
-    "description": "PHP工具类",
+    "description": "PHP Tool Library",
+    "keywords": ["function","class","library"],
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Forever2077\\PhpHelper\\": "src/"
@@ -14,7 +16,7 @@
         }
     ],
     "require": {
-        "php": ">=8.0"
+        "php": "~8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6"
