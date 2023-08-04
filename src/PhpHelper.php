@@ -38,7 +38,6 @@ use ReflectionClass;
  * @method static StrHelper Str()               字符串操作的功能
  * @method static SystemHelper System()         系统相关的功能
  * @method static ToolsHelper Tools()           各种工具和辅助功能
- * @method static TreeHelper Tree()             打印数据树结构处理的功能
  * @method static ValidateHelper Validate()     内容验证功能
  * @method static VersionHelper Version()       版本比较和处理的功能
  * @method static XmlHelper Xml()               XML解析和生成的功能
