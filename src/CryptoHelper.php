@@ -59,19 +59,6 @@ class CryptoHelper
     }
 
     /**
-     * 使用 AES CTR 算法模式加密/解密数据
-     * @throws Exception
-     */
-    public static function aesCtrCrypt($data, $key, $iv): string
-    {
-        $encrypted = openssl_encrypt($data, 'AES-128-CTR', $key, OPENSSL_RAW_DATA, $iv);
-        if ($encrypted === false) {
-            throw new Exception(openssl_error_string());
-        }
-        return $encrypted;
-    }
-
-    /**
      * 使用 AES CFB 算法模式加密数据
      * @throws Exception
      */
@@ -415,7 +402,7 @@ class CryptoHelper
     /**
      * 在当前目录下创建 rsa 私钥文件和公钥文件
      */
-    public static function generateRsaKey($privateKeyFile, $publicKeyFile)
+    public static function generateRsaKey($privateKeyFile, $publicKeyFile): void
     {
         $config = array(
             "digest_alg" => "sha512",
