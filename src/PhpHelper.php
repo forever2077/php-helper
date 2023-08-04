@@ -2,6 +2,10 @@
 
 namespace Forever2077\PhpHelper;
 
+use Error;
+use Exception;
+use ReflectionClass;
+
 /**
  * Class PhpHelper PHP辅助类
  * @method static AlgorithmHelper Algorithm()   提供各种算法相关的功能
@@ -53,12 +57,12 @@ class PhpHelper
      * @param string $name 未定义的静态方法的名称
      * @param mixed $arguments 调用静态方法时传递的参数
      * @return mixed 对应的辅助类的单例
-     * @throws \Exception 如果对应的辅助类不存在
+     * @throws Exception 如果对应的辅助类不存在
      */
     public static function __callStatic(string $name, mixed $arguments): mixed
     {
         // 获取当前命名空间
-        $namespace = (new \ReflectionClass(__CLASS__))->getNamespaceName();
+        $namespace = (new ReflectionClass(__CLASS__))->getNamespaceName();
 
         // 构造完整类名
         $class = ucfirst($name) . 'Helper';
@@ -69,9 +73,9 @@ class PhpHelper
             try {
                 // 尝试创建该类的单例
                 self::$helpers[$class] = new $fullClassName($arguments);
-            } catch (\Error $e) {
+            } catch (Error $e) {
                 // 如果该类不存在，则抛出异常
-                throw new \Exception("Class $fullClassName does not exist");
+                throw new Exception("Class $fullClassName does not exist");
             }
         }
 

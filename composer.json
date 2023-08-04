@@ -20,6 +20,7 @@
     ],
     "require": {
         "php": "~8.0",
+        "ext-openssl":">=1.1.0",
         "jsyqw/utils": "^0.3.1"
     },
     "require-dev": {
