@@ -62,4 +62,27 @@ class ArrayHelper
     {
         return \Jsyqw\Utils\ArrayHelper::isAssoc($arr);
     }
+
+    /**
+     * 递归获取指定下标数组
+     * @param array $arr 数组
+     * @param string $pid 父级值
+     * @param string $keyName 作为主键的名称
+     * @return array
+     *  [{
+     *      "id": "1",
+     *      "pid": "0",
+     *      "name": "test1",
+     *      "children": [{
+     *          "id": "4",
+     *          "pid": "1",
+     *          "name": "test1-1",
+     *          "children": []
+     *      }]
+     *  }]
+     */
+    public static function getTree($arr, $pid, $keyName = 'pid')
+    {
+        return \Jsyqw\Utils\TreeHelper::getTree($arr, $pid, $keyName);
+    }
 }
