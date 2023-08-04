@@ -155,8 +155,22 @@ SystemHelper::getMemoryUsage();
 SystemHelper::logMsg($msg, msg,$file = './log.txt');
 ```
 
+## 编码加密 Encode/Crypto
+
+```php
+// 使用 AES ECB 算法模式加密数据
+CryptoHelper::aesEcbEncrypt($data, $key);
+
+// 使用 AES ECB 算法模式解密数据
+CryptoHelper::aesEcbDecrypt($data, $key);
+
+由于方法数量比较多，详细看CryptoHelper文件
+```
+
 ## 致谢 Thank
 
 该项目来之各开源项目收录和整理，持续更新中ing...
 
 1、https://github.com/jasonyqwang/Utils
+
+2、https://github.com/duke-git/lancet
