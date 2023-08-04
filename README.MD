@@ -154,3 +154,9 @@ SystemHelper::getMemoryUsage();
 // 获取内存使用情况
 SystemHelper::logMsg($msg, msg,$file = './log.txt');
 ```
+
+## 致谢 Thank
+
+该项目来之各开源项目收录和整理，持续更新中ing...
+
+1、https://github.com/jasonyqwang/Utils
