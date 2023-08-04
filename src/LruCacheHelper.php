@@ -2,19 +2,7 @@
 
 namespace Forever2077\PhpHelper;
 
-class Node
-{
-    public $key;
-    public $value;
-    public $prev;
-    public $next;
-
-    public function __construct($key, $value)
-    {
-        $this->key = $key;
-        $this->value = $value;
-    }
-}
+use Forever2077\PhpHelper\LruNode as Node;
 
 class LruCacheHelper
 {
