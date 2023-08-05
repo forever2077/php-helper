@@ -108,7 +108,8 @@ IPHelper::randIprandChineseIp();
 
 ```php
 // 生成唯一数字 eg: YYYYMMDDHHIISSNNNNNNNNCC 24
-StrHelper::uniqueShortStr();//生成短的唯一码，可以根据编码的值推算出来年、月、日
+StrHelper::uniqueShortStr();
+// 生成短的唯一码，可以根据编码的值推算出来年、月、日
 // 短唯一码的起始年份，默认是2020年
 //【A:对应年】+【6：月16进制】+【04:日期】+【57112：时间戳后五位】+【46633：毫秒5位】+【随机两位】
 // 注意：
