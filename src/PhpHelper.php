@@ -20,6 +20,7 @@ use ReflectionClass;
  * @method static EmailHelper Email()           邮件发送和验证的功能
  * @method static ErrorHelper Error()           错误处理的功能
  * @method static FileHelper File()             文件操作的功能
+ * @method static GeoHelper Geo()               地理相关的功能
  * @method static HttpHelper Http()             HTTP相关的功能
  * @method static ImageHelper Image()           图片处理的功能
  * @method static IpHelper Ip()                 IP地址处理的功能
