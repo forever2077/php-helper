@@ -207,10 +207,9 @@ $image->save($path);
 
 该项目来之各开源项目收录和整理，持续更新中ing...
 
+```php
 1、https://github.com/jasonyqwang/Utils
-
 2、https://github.com/duke-git/lancet
-
 3、https://github.com/briannesbitt/Carbon
-
 4、https://github.com/Intervention/image
+```
