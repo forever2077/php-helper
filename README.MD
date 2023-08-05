@@ -212,3 +212,5 @@ $image->save($path);
 2、https://github.com/duke-git/lancet
 
 3、https://github.com/briannesbitt/Carbon
+
+4、https://github.com/Intervention/image
