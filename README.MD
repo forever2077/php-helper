@@ -32,7 +32,7 @@ PhpHelper::Array()::toArray($foo);
 PhpHelper::System()::getMemoryUsage();
 
 // 获取当前日期时间
-PhpHelper::DateTime::carbon()::now()->toDateTimeString()
+PhpHelper::DateTime()::carbon()::now()->toDateTimeString()
 ```
 
 ## 算法 Algorithm
