@@ -2,7 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\ArrayHelper;
-use function Forever2077\PhpHelper\dd;
 
 class Foo
 {

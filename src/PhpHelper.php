@@ -48,6 +48,12 @@ use ReflectionClass;
 class PhpHelper
 {
     /**
+     * PHP辅助类版本号
+     * @var string
+     */
+    public static string $version = '0.0.1';
+
+    /**
      * 存储所有辅助类的单例
      * @var array
      */
@@ -62,25 +68,54 @@ class PhpHelper
      */
     public static function __callStatic(string $name, mixed $arguments): mixed
     {
-        // 获取当前命名空间
         $namespace = (new ReflectionClass(__CLASS__))->getNamespaceName();
-
-        // 构造完整类名
         $class = ucfirst($name) . 'Helper';
         $fullClassName = $namespace . '\\' . $class;
 
-        // 如果该类的单例还未创建，则创建该类的单例
         if (!isset(self::$helpers[$class])) {
             try {
-                // 尝试创建该类的单例
                 self::$helpers[$class] = new $fullClassName($arguments);
             } catch (Error $e) {
-                // 如果该类不存在，则抛出异常
                 throw new Exception("Class $fullClassName does not exist");
             }
         }
 
-        // 返回该类的单例
         return self::$helpers[$class];
+    }
+
+    /**
+     * 获取PhpHelper类的公共方法数量
+     * @return string 返回PhpHelper类的公共方法数量
+     * @throws Exception 如果对应的辅助类不存在
+     */
+    public static function countPubMethod(): string
+    {
+        $fullClassNames = PhpHelper::File()::scanDirectory([
+            'dir' => __DIR__, 'filter' => function ($file) {
+                if (str_contains($file, 'Helper') && !str_contains($file, 'PhpHelper')) {
+                    return true;
+                }
+                return false;
+            }, 'callback' => function ($file) {
+                return pathinfo($file, PATHINFO_FILENAME);
+            }
+        ]);
+
+        $str = '';
+        $namespace = (new ReflectionClass(__CLASS__))->getNamespaceName();
+
+        foreach ($fullClassNames as $name) {
+            $fullClassName = "{$namespace}\\{$name}";
+            try {
+                $reflector = new ReflectionClass($fullClassName);
+                $publicMethods = $reflector->getMethods(\ReflectionMethod::IS_PUBLIC);
+                $str .= PHP_EOL . $name . "：" . count($publicMethods);
+            } catch (\ReflectionException $e) {
+                throw new Exception("Class $fullClassName does not exist");
+            }
+        }
+        return PHP_EOL . "helper class method number summary：" . $str
+            . PHP_EOL . "--------------------"
+            . PHP_EOL . "total helper：" . count($fullClassNames);
     }
 }

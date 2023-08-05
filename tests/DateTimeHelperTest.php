@@ -3,7 +3,6 @@
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\DateTimeHelper;
-use function Forever2077\PhpHelper\dd;
 
 class DateTimeHelperTest extends TestCase
 {

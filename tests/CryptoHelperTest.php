@@ -2,7 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\CryptoHelper;
-use function Forever2077\PhpHelper\dd;
 
 class CryptoHelperTest extends TestCase
 {
