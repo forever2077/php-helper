@@ -32,7 +32,7 @@ PhpHelper::Array()::toArray($foo);
 PhpHelper::System()::getMemoryUsage();
 
 // 获取当前日期时间
-PhpHelper::DateTime::Carbon()::now()->toDateTimeString()
+PhpHelper::DateTime::carbon()::now()->toDateTimeString()
 ```
 
 ## 算法 Algorithm
@@ -170,13 +170,13 @@ CryptoHelper::aesEcbDecrypt($data, $key);
 
 ```php
 // 创建实例
-$carbon = DateTimeHelper::Carbon();
+$carbon = DateTimeHelper::carbon();
 // 明天时间
 $tomorrow = $carbon::now()->addDay();
 // 最后一周
 $lastWeek = $carbon::now()->subWeek();
 // Rfc2822
-$officialDate = DateTimeHelper::Carbon()::now()->toRfc2822String();
+$officialDate = DateTimeHelper::carbon()::now()->toRfc2822String();
 
 更多内容请查看 Carbon 文档 https://github.com/briannesbitt/Carbon
 ```
