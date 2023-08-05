@@ -105,6 +105,7 @@ class PhpHelper
         ]);
 
         $str = '';
+        $methods = 0;
         $namespace = (new ReflectionClass(__CLASS__))->getNamespaceName();
 
         foreach ($fullClassNames as $name) {
@@ -112,13 +113,15 @@ class PhpHelper
             try {
                 $reflector = new ReflectionClass($fullClassName);
                 $publicMethods = $reflector->getMethods(\ReflectionMethod::IS_PUBLIC);
+                $methods += count($publicMethods);
                 $str .= PHP_EOL . $name . "：" . count($publicMethods);
             } catch (\ReflectionException $e) {
                 throw new Exception("Class $fullClassName does not exist");
             }
         }
-        return PHP_EOL . "helper class method number summary：" . $str
+        return PHP_EOL . "helper class method number summary(" . date('Y-m-d H:i:s') . ")：" . $str
             . PHP_EOL . "--------------------"
-            . PHP_EOL . "total helper（" . date('Y-m-d H:i:s') . "）：" . count($fullClassNames) . PHP_EOL;
+            . PHP_EOL . "total helper：" . count($fullClassNames)
+            . PHP_EOL . "total method：" . $methods . PHP_EOL;
     }
 }
