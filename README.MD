@@ -6,7 +6,7 @@
 composer require forever2077/php-helper:"@dev"
 ```
 
-## 单例+懒加载模式
+## 单例+懒加载模式 or 快捷函数
 
 ```php
 // 冒泡排序
@@ -32,7 +32,11 @@ PhpHelper::Array()::toArray($foo);
 PhpHelper::System()::getMemoryUsage();
 
 // 获取当前日期时间
-PhpHelper::DateTime()::carbon()::now()->toDateTimeString()
+PhpHelper::DateTime()::carbon()::now()->toDateTimeString();
+
+// 快捷函数 "Q"
+Q('algorithm')->BubbleSort($arr);
+Q('array')->toArray($foo);
 ```
 
 ## 算法 Algorithm
