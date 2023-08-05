@@ -238,6 +238,28 @@ CsvHelper::reader();
 更多内容请查看 league/csv 文档 https://csv.thephpleague.com/9.0/
 ```
 
+## 网络请求 Http
+
+```php
+// 请求baidu链接并检查200状态
+try {
+    $client = HttpHelper::instance();
+    $response = $client->request('GET', 'https://www.baidu.com', [
+        'verify' => __DIR__ . '/cacert.pem',
+    ]);
+    $this->assertEquals(200, $response->getStatusCode());
+} catch (GuzzleException $e) {
+    echo $e->getMessage();
+}
+
+// 获取guzzle实例
+HttpHelper::guzzle();
+
+使用前需先安装 composer require guzzlehttp/guzzle:^7.7
+更多内容请查看 guzzlehttp 文档 https://docs.guzzlephp.org/en/stable/
+```
+
+
 ## 致谢 Thank
 
 该项目来之各开源项目收录和整理，持续更新中ing...
@@ -248,4 +270,5 @@ CsvHelper::reader();
 3、https://github.com/briannesbitt/Carbon
 4、https://github.com/Intervention/image
 5、https://csv.thephpleague.com/
+6、https://github.com/guzzle/guzzle
 ```

@@ -22,7 +22,7 @@ use ReflectionClass;
  * @method static ErrorHelper          Error()           错误处理
  * @method static FileHelper           File()            文件操作
  * @method static GeoHelper            Geo()             地理国家省市
- * @method static HttpHelper           Http()            HTTP
+ * @method static HttpHelper           Http()            网络请求
  * @method static ImageHelper          Image()           图片处理
  * @method static IpHelper             Ip()              IP地址
  * @method static JsonHelper           Json()            JSON相

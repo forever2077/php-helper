@@ -12,7 +12,7 @@ namespace Forever2077\PhpHelper;
  * DateTime [日期和时间]、Dfa [DFA字符串匹配算法]、
  * Email [邮件发送和验证]、Error [错误处理]、
  * File [文件操作]、Geo [地理国家省市]、
- * Http [HTTP]、Image [图片处理]、
+ * Http [网络请求]、Image [图片处理]、
  * Ip [IP地址]、Json [JSON相]、Jwt [JSON Web令牌(JWT)]、
  * Log [日志相关]、LruCache [LRU缓存]、
  * Map [地图相关]、Math [数学函数]、

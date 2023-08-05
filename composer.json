@@ -27,6 +27,7 @@
         "phpunit/phpunit": "^9.6",
         "nesbot/carbon": "^2.68",
         "intervention/image": "^2.7",
-        "league/csv": "9.0"
+        "league/csv": "9.0",
+        "guzzlehttp/guzzle": "7.7"
     }
 }
