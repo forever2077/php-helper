@@ -21,7 +21,9 @@ namespace Forever2077\PhpHelper;
  * Runtime [运行时和性能测量]、Sms [短信相关]、
  * Str [字符串操作]、System [系统相关]、Tools [其他工具]、
  * Validate [内容验证]、Version [版本比较和处理]、
- * Xml [XML解析和生成]、Zip [处理ZIP压缩文件]
+ * Xml [XML解析和生成]、Zip [处理ZIP压缩文件]、
+ * Aliyun [阿里云]、Wechat [微信]、
+ * Dingtalk [钉钉]、Baidu [百度]、
  * @param mixed|null $arguments 参数
  * @return mixed
  * @throws \Exception

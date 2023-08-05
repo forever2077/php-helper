@@ -44,6 +44,10 @@ use ReflectionClass;
  * @method static VersionHelper        Version()         版本比较和处理
  * @method static XmlHelper            Xml()             XML解析和生成
  * @method static ZipHelper            Zip()             处理ZIP压缩文件
+ * @method static AliyunHelper         Aliyun()          阿里云
+ * @method static WechatHelper         Wechat()          微信
+ * @method static DingtalkHelper       Dingtalk()        钉钉
+ * @method static BaiduHelper          Baidu()           百度
  */
 class PhpHelper
 {
