@@ -232,7 +232,7 @@ try {
 CsvHelper::writer();
 
 // CSV读取器
-CsvHelper::writer();
+CsvHelper::reader();
 
 使用前需先安装 composer require league/csv:^9.0
 更多内容请查看 league/csv 文档 https://csv.thephpleague.com/9.0/
