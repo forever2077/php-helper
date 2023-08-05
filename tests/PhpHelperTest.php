@@ -24,11 +24,11 @@ class PhpHelperTest extends TestCase
     public function testQ()
     {
         try {
-            $this->assertIsObject(ArrayHelper());
-            $this->assertIsObject(ImageHelper()->instance());
-            $this->assertIsString(FileHelper()->format(1024));
+            $this->assertIsObject(_array());
+            $this->assertIsObject(_image()->instance());
+            $this->assertIsString(_file()->format(1024));
             $arr = [1, 3, 2, 5, 4];
-            $this->assertIsArray(AlgorithmHelper()->BubbleSort($arr));
+            $this->assertIsArray(_algorithm()->BubbleSort($arr));
         } catch (Exception $e) {
             dump($e->getMessage());
         }

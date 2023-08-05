@@ -35,9 +35,9 @@ PhpHelper::System()::getMemoryUsage();
 PhpHelper::DateTime()::carbon()::now()->toDateTimeString();
 
 // 代理函数
-AlgorithmHelper()::BubbleSort($arr);
-ArrayHelper()::toArray($foo);
-DateTimeHelper()::carbon()::now()->toDateTimeString();
+_algorithm()::BubbleSort($arr);
+_array()::toArray($foo);
+_dateTime()::carbon()::now()->toDateTimeString();
 ```
 
 ## 算法 Algorithm
@@ -259,7 +259,6 @@ HttpHelper::guzzle();
 使用前需先安装 composer require guzzlehttp/guzzle:^7.7
 更多内容请查看 guzzlehttp 文档 https://docs.guzzlephp.org/en/stable/
 ```
-
 
 ## 致谢 Thank
 

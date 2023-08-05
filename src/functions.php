@@ -40,7 +40,7 @@ if (!function_exists('dd')) {
  * @param mixed|null $args
  * @return PhpHelper\AlgorithmHelper
  */
-function AlgorithmHelper(mixed $args = null): PhpHelper\AlgorithmHelper
+function _algorithm(mixed $args = null): PhpHelper\AlgorithmHelper
 {
     return new PhpHelper\AlgorithmHelper($args);
 }
@@ -49,7 +49,7 @@ function AlgorithmHelper(mixed $args = null): PhpHelper\AlgorithmHelper
  * @param mixed|null $args
  * @return PhpHelper\ArrayHelper
  */
-function ArrayHelper(mixed $args = null): PhpHelper\ArrayHelper
+function _array(mixed $args = null): PhpHelper\ArrayHelper
 {
     return new PhpHelper\ArrayHelper($args);
 }
@@ -58,7 +58,7 @@ function ArrayHelper(mixed $args = null): PhpHelper\ArrayHelper
  * @param mixed|null $args
  * @return PhpHelper\BloomHelper
  */
-function BloomHelper(mixed $args = null): PhpHelper\BloomHelper
+function _bloom(mixed $args = null): PhpHelper\BloomHelper
 {
     return new PhpHelper\BloomHelper($args);
 }
@@ -67,7 +67,7 @@ function BloomHelper(mixed $args = null): PhpHelper\BloomHelper
  * @param mixed|null $args
  * @return PhpHelper\CacheHelper
  */
-function CacheHelper(mixed $args = null): PhpHelper\CacheHelper
+function _cache(mixed $args = null): PhpHelper\CacheHelper
 {
     return new PhpHelper\CacheHelper($args);
 }
@@ -76,7 +76,7 @@ function CacheHelper(mixed $args = null): PhpHelper\CacheHelper
  * @param mixed|null $args
  * @return PhpHelper\CaptchaHelper
  */
-function CaptchaHelper(mixed $args = null): PhpHelper\CaptchaHelper
+function _captcha(mixed $args = null): PhpHelper\CaptchaHelper
 {
     return new PhpHelper\CaptchaHelper($args);
 }
@@ -85,7 +85,7 @@ function CaptchaHelper(mixed $args = null): PhpHelper\CaptchaHelper
  * @param mixed|null $args
  * @return PhpHelper\CryptoHelper
  */
-function CryptoHelper(mixed $args = null): PhpHelper\CryptoHelper
+function _crypto(mixed $args = null): PhpHelper\CryptoHelper
 {
     return new PhpHelper\CryptoHelper($args);
 }
@@ -94,7 +94,7 @@ function CryptoHelper(mixed $args = null): PhpHelper\CryptoHelper
  * @param mixed|null $args
  * @return PhpHelper\CsvHelper
  */
-function CsvHelper(mixed $args = null): PhpHelper\CsvHelper
+function _csv(mixed $args = null): PhpHelper\CsvHelper
 {
     return new PhpHelper\CsvHelper($args);
 }
@@ -103,7 +103,7 @@ function CsvHelper(mixed $args = null): PhpHelper\CsvHelper
  * @param mixed|null $args
  * @return PhpHelper\DataStructureHelper
  */
-function DataStructureHelper(mixed $args = null): PhpHelper\DataStructureHelper
+function _dataStructure(mixed $args = null): PhpHelper\DataStructureHelper
 {
     return new PhpHelper\DataStructureHelper($args);
 }
@@ -112,7 +112,7 @@ function DataStructureHelper(mixed $args = null): PhpHelper\DataStructureHelper
  * @param mixed|null $args
  * @return PhpHelper\DateTimeHelper
  */
-function DateTimeHelper(mixed $args = null): PhpHelper\DateTimeHelper
+function _dateTime(mixed $args = null): PhpHelper\DateTimeHelper
 {
     return new PhpHelper\DateTimeHelper($args);
 }
@@ -121,7 +121,7 @@ function DateTimeHelper(mixed $args = null): PhpHelper\DateTimeHelper
  * @param mixed|null $args
  * @return PhpHelper\DfaHelper
  */
-function DfaHelper(mixed $args = null): PhpHelper\DfaHelper
+function _dfa(mixed $args = null): PhpHelper\DfaHelper
 {
     return new PhpHelper\DfaHelper($args);
 }
@@ -130,7 +130,7 @@ function DfaHelper(mixed $args = null): PhpHelper\DfaHelper
  * @param mixed|null $args
  * @return PhpHelper\EmailHelper
  */
-function EmailHelper(mixed $args = null): PhpHelper\EmailHelper
+function _email(mixed $args = null): PhpHelper\EmailHelper
 {
     return new PhpHelper\EmailHelper($args);
 }
@@ -139,7 +139,7 @@ function EmailHelper(mixed $args = null): PhpHelper\EmailHelper
  * @param mixed|null $args
  * @return PhpHelper\ErrorHelper
  */
-function ErrorHelper(mixed $args = null): PhpHelper\ErrorHelper
+function _error(mixed $args = null): PhpHelper\ErrorHelper
 {
     return new PhpHelper\ErrorHelper($args);
 }
@@ -148,7 +148,7 @@ function ErrorHelper(mixed $args = null): PhpHelper\ErrorHelper
  * @param mixed|null $args
  * @return PhpHelper\FileHelper
  */
-function FileHelper(mixed $args = null): PhpHelper\FileHelper
+function _File(mixed $args = null): PhpHelper\FileHelper
 {
     return new PhpHelper\FileHelper($args);
 }
@@ -157,7 +157,7 @@ function FileHelper(mixed $args = null): PhpHelper\FileHelper
  * @param mixed|null $args
  * @return PhpHelper\GeoHelper
  */
-function GeoHelper(mixed $args = null): PhpHelper\GeoHelper
+function _geo(mixed $args = null): PhpHelper\GeoHelper
 {
     return new PhpHelper\GeoHelper($args);
 }
@@ -166,7 +166,7 @@ function GeoHelper(mixed $args = null): PhpHelper\GeoHelper
  * @param mixed|null $args
  * @return PhpHelper\HttpHelper
  */
-function HttpHelper(mixed $args = null): PhpHelper\HttpHelper
+function _http(mixed $args = null): PhpHelper\HttpHelper
 {
     return new PhpHelper\HttpHelper($args);
 }
@@ -175,7 +175,7 @@ function HttpHelper(mixed $args = null): PhpHelper\HttpHelper
  * @param mixed|null $args
  * @return PhpHelper\ImageHelper
  */
-function ImageHelper(mixed $args = null): PhpHelper\ImageHelper
+function _image(mixed $args = null): PhpHelper\ImageHelper
 {
     return new PhpHelper\ImageHelper($args);
 }
@@ -184,7 +184,7 @@ function ImageHelper(mixed $args = null): PhpHelper\ImageHelper
  * @param mixed|null $args
  * @return PhpHelper\IpHelper
  */
-function IpHelper(mixed $args = null): PhpHelper\IpHelper
+function _ip(mixed $args = null): PhpHelper\IpHelper
 {
     return new PhpHelper\IpHelper($args);
 }
@@ -193,7 +193,7 @@ function IpHelper(mixed $args = null): PhpHelper\IpHelper
  * @param mixed|null $args
  * @return PhpHelper\JsonHelper
  */
-function JsonHelper(mixed $args = null): PhpHelper\JsonHelper
+function _json(mixed $args = null): PhpHelper\JsonHelper
 {
     return new PhpHelper\JsonHelper($args);
 }
@@ -202,7 +202,7 @@ function JsonHelper(mixed $args = null): PhpHelper\JsonHelper
  * @param mixed|null $args
  * @return PhpHelper\JwtHelper
  */
-function JwtHelper(mixed $args = null): PhpHelper\JwtHelper
+function _jwt(mixed $args = null): PhpHelper\JwtHelper
 {
     return new PhpHelper\JwtHelper($args);
 }
@@ -211,7 +211,7 @@ function JwtHelper(mixed $args = null): PhpHelper\JwtHelper
  * @param mixed|null $args
  * @return PhpHelper\LogHelper
  */
-function LogHelper(mixed $args = null): PhpHelper\LogHelper
+function _log(mixed $args = null): PhpHelper\LogHelper
 {
     return new PhpHelper\LogHelper($args);
 }
@@ -220,7 +220,7 @@ function LogHelper(mixed $args = null): PhpHelper\LogHelper
  * @param mixed|null $args
  * @return PhpHelper\LruCacheHelper
  */
-function LruCacheHelper(mixed $args = null): PhpHelper\LruCacheHelper
+function _lruCache(mixed $args = null): PhpHelper\LruCacheHelper
 {
     return new PhpHelper\LruCacheHelper($args);
 }
@@ -229,7 +229,7 @@ function LruCacheHelper(mixed $args = null): PhpHelper\LruCacheHelper
  * @param mixed|null $args
  * @return PhpHelper\MapHelper
  */
-function MapHelper(mixed $args = null): PhpHelper\MapHelper
+function _map(mixed $args = null): PhpHelper\MapHelper
 {
     return new PhpHelper\MapHelper($args);
 }
@@ -238,7 +238,7 @@ function MapHelper(mixed $args = null): PhpHelper\MapHelper
  * @param mixed|null $args
  * @return PhpHelper\MathHelper
  */
-function MathHelper(mixed $args = null): PhpHelper\MathHelper
+function _math(mixed $args = null): PhpHelper\MathHelper
 {
     return new PhpHelper\MathHelper($args);
 }
@@ -247,7 +247,7 @@ function MathHelper(mixed $args = null): PhpHelper\MathHelper
  * @param mixed|null $args
  * @return PhpHelper\NetHelper
  */
-function NetHelper(mixed $args = null): PhpHelper\NetHelper
+function _net(mixed $args = null): PhpHelper\NetHelper
 {
     return new PhpHelper\NetHelper($args);
 }
@@ -256,7 +256,7 @@ function NetHelper(mixed $args = null): PhpHelper\NetHelper
  * @param mixed|null $args
  * @return PhpHelper\OfficeHelper
  */
-function OfficeHelper(mixed $args = null): PhpHelper\OfficeHelper
+function _office(mixed $args = null): PhpHelper\OfficeHelper
 {
     return new PhpHelper\OfficeHelper($args);
 }
@@ -265,7 +265,7 @@ function OfficeHelper(mixed $args = null): PhpHelper\OfficeHelper
  * @param mixed|null $args
  * @return PhpHelper\PayHelper
  */
-function PayHelper(mixed $args = null): PhpHelper\PayHelper
+function _pay(mixed $args = null): PhpHelper\PayHelper
 {
     return new PhpHelper\PayHelper($args);
 }
@@ -274,7 +274,7 @@ function PayHelper(mixed $args = null): PhpHelper\PayHelper
  * @param mixed|null $args
  * @return PhpHelper\RandomHelper
  */
-function RandomHelper(mixed $args = null): PhpHelper\RandomHelper
+function _random(mixed $args = null): PhpHelper\RandomHelper
 {
     return new PhpHelper\RandomHelper($args);
 }
@@ -283,7 +283,7 @@ function RandomHelper(mixed $args = null): PhpHelper\RandomHelper
  * @param mixed|null $args
  * @return PhpHelper\RuntimeHelper
  */
-function RuntimeHelper(mixed $args = null): PhpHelper\RuntimeHelper
+function _runtime(mixed $args = null): PhpHelper\RuntimeHelper
 {
     return new PhpHelper\RuntimeHelper($args);
 }
@@ -292,7 +292,7 @@ function RuntimeHelper(mixed $args = null): PhpHelper\RuntimeHelper
  * @param mixed|null $args
  * @return PhpHelper\SmsHelper
  */
-function SmsHelper(mixed $args = null): PhpHelper\SmsHelper
+function _sms(mixed $args = null): PhpHelper\SmsHelper
 {
     return new PhpHelper\SmsHelper($args);
 }
@@ -301,7 +301,7 @@ function SmsHelper(mixed $args = null): PhpHelper\SmsHelper
  * @param mixed|null $args
  * @return PhpHelper\StrHelper
  */
-function StrHelper(mixed $args = null): PhpHelper\StrHelper
+function _str(mixed $args = null): PhpHelper\StrHelper
 {
     return new PhpHelper\StrHelper($args);
 }
@@ -310,7 +310,7 @@ function StrHelper(mixed $args = null): PhpHelper\StrHelper
  * @param mixed|null $args
  * @return PhpHelper\SystemHelper
  */
-function SystemHelper(mixed $args = null): PhpHelper\SystemHelper
+function _system(mixed $args = null): PhpHelper\SystemHelper
 {
     return new PhpHelper\SystemHelper($args);
 }
@@ -319,7 +319,7 @@ function SystemHelper(mixed $args = null): PhpHelper\SystemHelper
  * @param mixed|null $args
  * @return PhpHelper\ToolsHelper
  */
-function ToolsHelper(mixed $args = null): PhpHelper\ToolsHelper
+function _tools(mixed $args = null): PhpHelper\ToolsHelper
 {
     return new PhpHelper\ToolsHelper($args);
 }
@@ -328,7 +328,7 @@ function ToolsHelper(mixed $args = null): PhpHelper\ToolsHelper
  * @param mixed|null $args
  * @return PhpHelper\ValidateHelper
  */
-function ValidateHelper(mixed $args = null): PhpHelper\ValidateHelper
+function _validate(mixed $args = null): PhpHelper\ValidateHelper
 {
     return new PhpHelper\ValidateHelper($args);
 }
@@ -337,7 +337,7 @@ function ValidateHelper(mixed $args = null): PhpHelper\ValidateHelper
  * @param mixed|null $args
  * @return PhpHelper\VersionHelper
  */
-function VersionHelper(mixed $args = null): PhpHelper\VersionHelper
+function _version(mixed $args = null): PhpHelper\VersionHelper
 {
     return new PhpHelper\VersionHelper($args);
 }
@@ -346,7 +346,7 @@ function VersionHelper(mixed $args = null): PhpHelper\VersionHelper
  * @param mixed|null $args
  * @return PhpHelper\XmlHelper
  */
-function XmlHelper(mixed $args = null): PhpHelper\XmlHelper
+function _xml(mixed $args = null): PhpHelper\XmlHelper
 {
     return new PhpHelper\XmlHelper($args);
 }
@@ -355,7 +355,7 @@ function XmlHelper(mixed $args = null): PhpHelper\XmlHelper
  * @param mixed|null $args
  * @return PhpHelper\ZipHelper
  */
-function ZipHelper(mixed $args = null): PhpHelper\ZipHelper
+function _zip(mixed $args = null): PhpHelper\ZipHelper
 {
     return new PhpHelper\ZipHelper($args);
 }
@@ -364,7 +364,7 @@ function ZipHelper(mixed $args = null): PhpHelper\ZipHelper
  * @param mixed|null $args
  * @return PhpHelper\AliyunHelper
  */
-function AliyunHelper(mixed $args = null): PhpHelper\AliyunHelper
+function _aliyun(mixed $args = null): PhpHelper\AliyunHelper
 {
     return new PhpHelper\AliyunHelper($args);
 }
@@ -373,7 +373,7 @@ function AliyunHelper(mixed $args = null): PhpHelper\AliyunHelper
  * @param mixed|null $args
  * @return PhpHelper\WechatHelper
  */
-function WechatHelper(mixed $args = null): PhpHelper\WechatHelper
+function _wechat(mixed $args = null): PhpHelper\WechatHelper
 {
     return new PhpHelper\WechatHelper($args);
 }
@@ -382,7 +382,7 @@ function WechatHelper(mixed $args = null): PhpHelper\WechatHelper
  * @param mixed|null $args
  * @return PhpHelper\DingtalkHelper
  */
-function DingtalkHelper(mixed $args = null): PhpHelper\DingtalkHelper
+function _dingtalk(mixed $args = null): PhpHelper\DingtalkHelper
 {
     return new PhpHelper\DingtalkHelper($args);
 }
@@ -391,7 +391,7 @@ function DingtalkHelper(mixed $args = null): PhpHelper\DingtalkHelper
  * @param mixed|null $args
  * @return PhpHelper\BaiduHelper
  */
-function BaiduHelper(mixed $args = null): PhpHelper\BaiduHelper
+function _baidu(mixed $args = null): PhpHelper\BaiduHelper
 {
     return new PhpHelper\BaiduHelper($args);
 }
