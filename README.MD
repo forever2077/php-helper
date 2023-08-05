@@ -182,6 +182,7 @@ $lastWeek = $carbon::now()->subWeek();
 // Rfc2822
 $officialDate = DateTimeHelper::carbon()::now()->toRfc2822String();
 
+使用前需先安装 composer require nesbot/carbon
 更多内容请查看 Carbon 文档 https://github.com/briannesbitt/Carbon
 ```
 
@@ -200,6 +201,7 @@ $image->text('Hello, world!', 200, 150, function ($font) {
 $path = __DIR__ . '/output.jpg';
 $image->save($path);
 
+使用前需先安装 composer require intervention/image
 更多内容请查看 Intervention 文档 https://image.intervention.io/v2/
 ```
 
