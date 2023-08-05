@@ -75,9 +75,11 @@ ArrayHelper::getTree($array);
 
 ```php
 // 把文件大小格式化成友好格式
-FileHelper::format($bytes, bytes,$decimals = 2);
+FileHelper::format($bytes, $decimals = 2);
+// 创建目录
+FileHelper::createDir(string $path, int $mode = 0777, bool $recursive = true);
 // 删除文件 和 目录
-FileHelper::delDir($path, path,$isDelCurrent = false);
+FileHelper::delDir($path, $isDelCurrent = false);
 // 获取文件扩展
 FileHelper::getExt($str);
 // 目录扫描
@@ -116,7 +118,7 @@ StrHelper::uniqueDateNum();
 //生成唯一的 guid
 StrHelper::uniqueGuid();
 //随机字长度的随机字符串
-StrHelper::randStr($length = 6, length=6,$type = 'string');
+StrHelper::randStr($length = 6, $type = 'string');
 ```
 
 ## 验证 Validate
@@ -149,7 +151,7 @@ RuntimeHelper::instance()->reset();
 // 获取内存使用情况
 SystemHelper::getMemoryUsage();
 // 获取内存使用情况
-SystemHelper::logMsg($msg, msg,$file = './log.txt');
+SystemHelper::logMsg($msg, $file = './log.txt');
 ```
 
 ## 编码加密 Encode/Crypto
