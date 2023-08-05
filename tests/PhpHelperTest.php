@@ -1,21 +1,24 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\PhpHelper;
+use Forever2077\PhpHelper;
 use function Forever2077\PhpHelper\dump;
-use function Forever2077\PhpHelper\q;
+use function Forever2077\PhpHelper\ArrayHelper;
+use function Forever2077\PhpHelper\ImageHelper;
+use function Forever2077\PhpHelper\FileHelper;
+use function Forever2077\PhpHelper\AlgorithmHelper;
 
 class PhpHelperTest extends TestCase
 {
     public function testPhpHelper()
     {
-        $this->assertIsString(PhpHelper::$version);
+        $this->assertIsString(PhpHelper\PhpHelper::$version);
     }
 
     public function testCountPubMethod()
     {
         try {
-            $str = PhpHelper::countPubMethod();
+            $str = PhpHelper\PhpHelper::countPubMethod();
             dump($str);
             $this->assertIsString($str);
         } catch (Exception $e) {
@@ -26,11 +29,11 @@ class PhpHelperTest extends TestCase
     public function testQ()
     {
         try {
-            $this->assertIsObject(Q('array'));
-            $this->assertIsObject(Q('image')->instance());
-            $this->assertIsString(Q('file')->format(1024));
+            $this->assertIsObject(ArrayHelper());
+            $this->assertIsObject(ImageHelper()->instance());
+            $this->assertIsString(FileHelper()->format(1024));
             $arr = [1, 3, 2, 5, 4];
-            $this->assertIsArray(Q('algorithm')->BubbleSort($arr));
+            $this->assertIsArray(AlgorithmHelper()->BubbleSort($arr));
         } catch (Exception $e) {
             dump($e->getMessage());
         }

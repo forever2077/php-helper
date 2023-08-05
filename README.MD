@@ -6,7 +6,7 @@
 composer require forever2077/php-helper:"@dev"
 ```
 
-## 单例+懒加载模式 or 快捷函数
+## 单例+懒加载模式 or 代理函数
 
 ```php
 // 冒泡排序
@@ -34,9 +34,10 @@ PhpHelper::System()::getMemoryUsage();
 // 获取当前日期时间
 PhpHelper::DateTime()::carbon()::now()->toDateTimeString();
 
-// 快捷函数 "Q"
-Q('algorithm')->BubbleSort($arr);
-Q('array')->toArray($foo);
+// 代理函数
+AlgorithmHelper()::BubbleSort($arr);
+ArrayHelper()::toArray($foo);
+DateTimeHelper()::carbon()::now()->toDateTimeString();
 ```
 
 ## 算法 Algorithm
@@ -263,12 +264,3 @@ HttpHelper::guzzle();
 ## 致谢 Thank
 
 该项目来之各开源项目收录和整理，持续更新中ing...
-
-```php
-1、https://github.com/jasonyqwang/Utils
-2、https://github.com/duke-git/lancet
-3、https://github.com/briannesbitt/Carbon
-4、https://github.com/Intervention/image
-5、https://csv.thephpleague.com/
-6、https://github.com/guzzle/guzzle
-```

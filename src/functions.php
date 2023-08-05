@@ -3,44 +3,6 @@
 namespace Forever2077\PhpHelper;
 
 /**
- * 快速实例化
- * @param string $name 类名(不分大小写) 可选的值有:
- * Algorithm [算法]、Array [数组处理]、
- * Bloom [布隆过滤器]、Cache [缓存]、
- * Captcha [验证码]、Crypto [加密解密与常用编码]、
- * Csv [CSV文件处理]、DataStructure [数据结构]、
- * DateTime [日期和时间]、Dfa [DFA字符串匹配算法]、
- * Email [邮件发送和验证]、Error [错误处理]、
- * File [文件操作]、Geo [地理国家省市]、
- * Http [网络请求]、Image [图片处理]、
- * Ip [IP地址]、Json [JSON相]、Jwt [JSON Web令牌(JWT)]、
- * Log [日志相关]、LruCache [LRU缓存]、
- * Map [地图相关]、Math [数学函数]、
- * Net [网络相关]、Office [Office文档处理]、
- * Pay [支付相关]、Random [随机字符串生成]、
- * Runtime [运行时和性能测量]、Sms [短信相关]、
- * Str [字符串操作]、System [系统相关]、Tools [其他工具]、
- * Validate [内容验证]、Version [版本比较和处理]、
- * Xml [XML解析和生成]、Zip [处理ZIP压缩文件]、
- * Aliyun [阿里云]、Wechat [微信]、
- * Dingtalk [钉钉]、Baidu [百度]、
- * @param mixed|null $arguments 参数
- * @return mixed
- * @throws \Exception
- */
-function Q(string $name, mixed $arguments = null)
-{
-    $namespace = (new \ReflectionClass(__NAMESPACE__ . '\PhpHelper'))->getNamespaceName();
-    $class = ucfirst($name) . 'Helper';
-    $fullClassName = $namespace . '\\' . $class;
-    try {
-        return new $fullClassName($arguments);
-    } catch (\Error $e) {
-        throw new \Exception("Class $fullClassName does not exist");
-    }
-}
-
-/**
  * 支持多个参数，格式化打印数据
  * @return void
  */
@@ -68,4 +30,364 @@ function dd(): void
 {
     call_user_func_array(__NAMESPACE__ . '\\dump', func_get_args());
     exit;
+}
+
+/**
+ * @param mixed|null $args
+ * @return AlgorithmHelper
+ */
+function AlgorithmHelper(mixed $args = null): AlgorithmHelper
+{
+    return new AlgorithmHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return ArrayHelper
+ */
+function ArrayHelper(mixed $args = null): ArrayHelper
+{
+    return new ArrayHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return BloomHelper
+ */
+function BloomHelper(mixed $args = null): BloomHelper
+{
+    return new BloomHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return CacheHelper
+ */
+function CacheHelper(mixed $args = null): CacheHelper
+{
+    return new CacheHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return CaptchaHelper
+ */
+function CaptchaHelper(mixed $args = null): CaptchaHelper
+{
+    return new CaptchaHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return CryptoHelper
+ */
+function CryptoHelper(mixed $args = null): CryptoHelper
+{
+    return new CryptoHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return CsvHelper
+ */
+function CsvHelper(mixed $args = null): CsvHelper
+{
+    return new CsvHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return DataStructureHelper
+ */
+function DataStructureHelper(mixed $args = null): DataStructureHelper
+{
+    return new DataStructureHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return DateTimeHelper
+ */
+function DateTimeHelper(mixed $args = null): DateTimeHelper
+{
+    return new DateTimeHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return DfaHelper
+ */
+function DfaHelper(mixed $args = null): DfaHelper
+{
+    return new DfaHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return EmailHelper
+ */
+function EmailHelper(mixed $args = null): EmailHelper
+{
+    return new EmailHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return ErrorHelper
+ */
+function ErrorHelper(mixed $args = null): ErrorHelper
+{
+    return new ErrorHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return FileHelper
+ */
+function FileHelper(mixed $args = null): FileHelper
+{
+    return new FileHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return GeoHelper
+ */
+function GeoHelper(mixed $args = null): GeoHelper
+{
+    return new GeoHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return HttpHelper
+ */
+function HttpHelper(mixed $args = null): HttpHelper
+{
+    return new HttpHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return ImageHelper
+ */
+function ImageHelper(mixed $args = null): ImageHelper
+{
+    return new ImageHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return IpHelper
+ */
+function IpHelper(mixed $args = null): IpHelper
+{
+    return new IpHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return JsonHelper
+ */
+function JsonHelper(mixed $args = null): JsonHelper
+{
+    return new JsonHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return JwtHelper
+ */
+function JwtHelper(mixed $args = null): JwtHelper
+{
+    return new JwtHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return LogHelper
+ */
+function LogHelper(mixed $args = null): LogHelper
+{
+    return new LogHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return LruCacheHelper
+ */
+function LruCacheHelper(mixed $args = null): LruCacheHelper
+{
+    return new LruCacheHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return MapHelper
+ */
+function MapHelper(mixed $args = null): MapHelper
+{
+    return new MapHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return MathHelper
+ */
+function MathHelper(mixed $args = null): MathHelper
+{
+    return new MathHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return NetHelper
+ */
+function NetHelper(mixed $args = null): NetHelper
+{
+    return new NetHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return OfficeHelper
+ */
+function OfficeHelper(mixed $args = null): OfficeHelper
+{
+    return new OfficeHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return PayHelper
+ */
+function PayHelper(mixed $args = null): PayHelper
+{
+    return new PayHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return RandomHelper
+ */
+function RandomHelper(mixed $args = null): RandomHelper
+{
+    return new RandomHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return RuntimeHelper
+ */
+function RuntimeHelper(mixed $args = null): RuntimeHelper
+{
+    return new RuntimeHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return SmsHelper
+ */
+function SmsHelper(mixed $args = null): SmsHelper
+{
+    return new SmsHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return StrHelper
+ */
+function StrHelper(mixed $args = null): StrHelper
+{
+    return new StrHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return SystemHelper
+ */
+function SystemHelper(mixed $args = null): SystemHelper
+{
+    return new SystemHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return ToolsHelper
+ */
+function ToolsHelper(mixed $args = null): ToolsHelper
+{
+    return new ToolsHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return ValidateHelper
+ */
+function ValidateHelper(mixed $args = null): ValidateHelper
+{
+    return new ValidateHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return VersionHelper
+ */
+function VersionHelper(mixed $args = null): VersionHelper
+{
+    return new VersionHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return XmlHelper
+ */
+function XmlHelper(mixed $args = null): XmlHelper
+{
+    return new XmlHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return ZipHelper
+ */
+function ZipHelper(mixed $args = null): ZipHelper
+{
+    return new ZipHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return AliyunHelper
+ */
+function AliyunHelper(mixed $args = null): AliyunHelper
+{
+    return new AliyunHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return WechatHelper
+ */
+function WechatHelper(mixed $args = null): WechatHelper
+{
+    return new WechatHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return DingtalkHelper
+ */
+function DingtalkHelper(mixed $args = null): DingtalkHelper
+{
+    return new DingtalkHelper($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return BaiduHelper
+ */
+function BaiduHelper(mixed $args = null): BaiduHelper
+{
+    return new BaiduHelper($args);
 }
