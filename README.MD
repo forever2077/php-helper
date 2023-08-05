@@ -300,7 +300,7 @@ try {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
-使用前需先安装 composer require --dev phpmailer/phpmailer
+使用前需先安装 composer require phpmailer/phpmailer
 更多内容请查看 phpmailer 文档 https://github.com/PHPMailer/PHPMailer
 ```
 
