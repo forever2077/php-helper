@@ -185,6 +185,17 @@ $officialDate = DateTimeHelper::carbon()::now()->toRfc2822String();
 更多内容请查看 Carbon 文档 https://github.com/briannesbitt/Carbon
 ```
 
+## 图片处理 Image
+
+```php
+// 创建实例
+$intervention = ImageHelper::intervention(['driver' => 'gd']);
+
+
+更多内容请查看 Intervention 文档 https://image.intervention.io/v2/
+```
+
+
 ## 致谢 Thank
 
 该项目来之各开源项目收录和整理，持续更新中ing...
