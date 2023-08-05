@@ -2,11 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper;
-use function Forever2077\PhpHelper\dump;
-use function Forever2077\PhpHelper\ArrayHelper;
-use function Forever2077\PhpHelper\ImageHelper;
-use function Forever2077\PhpHelper\FileHelper;
-use function Forever2077\PhpHelper\AlgorithmHelper;
 
 class PhpHelperTest extends TestCase
 {
