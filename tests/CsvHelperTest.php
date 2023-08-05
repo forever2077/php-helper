@@ -11,7 +11,8 @@ class CsvHelperTest extends TestCase
     public function testInstance()
     {
         try {
-            $writerClass = CsvHelper::writer();
+            $instance = CsvHelper::instance();
+            $writerClass = $instance::writer();
             $filePath = __DIR__ . '/output.csv';
             $fileObject = new SplFileObject($filePath, 'w');
             $csv = $writerClass::createFromFileObject($fileObject);

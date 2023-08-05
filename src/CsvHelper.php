@@ -11,6 +11,15 @@ use League\Csv\ByteSequence;
 class CsvHelper
 {
     /**
+     * CSV辅助类
+     * @return CsvHelper
+     */
+    public static function instance(): CsvHelper
+    {
+        return new self();
+    }
+
+    /**
      * CSV写入器
      * @return string|Writer
      */
