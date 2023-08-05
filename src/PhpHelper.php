@@ -91,7 +91,10 @@ class PhpHelper
     public static function countPubMethod(): string
     {
         $fullClassNames = PhpHelper::File()::scanDirectory([
-            'dir' => __DIR__, 'filter' => function ($file) {
+            'dir' => __DIR__,
+            'ext' => ['php'],
+            'depth' => 1,
+            'filter' => function ($file) {
                 if (str_contains($file, 'Helper') && !str_contains($file, 'PhpHelper')) {
                     return true;
                 }
@@ -116,6 +119,6 @@ class PhpHelper
         }
         return PHP_EOL . "helper class method number summary：" . $str
             . PHP_EOL . "--------------------"
-            . PHP_EOL . "total helper：" . count($fullClassNames);
+            . PHP_EOL . "total helper（" . date('Y-m-d H:i:s') . "）：" . count($fullClassNames) . PHP_EOL;
     }
 }

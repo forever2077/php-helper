@@ -67,7 +67,7 @@ class FileHelper
      * 扫描目标目录下的文件
      * @param array|string $args 如果为字符串，那么就作为dir参数。如果为数组，那么参考下方说明：
      *     - 'dir': (必须) 目录
-     *     - 'extensions': (可选) 扩展名
+     *     - 'ext': (可选) 扩展名
      *     - 'depth': (可选) 深度
      *     - 'callback': (可选) 回调函数
      *     - 'filter': (可选) 过滤器回调函数
@@ -82,10 +82,10 @@ class FileHelper
 
         // 设置默认值
         $defaults = [
-            'extensions' => null,
+            'ext' => null,
             'depth' => null,
-            'callback' => null,
             'filter' => null,
+            'callback' => null,
         ];
 
         // 使用用户提供的参数覆盖默认值
@@ -93,7 +93,7 @@ class FileHelper
 
         // 将参数值分配给变量
         $dir = $args['dir'];
-        $extensions = $args['extensions'];
+        $extensions = $args['ext'];
         $depth = $args['depth'];
         $callback = $args['callback'];
         $filter = $args['filter'];

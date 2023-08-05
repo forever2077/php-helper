@@ -80,6 +80,17 @@ FileHelper::format($bytes, bytes,$decimals = 2);
 FileHelper::delDir($path, path,$isDelCurrent = false);
 // 获取文件扩展
 FileHelper::getExt($str);
+// 目录扫描
+FileHelper::scanDirectory([
+    'dir' => __DIR__, 'ext' => ['php'], 'depth' => 1, 'filter' => function ($file) {
+        if (str_contains($file, '*****')) {
+            return true;
+        }
+        return false;
+    }, 'callback' => function ($file) {
+        return pathinfo($file, PATHINFO_FILENAME);
+    }
+]);
 ```
 
 ## 网际协议 IP
