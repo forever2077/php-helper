@@ -181,4 +181,73 @@ class HttpHelper
 
         return $client->request('TRACE', $url, $options);
     }
+
+    /**
+     * 发送 JSON 请求
+     *
+     * @param array $params 包含以下键值：
+     *   - 'client'  (Client) Guzzle客户端实例，默认为新的客户端实例
+     *   - 'method'  (string) HTTP 请求方法，如 'GET', 'POST', 'PUT', etc.
+     *   - 'url'     (string) 请求的 URL
+     *   - 'json'    (array)  要发送的 JSON 数据
+     *   - 'options' (array)  请求的额外选项，参见 Guzzle 官方文档
+     * @return ResponseInterface
+     * @throws GuzzleException
+     */
+    public static function sendJson(array $params): ResponseInterface
+    {
+        $client = $params['client'] ?? self::instance();
+        $method = $params['method'] ?? 'POST';
+        $url = $params['url'] ?? '';
+        $options = $params['options'] ?? [];
+        $options['json'] = $params['json'] ?? [];
+
+        return $client->request($method, $url, $options);
+    }
+
+    /**
+     * 发送 Form 请求（发送表单数据）
+     *
+     * @param array $params 包含以下键值：
+     *   - 'client'  (Client) Guzzle客户端实例，默认为新的客户端实例
+     *   - 'method'  (string) HTTP 请求方法，如 'GET', 'POST', 'PUT', etc.
+     *   - 'url'     (string) 请求的 URL
+     *   - 'form_params' (array)  要发送的表单数据
+     *   - 'options' (array)  请求的额外选项，参见 Guzzle 官方文档
+     * @return ResponseInterface
+     * @throws GuzzleException
+     */
+    public static function sendForm(array $params): ResponseInterface
+    {
+        $client = $params['client'] ?? self::instance();
+        $method = $params['method'] ?? 'POST';
+        $url = $params['url'] ?? '';
+        $options = $params['options'] ?? [];
+        $options['form_params'] = $params['form_params'] ?? [];
+
+        return $client->request($method, $url, $options);
+    }
+
+    /**
+     * 发送 Multipart 请求（发送文件和其他表单数据）
+     *
+     * @param array $params 包含以下键值：
+     *   - 'client'  (Client) Guzzle客户端实例，默认为新的客户端实例
+     *   - 'method'  (string) HTTP 请求方法，如 'GET', 'POST', 'PUT', etc.
+     *   - 'url'     (string) 请求的 URL
+     *   - 'multipart' (array)  要发送的 multipart 数据
+     *   - 'options' (array)  请求的额外选项，参见 Guzzle 官方文档
+     * @return ResponseInterface
+     * @throws GuzzleException
+     */
+    public static function sendMultipart(array $params): ResponseInterface
+    {
+        $client = $params['client'] ?? self::instance();
+        $method = $params['method'] ?? 'POST';
+        $url = $params['url'] ?? '';
+        $options = $params['options'] ?? [];
+        $options['multipart'] = $params['multipart'] ?? [];
+
+        return $client->request($method, $url, $options);
+    }
 }
