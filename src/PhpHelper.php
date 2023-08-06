@@ -15,6 +15,7 @@ use ReflectionClass;
  * @method static CaptchaHelper        Captcha()         验证码
  * @method static CryptoHelper         Crypto()          加密解密与常用编码
  * @method static CsvHelper            Csv()             CSV文件处理
+ * @method static ConfigHelper         Config()          配置处理
  * @method static DataStructureHelper  DataStructure()   数据结构
  * @method static DateTimeHelper       DateTime()        日期和时间
  * @method static DfaHelper            Dfa()             DFA字符串匹配算法

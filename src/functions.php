@@ -395,3 +395,12 @@ function _baidu(mixed $args = null): PhpHelper\BaiduHelper
 {
     return new PhpHelper\BaiduHelper($args);
 }
+
+/**
+ * @param mixed|null $args
+ * @return PhpHelper\ConfigHelper
+ */
+function _config(mixed $args = null): PhpHelper\ConfigHelper
+{
+    return new PhpHelper\ConfigHelper($args);
+}
