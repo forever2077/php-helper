@@ -199,7 +199,6 @@ $image->text('Hello, world!', 200, 150, function ($font) {
 $path = __DIR__ . '/output.jpg';
 $image->save($path);
 
-使用前需先安装 composer require intervention/image
 更多内容请查看 Intervention 文档 https://image.intervention.io/v2/
 ```
 
@@ -232,7 +231,6 @@ CsvHelper::writer();
 // CSV读取器
 CsvHelper::reader();
 
-使用前需先安装 composer require league/csv:^9.0
 更多内容请查看 league/csv 文档 https://csv.thephpleague.com/9.0/
 ```
 
@@ -269,7 +267,6 @@ $response = HttpHelper::post([
     ],
 ]);
 
-使用前需先安装 composer require guzzlehttp/guzzle:^7.7
 更多内容请查看 guzzlehttp 文档 https://docs.guzzlephp.org/en/stable/
 ```
 
@@ -313,7 +310,6 @@ try {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
-使用前需先安装 composer require phpmailer/phpmailer
 更多内容请查看 phpmailer 文档 https://github.com/PHPMailer/PHPMailer
 ```
 
@@ -364,7 +360,6 @@ try {
 
 // excel文档处理实例
 OfficeHelper::excel();
-使用前需先安装 composer require phpoffice/phpspreadsheet
 更多内容请查看 phpspreadsheet 文档 https://phpspreadsheet.readthedocs.io
 
 // word文档处理实例
