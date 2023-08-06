@@ -461,6 +461,8 @@ $uuid = UuidHelper::uuid6();
 $uuid = UuidHelper::uuid8("\x00\x11\x22\x33\x44\x55\x66\x77\x88\x99\xaa\xbb\xcc\xdd\xee\xff");
 // GUID
 $guid = UuidHelper::guid($withBrackets = true);
+
+更多内容请查看 uuid 文档 https://uuid.ramsey.dev/en/stable/
 ```
 
 ## 致谢 Thank
