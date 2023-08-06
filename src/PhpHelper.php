@@ -40,6 +40,7 @@ use ReflectionClass;
  * @method static SmsHelper            Sms()             短信相关
  * @method static StrHelper            Str()             字符串操作
  * @method static SystemHelper         System()          系统相关
+ * @method static TempHelper           Temp()            模板相关
  * @method static ToolsHelper          Tools()           其他工具
  * @method static ValidateHelper       Validate()        内容验证
  * @method static VersionHelper        Version()         版本比较和处理
