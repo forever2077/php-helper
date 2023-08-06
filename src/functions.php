@@ -416,3 +416,12 @@ function _env(string $filePath, string $filename = ''): PhpHelper\EnvHelper
 {
     return PhpHelper\EnvHelper::instance($filePath, $filename);
 }
+
+/**
+ * @param mixed|null $args
+ * @return PhpHelper\UuidHelper
+ */
+function _uuid(mixed $args = null): PhpHelper\UuidHelper
+{
+    return PhpHelper\UuidHelper::instance();
+}

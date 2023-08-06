@@ -17,11 +17,6 @@ class StrHelperTest extends TestCase
         $this->assertEquals(24, strlen(StrHelper::uniqueDateNum()));
     }
 
-    public function testUniqueGuid()
-    {
-        $this->assertEquals(36, strlen(StrHelper::uniqueGuid()));
-    }
-
     public function testRandStr()
     {
         $this->assertEquals(6, strlen(StrHelper::randStr(6)));

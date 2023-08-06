@@ -33,6 +33,7 @@
         "guzzlehttp/guzzle": "7.7",
         "phpmailer/phpmailer": "^6.7",
         "phpoffice/phpspreadsheet": "^1.28",
-        "phpoffice/phpword": "^1.1"
+        "phpoffice/phpword": "^1.1",
+        "ramsey/uuid": "^4.7"
     }
 }

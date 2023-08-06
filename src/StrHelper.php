@@ -60,22 +60,6 @@ class StrHelper
     }
 
     /**
-     * 生成唯一的 guid
-     * @return string  eg: 08178533-5ca4-6194-5745-607197a47faa
-     */
-    public static function uniqueGuid(): string
-    {
-        mt_srand((double)microtime() * 1000000);
-        $charid = md5(uniqid(rand(), true));
-        $hyphen = chr(45);// "-"
-        return substr($charid, 0, 8) . $hyphen
-            . substr($charid, 8, 4) . $hyphen
-            . substr($charid, 12, 4) . $hyphen
-            . substr($charid, 16, 4) . $hyphen
-            . substr($charid, 20, 12);
-    }
-
-    /**
      * 随机字长度的随机字符串
      * @param int $length 长度
      * @param string $type 类型(支持:number/letter/string/all)

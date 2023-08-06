@@ -43,6 +43,7 @@ use ReflectionClass;
  * @method static SystemHelper         System()          系统相关
  * @method static TempHelper           Temp()            模板相关
  * @method static ToolsHelper          Tools()           其他工具
+ * @method static UuidHelper           Uuid()            唯一标识符
  * @method static ValidateHelper       Validate()        内容验证
  * @method static VersionHelper        Version()         版本比较和处理
  * @method static XmlHelper            Xml()             XML解析和生成
