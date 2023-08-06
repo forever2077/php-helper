@@ -375,6 +375,44 @@ OfficeHelper::world();
 更多内容请查看 phpspreadsheet 文档 https://phpword.readthedocs.io
 ```
 
+## 配置 Config
+
+```php
+// 从字符串中加载
+$settingsJson = <<<FOOBAR
+{
+  "application": {
+    "name": "configuration",
+    "secret": "s3cr3t"
+  },
+  "host": "localhost",
+  "port": 80,
+  "servers": [
+    "host1",
+    "host2",
+    "host3"
+  ]
+}
+FOOBAR;
+
+$jsonConfig = ConfigHelper::instance($this->settingsJson);
+$jsonConfig['application.name'];
+
+// 从文件中加载(默认Json解释器)
+ConfigHelper::instance('config.json');
+// 加载yaml文件并转成ini（支持：yaml、ini、xml、php、serialize、properties）
+ConfigHelper::instance('config.yaml', 'ini');
+// 从多个文件加载值
+ConfigHelper::instance(['config.json', 'config.xml']);
+// 加载目录中所有支持的文件
+ConfigHelper::instance(__DIR__ . '/config');
+// 从可选文件加载值
+ConfigHelper::instance(['config.dist.json', '?config.json']);
+
+更多内容请查看 config 文档 https://github.com/hassankhan/config
+```
+
+
 ## 致谢 Thank
 
 该项目来之各开源项目收录和整理，持续更新中ing...

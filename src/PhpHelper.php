@@ -20,6 +20,7 @@ use ReflectionClass;
  * @method static DateTimeHelper       DateTime()        日期和时间
  * @method static DfaHelper            Dfa()             DFA字符串匹配算法
  * @method static EmailHelper          Email()           邮件发送和验证
+ * @method static EnvHelper            Env()             环境变量
  * @method static ErrorHelper          Error()           错误处理
  * @method static FileHelper           File()            文件操作
  * @method static GeoHelper            Geo()             地理国家省市

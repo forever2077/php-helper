@@ -1,6 +1,7 @@
 <?php
 
 use Forever2077\PhpHelper;
+use Noodlehaus\Config;
 
 /**
  * 支持多个参数，格式化打印数据
@@ -397,10 +398,20 @@ function _baidu(mixed $args = null): PhpHelper\BaiduHelper
 }
 
 /**
- * @param mixed|null $args
- * @return PhpHelper\ConfigHelper
+ * @param array|string $values
+ * @param string $parser
+ * @return Config
  */
-function _config(mixed $args = null): PhpHelper\ConfigHelper
+function _config(array|string $values, string $parser = 'Json'): Config
 {
-    return PhpHelper\ConfigHelper::instance($args);
+    return PhpHelper\ConfigHelper::instance($values, $parser);
+}
+
+/**
+ * @param mixed|null $args
+ * @return PhpHelper\EnvHelper
+ */
+function _env(mixed $args = null): PhpHelper\EnvHelper
+{
+    return new PhpHelper\EnvHelper($args);
 }
