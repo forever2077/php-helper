@@ -48,8 +48,8 @@ use ReflectionClass;
  * @method static ZipHelper            Zip()             处理ZIP压缩文件
  * @method static AliyunHelper         Aliyun()          阿里云
  * @method static WechatHelper         Wechat()          微信
- * @method static DingtalkHelper       Dingtalk()        钉钉
  * @method static BaiduHelper          Baidu()           百度
+ * @method static DingtalkHelper       Dingtalk()        钉钉
  */
 class PhpHelper
 {
