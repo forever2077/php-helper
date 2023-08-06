@@ -408,10 +408,11 @@ function _config(array|string $values, string $parser = 'Json'): Config
 }
 
 /**
- * @param mixed|null $args
+ * @param string $filePath
+ * @param string $filename
  * @return PhpHelper\EnvHelper
  */
-function _env(mixed $args = null): PhpHelper\EnvHelper
+function _env(string $filePath, string $filename = ''): PhpHelper\EnvHelper
 {
-    return new PhpHelper\EnvHelper($args);
+    return PhpHelper\EnvHelper::instance($filePath, $filename);
 }
