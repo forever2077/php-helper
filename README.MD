@@ -256,6 +256,22 @@ try {
 // 获取guzzle实例
 HttpHelper::guzzle();
 
+// Get请求
+$response = HttpHelper::get([
+    'url' => 'https://www.baidu.com',
+    'options' => [
+        'verify' => __DIR__ . '/cacert.pem',
+    ],
+]);
+
+// Post请求
+$response = HttpHelper::post([
+    'url' => 'https://www.baidu.com',
+    'options' => [
+        'verify' => __DIR__ . '/cacert.pem',
+    ],
+]);
+
 使用前需先安装 composer require guzzlehttp/guzzle:^7.7
 更多内容请查看 guzzlehttp 文档 https://docs.guzzlephp.org/en/stable/
 ```
