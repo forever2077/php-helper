@@ -14,7 +14,7 @@ class FileHelperTest extends TestCase
     {
         $path = __DIR__ . '/test1';
         $this->assertTrue(FileHelper::createDir($path));
-        $this->assertTrue(FileHelper::deleteDir($path, true));
+        $this->assertTrue(FileHelper::removeDir($path, true));
     }
 
     public function testGetExt()

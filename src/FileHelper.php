@@ -62,7 +62,7 @@ class FileHelper
      * @param bool $isDelCurrent 是否删除当前目录
      * @return bool
      */
-    public static function deleteDir(string $path, bool $isDelCurrent = false): bool
+    public static function removeDir(string $path, bool $isDelCurrent = false): bool
     {
         try {
             $path = trim($path, DIRECTORY_SEPARATOR);
@@ -77,7 +77,7 @@ class FileHelper
                         //如果是目录则递归子目录，继续操作
                         if (is_dir($path . $val)) {
                             //子目录中操作删除文件夹和文件
-                            self::deleteDir($path . $val . DIRECTORY_SEPARATOR);
+                            self::removeDir($path . $val . DIRECTORY_SEPARATOR);
                             //目录清空后删除空文件夹
                             rmdir($path . $val . DIRECTORY_SEPARATOR);
                         } else {

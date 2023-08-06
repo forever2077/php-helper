@@ -84,7 +84,7 @@ FileHelper::format($bytes, $decimals = 2);
 // 创建目录
 FileHelper::createDir(string $path, int $mode = 0777, bool $recursive = true);
 // 删除文件 和 目录
-FileHelper::delDir($path, $isDelCurrent = false);
+FileHelper::removeDir($path, $isDelCurrent = false);
 // 获取文件扩展
 FileHelper::getExt($str);
 // 目录扫描
