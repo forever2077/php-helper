@@ -25,20 +25,14 @@ class EnvHelper
     }
 
     /**
-     * 配置实例工厂方法
+     * 配置实例
      * @param string $filePath 文件路径
      * @param string $filename 文件名
      * @return EnvHelper
      */
-    public static function instance(string $filePath, string $filename = ''): EnvHelper
+    public static function instance(string $filePath, string $filename = '.env'): EnvHelper
     {
-        $path = pathinfo($filePath, PATHINFO_DIRNAME);
-        $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
-
-        return match ($extension) {
-            'env' => self::dotenv($path, $filename ?: pathinfo($filePath, PATHINFO_BASENAME)),
-            default => throw new \InvalidArgumentException("Invalid file type: $extension"),
-        };
+        return self::dotenv($filePath, $filename);
     }
 
     /**
@@ -49,7 +43,6 @@ class EnvHelper
      */
     public static function dotenv(string $path, string $filename = '.env'): EnvHelper
     {
-        $path = rtrim($path, '.env');
         $instance = new self($path, $filename);
         $instance->repository = RepositoryBuilder::createWithNoAdapters()
             ->addAdapter(PutenvAdapter::class)
