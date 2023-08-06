@@ -121,8 +121,6 @@ StrHelper::uniqueShortStr();
 // 1.如果年份年份大于24年，则对第一个字符倍增操作，比如我们程序运行到2047年的时候 则以 AA 开头，
 // 2.如果传入的起始年份大于当前年份，则返回的字符串前面增加“-”符号
 StrHelper::uniqueDateNum();
-//生成唯一的 guid
-StrHelper::uniqueGuid();
 //随机字长度的随机字符串
 StrHelper::randStr($length = 6, $type = 'string');
 ```
