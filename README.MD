@@ -183,7 +183,6 @@ $lastWeek = $carbon::now()->subWeek();
 // Rfc2822
 $officialDate = DateTimeHelper::carbon()::now()->toRfc2822String();
 
-使用前需先安装 composer require nesbot/carbon
 更多内容请查看 Carbon 文档 https://github.com/briannesbitt/Carbon
 ```
 
@@ -375,7 +374,6 @@ OfficeHelper::world();
 使用前需先安装 composer require phpoffice/phpword 
 更多内容请查看 phpspreadsheet 文档 https://phpword.readthedocs.io
 ```
-
 
 ## 致谢 Thank
 

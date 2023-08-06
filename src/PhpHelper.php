@@ -125,7 +125,7 @@ class PhpHelper
                 throw new Exception("Class $fullClassName does not exist");
             }
         }
-        return PHP_EOL . "helper class method number summary(" . date('Y-m-d H:i:s') . ")：" . $str
+        return PHP_EOL . "helper class method number summary：(" . date('Y-m-d H:i:s') . ")" . $str
             . PHP_EOL . "--------------------"
             . PHP_EOL . "total helper：" . count($fullClassNames)
             . PHP_EOL . "total method：" . $methods . PHP_EOL;

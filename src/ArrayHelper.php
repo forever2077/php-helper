@@ -7,11 +7,11 @@ class ArrayHelper
     /**
      * 把对象或者数组对象，转成数组
      * @param $object
-     * @param $properties
-     * @param $recursive
+     * @param array $properties
+     * @param bool $recursive
      * @return array|object[]|string[]
      */
-    public static function toArray($object, $properties = [], $recursive = true): array
+    public static function toArray($object, array $properties = [], bool $recursive = true): array
     {
         if (is_array($object)) {
             if ($recursive) {
@@ -95,10 +95,10 @@ class ArrayHelper
      * 根据指定的key，建立key对应索引的数组，或者分组后的索引数组
      * @param $array
      * @param $key
-     * @param $groups
+     * @param array $groups
      * @return array
      */
-    public static function index($array, $key, $groups = []): array
+    public static function index($array, $key, array $groups = []): array
     {
         $result = [];
         $groups = (array)$groups;

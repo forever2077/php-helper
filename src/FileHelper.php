@@ -99,9 +99,9 @@ class FileHelper
     /**
      * 获取文件后缀,统一返回小写的后缀
      * @param string $str 文件名
-     * @return mixed|string
+     * @return string|array
      */
-    public static function getExt(string $str): mixed
+    public static function getExt(string $str): string|array
     {
         $ext = pathinfo($str, PATHINFO_EXTENSION);
         if (!$ext) {
