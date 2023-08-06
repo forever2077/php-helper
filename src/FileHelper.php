@@ -4,6 +4,8 @@ namespace Forever2077\PhpHelper;
 
 use Exception;
 use FilesystemIterator;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 class FileHelper
 {
@@ -15,7 +17,19 @@ class FileHelper
      */
     public static function format(int $bytes, int $decimals = 2): string
     {
-        return \Jsyqw\Utils\FileHelper::format($bytes, $decimals);
+        $exp = 0;
+        $value = 0;
+        $symbol = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        $bytes = (float)$bytes;
+        if ($bytes > 0) {
+            //换底公式 log(a)(x)=log(b)(x)/log(b)(a)
+            $exp = floor(log($bytes) / log(1024));
+            $value = $bytes / pow(1024, $exp);
+        }
+        if ($symbol[$exp] === 'B') {
+            $decimals = 0;
+        }
+        return number_format($value, $decimals, '.', '') . '' . $symbol[$exp];
     }
 
     /**
@@ -50,7 +64,36 @@ class FileHelper
      */
     public static function deleteDir(string $path, bool $isDelCurrent = false): bool
     {
-        return \Jsyqw\Utils\FileHelper::delDir($path, $isDelCurrent);
+        try {
+            $path = trim($path, DIRECTORY_SEPARATOR);
+            $path .= DIRECTORY_SEPARATOR;
+            //如果是目录则继续
+            if (is_dir($path)) {
+                //扫描一个文件夹内的所有文件夹和文件并返回数组
+                $p = scandir($path);
+                foreach ($p as $val) {
+                    //排除目录中的.和..
+                    if ($val != "." && $val != "..") {
+                        //如果是目录则递归子目录，继续操作
+                        if (is_dir($path . $val)) {
+                            //子目录中操作删除文件夹和文件
+                            self::deleteDir($path . $val . DIRECTORY_SEPARATOR);
+                            //目录清空后删除空文件夹
+                            rmdir($path . $val . DIRECTORY_SEPARATOR);
+                        } else {
+                            //如果是文件直接删除
+                            unlink($path . $val);
+                        }
+                    }
+                }
+                if ($isDelCurrent) {
+                    rmdir($path);
+                }
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -60,7 +103,11 @@ class FileHelper
      */
     public static function getExt(string $str): mixed
     {
-        return \Jsyqw\Utils\FileHelper::getExt($str);
+        $ext = pathinfo($str, PATHINFO_EXTENSION);
+        if (!$ext) {
+            return $ext;
+        }
+        return strtolower(trim($ext));
     }
 
     /**
@@ -99,8 +146,8 @@ class FileHelper
         $filter = $args['filter'];
 
         $files = [];
-        $di = new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS);
-        $it = new \RecursiveIteratorIterator($di);
+        $di = new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS);
+        $it = new RecursiveIteratorIterator($di);
 
         if ($depth !== null) {
             $it->setMaxDepth($depth);

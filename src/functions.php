@@ -285,7 +285,7 @@ function _random(mixed $args = null): PhpHelper\RandomHelper
  */
 function _runtime(mixed $args = null): PhpHelper\RuntimeHelper
 {
-    return new PhpHelper\RuntimeHelper($args);
+    return PhpHelper\RuntimeHelper::instance($args);
 }
 
 /**
@@ -402,5 +402,5 @@ function _baidu(mixed $args = null): PhpHelper\BaiduHelper
  */
 function _config(mixed $args = null): PhpHelper\ConfigHelper
 {
-    return new PhpHelper\ConfigHelper($args);
+    return PhpHelper\ConfigHelper::instance($args);
 }

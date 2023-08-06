@@ -11,9 +11,43 @@ class ArrayHelper
      * @param $recursive
      * @return array|object[]|string[]
      */
-    public static function toArray($object, $properties = [], $recursive = true)
+    public static function toArray($object, $properties = [], $recursive = true): array
     {
-        return \Jsyqw\Utils\ArrayHelper::toArray($object, $properties, $recursive);
+        if (is_array($object)) {
+            if ($recursive) {
+                foreach ($object as $key => $value) {
+                    if (is_array($value) || is_object($value)) {
+                        $object[$key] = static::toArray($value, $properties, true);
+                    }
+                }
+            }
+
+            return $object;
+        } elseif (is_object($object)) {
+            if (!empty($properties)) {
+                $className = get_class($object);
+                if (!empty($properties[$className])) {
+                    $result = [];
+                    foreach ($properties[$className] as $key => $name) {
+                        if (is_int($key)) {
+                            $result[$name] = $object->$name;
+                        } else {
+                            $result[$key] = static::getValue($object, $name);
+                        }
+                    }
+
+                    return $recursive ? static::toArray($result, $properties) : $result;
+                }
+            }
+            $result = [];
+            foreach ($object as $key => $value) {
+                $result[$key] = $value;
+            }
+
+            return $recursive ? static::toArray($result, $properties) : $result;
+        } else {
+            return [$object];
+        }
     }
 
     /**
@@ -23,9 +57,38 @@ class ArrayHelper
      * @param $default
      * @return mixed
      */
-    public static function getValue($array, $key, $default = null)
+    public static function getValue($array, $key, $default = null): mixed
     {
-        return \Jsyqw\Utils\ArrayHelper::getValue($array, $key, $default);
+        if ($key instanceof \Closure) {
+            return $key($array, $default);
+        }
+
+        if (is_array($key)) {
+            $lastKey = array_pop($key);
+            foreach ($key as $keyPart) {
+                $array = static::getValue($array, $keyPart);
+            }
+            $key = $lastKey;
+        }
+
+        if (is_array($array) && (isset($array[$key]) || array_key_exists($key, $array))) {
+            return $array[$key];
+        }
+
+        if (($pos = strrpos($key, '.')) !== false) {
+            $array = static::getValue($array, substr($key, 0, $pos), $default);
+            $key = substr($key, $pos + 1);
+        }
+
+        if (is_object($array)) {
+            // this is expected to fail if the property does not exist, or __get() is not implemented
+            // it is not reliably possible to check whether a property is accessable beforehand
+            return $array->$key;
+        } elseif (is_array($array)) {
+            return (isset($array[$key]) || array_key_exists($key, $array)) ? $array[$key] : $default;
+        } else {
+            return $default;
+        }
     }
 
     /**
@@ -35,9 +98,39 @@ class ArrayHelper
      * @param $groups
      * @return array
      */
-    public static function index($array, $key, $groups = [])
+    public static function index($array, $key, $groups = []): array
     {
-        return \Jsyqw\Utils\ArrayHelper::index($array, $key, $groups);
+        $result = [];
+        $groups = (array)$groups;
+
+        foreach ($array as $element) {
+            $lastArray = &$result;
+
+            foreach ($groups as $group) {
+                $value = static::getValue($element, $group);
+                if (!array_key_exists($value, $lastArray)) {
+                    $lastArray[$value] = [];
+                }
+                $lastArray = &$lastArray[$value];
+            }
+
+            if ($key === null) {
+                if (!empty($groups)) {
+                    $lastArray[] = $element;
+                }
+            } else {
+                $value = static::getValue($element, $key);
+                if ($value !== null) {
+                    if (is_float($value)) {
+                        $value = (string)$value;
+                    }
+                    $lastArray[$value] = $element;
+                }
+            }
+            unset($lastArray);
+        }
+
+        return $result;
     }
 
     /**
@@ -48,19 +141,33 @@ class ArrayHelper
      * @param $group
      * @return array
      */
-    public static function map($array, $from, $to, $group = null)
+    public static function map($array, $from, $to, $group = null): array
     {
-        return \Jsyqw\Utils\ArrayHelper::map($array, $from, $to, $group);
+        $result = [];
+        foreach ($array as $element) {
+            $key = static::getValue($element, $from);
+            $value = static::getValue($element, $to);
+            if ($group !== null) {
+                $result[static::getValue($element, $group)][$key] = $value;
+            } else {
+                $result[$key] = $value;
+            }
+        }
+
+        return $result;
     }
 
     /**
      * 检查数组是否是列索引
      * @param array $arr
-     * @return void
+     * @return bool
      */
-    public static function isAssoc(array $arr)
+    public static function isAssoc(array $arr): bool
     {
-        return \Jsyqw\Utils\ArrayHelper::isAssoc($arr);
+        if (!$arr) {
+            return false;
+        }
+        return array_keys($arr) !== range(0, count($arr) - 1);
     }
 
     /**
@@ -81,8 +188,19 @@ class ArrayHelper
      *      }]
      *  }]
      */
-    public static function getTree($arr, $pid, $keyName = 'pid')
+    public static function getTree(array $arr, string $pid, string $keyName = 'pid'): array
     {
-        return \Jsyqw\Utils\TreeHelper::getTree($arr, $pid, $keyName);
+        $tree = [];
+        foreach ($arr as $row) {
+            if ($row[$keyName] == $pid) {
+                $row['children'] = [];
+                $children = self::getTree($arr, $row['id']);
+                if (!empty($children)) {
+                    $row['children'] = $children;
+                }
+                $tree[] = $row;
+            }
+        }
+        return $tree;
     }
 }

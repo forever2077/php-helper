@@ -10,7 +10,11 @@ class SystemHelper
      */
     public static function getMemoryUsage(): int|string
     {
-        return \Jsyqw\Utils\SystemHelper::getMemoryUsage();
+        if (function_exists('memory_get_usage')) {
+            $mem = memory_get_usage();
+            return FileHelper::format($mem);
+        }
+        return 0;
     }
 
     /**
@@ -21,6 +25,13 @@ class SystemHelper
      */
     public static function logMsg($msg, string $file = './log.txt'): void
     {
-        \Jsyqw\Utils\SystemHelper::logMsg($msg, $file);
+        if (is_array($msg)) {
+            $msg = json_encode($msg);
+        }
+        $desc = '[' . self::getMemoryUsage() . '][' . date('Y-m-d H:i:s', time()) . '] - ' . $msg . PHP_EOL;
+        $fp = fopen($file, 'a');
+
+        fwrite($fp, $desc);
+        fclose($fp);
     }
 }

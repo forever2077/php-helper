@@ -11,7 +11,7 @@ class ValidateHelper
      */
     public static function isPhone($phone): bool
     {
-        return \Jsyqw\Utils\ValidateHelper::checkPhone($phone);
+        return (bool)preg_match("/^1[3456789]\d{9}$/", $phone);
     }
 
     /**
@@ -21,7 +21,7 @@ class ValidateHelper
      */
     public static function isEmail($email): bool
     {
-        return \Jsyqw\Utils\ValidateHelper::checkEmail($email);
+        return (bool)preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email);
     }
 
     /**
@@ -31,7 +31,14 @@ class ValidateHelper
      */
     public static function isHttp($str): bool
     {
-        return \Jsyqw\Utils\ValidateHelper::isHttp($str);
+        if (!$str) {
+            return false;
+        }
+        $pattern = '/(http|https):\/\/([\w.]+\/?)\S*/';
+        if (preg_match($pattern, $str)) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -41,6 +48,7 @@ class ValidateHelper
      */
     public static function isJson($str): bool
     {
-        return \Jsyqw\Utils\ValidateHelper::isJson($str);
+        json_decode($str);
+        return (json_last_error() == JSON_ERROR_NONE);
     }
 }

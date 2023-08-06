@@ -15,7 +15,30 @@ class StrHelper
      */
     public static function uniqueShortStr(int $startYear = 2020): string
     {
-        return \Jsyqw\Utils\StrHelper::shortUniqueStr($startYear);
+        $yArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        $curYear = date('Y');
+        $i = $curYear - $startYear;
+        $prefix = '';
+        if ($i < 0) {
+            //throw new \Exception("传入年份{$startYear}不能大于于当前年份{$curYear}");
+            $prefix = '-';
+            $i = -$i;
+        }
+        $count = count($yArr);
+        //向下取整：floor()  eg: floor(5.1);   //5
+        $num = floor($i / $count);
+        if ($num > 0) {
+            $remainder = $i % $count;
+            $code = $yArr[$remainder];
+            $yCode = $code;
+            for ($j = 0; $j < $num; $j++) {
+                $yCode .= $code;
+            }
+        } else {
+            $yCode = $yArr[$i];
+        }
+        $str = $prefix . $yCode . strtoupper(dechex(date('m'))) . date('d') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));
+        return $str;
     }
 
     /**
@@ -25,7 +48,15 @@ class StrHelper
      */
     public static function uniqueDateNum(): string
     {
-        return \Jsyqw\Utils\StrHelper::uniqueNum();
+        //格式主体（YYYYMMDDHHIISSNNNNNNNN）
+        $main = date('YmdHis') . rand(10000000, 99999999);
+        $len = strlen($main);
+        $sum = 0;
+        for ($i = 0; $i < $len; $i++) {
+            $sum += (int)(substr($main, $i, 1));
+        }
+        $str = $main . str_pad((100 - $sum % 100) % 100, 2, '0', STR_PAD_LEFT);
+        return $str;
     }
 
     /**
@@ -34,7 +65,14 @@ class StrHelper
      */
     public static function uniqueGuid(): string
     {
-        return \Jsyqw\Utils\StrHelper::guid();
+        mt_srand((double)microtime() * 1000000);
+        $charid = md5(uniqid(rand(), true));
+        $hyphen = chr(45);// "-"
+        return substr($charid, 0, 8) . $hyphen
+            . substr($charid, 8, 4) . $hyphen
+            . substr($charid, 12, 4) . $hyphen
+            . substr($charid, 16, 4) . $hyphen
+            . substr($charid, 20, 12);
     }
 
     /**
@@ -45,6 +83,20 @@ class StrHelper
      */
     public static function randStr(int $length = 6, string $type = 'string'): string
     {
-        return \Jsyqw\Utils\StrHelper::random($length, $type);
+        $config = array(
+            'number' => '1234567890',
+            'letter' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            'string' => 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789',
+            'all' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+        );
+        if (!isset($config[$type]))
+            $type = 'string';
+        $string = $config[$type];
+        $code = '';
+        $strlen = strlen($string) - 1;
+        for ($i = 0; $i < $length; $i++) {
+            $code .= $string[mt_rand(0, $strlen)];
+        }
+        return $code;
     }
 }
