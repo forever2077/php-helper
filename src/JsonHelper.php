@@ -16,7 +16,7 @@ class JsonHelper
      * @link https://github.com/jmespath/jmespath.php
      *
      * @param string $expression JMESPath 表达式
-     * @param array $data 要进行搜索的数据集
+     * @param array|string $data 要进行搜索的数据集
      * @param array $options 配置选项，包括：
      *                       'mode'  => 'default' | 'ast' | 'compiler'，
      *                       'path'  => 在 'mode' 为 'compiler' 时必填
@@ -24,13 +24,21 @@ class JsonHelper
      * @return mixed 搜索结果
      * @throws Exception 当遇到错误时抛出
      */
-    public static function search(string $expression, array $data, array $options = []): mixed
+    public static function search(string $expression, array|string $data, array $options = []): mixed
     {
         $defaults = [
             'mode' => 'default',
             'path' => null,
         ];
         $options = array_merge($defaults, $options);
+
+        if (is_string($data)) {
+            $data = self::decode($data);
+        }
+
+        if (empty($data)) {
+            throw new InvalidArgumentException('The "data" argument cannot be empty.');
+        }
 
         try {
             switch ($options['mode']) {

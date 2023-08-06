@@ -28,6 +28,18 @@ class JsonHelperTest extends TestCase
         }
     }
 
+    public function testSearchJson()
+    {
+        try {
+            $this->assertEquals(1, JsonHelper::search('foo', '{"foo":1}'));
+            $this->assertEquals(1, JsonHelper::search('foo.bar', '{"foo":{"bar":1}}'));
+            $this->assertEquals([1, 2], JsonHelper::search('foo[*].bar', '{"foo":[{"bar":1},{"bar":2}]}'));
+            $this->assertNull(JsonHelper::search('foo.bar', '{"foo":[{"bar":1},{"bar":2}]}'));
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
+    }
+
     public function testSearchAst()
     {
         try {
