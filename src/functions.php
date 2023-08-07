@@ -2,6 +2,8 @@
 
 use Forever2077\PhpHelper;
 use Noodlehaus\Config;
+use ZanySoft\Zip\Zip;
+use ZanySoft\Zip\ZipManager;
 
 /**
  * 支持多个参数，格式化打印数据
@@ -354,11 +356,11 @@ function _xml(mixed $args = null): PhpHelper\XmlHelper
 
 /**
  * @param mixed|null $args
- * @return PhpHelper\ZipHelper
+ * @return Zip|ZipManager
  */
-function _zip(mixed $args = null): PhpHelper\ZipHelper
+function _zip(mixed $args = null): Zip|ZipManager
 {
-    return new PhpHelper\ZipHelper($args);
+    return PhpHelper\ZipHelper::instance($args);
 }
 
 /**
@@ -423,5 +425,5 @@ function _env(string $filePath, string $filename = ''): PhpHelper\EnvHelper
  */
 function _uuid(mixed $args = null): PhpHelper\UuidHelper
 {
-    return PhpHelper\UuidHelper::instance();
+    return PhpHelper\UuidHelper::instance($args);
 }
