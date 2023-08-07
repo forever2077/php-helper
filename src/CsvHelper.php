@@ -47,7 +47,7 @@ class CsvHelper
      * @return void
      * @throws Exception 如果写入过程中发生错误
      */
-    public static function writeCsvFromArray(array $data, string $filepath, array $headers = null, string $mode = 'w', string $encoding = ByteSequence::BOM_UTF8): void
+    public static function writeFromArray(array $data, string $filepath, array $headers = null, string $mode = 'w', string $encoding = ByteSequence::BOM_UTF8): void
     {
         try {
             $fileObject = new SplFileObject($filepath, $mode);
@@ -73,7 +73,7 @@ class CsvHelper
      * @throws \League\Csv\Exception
      * @throws Exception
      */
-    public static function readCsvToArray(string $filepath, int $headerOffset = 0): array
+    public static function readToArray(string $filepath, int $headerOffset = 0): array
     {
         if (!file_exists($filepath) || !is_readable($filepath)) {
             throw new Exception("The file is unreadable or does not exist: " . $filepath);

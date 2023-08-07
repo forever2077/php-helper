@@ -4,7 +4,6 @@ use League\Csv\Reader;
 use League\Csv\Writer;
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\CsvHelper;
-use function Forever2077\PhpHelper\dump;
 
 class CsvHelperTest extends TestCase
 {
@@ -25,7 +24,7 @@ class CsvHelperTest extends TestCase
         $this->assertEquals(Writer::class, CsvHelper::writer());
     }
 
-    public function testWriteCsvFromArray()
+    public function testWriteFromArray()
     {
         $data = [
             ['foo', 'bar'],
@@ -34,7 +33,7 @@ class CsvHelperTest extends TestCase
         $headers = ['header1', 'header2'];
         $filePath = __DIR__ . '/output.csv';
         try {
-            CsvHelper::writeCsvFromArray($data, $filePath, $headers);
+            CsvHelper::writeFromArray($data, $filePath, $headers);
             $csv = Reader::createFromPath($filePath);
             $csv->setHeaderOffset(0);
             $this->assertIsArray($csv->getHeader());
@@ -46,7 +45,7 @@ class CsvHelperTest extends TestCase
         }
     }
 
-    public function testReadCsvToArray()
+    public function testReadToArray()
     {
         $filePath = __DIR__ . '/test.csv';
         $data = [
@@ -55,8 +54,8 @@ class CsvHelperTest extends TestCase
         ];
         $headers = ['header1', 'header2'];
         try {
-            CsvHelper::writeCsvFromArray($data, $filePath, $headers);
-            $result = CsvHelper::readCsvToArray($filePath);
+            CsvHelper::writeFromArray($data, $filePath, $headers);
+            $result = CsvHelper::readToArray($filePath);
             $this->assertIsArray($result);
         } catch (Exception $e) {
             dump($e->getMessage());

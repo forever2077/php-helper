@@ -238,14 +238,14 @@ $data = [
 $headers = ['header1', 'header2'];
 $filePath = __DIR__ . '/output.csv';
 try {
-    CsvHelper::writeCsvFromArray($data, $filePath, $headers);
+    CsvHelper::writeFromArray($data, $filePath, $headers);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
 
 // 从CSV文件读取数据并返回数组
 try {
-    $result = CsvHelper::readCsvToArray($filePath);
+    $result = CsvHelper::readToArray($filePath);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
