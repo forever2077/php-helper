@@ -5,9 +5,38 @@ namespace Forever2077\PhpHelper;
 use JmesPath;
 use Exception;
 use InvalidArgumentException;
+use Seld\JsonLint\JsonParser;
+use Seld\JsonLint\ParsingException;
+use JsonMapper;
+use JsonMachine;
 
 class JsonHelper
 {
+    /**
+     * JSON 编码
+     * @param mixed $value
+     * @param int $flags
+     * @param int $depth
+     * @return bool|string
+     */
+    public static function encode(mixed $value, int $flags = JSON_UNESCAPED_UNICODE, int $depth = 512): bool|string
+    {
+        return json_encode($value, $flags, $depth);
+    }
+
+    /**
+     * JSON 解码
+     * @param string $json
+     * @param bool|null $associative
+     * @param int $depth
+     * @param int $flags
+     * @return mixed
+     */
+    public static function decode(string $json, ?bool $associative = true, int $depth = 512, int $flags = 0): mixed
+    {
+        return json_decode($json, $associative, $depth, $flags);
+    }
+
     /**
      * 执行 JMESPath 搜索
      *
@@ -62,55 +91,151 @@ class JsonHelper
     /**
      * JSON 语法检查
      * @link https://github.com/Seldaek/jsonlint
-     * @return void
+     * @param array|string $value
+     * @param int $flags DETECT_KEY_CONFLICTS、ALLOW_DUPLICATE_KEYS、PARSE_TO_ASSOC
+     * @return mixed
+     * @throws ParsingException
      */
-    public static function lint()
+    public static function lint(array|string $value, int $flags = JsonParser::DETECT_KEY_CONFLICTS): mixed
     {
+        if (is_array($value)) {
+            $value = json_encode($value, JSON_UNESCAPED_UNICODE);
+        }
 
+        if (is_string($value) && !ValidateHelper::isJson($value)) {
+            throw new ParsingException('Invalid JSON string.');
+        }
+
+        $parser = new JsonParser();
+        try {
+            return $parser->parse($value, $flags);
+        } catch (ParsingException $e) {
+            throw new ParsingException($e->getMessage());
+        }
+    }
+
+    /**
+     * JsonMapper 初始化
+     * @param array $options
+     * @return JsonMapper
+     */
+    protected static function JsonMapperInit(array $options = []): JsonMapper
+    {
+        $mapper = new JsonMapper();
+
+        if (isset($options['bExceptionOnUndefinedProperty'])) {
+            $mapper->bExceptionOnUndefinedProperty = $options['bExceptionOnUndefinedProperty'];
+        }
+        if (isset($options['bExceptionOnMissingData'])) {
+            $mapper->bExceptionOnMissingData = $options['bExceptionOnMissingData'];
+        }
+        if (isset($options['bEnforceMapType'])) {
+            $mapper->bEnforceMapType = $options['bEnforceMapType'];
+        }
+        if (isset($options['bStrictObjectTypeChecking'])) {
+            $mapper->bStrictObjectTypeChecking = $options['bStrictObjectTypeChecking'];
+        }
+        if (isset($options['bStrictNullTypes'])) {
+            $mapper->bStrictNullTypes = $options['bStrictNullTypes'];
+        }
+        if (isset($options['bIgnoreVisibility'])) {
+            $mapper->bIgnoreVisibility = $options['bIgnoreVisibility'];
+        }
+        if (isset($options['bRemoveUndefinedAttributes'])) {
+            $mapper->bRemoveUndefinedAttributes = $options['bRemoveUndefinedAttributes'];
+        }
+        if (isset($options['classMap'])) {
+            $mapper->classMap = $options['classMap'];
+        }
+        if (isset($options['undefinedPropertyHandler'])) {
+            $mapper->undefinedPropertyHandler = $options['undefinedPropertyHandler'];
+        }
+        if (isset($options['postMappingMethod'])) {
+            $mapper->postMappingMethod = $options['postMappingMethod'];
+        }
+        if (isset($options['setLogger'])) {
+            $mapper->setLogger($options['setLogger']);
+        }
+
+        return $mapper;
     }
 
     /**
      * JSON 映射器
      * @link https://github.com/cweiske/jsonmapper
-     * @return void
+     * @param array|string|object $json
+     * @param object $object
+     * @param array $options
+     * @return mixed|object|string
+     * @throws Exception
      */
-    public static function mapper()
+    public static function mapper(array|string|object $json, object $object, array $options = []): mixed
     {
+        if (is_array($json)) {
+            $json = json_encode($json, JSON_UNESCAPED_UNICODE);
+        }
 
+        if (is_string($json) && ValidateHelper::isJson($json)) {
+            $json = json_decode($json);
+        }
+
+        $mapper = self::JsonMapperInit($options);
+
+        try {
+            return $mapper->map($json, $object);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 
     /**
-     * JSON 流式解析器
-     * @link https://github.com/halaxa/json-machine
-     * @return void
-     */
-    public static function parseStream()
-    {
-
-    }
-
-    /**
-     * JSON 编码
-     * @param mixed $value
-     * @param int $flags
-     * @param int $depth
-     * @return bool|string
-     */
-    public static function encode(mixed $value, int $flags = JSON_UNESCAPED_UNICODE, int $depth = 512): bool|string
-    {
-        return json_encode($value, $flags, $depth);
-    }
-
-    /**
-     * JSON 解码
-     * @param string $json
-     * @param bool|null $associative
-     * @param int $depth
-     * @param int $flags
+     * JSON 映射器
+     * @link https://github.com/cweiske/jsonmapper
+     * @param array|string $json
+     * @param mixed $array
+     * @param array $options
+     * @param string|null $class
+     * @param string $parent_key
      * @return mixed
+     * @throws Exception
      */
-    public static function decode(string $json, ?bool $associative = true, int $depth = 512, int $flags = 0): mixed
+    public static function mapArray(array|string $json, mixed $array, array $options = [], string $class = null, string $parent_key = ''): mixed
     {
-        return json_decode($json, $associative, $depth, $flags);
+        if (is_string($json) && ValidateHelper::isJson($json)) {
+            $json = json_decode($json);
+        }
+
+        $mapper = self::JsonMapperInit($options);
+
+        try {
+            return $mapper->mapArray($json, $array, $class, $parent_key);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
+    /**
+     * JSON 流式解析器（支持超大JSON解释）
+     * @link https://github.com/halaxa/json-machine
+     * @throws Exception
+     */
+    public static function parseStream(mixed $value): JsonMachine\Items
+    {
+        try {
+            if (is_string($value)) {
+                $items = JsonMachine\Items::fromFile($value);
+            } elseif (is_resource($value)) {
+                $items = JsonMachine\Items::fromStream($value);
+            } elseif (is_iterable($value)) {
+                $items = JsonMachine\Items::fromIterable($value);
+            } else {
+                throw new InvalidArgumentException('Invalid value type. Expecting a string, resource, or iterable.');
+            }
+
+            return $items;
+
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 }

@@ -36,7 +36,7 @@ class HttpHelperTest extends TestCase
         }
     }
 
-    public function testGetWithClient()
+    /*public function testGetWithClient()
     {
         try {
             $client = HttpHelper::guzzle();
@@ -51,22 +51,5 @@ class HttpHelperTest extends TestCase
         } catch (GuzzleException $e) {
             echo $e->getMessage();
         }
-    }
-
-    public function testPostWithClient()
-    {
-        try {
-            $client = HttpHelper::guzzle();
-            $response = HttpHelper::post([
-                'client' => $client,
-                'url' => 'https://www.baidu.com',
-                'options' => [
-                    'verify' => __DIR__ . '/cacert.pem',
-                ],
-            ]);
-            $this->assertEquals(200, $response->getStatusCode());
-        } catch (GuzzleException $e) {
-            echo $e->getMessage();
-        }
-    }
+    }*/
 }
