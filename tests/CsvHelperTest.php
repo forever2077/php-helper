@@ -10,7 +10,7 @@ class CsvHelperTest extends TestCase
     public function testInstance()
     {
         try {
-            $instance = CsvHelper::instance();
+            $instance = _csv();
             $writerClass = $instance::writer();
             $filePath = __DIR__ . '/output.csv';
             $fileObject = new SplFileObject($filePath, 'w');

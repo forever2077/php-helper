@@ -5,6 +5,11 @@ use Forever2077\PhpHelper\StrHelper;
 
 class StrHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(StrHelper::Class, _str()::class);
+    }
+
     public function testUniqueShortStr()
     {
         $this->assertEquals(16, strlen(StrHelper::uniqueShortStr()));

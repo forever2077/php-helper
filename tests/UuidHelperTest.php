@@ -11,7 +11,7 @@ class UuidHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertInstanceOf(UuidHelper::class, _uuid());
+        $this->assertEquals(UuidHelper::class, _uuid()::class);
     }
 
     public function testUuid1()

@@ -17,6 +17,11 @@ class Foo
 
 class ArrayHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(ArrayHelper::Class, _array()::class);
+    }
+
     public function testToArray()
     {
         $a1 = new Foo();

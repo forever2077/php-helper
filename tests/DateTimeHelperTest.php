@@ -6,6 +6,11 @@ use Forever2077\PhpHelper\DateTimeHelper;
 
 class DateTimeHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(DateTimeHelper::Class, _dateTime()::class);
+    }
+
     public function testCarbon()
     {
         $carbon = DateTimeHelper::Carbon();

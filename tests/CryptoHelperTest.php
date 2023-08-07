@@ -5,6 +5,11 @@ use Forever2077\PhpHelper\CryptoHelper;
 
 class CryptoHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(CryptoHelper::Class, _crypto()::class);
+    }
+
     public function testAesEcbEncrypt()
     {
         $key = '1234567890abcdef';

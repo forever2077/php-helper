@@ -5,6 +5,11 @@ use Forever2077\PhpHelper\FileHelper;
 
 class FileHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(FileHelper::Class, _file()::class);
+    }
+
     public function testFormat()
     {
         $this->assertIsString(FileHelper::format(1024));

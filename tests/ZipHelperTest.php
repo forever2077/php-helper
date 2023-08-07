@@ -8,6 +8,11 @@ class ZipHelperTest extends TestCase
 {
     private string $path = __DIR__ . '/zip';
 
+    public function testInstance()
+    {
+        $this->assertEquals('ZanySoft\Zip\Zip', _zip()::class);
+    }
+
     public function testZipPrepare()
     {
         try {

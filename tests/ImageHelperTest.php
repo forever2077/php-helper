@@ -5,6 +5,11 @@ use Forever2077\PhpHelper\ImageHelper;
 
 class ImageHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(ImageHelper::Class, _image()::class);
+    }
+
     public function testIntervention()
     {
         $intervention = ImageHelper::intervention(['driver' => 'gd']);

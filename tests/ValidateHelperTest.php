@@ -5,6 +5,11 @@ use Forever2077\PhpHelper\ValidateHelper;
 
 class ValidateHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(ValidateHelper::Class, _validate()::class);
+    }
+
     public function testIsPhone()
     {
         $this->assertTrue(ValidateHelper::isPhone('13800138000'));

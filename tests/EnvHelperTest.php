@@ -14,7 +14,7 @@ class EnvHelperTest extends TestCase
 
     public function testInstance()
     {
-        $env = EnvHelper::instance(__DIR__);
+        $env = _env(__DIR__);
         $this->assertInstanceOf(EnvHelper::class, $env);
     }
 

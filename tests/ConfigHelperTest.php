@@ -22,6 +22,11 @@ class ConfigHelperTest extends TestCase
 }
 FOOBAR;
 
+    public function testInstance()
+    {
+        $this->assertEquals('Noodlehaus\Config', _config([])::class);
+    }
+
     public function testLoad()
     {
         $jsonConfig = ConfigHelper::instance($this->settingsJson);

@@ -23,6 +23,11 @@ class Address
 
 class JsonHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(JsonHelper::Class, _json()::class);
+    }
+
     public function testEncode()
     {
         $this->assertEquals('{"a":1,"b":2,"c":3,"d":4,"e":5}', _json()::encode(['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5]));

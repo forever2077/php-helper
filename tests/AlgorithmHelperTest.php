@@ -5,6 +5,11 @@ use Forever2077\PhpHelper\AlgorithmHelper;
 
 class AlgorithmHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(AlgorithmHelper::Class, _algorithm()::class);
+    }
+
     public function testBubbleSort()
     {
         $arr = [1, 3, 2, 5, 4];

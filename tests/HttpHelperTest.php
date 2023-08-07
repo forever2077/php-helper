@@ -6,6 +6,11 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class HttpHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(HttpHelper::Class, _http()::class);
+    }
+
     public function testGet()
     {
         try {

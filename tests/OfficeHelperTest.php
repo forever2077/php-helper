@@ -5,6 +5,11 @@ use Forever2077\PhpHelper\OfficeHelper;
 
 class OfficeHelperTest extends TestCase
 {
+    public function testInstance()
+    {
+        $this->assertEquals(OfficeHelper::Class, _office()::class);
+    }
+
     public function testExcel()
     {
         $this->assertInstanceOf('PhpOffice\PhpSpreadsheet\Spreadsheet', OfficeHelper::excel());

@@ -8,7 +8,7 @@ class XmlHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertInstanceOf(Sabre\Xml\Service::class, _xml());
+        $this->assertEquals(Sabre\Xml\Service::class, _xml()::class);
     }
 
     public function testWriter()
