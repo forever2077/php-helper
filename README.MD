@@ -561,6 +561,34 @@ $zip->close();
 更多内容请查看文档 https://github.com/ZanySoft/Laravel-Zip
 ```
 
+## 文档处理 XML
+
+```php
+// 写入XML文档
+$xmlService = XmlHelper::instance();
+$xmlService->namespaceMap = ['http://example.org' => 'b'];
+$xmlStr = $xmlService->write('{http://example.org}book', [
+    '{http://example.org}title' => 'Cryptonomicon',
+    '{http://example.org}author' => 'Neil Stephenson',
+]);
+
+// 读取XML文档
+$input = <<<XML
+<article xmlns="http://example.org/">
+<title>Hello world</title>
+<content>Fuzzy Pickles</content>
+</article>
+XML;
+
+$xmlService = XmlHelper::instance();
+$xmlService->elementMap = [
+    '{http://example.org/}article' => 'Sabre\Xml\Element\KeyValue',
+];
+$output = $xmlService->parse($input);
+
+更多内容请查看文档 https://github.com/sabre-io/xml
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...

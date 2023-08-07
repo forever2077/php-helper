@@ -2,6 +2,7 @@
 
 use Forever2077\PhpHelper;
 use Noodlehaus\Config;
+use Sabre\Xml\Service;
 use ZanySoft\Zip\Zip;
 use ZanySoft\Zip\ZipManager;
 
@@ -347,11 +348,11 @@ function _version(mixed $args = null): PhpHelper\VersionHelper
 
 /**
  * @param mixed|null $args
- * @return PhpHelper\XmlHelper
+ * @return Service
  */
-function _xml(mixed $args = null): PhpHelper\XmlHelper
+function _xml(mixed $args = null): Service
 {
-    return new PhpHelper\XmlHelper($args);
+    return PhpHelper\XmlHelper::instance($args);
 }
 
 /**
