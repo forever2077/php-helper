@@ -13,7 +13,7 @@ class UriHelper
      */
     public static function instance(string $url = ''): Uri
     {
-        return self::uri($url);
+        return self::psr7($url);
     }
 
     /**
@@ -21,7 +21,7 @@ class UriHelper
      * @param string $url
      * @return Uri
      */
-    public static function uri(string $url = ''): Uri
+    public static function psr7(string $url = ''): Uri
     {
         return new Uri($url);
     }

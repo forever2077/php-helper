@@ -592,7 +592,7 @@ $output = $xmlService->parse($input);
 ## 资源标识符 URI
 
 ```php
-$uri = UriHelper::uri('https://www.baidu.com/s?wd=php%20uri%20helper#hash');
+$uri = UriHelper::instance('https://www.baidu.com/s?wd=php%20uri%20helper#hash');
 $this->assertEquals('https', $uri->getScheme());
 $this->assertEquals('www.baidu.com', $uri->getHost());
 $this->assertEquals('/s', $uri->getPath());
