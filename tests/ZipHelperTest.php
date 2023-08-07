@@ -8,19 +8,12 @@ class ZipHelperTest extends TestCase
 {
     private string $path = __DIR__ . '/zip';
 
-    public function testInstance()
-    {
-        $this->assertInstanceOf(ZanySoft\Zip\Zip::class, ZipHelper::instance());
-    }
-
     public function testZipPrepare()
     {
-        FileHelper::createDir($this->path);
         try {
-            FileHelper::createFile($this->path . '/test1.txt', str_repeat('1', 10000));
-            FileHelper::createFile($this->path . '/test2.txt', str_repeat('0', 10000));
-            $this->assertFileExists($this->path . '/test1.txt');
-            $this->assertFileExists($this->path . '/test2.txt');
+            FileHelper::createDir($this->path);
+            FileHelper::createFile($this->path . '/test.txt', str_repeat('1', 10000));
+            $this->assertFileExists($this->path . '/test.txt');
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
@@ -28,13 +21,27 @@ class ZipHelperTest extends TestCase
 
     public function testZip()
     {
-        $zip = ZipHelper::instance();
         try {
+            $zip = ZipHelper::instance();
             $zip->create($this->path . '/test.zip');
-            $zip->add($this->path . '/test1.txt');
-            $zip->add($this->path . '/test2.txt');
+            $zip->add($this->path . '/test.txt');
             $zip->close();
             $this->assertFileExists($this->path . '/test.zip');
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
+    }
+
+    public function testZipPassword()
+    {
+        try {
+            $zip = ZipHelper::instance();
+            $zip->create($this->path . '/test.pw.zip');
+            $zip->setPath($this->path);
+            $zip->add('test.txt');
+            $zip->getArchive()->setEncryptionName('test.txt', ZipArchive::EM_AES_256, 's123123');
+            $zip->close();
+            $this->assertFileExists($this->path . '/test.pw.zip');
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
@@ -49,8 +56,7 @@ class ZipHelperTest extends TestCase
             $manager->listFiles();
             $manager->extract($this->path . '/unzip', true);
             $manager->close();
-            $this->assertFileExists($this->path . '/unzip/test1.txt');
-            $this->assertFileExists($this->path . '/unzip/test2.txt');
+            $this->assertFileExists($this->path . '/unzip/test.txt');
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         } finally {

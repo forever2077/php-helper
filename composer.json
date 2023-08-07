@@ -20,6 +20,7 @@
     ],
     "require": {
         "php": "~8.0",
+        "ext-zip": "*",
         "ext-json": "*",
         "ext-openssl":">=1.1.0",
         "symfony/yaml": "^6.0",
