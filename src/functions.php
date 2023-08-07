@@ -355,12 +355,12 @@ function _xml(mixed $args = null): PhpHelper\XmlHelper
 }
 
 /**
- * @param mixed|null $args
+ * @param bool $manager
  * @return Zip|ZipManager
  */
-function _zip(mixed $args = null): Zip|ZipManager
+function _zip(bool $manager = false): Zip|ZipManager
 {
-    return PhpHelper\ZipHelper::instance($args);
+    return PhpHelper\ZipHelper::instance($manager);
 }
 
 /**
