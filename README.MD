@@ -181,7 +181,7 @@ $lastWeek = $carbon::now()->subWeek();
 // Rfc2822
 $officialDate = DateTimeHelper::carbon()::now()->toRfc2822String();
 
-更多内容请查看 Carbon 文档 https://github.com/briannesbitt/Carbon
+更多内容请查看文档 https://github.com/briannesbitt/Carbon
 ```
 
 ## 图片处理 Image
@@ -199,7 +199,7 @@ $image->text('Hello, world!', 200, 150, function ($font) {
 $path = __DIR__ . '/output.jpg';
 $image->save($path);
 
-更多内容请查看 Intervention 文档 https://image.intervention.io/v2/
+更多内容请查看文档 https://image.intervention.io/v2/
 ```
 
 ## 文档处理 CSV
@@ -231,7 +231,7 @@ CsvHelper::writer();
 // CSV读取器
 CsvHelper::reader();
 
-更多内容请查看 league/csv 文档 https://csv.thephpleague.com/9.0/
+更多内容请查看文档 https://csv.thephpleague.com/9.0/
 ```
 
 ## 网络请求 Http
@@ -267,7 +267,7 @@ $response = HttpHelper::post([
     ],
 ]);
 
-更多内容请查看 guzzlehttp 文档 https://docs.guzzlephp.org/en/stable/
+更多内容请查看文档 https://docs.guzzlephp.org/en/stable/
 ```
 
 ## 邮件 Email
@@ -310,7 +310,7 @@ try {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
-更多内容请查看 phpmailer 文档 https://github.com/PHPMailer/PHPMailer
+更多内容请查看文档 https://github.com/PHPMailer/PHPMailer
 ```
 
 ## 文档处理 Office
@@ -360,12 +360,12 @@ try {
 
 // excel文档处理实例
 OfficeHelper::excel();
-更多内容请查看 phpspreadsheet 文档 https://phpspreadsheet.readthedocs.io
+更多内容请查看文档 https://phpspreadsheet.readthedocs.io
 
 // word文档处理实例
 OfficeHelper::world();
 使用前需先安装 composer require phpoffice/phpword 
-更多内容请查看 phpspreadsheet 文档 https://phpword.readthedocs.io
+更多内容请查看文档 https://phpword.readthedocs.io
 ```
 
 ## 配置 Config
@@ -402,7 +402,7 @@ ConfigHelper::instance(__DIR__ . '/config');
 // 从可选文件加载值
 ConfigHelper::instance(['config.dist.json', '?config.json']);
 
-更多内容请查看 config 文档 https://github.com/hassankhan/config
+更多内容请查看文档 https://github.com/hassankhan/config
 ```
 
 ## 环境变量 Env
@@ -424,7 +424,7 @@ $env->has('foo');
 // 设置bar值为foo
 $env->set('bar', 'foo');
 
-更多内容请查看 env 文档 https://github.com/vlucas/phpdotenv
+更多内容请查看文档 https://github.com/vlucas/phpdotenv
 ```
 
 ## 唯一标识符 UUID
@@ -455,7 +455,22 @@ $uuid = UuidHelper::uuid8("\x00\x11\x22\x33\x44\x55\x66\x77\x88\x99\xaa\xbb\xcc\
 // GUID
 $guid = UuidHelper::guid($withBrackets = true);
 
-更多内容请查看 uuid 文档 https://uuid.ramsey.dev/en/stable/
+更多内容请查看文档 https://uuid.ramsey.dev/en/stable/
+```
+
+## 编码 Json
+
+```php
+// 查询
+JsonHelper::search('foo.bar', ['foo' => ['bar' => 1]]);
+JsonHelper::search('foo[*].bar', ['foo' => [['bar' => 1], ['bar' => 2]]]);
+JsonHelper::search('foo[*].bar', '{"foo":[{"bar":1},{"bar":2}]}');
+// 结果AST缓存到内存
+JsonHelper::search('foo.bar', ['foo' => ['bar' => 1]], ['mode' => 'ast']);
+// 结果编译成JMESPath语法后缓存（性能最佳），需指定缓存目录
+JsonHelper::search('foo.bar', ['foo' => ['bar' => 1]], ['mode' => 'compiler', 'path' => $path]);
+
+更多内容请查看文档 https://github.com/jmespath/jmespath.php
 ```
 
 ## 致谢 Thank

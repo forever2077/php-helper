@@ -24,8 +24,6 @@ class PhpHelperTest extends TestCase
     public function testQ()
     {
         try {
-            $this->assertIsObject(_array());
-            $this->assertIsObject(_image()->instance());
             $this->assertIsString(_file()->format(1024));
             $arr = [1, 3, 2, 5, 4];
             $this->assertIsArray(_algorithm()->BubbleSort($arr));

@@ -27,7 +27,7 @@ use ReflectionClass;
  * @method static HttpHelper           Http()            网络请求
  * @method static ImageHelper          Image()           图片处理
  * @method static IpHelper             Ip()              IP地址
- * @method static JsonHelper           Json()            JSON相
+ * @method static JsonHelper           Json()            JSON处理
  * @method static JwtHelper            Jwt()             JSON Web令牌(JWT)
  * @method static LogHelper            Log()             日志相关
  * @method static LruCacheHelper       LruCache()        LRU缓存
