@@ -546,7 +546,7 @@ $zip->add('test2.txt');
 $zip->close();
 // 解压文件
 $zip->extract('./');
-// 设置解压密码（非压缩增加密码）
+// 设置解压密码（对加密文件无效）
 $zip->setPassword('s123123');
 // 管理模式
 $manager = ZipHelper::instance(true);
