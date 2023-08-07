@@ -28,7 +28,7 @@ class ZipHelperTest extends TestCase
 
     public function testZip()
     {
-        $zip = _zip();
+        $zip = ZipHelper::instance();
         try {
             $zip->create($this->path . '/test.zip');
             $zip->add($this->path . '/test1.txt');

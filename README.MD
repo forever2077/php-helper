@@ -531,7 +531,29 @@ $users = JsonHelper::parseStream('500MB-users.json');
 foreach ($users as $id => $user) {
     var_dump($user->name);
 }
+
 更多内容请查看文档 https://github.com/halaxa/json-machine
+```
+
+## 压缩 Zip
+
+```php
+// 创建压缩包
+$zip = ZipHelper::instance();
+$zip->create('test.zip');
+$zip->add('test1.txt');
+$zip->add('test2.txt');
+$zip->close();
+
+// 解压文件
+$zip->extract('./');
+// 设置密码
+$zip->setPassword('s123123');
+
+// 管理模式
+$manager = ZipHelper::instance(true);
+
+更多内容请查看文档 https://github.com/ZanySoft/Laravel-Zip
 ```
 
 ## 致谢 Thank

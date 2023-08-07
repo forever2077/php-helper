@@ -9,26 +9,26 @@ class ZipHelper
 {
     /**
      * 默认实例
-     * @param string|bool|null $zip_file
+     * @param bool $manager
      * @return Zip|ZipManager
      */
-    public static function instance(string|bool $zip_file = null): Zip|ZipManager
+    public static function instance(bool $manager = false): Zip|ZipManager
     {
-        return self::laravelZip($zip_file);
+        return self::laravelZip($manager);
     }
 
     /**
      * Zip实例
      * @link https://github.com/ZanySoft/Laravel-Zip
-     * @param string|bool|null $zip_file
+     * @param bool $manager
      * @return Zip|ZipManager
      */
-    public static function laravelZip(string|bool $zip_file = null): Zip|ZipManager
+    public static function laravelZip(bool $manager = false): Zip|ZipManager
     {
-        if ($zip_file === true) {
+        if ($manager === true) {
             return new ZipManager();
         }
-        return new Zip($zip_file);
+        return new Zip();
     }
 
     /**
