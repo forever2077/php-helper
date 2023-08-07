@@ -29,7 +29,155 @@ class FileHelper
         if ($symbol[$exp] === 'B') {
             $decimals = 0;
         }
-        return number_format($value, $decimals, '.', '') . '' . $symbol[$exp];
+        return number_format($value, $decimals, '.', '') . $symbol[$exp];
+    }
+
+    /**
+     * 创建或者写入文件
+     * 当文件不存在，创建新文件并写入内容；当文件存在，根据 append 参数决定是覆盖还是追加内容。
+     * 兼容大文件读写，通过设定缓冲区大小来进行分块读写，防止一次性读取大文件导致的内存溢出问题。
+     * @param array|string $args 如果为字符串，那么就作为 filename 参数。如果为数组，那么参考下方说明：
+     *     - 'filename': (必须) 文件名
+     *     - 'content': (必须) 写入的内容
+     *     - 'append': (可选) 是否追加内容，默认为 false
+     *     - 'bufferSize': (可选) 缓冲区大小，默认为 8192 (8KB)
+     * @param string|null $content 如果 $args 为字符串，那么 $content 就作为 content 参数
+     * @return bool 写入成功返回 true，失败返回 false
+     * @throws Exception 当文件名为空或文件无法打开或写入失败时抛出异常
+     */
+    public static function createFile(array|string $args, string $content = null): bool
+    {
+        // 如果 $args 是字符串，那么就把它当作是 filename 参数
+        if (is_string($args)) {
+            $args = [
+                'filename' => $args,
+                'content' => $content,
+            ];
+        }
+
+        // 设置默认值
+        $defaults = [
+            'filename' => null,
+            'content' => null,
+            'append' => false,
+            'bufferSize' => 8192 // 设置缓冲区大小，默认为8KB
+        ];
+
+        // 使用用户提供的参数覆盖默认值
+        $args = array_merge($defaults, $args);
+
+        // 将参数值分配给变量
+        $filename = $args['filename'];
+        $content = $args['content'];
+        $append = $args['append'];
+        $bufferSize = $args['bufferSize'];
+
+        // 检查文件名是否为空
+        if (!$filename) {
+            throw new Exception("Filename cannot be empty");
+        }
+
+        // 打开文件流
+        if ($append) {
+            $handle = fopen($filename, 'a');
+        } else {
+            $handle = fopen($filename, 'w');
+        }
+
+        // 检查文件是否成功打开
+        if (!$handle) {
+            throw new Exception("Failed to open file: " . $filename);
+        }
+
+        // 写入文件
+        while (strlen($content) > 0) {
+            $bytesWritten = fwrite($handle, substr($content, 0, $bufferSize));
+
+            // 检查是否写入成功
+            if ($bytesWritten === false) {
+                fclose($handle);
+                throw new Exception("Failed to write to file: " . $filename);
+            }
+
+            // 删除已写入的内容
+            $content = substr($content, $bytesWritten);
+        }
+
+        // 关闭文件流
+        fclose($handle);
+
+        return true;
+    }
+
+    /**
+     * 删除指定文件，支持安全删除和备份
+     * @param array|string $args 如果为字符串，那么就作为 filename 参数。如果为数组，那么参考下方说明：
+     *     - 'filename': (必须) 文件名
+     *     - 'secure': (可选) 是否安全删除，会先覆盖文件内容，默认为 false
+     *     - 'backupDir': (可选) 备份目录，如果设置，会在删除前将文件复制到此目录
+     * @return bool 删除成功返回 true，失败返回 false
+     * @throws Exception 当文件名为空或文件不存在时抛出异常
+     */
+    public static function removeFile(array|string $args): bool
+    {
+        // 如果 $args 是字符串，那么就把它当作是 filename 参数
+        if (is_string($args)) {
+            $args = ['filename' => $args];
+        }
+
+        // 设置默认值
+        $defaults = [
+            'filename' => null,
+            'secure' => false,
+            'backupDir' => null,
+        ];
+
+        // 使用用户提供的参数覆盖默认值
+        $args = array_merge($defaults, $args);
+
+        // 将参数值分配给变量
+        $filename = $args['filename'];
+        $secure = $args['secure'];
+        $backupDir = $args['backupDir'];
+
+        // 检查文件名是否为空
+        if (!$filename) {
+            throw new Exception("Filename cannot be empty");
+        }
+
+        // 检查文件是否存在
+        if (!file_exists($filename)) {
+            throw new Exception("File does not exist");
+        }
+
+        // 备份
+        if ($backupDir) {
+            if (!is_dir($backupDir)) {
+                mkdir($backupDir, 0777, true);
+            }
+
+            $backupFile = $backupDir . '/' . basename($filename);
+            if (!copy($filename, $backupFile)) {
+                throw new Exception("Failed to backup file to: " . $backupFile);
+            }
+        }
+
+        // 安全删除
+        if ($secure) {
+            $filesize = filesize($filename);
+            $handle = fopen($filename, 'r+');
+
+            if ($handle === false) {
+                throw new Exception("Failed to open file: " . $filename);
+            }
+
+            $randomData = openssl_random_pseudo_bytes($filesize);
+            fwrite($handle, $randomData);
+            fclose($handle);
+        }
+
+        // 删除文件
+        return unlink($filename);
     }
 
     /**
@@ -94,20 +242,6 @@ class FileHelper
             return false;
         }
         return true;
-    }
-
-    /**
-     * 获取文件后缀,统一返回小写的后缀
-     * @param string $str 文件名
-     * @return string|array
-     */
-    public static function getExt(string $str): string|array
-    {
-        $ext = pathinfo($str, PATHINFO_EXTENSION);
-        if (!$ext) {
-            return $ext;
-        }
-        return strtolower(trim($ext));
     }
 
     /**
@@ -178,5 +312,19 @@ class FileHelper
         }
 
         return $files;
+    }
+
+    /**
+     * 获取文件后缀,统一返回小写的后缀
+     * @param string $str 文件名
+     * @return string|array
+     */
+    public static function getExt(string $str): string|array
+    {
+        $ext = pathinfo($str, PATHINFO_EXTENSION);
+        if (!$ext) {
+            return $ext;
+        }
+        return strtolower(trim($ext));
     }
 }
