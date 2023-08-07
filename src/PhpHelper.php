@@ -52,6 +52,7 @@ use ReflectionClass;
  * @method static WechatHelper         Wechat()          微信
  * @method static BaiduHelper          Baidu()           百度
  * @method static DingtalkHelper       Dingtalk()        钉钉
+ * @method static UriHelper            Uri()             URI处理
  */
 class PhpHelper
 {

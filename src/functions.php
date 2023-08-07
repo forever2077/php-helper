@@ -1,6 +1,7 @@
 <?php
 
 use Forever2077\PhpHelper;
+use GuzzleHttp\Psr7\Uri;
 use Noodlehaus\Config;
 use Sabre\Xml\Service;
 use ZanySoft\Zip\Zip;
@@ -427,4 +428,13 @@ function _env(string $filePath, string $filename = ''): PhpHelper\EnvHelper
 function _uuid(mixed $args = null): PhpHelper\UuidHelper
 {
     return PhpHelper\UuidHelper::instance($args);
+}
+
+/**
+ * @param mixed|null $args
+ * @return Uri
+ */
+function _uri(string $args = ''): Uri
+{
+    return PhpHelper\UriHelper::instance($args);
 }

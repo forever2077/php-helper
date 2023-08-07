@@ -589,6 +589,20 @@ $output = $xmlService->parse($input);
 更多内容请查看文档 https://github.com/sabre-io/xml
 ```
 
+## 资源标识符 URI
+
+```php
+$uri = UriHelper::uri('https://www.baidu.com/s?wd=php%20uri%20helper#hash');
+$this->assertEquals('https', $uri->getScheme());
+$this->assertEquals('www.baidu.com', $uri->getHost());
+$this->assertEquals('/s', $uri->getPath());
+$this->assertEquals('wd=php%20uri%20helper', $uri->getQuery());
+$this->assertEquals('hash', $uri->getFragment());
+
+更多内容请查看文档 https://github.com/guzzle/psr7
+```
+
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...
