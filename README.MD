@@ -602,6 +602,33 @@ $this->assertEquals('hash', $uri->getFragment());
 更多内容请查看文档 https://github.com/guzzle/psr7
 ```
 
+## 阿里云 Aliyun
+
+```php
+// 阿里云开放API
+AliyunHelper::openapi();
+使用前需先安装 composer require alibabacloud/sdk
+更多内容请查看文档 https://next.api.aliyun.com/
+
+// 阿里云对象存储服务
+AliyunHelper::oss(OSS_ACCESSKEYID,OSS_ACCESSKEYSECRET,OSS_ENDPOINT);
+使用前需先安装 composer require aliyuncs/oss-sdk-php
+更多内容请查看文档 https://help.aliyun.com/zh/oss/developer-reference/php-1/
+```
+
+## 支付宝 Alipay
+
+```php
+// 支付宝通用版v3
+AlipayHelper::v3();
+使用前需先安装 composer require alipaysdk/openapi
+更多内容请查看文档 https://open.alipay.com/
+
+// 支付宝Easy版
+AlipayHelper::easy();
+使用前需先安装 composer require alipaysdk/easysdk:^2.0
+更多内容请查看文档 https://opendocs.alipay.com/common/02nlge
+```
 
 ## 致谢 Thank
 

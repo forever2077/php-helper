@@ -42,6 +42,10 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",
-        "phpoffice/phpword": "^1.1"
+        "phpoffice/phpword": "^1.1",
+        "alibabacloud/sdk": "^1.8",
+        "aliyuncs/oss-sdk-php": "^2.6",
+        "alipaysdk/openapi": "^1.0",
+        "alipaysdk/easysdk": "^2.2"
     }
 }

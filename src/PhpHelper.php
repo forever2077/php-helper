@@ -53,6 +53,7 @@ use ReflectionClass;
  * @method static BaiduHelper          Baidu()           百度
  * @method static DingtalkHelper       Dingtalk()        钉钉
  * @method static UriHelper            Uri()             URI处理
+ * @method static AlipayHelper         Alipay()          支付宝
  */
 class PhpHelper
 {

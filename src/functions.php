@@ -366,12 +366,11 @@ function _zip(bool $manager = false): Zip|ZipManager
 }
 
 /**
- * @param mixed|null $args
  * @return PhpHelper\AliyunHelper
  */
-function _aliyun(mixed $args = null): PhpHelper\AliyunHelper
+function _aliyun(): PhpHelper\AliyunHelper
 {
-    return new PhpHelper\AliyunHelper($args);
+    return PhpHelper\AliyunHelper::instance();
 }
 
 /**
@@ -437,4 +436,12 @@ function _uuid(mixed $args = null): PhpHelper\UuidHelper
 function _uri(string $args = ''): Uri
 {
     return PhpHelper\UriHelper::instance($args);
+}
+
+/**
+ * @return PhpHelper\AlipayHelper
+ */
+function _alipay(): PhpHelper\AlipayHelper
+{
+    return PhpHelper\AlipayHelper::instance();
 }
