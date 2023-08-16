@@ -445,3 +445,11 @@ function _alipay(): PhpHelper\AlipayHelper
 {
     return PhpHelper\AlipayHelper::instance();
 }
+
+/**
+ * @return PhpHelper\TencentCloudHelper
+ */
+function _tencentCloud(): PhpHelper\TencentCloudHelper
+{
+    return PhpHelper\TencentCloudHelper::instance();
+}
