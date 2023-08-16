@@ -606,9 +606,9 @@ $this->assertEquals('hash', $uri->getFragment());
 
 ```php
 // 阿里云开放API
-AliyunHelper::cloud();
+AliyunHelper::ecs()::v20140526();
 使用前需先安装 composer require alibabacloud/sdk
-更多内容请查看文档 https://next.api.aliyun.com/
+更多内容请查看文档 https://next.api.aliyun.com/ 、https://github.com/aliyun/openapi-sdk-php-client/blob/master/docs/zh-CN/3-Request.md
 
 // 阿里云对象存储服务
 AliyunHelper::oss(OSS_ACCESSKEYID,OSS_ACCESSKEYSECRET,OSS_ENDPOINT);

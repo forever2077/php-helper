@@ -4,7 +4,6 @@ use Forever2077\PhpHelper\EnvHelper;
 use Forever2077\PhpHelper\AliyunHelper;
 use OSS\OssClient;
 use PHPUnit\Framework\TestCase;
-use AlibabaCloud\Client\AlibabaCloud;
 
 class AliyunHelperTest extends TestCase
 {
@@ -15,7 +14,7 @@ class AliyunHelperTest extends TestCase
 
     public function testOpenapi()
     {
-        $this->assertInstanceOf(AlibabaCloud::class, AliyunHelper::cloud());
+        $this->assertEquals('AlibabaCloud\Ecs\V20140526\EcsApiResolver', AliyunHelper::ecs()::v20140526()::class);
     }
 
     public function testOss()

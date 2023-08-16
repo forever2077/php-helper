@@ -54,6 +54,7 @@ use ReflectionClass;
  * @method static DingtalkHelper       Dingtalk()        钉钉
  * @method static UriHelper            Uri()             URI处理
  * @method static AlipayHelper         Alipay()          支付宝
+ * @method static TencentHelper        Tencent()         腾讯
  */
 class PhpHelper
 {
