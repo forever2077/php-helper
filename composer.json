@@ -46,6 +46,7 @@
         "alibabacloud/sdk": "^1.8",
         "aliyuncs/oss-sdk-php": "^2.6",
         "alipaysdk/openapi": "^1.0",
-        "alipaysdk/easysdk": "^2.2"
+        "alipaysdk/easysdk": "^2.2",
+        "tencentcloud/tencentcloud-sdk-php": "^3.0"
     }
 }

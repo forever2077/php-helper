@@ -21,7 +21,7 @@ class AliyunHelper
      * @link https://github.com/aliyun/openapi-sdk-php
      * @return AlibabaCloud
      */
-    public static function openapi(): AlibabaCloud
+    public static function cloud(): AlibabaCloud
     {
         return new AlibabaCloud();
     }

@@ -15,7 +15,7 @@ class AliyunHelperTest extends TestCase
 
     public function testOpenapi()
     {
-        $this->assertInstanceOf(AlibabaCloud::class, AliyunHelper::openapi());
+        $this->assertInstanceOf(AlibabaCloud::class, AliyunHelper::cloud());
     }
 
     public function testOss()

@@ -606,7 +606,7 @@ $this->assertEquals('hash', $uri->getFragment());
 
 ```php
 // 阿里云开放API
-AliyunHelper::openapi();
+AliyunHelper::cloud();
 使用前需先安装 composer require alibabacloud/sdk
 更多内容请查看文档 https://next.api.aliyun.com/
 
