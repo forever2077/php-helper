@@ -608,7 +608,9 @@ $this->assertEquals('hash', $uri->getFragment());
 // 阿里云开放API
 AliyunHelper::ecs()::v20140526();
 使用前需先安装 composer require alibabacloud/sdk
-更多内容请查看文档 https://next.api.aliyun.com/ 、https://github.com/aliyun/openapi-sdk-php-client/blob/master/docs/zh-CN/3-Request.md
+更多内容请查看文档
+https://next.api.aliyun.com/
+https://github.com/aliyun/openapi-sdk-php-client/blob/master/docs/zh-CN/3-Request.md
 
 // 阿里云对象存储服务
 AliyunHelper::oss(OSS_ACCESSKEYID,OSS_ACCESSKEYSECRET,OSS_ENDPOINT);
@@ -636,7 +638,9 @@ AlipayHelper::easy();
 // 腾讯云开放API
 TencentCloudHelper::client();
 使用前需先安装 composer require tencentcloud/tencentcloud-sdk-php
-更多内容请查看文档 https://cloud.tencent.com/api/list 、https://github.com/TencentCloud/tencentcloud-sdk-php
+更多内容请查看文档 
+https://cloud.tencent.com/api/list
+https://github.com/TencentCloud/tencentcloud-sdk-php
 
 // 腾讯云对象存储服务
 TencentCloudHelper::cos($cosConfig);
