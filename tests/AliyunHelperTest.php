@@ -1,9 +1,10 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\EnvHelper;
 use Forever2077\PhpHelper\AliyunHelper;
+use AlibabaCloud\Client\Exception\ClientException;
 use OSS\OssClient;
-use PHPUnit\Framework\TestCase;
 
 class AliyunHelperTest extends TestCase
 {
@@ -14,7 +15,14 @@ class AliyunHelperTest extends TestCase
 
     public function testOpenapi()
     {
-        $this->assertEquals('AlibabaCloud\Ecs\V20140526\EcsApiResolver', AliyunHelper::ecs()::v20140526()::class);
+        try {
+            AliyunHelper::accessKeyClient('foo', 'bar')
+                ->regionId('cn-hangzhou')
+                ->asDefaultClient();
+            $this->assertEquals('AlibabaCloud\Ecs\V20140526\EcsApiResolver', AliyunHelper::ecs()::v20140526()::class);
+        } catch (ClientException $e) {
+            $this->fail($e->getErrorMessage());
+        }
     }
 
     public function testOss()

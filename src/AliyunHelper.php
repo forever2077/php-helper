@@ -38,6 +38,7 @@ class AliyunHelper
     /**
      * 阿里云开放API
      * @link https://github.com/aliyun/openapi-sdk-php-client/blob/master/docs/zh-CN/3-Request.md
+     * @link https://github.com/aliyun/openapi-sdk-php
      * @link https://next.api.aliyun.com/
      * @param $product
      * @param $arguments
