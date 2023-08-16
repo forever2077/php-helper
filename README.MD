@@ -630,6 +630,20 @@ AlipayHelper::easy();
 更多内容请查看文档 https://opendocs.alipay.com/common/02nlge
 ```
 
+## 腾讯云 TencentCloud
+
+```php
+// 腾讯云开放API
+TencentCloudHelper::client();
+使用前需先安装 composer require tencentcloud/tencentcloud-sdk-php
+更多内容请查看文档 https://cloud.tencent.com/api/list 、https://github.com/TencentCloud/tencentcloud-sdk-php
+
+// 腾讯云对象存储服务
+TencentCloudHelper::cos($cosConfig);
+使用前需先安装 composer require qcloud/cos-sdk-v5
+更多内容请查看文档 https://github.com/tencentyun/cos-php-sdk-v5
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...
