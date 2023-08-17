@@ -201,7 +201,7 @@ $lastWeek = $carbon::now()->subWeek();
 // Rfc2822
 $officialDate = DateTimeHelper::carbon()::now()->toRfc2822String();
 
-更多内容请查看文档 https://github.com/briannesbitt/Carbon
+文档 https://github.com/briannesbitt/Carbon
 ```
 
 ## 图片处理 Image
@@ -219,7 +219,7 @@ $image->text('Hello, world!', 200, 150, function ($font) {
 $path = __DIR__ . '/output.jpg';
 $image->save($path);
 
-更多内容请查看文档 https://image.intervention.io/v2/
+文档 https://image.intervention.io/v2/
 ```
 
 ## 文档处理 CSV
@@ -251,7 +251,7 @@ CsvHelper::writer();
 // CSV读取器
 CsvHelper::reader();
 
-更多内容请查看文档 https://csv.thephpleague.com/9.0/
+文档 https://csv.thephpleague.com/9.0/
 ```
 
 ## 网络请求 Http
@@ -287,7 +287,7 @@ $response = HttpHelper::post([
     ],
 ]);
 
-更多内容请查看文档 https://docs.guzzlephp.org/en/stable/
+文档 https://docs.guzzlephp.org/en/stable/
 ```
 
 ## 邮件 Email
@@ -330,7 +330,7 @@ try {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
-更多内容请查看文档 https://github.com/PHPMailer/PHPMailer
+文档 https://github.com/PHPMailer/PHPMailer
 ```
 
 ## 短信 SMS
@@ -365,8 +365,8 @@ SmsHelper::instance($config)->send('13500000001', [
         'code' => 6379
     ]
 ]);
-使用前需先安装 composer require overtrue/easy-sms
-更多内容请查看文档 https://github.com/overtrue/easy-sms
+安装 composer require overtrue/easy-sms
+文档 https://github.com/overtrue/easy-sms
 ```
 
 ## 文档处理 Office
@@ -416,12 +416,12 @@ try {
 
 // excel文档处理实例
 OfficeHelper::excel();
-更多内容请查看文档 https://phpspreadsheet.readthedocs.io
+文档 https://phpspreadsheet.readthedocs.io
 
 // word文档处理实例
 OfficeHelper::world();
-使用前需先安装 composer require phpoffice/phpword 
-更多内容请查看文档 https://phpword.readthedocs.io
+安装 composer require phpoffice/phpword 
+文档 https://phpword.readthedocs.io
 ```
 
 ## 配置 Config
@@ -458,7 +458,7 @@ ConfigHelper::instance(__DIR__ . '/config');
 // 从可选文件加载值
 ConfigHelper::instance(['config.dist.json', '?config.json']);
 
-更多内容请查看文档 https://github.com/hassankhan/config
+文档 https://github.com/hassankhan/config
 ```
 
 ## 环境变量 Env
@@ -480,7 +480,7 @@ $env->has('foo');
 // 设置bar值为foo
 $env->set('bar', 'foo');
 
-更多内容请查看文档 https://github.com/vlucas/phpdotenv
+文档 https://github.com/vlucas/phpdotenv
 ```
 
 ## 唯一标识符 UUID
@@ -511,7 +511,7 @@ $uuid = UuidHelper::uuid8("\x00\x11\x22\x33\x44\x55\x66\x77\x88\x99\xaa\xbb\xcc\
 // GUID
 $guid = UuidHelper::guid($withBrackets = true);
 
-更多内容请查看文档 https://uuid.ramsey.dev/en/stable/
+文档 https://uuid.ramsey.dev/en/stable/
 ```
 
 ## 编码 Json
@@ -525,12 +525,12 @@ JsonHelper::search('foo[*].bar', '{"foo":[{"bar":1},{"bar":2}]}');
 JsonHelper::search('foo.bar', ['foo' => ['bar' => 1]], ['mode' => 'ast']);
 // 结果编译成JMESPath语法后缓存（性能最佳），需指定缓存目录
 JsonHelper::search('foo.bar', ['foo' => ['bar' => 1]], ['mode' => 'compiler', 'path' => $path]);
-更多内容请查看文档 https://github.com/jmespath/jmespath.php
+文档 https://github.com/jmespath/jmespath.php
 
 // JSON 语法检查
 JsonHelper::lint('{"foo":1}', JsonParser::DETECT_KEY_CONFLICTS);
 JsonHelper::lint(['foo' => 1, 'bar'], JsonParser::DETECT_KEY_CONFLICTS);
-更多内容请查看文档 https://github.com/Seldaek/jsonlint
+文档 https://github.com/Seldaek/jsonlint
 
 // JSON 映射器
 $json = '{"name":"Sheldon Cooper","address":{"street":"2311 N. Los Robles Avenue","city":"Pasadena"}}';
@@ -555,7 +555,7 @@ $json = [
 	]
 ];
 JsonHelper::mapper($json, new Contact);
-更多内容请查看文档 https://github.com/cweiske/jsonmapper
+文档 https://github.com/cweiske/jsonmapper
 
 // Json 流式解析器，支持传入：File、Stream、Iterable
 $users = JsonHelper::parseStream('500MB-users.json');
@@ -563,7 +563,7 @@ foreach ($users as $id => $user) {
     var_dump($user->name);
 }
 
-更多内容请查看文档 https://github.com/halaxa/json-machine
+文档 https://github.com/halaxa/json-machine
 ```
 
 ## 压缩 Zip
@@ -589,7 +589,7 @@ $zip->add('test.txt');
 $zip->getArchive()->setEncryptionName('test.txt', ZipArchive::EM_AES_256, 's123123');
 $zip->close();
 
-更多内容请查看文档 https://github.com/ZanySoft/Laravel-Zip
+文档 https://github.com/ZanySoft/Laravel-Zip
 ```
 
 ## 文档处理 XML
@@ -617,7 +617,7 @@ $xmlService->elementMap = [
 ];
 $output = $xmlService->parse($input);
 
-更多内容请查看文档 https://github.com/sabre-io/xml
+文档 https://github.com/sabre-io/xml
 ```
 
 ## 资源标识符 URI
@@ -630,7 +630,7 @@ $this->assertEquals('/s', $uri->getPath());
 $this->assertEquals('wd=php%20uri%20helper', $uri->getQuery());
 $this->assertEquals('hash', $uri->getFragment());
 
-更多内容请查看文档 https://github.com/guzzle/psr7
+文档 https://github.com/guzzle/psr7
 ```
 
 ## 阿里云 Aliyun
@@ -638,15 +638,15 @@ $this->assertEquals('hash', $uri->getFragment());
 ```php
 // 阿里云开放API
 AliyunHelper::ecs()::v20140526();
-使用前需先安装 composer require alibabacloud/sdk
-更多内容请查看文档
+安装 composer require alibabacloud/sdk
+文档
 https://next.api.aliyun.com/
 https://github.com/aliyun/openapi-sdk-php-client/blob/master/docs/zh-CN/3-Request.md
 
 // 阿里云对象存储服务
 AliyunHelper::oss(OSS_ACCESSKEYID,OSS_ACCESSKEYSECRET,OSS_ENDPOINT);
-使用前需先安装 composer require aliyuncs/oss-sdk-php
-更多内容请查看文档 https://help.aliyun.com/zh/oss/developer-reference/php-1/
+安装 composer require aliyuncs/oss-sdk-php
+文档 https://help.aliyun.com/zh/oss/developer-reference/php-1/
 ```
 
 ## 支付宝 Alipay
@@ -654,13 +654,13 @@ AliyunHelper::oss(OSS_ACCESSKEYID,OSS_ACCESSKEYSECRET,OSS_ENDPOINT);
 ```php
 // 支付宝通用版v3
 AlipayHelper::v3();
-使用前需先安装 composer require alipaysdk/openapi
-更多内容请查看文档 https://open.alipay.com/
+安装 composer require alipaysdk/openapi
+文档 https://open.alipay.com/
 
 // 支付宝Easy版
 AlipayHelper::easy();
-使用前需先安装 composer require alipaysdk/easysdk:^2.0
-更多内容请查看文档 https://opendocs.alipay.com/common/02nlge
+安装 composer require alipaysdk/easysdk:^2.0
+文档 https://opendocs.alipay.com/common/02nlge
 ```
 
 ## 腾讯云 TencentCloud
@@ -668,15 +668,15 @@ AlipayHelper::easy();
 ```php
 // 腾讯云开放API
 TencentCloudHelper::client();
-使用前需先安装 composer require tencentcloud/tencentcloud-sdk-php
-更多内容请查看文档 
+安装 composer require tencentcloud/tencentcloud-sdk-php
+文档 
 https://cloud.tencent.com/api/list
 https://github.com/TencentCloud/tencentcloud-sdk-php
 
 // 腾讯云对象存储服务
 TencentCloudHelper::cos($cosConfig);
-使用前需先安装 composer require qcloud/cos-sdk-v5
-更多内容请查看文档 https://github.com/tencentyun/cos-php-sdk-v5
+安装 composer require qcloud/cos-sdk-v5
+文档 https://github.com/tencentyun/cos-php-sdk-v5
 ```
 
 ## 微信 Wechat
@@ -695,8 +695,8 @@ WechatHelper::work($config);
 // 企业微信开放平台
 WechatHelper::openWork($config);
 
-使用前需先安装 composer require w7corp/easywechat
-更多内容请查看文档 https://easywechat.com/6.x/
+安装 composer require w7corp/easywechat
+文档 https://easywechat.com/6.x/
 ```
 
 ## 支付 Payment
@@ -709,10 +709,10 @@ PayHelper::wechat($config);
 // 银联
 PayHelper::unipay($config);
 
-使用前需先安装
+安装
 composer require hyperf/pimple
 composer require yansongda/pay
-更多内容请查看文档 https://pay.yansongda.cn/docs/v3/
+文档 https://pay.yansongda.cn/docs/v3/
 ```
 
 ## 认证 OAuth2
@@ -743,18 +743,18 @@ $user->getName();
 $user->getNickname();
 $user->getEmail();
 
-使用前需先安装 composer require overtrue/socialite
-更多内容请查看文档 https://github.com/overtrue/socialite
+安装 composer require overtrue/socialite
+文档 https://github.com/overtrue/socialite
 
 // OAuth2.0 授权服务器
 OAuth2Helper::server(...);
-使用前需先安装 composer require league/oauth2-server
-更多内容请查看文档 https://oauth2.thephpleague.com
+安装 composer require league/oauth2-server
+文档 https://oauth2.thephpleague.com
 
 // OAuth2.0 客户端
 OAuth2Helper::client(...);
-使用前需先安装 composer require league/oauth2-client
-更多内容请查看文档 https://oauth2-client.thephpleague.com
+安装 composer require league/oauth2-client
+文档 https://oauth2-client.thephpleague.com
 ```
 
 ## 拼音 Pinyin
@@ -762,8 +762,8 @@ OAuth2Helper::client(...);
 ```php
 $pinyin = Helper::pinyin()::sentence('你好，世界');
 
-使用前需先安装 composer require overtrue/pinyin
-更多内容请查看文档 https://github.com/overtrue/pinyin
+安装 composer require overtrue/pinyin
+文档 https://github.com/overtrue/pinyin
 ```
 
 ## 终端 Terminal
@@ -774,8 +774,8 @@ Helper::terminal()->red('Whoa now this text is red.');
 // 打印蓝色文字内容
 Helper::terminal()->blue('Blue? Wow!');
 
-使用前需先安装 composer require league/climate
-更多内容请查看文档 https://github.com/thephpleague/climate
+安装 composer require league/climate
+文档 https://github.com/thephpleague/climate
 ```
 
 ## 致谢 Thank
