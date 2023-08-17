@@ -1,16 +1,17 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\CsvHelper;
 use League\Csv\Reader;
 use League\Csv\Writer;
-use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\CsvHelper;
 
 class CsvHelperTest extends TestCase
 {
     public function testInstance()
     {
         try {
-            $instance = _csv();
+            $instance = Helper::csv();
             $writerClass = $instance::writer();
             $filePath = __DIR__ . '/output.csv';
             $fileObject = new SplFileObject($filePath, 'w');

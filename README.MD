@@ -6,12 +6,12 @@
 composer require forever2077/php-helper:"@dev"
 ```
 
-## 单例+懒加载模式 or 代理函数
+## 辅助类
 
 ```php
 // 冒泡排序
 $arr = [1, 3, 2, 5, 4];
-PhpHelper::Algorithm()::BubbleSort($arr);
+Helper::Algorithm()::BubbleSort($arr);
 
 // 数组转对象
 class Foo
@@ -26,18 +26,13 @@ class Foo
     }
 }
 $foo = new Foo();
-PhpHelper::Array()::toArray($foo);
+Helper::Array()::toArray($foo);
 
 // 获取内存使用情况
-PhpHelper::System()::getMemoryUsage();
+Helper::System()::getMemoryUsage();
 
 // 获取当前日期时间
-PhpHelper::DateTime()::carbon()::now()->toDateTimeString();
-
-// 代理函数
-_algorithm()::BubbleSort($arr);
-_array()::toArray($foo);
-_dateTime()::carbon()::now()->toDateTimeString();
+Helper::DateTime()::carbon()::now()->toDateTimeString();
 ```
 
 ## 算法 Algorithm

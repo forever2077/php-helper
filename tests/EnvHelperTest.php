@@ -1,7 +1,8 @@
 <?php
 
-use Forever2077\PhpHelper\EnvHelper;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\EnvHelper;
 
 class EnvHelperTest extends TestCase
 {
@@ -14,7 +15,7 @@ class EnvHelperTest extends TestCase
 
     public function testInstance()
     {
-        $env = _env(__DIR__);
+        $env = Helper::env(__DIR__);
         $this->assertInstanceOf(EnvHelper::class, $env);
     }
 

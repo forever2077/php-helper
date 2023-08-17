@@ -1,13 +1,14 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\ValidateHelper;
 
 class ValidateHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(ValidateHelper::Class, _validate()::class);
+        $this->assertEquals(ValidateHelper::Class, Helper::validate()::class);
     }
 
     public function testIsPhone()

@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\ArrayHelper;
 
 class Foo
@@ -19,7 +20,7 @@ class ArrayHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(ArrayHelper::Class, _array()::class);
+        $this->assertEquals(ArrayHelper::Class, Helper::array()::class);
     }
 
     public function testToArray()

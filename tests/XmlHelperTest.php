@@ -1,14 +1,15 @@
 <?php
 
-use Forever2077\PhpHelper\XmlHelper;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\XmlHelper;
 use Sabre\Xml\ParseException;
 
 class XmlHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(Sabre\Xml\Service::class, _xml()::class);
+        $this->assertEquals(Sabre\Xml\Service::class, Helper::xml()::class);
     }
 
     public function testWriter()

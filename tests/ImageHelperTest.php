@@ -1,13 +1,14 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\ImageHelper;
 
 class ImageHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(Intervention\Image\ImageManager::class, _image()::class);
+        $this->assertEquals(Intervention\Image\ImageManager::class, Helper::image()::class);
     }
 
     public function testIntervention()

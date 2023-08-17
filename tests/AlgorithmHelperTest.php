@@ -1,13 +1,14 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\AlgorithmHelper;
 
 class AlgorithmHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(AlgorithmHelper::Class, _algorithm()::class);
+        $this->assertEquals(AlgorithmHelper::Class, Helper::algorithm()::class);
     }
 
     public function testBubbleSort()

@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\EnvHelper;
 use Forever2077\PhpHelper\AliyunHelper;
 use AlibabaCloud\Client\Exception\ClientException;
@@ -8,9 +9,9 @@ use OSS\OssClient;
 
 class AliyunHelperTest extends TestCase
 {
-    public function testInstance()
+    public function testAliyun()
     {
-        $this->assertInstanceOf(AliyunHelper::class, AliyunHelper::instance());
+        $this->assertEquals(AliyunHelper::class, Helper::aliyun()::class);
     }
 
     public function testOpenapi()
@@ -33,10 +34,5 @@ class AliyunHelperTest extends TestCase
             $env->get('OSS_ACCESSKEYSECRET'),
             $env->get('OSS_ENDPOINT')
         ));
-    }
-
-    public function testAliyun()
-    {
-        $this->assertInstanceOf(AliyunHelper::class, _aliyun());
     }
 }

@@ -1,13 +1,14 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\OfficeHelper;
 
 class OfficeHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(OfficeHelper::Class, _office()::class);
+        $this->assertEquals(OfficeHelper::Class, Helper::office()::class);
     }
 
     public function testExcel()

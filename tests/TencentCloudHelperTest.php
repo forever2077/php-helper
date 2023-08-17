@@ -1,7 +1,8 @@
 <?php
 
-use Forever2077\PhpHelper\EnvHelper;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\EnvHelper;
 use Forever2077\PhpHelper\TencentCloudHelper;
 use TencentCloud\Common\Credential;
 use TencentCloud\Common\Exception\TencentCloudSDKException;
@@ -69,6 +70,6 @@ class TencentCloudHelperTest extends TestCase
 
     public function testTencentCloud()
     {
-        $this->assertInstanceOf(TencentCloudHelper::class, _tencentCloud());
+        $this->assertInstanceOf(TencentCloudHelper::class, Helper::tencentCloud());
     }
 }

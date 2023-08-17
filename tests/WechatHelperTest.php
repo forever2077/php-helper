@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\WechatHelper;
 
 class WechatHelperTest extends TestCase
@@ -12,7 +13,7 @@ class WechatHelperTest extends TestCase
 
     public function testWechat()
     {
-        $this->assertInstanceOf(WechatHelper::class, _wechat());
+        $this->assertInstanceOf(WechatHelper::class, Helper::wechat());
     }
 
     public function testOfficialAccount()

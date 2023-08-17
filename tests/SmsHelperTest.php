@@ -1,8 +1,9 @@
 <?php
 
-use Overtrue\EasySms\Exceptions\NoGatewayAvailableException;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\SmsHelper;
+use Overtrue\EasySms\Exceptions\NoGatewayAvailableException;
 
 class SmsHelperTest extends TestCase
 {
@@ -61,6 +62,6 @@ class SmsHelperTest extends TestCase
 
     public function testSms()
     {
-        $this->assertEquals('Overtrue\EasySms\EasySms', _sms([])::class);
+        $this->assertEquals('Overtrue\EasySms\EasySms', Helper::sms([])::class);
     }
 }

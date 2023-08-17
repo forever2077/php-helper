@@ -1,8 +1,9 @@
 <?php
 
-use Noodlehaus\Writer\Ini;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\ConfigHelper;
+use Noodlehaus\Writer\Ini;
 
 class ConfigHelperTest extends TestCase
 {
@@ -24,7 +25,7 @@ FOOBAR;
 
     public function testInstance()
     {
-        $this->assertEquals('Noodlehaus\Config', _config([])::class);
+        $this->assertEquals('Noodlehaus\Config', Helper::config([])::class);
     }
 
     public function testLoad()

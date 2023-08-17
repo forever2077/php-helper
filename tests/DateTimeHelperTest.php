@@ -1,14 +1,15 @@
 <?php
 
-use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\DateTimeHelper;
+use Carbon\Carbon;
 
 class DateTimeHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals('Carbon\Carbon', _dateTime()::class);
+        $this->assertEquals('Carbon\Carbon', Helper::dateTime()::class);
     }
 
     public function testCarbon()

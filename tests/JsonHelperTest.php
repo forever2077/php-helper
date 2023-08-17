@@ -1,8 +1,9 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\FileHelper;
 use Forever2077\PhpHelper\JsonHelper;
-use PHPUnit\Framework\TestCase;
 use Seld\JsonLint\ParsingException;
 
 class Contact
@@ -25,12 +26,12 @@ class JsonHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(JsonHelper::Class, _json()::class);
+        $this->assertEquals(JsonHelper::Class, Helper::json()::class);
     }
 
     public function testEncode()
     {
-        $this->assertEquals('{"a":1,"b":2,"c":3,"d":4,"e":5}', _json()::encode(['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5]));
+        $this->assertEquals('{"a":1,"b":2,"c":3,"d":4,"e":5}', Helper::json()::encode(['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5]));
     }
 
     public function testDecode()

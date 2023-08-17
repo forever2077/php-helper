@@ -1,13 +1,14 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\FileHelper;
 
 class FileHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(FileHelper::Class, _file()::class);
+        $this->assertEquals(FileHelper::Class, Helper::file()::class);
     }
 
     public function testFormat()

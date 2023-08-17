@@ -1,8 +1,9 @@
 <?php
 
-use Alipay\OpenAPISDK\Api\AlipayTradeApi;
-use Forever2077\PhpHelper\AlipayHelper;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\AlipayHelper;
+use Alipay\OpenAPISDK\Api\AlipayTradeApi;
 use Alipay\EasySDK\Kernel\Factory;
 use Alipay\EasySDK\Kernel\Payment;
 
@@ -10,7 +11,7 @@ class AlipayHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertInstanceOf(AlipayHelper::class, AlipayHelper::instance());
+        $this->assertEquals(AlipayHelper::class, Helper::alipay()::class);
     }
 
     public function testV3()
@@ -31,10 +32,5 @@ class AlipayHelperTest extends TestCase
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
-    }
-
-    public function testAlipay()
-    {
-        $this->assertEquals(AlipayHelper::class, _alipay()::class);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\HttpHelper;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -8,7 +9,7 @@ class HttpHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(GuzzleHttp\Client::class, _http()::class);
+        $this->assertEquals(GuzzleHttp\Client::class, Helper::http()::class);
     }
 
     public function testGet()

@@ -1,13 +1,14 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\CryptoHelper;
 
 class CryptoHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(CryptoHelper::Class, _crypto()::class);
+        $this->assertEquals(CryptoHelper::Class, Helper::crypto()::class);
     }
 
     public function testAesEcbEncrypt()

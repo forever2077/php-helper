@@ -1,13 +1,14 @@
 <?php
 
-use Forever2077\PhpHelper\UriHelper;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\UriHelper;
 
 class UriHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals('GuzzleHttp\Psr7\Uri', _uri()::class);
+        $this->assertEquals('GuzzleHttp\Psr7\Uri', Helper::uri()::class);
     }
 
     public function testUri()

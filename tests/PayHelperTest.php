@@ -1,7 +1,8 @@
 <?php
 
-use Forever2077\PhpHelper\PayHelper;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\PayHelper;
 use Yansongda\Pay\Provider\Alipay;
 use Yansongda\Pay\Provider\Wechat;
 use Yansongda\Pay\Provider\Unipay;
@@ -15,7 +16,7 @@ class PayHelperTest extends TestCase
 
     public function testPay()
     {
-        $this->assertInstanceOf(PayHelper::class, _pay());
+        $this->assertInstanceOf(PayHelper::class, Helper::pay());
     }
 
     public function testAlipay()

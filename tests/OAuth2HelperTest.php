@@ -1,13 +1,14 @@
 <?php
 
-use Forever2077\PhpHelper\OAuth2Helper;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\OAuth2Helper;
 
 class OAuth2HelperTest extends TestCase
 {
     public function testOauth2()
     {
-        $this->assertEquals(OAuth2Helper::class, _oauth2()::class);
+        $this->assertEquals(OAuth2Helper::class, Helper::oauth2()::class);
     }
 
     public function testInstance()

@@ -1,7 +1,8 @@
 <?php
 
-use Forever2077\PhpHelper\UuidHelper;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\UuidHelper;
 use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer;
@@ -11,7 +12,7 @@ class UuidHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(UuidHelper::class, _uuid()::class);
+        $this->assertEquals(UuidHelper::class, Helper::uuid()::class);
     }
 
     public function testUuid1()

@@ -1,8 +1,9 @@
 <?php
 
-use Forever2077\PhpHelper\FileHelper;
-use Forever2077\PhpHelper\ZipHelper;
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\ZipHelper;
+use Forever2077\PhpHelper\FileHelper;
 
 class ZipHelperTest extends TestCase
 {
@@ -10,7 +11,7 @@ class ZipHelperTest extends TestCase
 
     public function testInstance()
     {
-        $this->assertEquals('ZanySoft\Zip\Zip', _zip()::class);
+        $this->assertEquals('ZanySoft\Zip\Zip', Helper::zip()::class);
     }
 
     public function testZipPrepare()
@@ -55,8 +56,8 @@ class ZipHelperTest extends TestCase
     public function testZipManage()
     {
         try {
-            $zip = _zip();
-            $manager = _zip(true);
+            $zip = Helper::zip();
+            $manager = Helper::zip(true);
             $manager->addZip($zip->open($this->path . '/test.zip'));
             $manager->listFiles();
             $manager->extract($this->path . '/unzip', true);

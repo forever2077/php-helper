@@ -1,13 +1,14 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\StrHelper;
 
 class StrHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(StrHelper::Class, _str()::class);
+        $this->assertEquals(StrHelper::Class, Helper::str()::class);
     }
 
     public function testUniqueShortStr()
