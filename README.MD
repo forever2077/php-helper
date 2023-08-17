@@ -11,7 +11,7 @@ composer require forever2077/php-helper:"@dev"
 ```php
 // 冒泡排序
 $arr = [1, 3, 2, 5, 4];
-Helper::Algorithm()::BubbleSort($arr);
+Helper::algorithm()::BubbleSort($arr);
 
 // 数组转对象
 class Foo
@@ -26,13 +26,13 @@ class Foo
     }
 }
 $foo = new Foo();
-Helper::Array()::toArray($foo);
+Helper::array()::toArray($foo);
 
 // 获取内存使用情况
-Helper::System()::getMemoryUsage();
+Helper::system()::getMemoryUsage();
 
 // 获取当前日期时间
-Helper::DateTime()::carbon()::now()->toDateTimeString();
+Helper::dateTime()::carbon()::now()->toDateTimeString();
 ```
 
 ## 算法 Algorithm
