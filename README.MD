@@ -766,6 +766,18 @@ $pinyin = Helper::pinyin()::sentence('你好，世界');
 更多内容请查看文档 https://github.com/overtrue/pinyin
 ```
 
+## 终端 Terminal
+
+```php
+// 打印红色文字内容
+Helper::terminal()->red('Whoa now this text is red.');
+// 打印蓝色文字内容
+Helper::terminal()->blue('Blue? Wow!');
+
+使用前需先安装 composer require league/climate
+更多内容请查看文档 https://github.com/thephpleague/climate
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...

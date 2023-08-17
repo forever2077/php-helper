@@ -243,4 +243,9 @@ class Helper
     {
         return PinyinHelper::instance();
     }
+
+    public static function terminal(): \League\CLImate\CLImate
+    {
+        return TerminalHelper::instance();
+    }
 }

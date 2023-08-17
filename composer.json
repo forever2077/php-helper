@@ -56,6 +56,7 @@
         "overtrue/socialite": "^4.8",
         "league/oauth2-server": "^8.5",
         "league/oauth2-client": "^2.7",
-        "overtrue/pinyin": "^5.2"
+        "overtrue/pinyin": "^5.2",
+        "league/climate": "^3.8"
     }
 }
