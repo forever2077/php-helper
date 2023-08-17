@@ -66,7 +66,7 @@ class Helper
 
     public static function file(): FileHelper
     {
-        return new FileHelper();
+        return FileHelper::instance();
     }
 
     public static function geo(mixed $args = null): GeoHelper

@@ -9,6 +9,11 @@ use RecursiveIteratorIterator;
 
 class FileHelper
 {
+    public static function instance(): FileHelper
+    {
+        return new self();
+    }
+
     /**
      * 将驼峰大小写转换为人类可读格式
      * @param int $bytes 字节数
