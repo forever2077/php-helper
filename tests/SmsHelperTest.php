@@ -58,4 +58,9 @@ class SmsHelperTest extends TestCase
             $this->assertIsString($e->getMessage());
         }
     }
+
+    public function testSms()
+    {
+        $this->assertEquals('Overtrue\EasySms\EasySms', _sms([])::class);
+    }
 }
