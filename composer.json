@@ -48,6 +48,7 @@
         "alipaysdk/openapi": "^1.0",
         "alipaysdk/easysdk": "^2.2",
         "tencentcloud/tencentcloud-sdk-php": "^3.0",
-        "qcloud/cos-sdk-v5": "^2.6"
+        "qcloud/cos-sdk-v5": "^2.6",
+        "w7corp/easywechat": "6.7"
     }
 }

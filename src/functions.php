@@ -374,12 +374,11 @@ function _aliyun(): PhpHelper\AliyunHelper
 }
 
 /**
- * @param mixed|null $args
  * @return PhpHelper\WechatHelper
  */
-function _wechat(mixed $args = null): PhpHelper\WechatHelper
+function _wechat(): PhpHelper\WechatHelper
 {
-    return new PhpHelper\WechatHelper($args);
+    return PhpHelper\WechatHelper::instance();
 }
 
 /**

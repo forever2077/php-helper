@@ -648,6 +648,26 @@ TencentCloudHelper::cos($cosConfig);
 更多内容请查看文档 https://github.com/tencentyun/cos-php-sdk-v5
 ```
 
+## 微信 Wechat
+
+```php
+// 微信公众号
+WechatHelper::officialAccount($config);
+// 微信支付
+WechatHelper::pay($config);
+// 微信小程序
+WechatHelper::miniApp($config);
+// 微信开放平台
+WechatHelper::openPlatform($config);
+// 企业微信
+WechatHelper::work($config);
+// 企业微信开放平台
+WechatHelper::openWork($config);
+
+使用前需先安装 composer require w7corp/easywechat
+更多内容请查看文档 https://easywechat.com/6.x/
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...

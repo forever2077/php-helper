@@ -20,7 +20,7 @@ class AlipayHelper
     }
 
     /**
-     * 支付宝通用版v3
+     * 支付宝 通用版v3（使用于支付、小程序等）
      * @link https://open.alipay.com/
      * @link https://github.com/alipay/alipay-sdk-php-all/blob/master/v3/README.md
      * @param ClientInterface|null $client
