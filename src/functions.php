@@ -1,15 +1,6 @@
 <?php
 
-use Carbon\Carbon;
 use Forever2077\PhpHelper;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Uri;
-use Intervention\Image\ImageManager;
-use Noodlehaus\Config;
-use PHPMailer\PHPMailer\PHPMailer;
-use Sabre\Xml\Service;
-use ZanySoft\Zip\Zip;
-use ZanySoft\Zip\ZipManager;
 
 /**
  * 支持多个参数，格式化打印数据
@@ -38,7 +29,7 @@ if (!function_exists('dump')) {
  * @return void
  */
 if (!function_exists('dd')) {
-    function dd(): void
+    #[\JetBrains\PhpStorm\NoReturn] function dd(): void
     {
         call_user_func_array(__NAMESPACE__ . '\\dump', func_get_args());
         exit;
@@ -85,7 +76,7 @@ function _dataStruct(mixed $args = null): PhpHelper\DataStructHelper
     return new PhpHelper\DataStructHelper($args);
 }
 
-function _dateTime(mixed $args = null): Carbon
+function _dateTime(mixed $args = null): \Carbon\Carbon
 {
     return PhpHelper\DateTimeHelper::instance($args);
 }
@@ -95,7 +86,7 @@ function _dfa(mixed $args = null): PhpHelper\DfaHelper
     return new PhpHelper\DfaHelper($args);
 }
 
-function _email(mixed $args = null): PHPMailer
+function _email(mixed $args = null): \PHPMailer\PHPMailer\PHPMailer
 {
     return PhpHelper\EmailHelper::instance($args);
 }
@@ -115,12 +106,12 @@ function _geo(mixed $args = null): PhpHelper\GeoHelper
     return new PhpHelper\GeoHelper($args);
 }
 
-function _http(array $args = []): Client
+function _http(array $args = []): \GuzzleHttp\Client
 {
     return PhpHelper\HttpHelper::instance($args);
 }
 
-function _image(array $args = []): ImageManager
+function _image(array $args = []): \Intervention\Image\ImageManager
 {
     return PhpHelper\ImageHelper::instance($args);
 }
@@ -185,9 +176,9 @@ function _runtime(): PhpHelper\RuntimeHelper
     return PhpHelper\RuntimeHelper::instance();
 }
 
-function _sms(mixed $args = null): PhpHelper\SmsHelper
+function _sms(array $args): \Overtrue\EasySms\EasySms
 {
-    return new PhpHelper\SmsHelper($args);
+    return PhpHelper\SmsHelper::instance($args);
 }
 
 function _str(): PhpHelper\StrHelper
@@ -215,12 +206,12 @@ function _version(mixed $args = null): PhpHelper\VersionHelper
     return new PhpHelper\VersionHelper($args);
 }
 
-function _xml(): Service
+function _xml(): \Sabre\Xml\Service
 {
     return PhpHelper\XmlHelper::instance();
 }
 
-function _zip(bool $manager = false): Zip|ZipManager
+function _zip(bool $manager = false): \ZanySoft\Zip\Zip|\ZanySoft\Zip\ZipManager
 {
     return PhpHelper\ZipHelper::instance($manager);
 }
@@ -245,7 +236,7 @@ function _baidu(mixed $args = null): PhpHelper\BaiduHelper
     return new PhpHelper\BaiduHelper($args);
 }
 
-function _config(array|string $values, string $parser = 'Json'): Config
+function _config(array|string $values, string $parser = 'Json'): \Noodlehaus\Config
 {
     return PhpHelper\ConfigHelper::instance($values, $parser);
 }
@@ -260,7 +251,7 @@ function _uuid(): PhpHelper\UuidHelper
     return PhpHelper\UuidHelper::instance();
 }
 
-function _uri(string $args = ''): Uri
+function _uri(string $args = ''): \GuzzleHttp\Psr7\Uri
 {
     return PhpHelper\UriHelper::instance($args);
 }
