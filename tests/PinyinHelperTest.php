@@ -17,4 +17,10 @@ class PinyinHelperTest extends TestCase
         $this->assertIsObject($pinyin);
         $this->assertEquals('shì', $pinyin->toArray()[3]);
     }
+
+    public function testPinyin()
+    {
+        $pinyin = PinyinHelper::sentence('你好，世界');
+        $this->assertEquals('shì', $pinyin->toArray()[3]);
+    }
 }

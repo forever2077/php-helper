@@ -760,7 +760,7 @@ OAuth2Helper::client(...);
 ## 拼音 Pinyin
 
 ```php
-$pinyin = Helper::pinyin()::sentence('你好，世界');
+$pinyin = PinyinHelper::sentence('你好，世界');
 
 安装 composer require overtrue/pinyin
 文档 https://github.com/overtrue/pinyin
