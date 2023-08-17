@@ -238,4 +238,9 @@ class Helper
     {
         return OAuth2Helper::instance();
     }
+
+    public static function pinyin(): \Overtrue\Pinyin\Pinyin
+    {
+        return PinyinHelper::instance();
+    }
 }

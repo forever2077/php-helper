@@ -2,7 +2,16 @@
 
 namespace Forever2077\PhpHelper;
 
-class PinyinHelper
+use Overtrue\Pinyin\Pinyin;
+
+class PinyinHelper extends Pinyin
 {
-    //https://github.com/overtrue/pinyin
+    /**
+     * @link https://github.com/overtrue/pinyin
+     * @return Pinyin
+     */
+    public static function instance(): Pinyin
+    {
+        return new self();
+    }
 }

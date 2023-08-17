@@ -757,6 +757,15 @@ OAuth2Helper::client(...);
 更多内容请查看文档 https://oauth2-client.thephpleague.com
 ```
 
+## 拼音 Pinyin
+
+```php
+$pinyin = Helper::pinyin()::sentence('你好，世界');
+
+使用前需先安装 composer require overtrue/pinyin
+更多内容请查看文档 https://github.com/overtrue/pinyin
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...
