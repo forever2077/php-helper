@@ -679,6 +679,18 @@ TencentCloudHelper::cos($cosConfig);
 文档 https://github.com/tencentyun/cos-php-sdk-v5
 ```
 
+## 百度AI BaiduAi
+
+```php
+// 文字识别
+BaiduHelper::aipOcr($appId, $apiKey, $secretKey);
+// 人脸识别
+BaiduHelper::aipFace($appId, $apiKey, $secretKey);
+
+安装 composer require forever2077/api-php-sdk
+文档 https://ai.baidu.com/sdk
+```
+
 ## 微信 Wechat
 
 ```php

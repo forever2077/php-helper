@@ -57,6 +57,7 @@
         "league/oauth2-server": "^8.5",
         "league/oauth2-client": "^2.7",
         "overtrue/pinyin": "^5.2",
-        "league/climate": "^3.8"
+        "league/climate": "^3.8",
+        "forever2077/api-php-sdk": "^4.16"
     }
 }

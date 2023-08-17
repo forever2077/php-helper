@@ -199,9 +199,9 @@ class Helper
         return new DingtalkHelper($args);
     }
 
-    public static function baidu(mixed $args = null): BaiduHelper
+    public static function baidu(): BaiduHelper
     {
-        return new BaiduHelper($args);
+        return BaiduHelper::instance();
     }
 
     public static function config(array|string $values, string $parser = 'Json'): \Noodlehaus\Config
