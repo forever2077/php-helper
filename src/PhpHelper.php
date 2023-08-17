@@ -55,6 +55,7 @@ use ReflectionClass;
  * @method static UriHelper            Uri()             URI处理
  * @method static AlipayHelper         Alipay()          支付宝
  * @method static TencentCloudHelper   TencentCloud()    腾讯云
+ * @method static OAuth2Helper         OAuth2()          OAuth2认证
  */
 class PhpHelper
 {

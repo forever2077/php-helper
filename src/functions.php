@@ -265,3 +265,8 @@ function _tencentCloud(): PhpHelper\TencentCloudHelper
 {
     return PhpHelper\TencentCloudHelper::instance();
 }
+
+function _oauth2(): PhpHelper\OAuth2Helper
+{
+    return PhpHelper\OAuth2Helper::instance();
+}
