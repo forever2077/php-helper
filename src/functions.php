@@ -161,9 +161,9 @@ function _office(): PhpHelper\OfficeHelper
     return new PhpHelper\OfficeHelper();
 }
 
-function _pay(mixed $args = null): PhpHelper\PayHelper
+function _pay(): PhpHelper\PayHelper
 {
-    return new PhpHelper\PayHelper($args);
+    return PhpHelper\PayHelper::instance();
 }
 
 function _random(mixed $args = null): PhpHelper\RandomHelper

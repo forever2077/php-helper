@@ -50,6 +50,8 @@
         "tencentcloud/tencentcloud-sdk-php": "^3.0",
         "qcloud/cos-sdk-v5": "^2.6",
         "w7corp/easywechat": "6.7",
-        "overtrue/easy-sms": "^2.5"
+        "overtrue/easy-sms": "^2.5",
+        "yansongda/pay": "~3.5.0",
+        "hyperf/pimple": "^2.2"
     }
 }
