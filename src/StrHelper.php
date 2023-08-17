@@ -5,6 +5,14 @@ namespace Forever2077\PhpHelper;
 class StrHelper
 {
     /**
+     * @return StrHelper
+     */
+    public static function instance(): StrHelper
+    {
+        return new self();
+    }
+
+    /**
      * 生成短的唯一码，可以根据编码的值推算出来年、月、日
      * @param int $startYear 短唯一码的起始年份，默认是2020年
      * eg：A604571124663362【16位+】

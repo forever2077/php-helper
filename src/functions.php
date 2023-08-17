@@ -1,8 +1,12 @@
 <?php
 
+use Carbon\Carbon;
 use Forever2077\PhpHelper;
+use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Uri;
+use Intervention\Image\ImageManager;
 use Noodlehaus\Config;
+use PHPMailer\PHPMailer\PHPMailer;
 use Sabre\Xml\Service;
 use ZanySoft\Zip\Zip;
 use ZanySoft\Zip\ZipManager;
@@ -41,413 +45,231 @@ if (!function_exists('dd')) {
     }
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\AlgorithmHelper
- */
-function _algorithm(mixed $args = null): PhpHelper\AlgorithmHelper
+function _algorithm(): PhpHelper\AlgorithmHelper
 {
-    return new PhpHelper\AlgorithmHelper($args);
+    return PhpHelper\AlgorithmHelper::instance();
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\ArrayHelper
- */
 function _array(mixed $args = null): PhpHelper\ArrayHelper
 {
     return new PhpHelper\ArrayHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\BloomHelper
- */
 function _bloom(mixed $args = null): PhpHelper\BloomHelper
 {
     return new PhpHelper\BloomHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\CacheHelper
- */
 function _cache(mixed $args = null): PhpHelper\CacheHelper
 {
     return new PhpHelper\CacheHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\CaptchaHelper
- */
 function _captcha(mixed $args = null): PhpHelper\CaptchaHelper
 {
     return new PhpHelper\CaptchaHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\CryptoHelper
- */
-function _crypto(mixed $args = null): PhpHelper\CryptoHelper
+function _crypto(): PhpHelper\CryptoHelper
 {
-    return new PhpHelper\CryptoHelper($args);
+    return PhpHelper\CryptoHelper::instance();
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\CsvHelper
- */
-function _csv(mixed $args = null): PhpHelper\CsvHelper
+function _csv(): PhpHelper\CsvHelper
 {
-    return new PhpHelper\CsvHelper($args);
+    return PhpHelper\CsvHelper::instance();
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\DataStructureHelper
- */
-function _dataStructure(mixed $args = null): PhpHelper\DataStructureHelper
+function _dataStruct(mixed $args = null): PhpHelper\DataStructHelper
 {
-    return new PhpHelper\DataStructureHelper($args);
+    return new PhpHelper\DataStructHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\DateTimeHelper
- */
-function _dateTime(mixed $args = null): PhpHelper\DateTimeHelper
+function _dateTime(mixed $args = null): Carbon
 {
-    return new PhpHelper\DateTimeHelper($args);
+    return PhpHelper\DateTimeHelper::instance($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\DfaHelper
- */
 function _dfa(mixed $args = null): PhpHelper\DfaHelper
 {
     return new PhpHelper\DfaHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\EmailHelper
- */
-function _email(mixed $args = null): PhpHelper\EmailHelper
+function _email(mixed $args = null): PHPMailer
 {
-    return new PhpHelper\EmailHelper($args);
+    return PhpHelper\EmailHelper::instance($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\ErrorHelper
- */
 function _error(mixed $args = null): PhpHelper\ErrorHelper
 {
     return new PhpHelper\ErrorHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\FileHelper
- */
 function _File(mixed $args = null): PhpHelper\FileHelper
 {
     return new PhpHelper\FileHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\GeoHelper
- */
 function _geo(mixed $args = null): PhpHelper\GeoHelper
 {
     return new PhpHelper\GeoHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\HttpHelper
- */
-function _http(mixed $args = null): PhpHelper\HttpHelper
+function _http(array $args = []): Client
 {
-    return new PhpHelper\HttpHelper($args);
+    return PhpHelper\HttpHelper::instance($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\ImageHelper
- */
-function _image(mixed $args = null): PhpHelper\ImageHelper
+function _image(array $args = []): ImageManager
 {
-    return new PhpHelper\ImageHelper($args);
+    return PhpHelper\ImageHelper::instance($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\IpHelper
- */
 function _ip(mixed $args = null): PhpHelper\IpHelper
 {
     return new PhpHelper\IpHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\JsonHelper
- */
-function _json(mixed $args = null): PhpHelper\JsonHelper
+function _json(): PhpHelper\JsonHelper
 {
-    return new PhpHelper\JsonHelper($args);
+    return new PhpHelper\JsonHelper();
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\JwtHelper
- */
 function _jwt(mixed $args = null): PhpHelper\JwtHelper
 {
     return new PhpHelper\JwtHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\LogHelper
- */
 function _log(mixed $args = null): PhpHelper\LogHelper
 {
     return new PhpHelper\LogHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\LruCacheHelper
- */
 function _lruCache(mixed $args = null): PhpHelper\LruCacheHelper
 {
     return new PhpHelper\LruCacheHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\MapHelper
- */
 function _map(mixed $args = null): PhpHelper\MapHelper
 {
     return new PhpHelper\MapHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\MathHelper
- */
 function _math(mixed $args = null): PhpHelper\MathHelper
 {
     return new PhpHelper\MathHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\NetHelper
- */
 function _net(mixed $args = null): PhpHelper\NetHelper
 {
     return new PhpHelper\NetHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\OfficeHelper
- */
-function _office(mixed $args = null): PhpHelper\OfficeHelper
+function _office(): PhpHelper\OfficeHelper
 {
-    return new PhpHelper\OfficeHelper($args);
+    return new PhpHelper\OfficeHelper();
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\PayHelper
- */
 function _pay(mixed $args = null): PhpHelper\PayHelper
 {
     return new PhpHelper\PayHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\RandomHelper
- */
 function _random(mixed $args = null): PhpHelper\RandomHelper
 {
     return new PhpHelper\RandomHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\RuntimeHelper
- */
-function _runtime(mixed $args = null): PhpHelper\RuntimeHelper
+function _runtime(): PhpHelper\RuntimeHelper
 {
-    return PhpHelper\RuntimeHelper::instance($args);
+    return PhpHelper\RuntimeHelper::instance();
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\SmsHelper
- */
 function _sms(mixed $args = null): PhpHelper\SmsHelper
 {
     return new PhpHelper\SmsHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\StrHelper
- */
-function _str(mixed $args = null): PhpHelper\StrHelper
+function _str(): PhpHelper\StrHelper
 {
-    return new PhpHelper\StrHelper($args);
+    return new PhpHelper\StrHelper();
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\SystemHelper
- */
 function _system(mixed $args = null): PhpHelper\SystemHelper
 {
     return new PhpHelper\SystemHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\ToolsHelper
- */
 function _tools(mixed $args = null): PhpHelper\ToolsHelper
 {
     return new PhpHelper\ToolsHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\ValidateHelper
- */
-function _validate(mixed $args = null): PhpHelper\ValidateHelper
+function _validate(): PhpHelper\ValidateHelper
 {
-    return new PhpHelper\ValidateHelper($args);
+    return new PhpHelper\ValidateHelper();
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\VersionHelper
- */
 function _version(mixed $args = null): PhpHelper\VersionHelper
 {
     return new PhpHelper\VersionHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return Service
- */
-function _xml(mixed $args = null): Service
+function _xml(): Service
 {
-    return PhpHelper\XmlHelper::instance($args);
+    return PhpHelper\XmlHelper::instance();
 }
 
-/**
- * @param bool $manager
- * @return Zip|ZipManager
- */
 function _zip(bool $manager = false): Zip|ZipManager
 {
     return PhpHelper\ZipHelper::instance($manager);
 }
 
-/**
- * @return PhpHelper\AliyunHelper
- */
 function _aliyun(): PhpHelper\AliyunHelper
 {
     return PhpHelper\AliyunHelper::instance();
 }
 
-/**
- * @return PhpHelper\WechatHelper
- */
 function _wechat(): PhpHelper\WechatHelper
 {
     return PhpHelper\WechatHelper::instance();
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\DingtalkHelper
- */
 function _dingtalk(mixed $args = null): PhpHelper\DingtalkHelper
 {
     return new PhpHelper\DingtalkHelper($args);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\BaiduHelper
- */
 function _baidu(mixed $args = null): PhpHelper\BaiduHelper
 {
     return new PhpHelper\BaiduHelper($args);
 }
 
-/**
- * @param array|string $values
- * @param string $parser
- * @return Config
- */
 function _config(array|string $values, string $parser = 'Json'): Config
 {
     return PhpHelper\ConfigHelper::instance($values, $parser);
 }
 
-/**
- * @param string $filePath
- * @param string $filename
- * @return PhpHelper\EnvHelper
- */
 function _env(string $filePath, string $filename = ''): PhpHelper\EnvHelper
 {
     return PhpHelper\EnvHelper::instance($filePath, $filename);
 }
 
-/**
- * @param mixed|null $args
- * @return PhpHelper\UuidHelper
- */
-function _uuid(mixed $args = null): PhpHelper\UuidHelper
+function _uuid(): PhpHelper\UuidHelper
 {
-    return PhpHelper\UuidHelper::instance($args);
+    return PhpHelper\UuidHelper::instance();
 }
 
-/**
- * @param mixed|null $args
- * @return Uri
- */
 function _uri(string $args = ''): Uri
 {
     return PhpHelper\UriHelper::instance($args);
 }
 
-/**
- * @return PhpHelper\AlipayHelper
- */
 function _alipay(): PhpHelper\AlipayHelper
 {
     return PhpHelper\AlipayHelper::instance();
 }
 
-/**
- * @return PhpHelper\TencentCloudHelper
- */
 function _tencentCloud(): PhpHelper\TencentCloudHelper
 {
     return PhpHelper\TencentCloudHelper::instance();

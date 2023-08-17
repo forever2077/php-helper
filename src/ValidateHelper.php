@@ -5,6 +5,14 @@ namespace Forever2077\PhpHelper;
 class ValidateHelper
 {
     /**
+     * @return ValidateHelper
+     */
+    public static function instance(): ValidateHelper
+    {
+        return new self();
+    }
+
+    /**
      * 是否手机号码
      * @param $phone
      * @return bool

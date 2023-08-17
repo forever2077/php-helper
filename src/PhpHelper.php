@@ -16,7 +16,7 @@ use ReflectionClass;
  * @method static CryptoHelper         Crypto()          加密解密与常用编码
  * @method static CsvHelper            Csv()             CSV文件处理
  * @method static ConfigHelper         Config()          配置处理
- * @method static DataStructureHelper  DataStructure()   数据结构
+ * @method static DataStructHelper     DataStructure()   数据结构
  * @method static DateTimeHelper       DateTime()        日期和时间
  * @method static DfaHelper            Dfa()             DFA字符串匹配算法
  * @method static EmailHelper          Email()           邮件发送和验证
@@ -117,6 +117,8 @@ class PhpHelper
 
         $str = '';
         $methods = 0;
+        $completed = 0;
+        $uncompleted = 0;
         $namespace = (new ReflectionClass(__CLASS__))->getNamespaceName();
 
         foreach ($fullClassNames as $name) {
@@ -124,15 +126,23 @@ class PhpHelper
             try {
                 $reflector = new ReflectionClass($fullClassName);
                 $publicMethods = $reflector->getMethods(\ReflectionMethod::IS_PUBLIC);
-                $methods += count($publicMethods);
+                if (count($publicMethods) > 0) {
+                    $methods += count($publicMethods);
+                    $completed++;
+                } else {
+                    $uncompleted++;
+                }
                 $str .= PHP_EOL . $name . "：" . count($publicMethods);
             } catch (\ReflectionException $e) {
                 throw new Exception("Class $fullClassName does not exist");
             }
         }
+        $totalClass = count($fullClassNames);
         return PHP_EOL . "helper class method number summary：(" . date('Y-m-d H:i:s') . ")" . $str
             . PHP_EOL . "--------------------"
-            . PHP_EOL . "total helper：" . count($fullClassNames)
-            . PHP_EOL . "total method：" . $methods . PHP_EOL;
+            . PHP_EOL . "total helper：" . $totalClass . ' / ' . "total method：" . $methods
+            . PHP_EOL . "completed：" . $completed . '（' . (round($completed / $totalClass, 2) * 100) . '%）' . ' / '
+            . "uncompleted：" . $uncompleted . '（' . (round($uncompleted / $totalClass, 2) * 100) . '%）'
+            . PHP_EOL;
     }
 }

@@ -8,7 +8,7 @@ class HttpHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(HttpHelper::Class, _http()::class);
+        $this->assertEquals(GuzzleHttp\Client::class, _http()::class);
     }
 
     public function testGet()

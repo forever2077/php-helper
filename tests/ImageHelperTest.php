@@ -7,7 +7,7 @@ class ImageHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(ImageHelper::Class, _image()::class);
+        $this->assertEquals(Intervention\Image\ImageManager::class, _image()::class);
     }
 
     public function testIntervention()

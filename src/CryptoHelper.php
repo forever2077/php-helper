@@ -6,6 +6,11 @@ use Exception;
 
 class CryptoHelper
 {
+    public static function instance(): CryptoHelper
+    {
+        return new self();
+    }
+
     /**
      * 使用 AES ECB 算法模式加密数据
      * @throws Exception

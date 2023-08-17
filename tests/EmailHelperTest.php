@@ -10,7 +10,7 @@ class EmailHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals('Forever2077\PhpHelper\EmailHelper', _email()::class);
+        $this->assertEquals('PHPMailer\PHPMailer\PHPMailer', _email()::class);
     }
 
     public function testPhpMailer()

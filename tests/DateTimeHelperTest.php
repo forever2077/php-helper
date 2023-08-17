@@ -8,7 +8,7 @@ class DateTimeHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(DateTimeHelper::Class, _dateTime()::class);
+        $this->assertEquals('Carbon\Carbon', _dateTime()::class);
     }
 
     public function testCarbon()

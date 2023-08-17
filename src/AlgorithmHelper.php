@@ -4,6 +4,11 @@ namespace Forever2077\PhpHelper;
 
 class AlgorithmHelper
 {
+    public static function instance(): AlgorithmHelper
+    {
+        return new self();
+    }
+
     /**
      * 冒泡排序
      * @param $arr array 需要排序的数组
