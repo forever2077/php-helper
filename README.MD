@@ -704,6 +704,22 @@ WechatHelper::openWork($config);
 更多内容请查看文档 https://easywechat.com/6.x/
 ```
 
+## 支付 Payment
+
+```php
+// 支付宝
+PayHelper::alipay($config);
+// 微信支付
+PayHelper::wechat($config);
+// 银联
+PayHelper::unipay($config);
+
+使用前需先安装
+composer require hyperf/pimple
+composer require yansongda/pay
+更多内容请查看文档 https://pay.yansongda.cn/docs/v3/
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...
