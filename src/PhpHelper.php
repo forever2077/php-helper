@@ -12,7 +12,7 @@ class PhpHelper
      * PHP辅助类版本号
      * @var string
      */
-    public static string $version = '0.0.269';
+    public static string $version = '0.0.52';
 
     /**
      * 存储所有辅助类的单例
@@ -65,11 +65,16 @@ class PhpHelper
             }
         ]);
 
-        $str = '';
+        $content = '';
+        $odd = 0;
         $methods = 0;
         $completed = 0;
         $uncompleted = 0;
         $namespace = (new ReflectionClass(__CLASS__))->getNamespaceName();
+        $totalClass = count($fullClassNames);
+        $publicMethodArr = [];
+
+        $content .= PHP_EOL . "helper class method number summary：(" . date('Y-m-d H:i:s') . ")" . PHP_EOL;
 
         foreach ($fullClassNames as $name) {
             $fullClassName = "{$namespace}\\{$name}";
@@ -82,17 +87,31 @@ class PhpHelper
                 } else {
                     $uncompleted++;
                 }
-                $str .= PHP_EOL . $name . "：" . count($publicMethods);
+                $publicMethodArr[] = ($name . "：" . count($publicMethods));
             } catch (\ReflectionException $e) {
                 throw new Exception("Class $fullClassName does not exist");
             }
         }
-        $totalClass = count($fullClassNames);
-        return PHP_EOL . "helper class method number summary：(" . date('Y-m-d H:i:s') . ")" . $str
-            . PHP_EOL . "--------------------"
-            . PHP_EOL . "total helper：" . $totalClass . ' / ' . "total method：" . $methods
-            . PHP_EOL . "completed：" . $completed . '（' . (round($completed / $totalClass, 2) * 100) . '%）' . ' / '
+
+        $maxNameLength = max(array_map('strlen', $publicMethodArr));
+        $maxNameLength += 3;
+
+        foreach ($publicMethodArr as $item) {
+            $content .= sprintf("%-{$maxNameLength}s", $item);
+            if ($odd <= 1) {
+                $odd++;
+            } else {
+                $content .= PHP_EOL;
+                $odd = 0;
+            }
+        }
+
+        $content .= PHP_EOL . "--------------------------------------------------------------"
+            . PHP_EOL . "total helper：" . $totalClass . " \t " . "total method：" . $methods
+            . PHP_EOL . "completed：" . $completed . '（' . (round($completed / $totalClass, 2) * 100) . '%）' . " \t "
             . "uncompleted：" . $uncompleted . '（' . (round($uncompleted / $totalClass, 2) * 100) . '%）'
             . PHP_EOL;
+
+        return $content;
     }
 }
