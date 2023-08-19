@@ -12,7 +12,7 @@ class PhpHelper
      * PHP辅助类版本号
      * @var string
      */
-    public static string $version = '0.0.52';
+    public static string $version = '0.0.315';
 
     /**
      * 存储所有辅助类的单例
