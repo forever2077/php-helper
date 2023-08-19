@@ -46,6 +46,7 @@ class PhpHelper
 
     /**
      * 获取PhpHelper类的公共方法数量
+     * .\vendor\bin\phpunit.bat --log-junit junit-log.xml .\tests\
      * @return string 返回PhpHelper类的公共方法数量
      * @throws Exception 如果对应的辅助类不存在
      */
@@ -94,7 +95,7 @@ class PhpHelper
         }
 
         $maxNameLength = max(array_map('strlen', $publicMethodArr));
-        $maxNameLength += 3;
+        $maxNameLength += 5;
 
         foreach ($publicMethodArr as $item) {
             $content .= sprintf("%-{$maxNameLength}s", $item);

@@ -69,9 +69,9 @@ class Helper
         return FileHelper::instance();
     }
 
-    public static function geo(mixed $args = null): GeoHelper
+    public static function geo(): GeoHelper
     {
-        return new GeoHelper($args);
+        return GeoHelper::instance();
     }
 
     public static function http(array $args = []): \GuzzleHttp\Client
