@@ -25,4 +25,9 @@ class ValidateHelperTest extends TestCase
             $this->assertIsString($e->getMessage());
         }
     }
+
+    public function testPassport()
+    {
+        $this->assertTrue(ValidateHelper::rule()::passport()->validate('EA1234567'));
+    }
 }
