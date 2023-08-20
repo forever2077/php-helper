@@ -164,9 +164,9 @@ class Helper
         return new ToolsHelper($args);
     }
 
-    public static function validate(): ValidateHelper
+    public static function validate(): \Respect\Validation\Validator
     {
-        return new ValidateHelper();
+        return ValidateHelper::instance();
     }
 
     public static function version(mixed $args = null): VersionHelper

@@ -145,17 +145,16 @@ StrHelper::uniqueDateNum();
 StrHelper::randStr($length = 6, $type = 'string');
 ```
 
-## 验证 Validate
+## 验证/断言 Validate/Assert
 
 ```php
-// 验证手机号
-ValidateHelper::isPhone($phone);
-// 验证邮箱
-ValidateHelper::isEmail($email);
-// 验证是不是http开头的地址
-ValidateHelper::isHttp($str);
-// 验证是否是 json 字符串
-ValidateHelper::isJson($str);
+// 检查字符串是否为有效的电子邮件地址，错误抛出异常提示语
+ValidateHelper::email('alganet@gmail.com', 'Email (%s) is invalid');
+文档 https://github.com/webmozarts/assert
+
+// 检查字符串是否为有效的电子邮件地址，返回bool类型
+ValidateHelper::rule()::email()->validate('alganet@gmail.com');
+文档 https://respect-validation.readthedocs.io/en/latest/list-of-rules/
 ```
 
 ## 运行时 Runtime

@@ -3,35 +3,26 @@
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\ValidateHelper;
+use Respect\Validation\Validator;
 
 class ValidateHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertEquals(ValidateHelper::Class, Helper::validate()::class);
+        $this->assertEquals(Validator::Class, Helper::validate()::class);
     }
 
-    public function testIsPhone()
+    public function testValidateEmail()
     {
-        $this->assertTrue(ValidateHelper::isPhone('13800138000'));
-        $this->assertFalse(ValidateHelper::isPhone('1380013800'));
+        $this->assertTrue(ValidateHelper::rule()::email()->validate('alganet@gmail.com'));
     }
 
-    public function testIsEmail()
+    public function testAssert()
     {
-        $this->assertTrue(ValidateHelper::isEmail('13800138000@qq.com.cn'));
-    }
-
-    public function testIsHttp()
-    {
-        $this->assertTrue(ValidateHelper::isHttp('http://www.baidu.com'));
-        $this->assertTrue(ValidateHelper::isHttp('https://www.baidu.com'));
-        $this->assertFalse(ValidateHelper::isHttp('www.baidu.com'));
-    }
-
-    public function testIsJson()
-    {
-        $this->assertTrue(ValidateHelper::isJson('{"a":1}'));
-        $this->assertFalse(ValidateHelper::isJson('{"a":1'));
+        try {
+            ValidateHelper::email('alganet@gmail.com', 'Email (%s) is invalid');
+        } catch (\Webmozart\Assert\InvalidArgumentException $e) {
+            $this->assertIsString($e->getMessage());
+        }
     }
 }
