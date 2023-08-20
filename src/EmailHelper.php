@@ -3,6 +3,7 @@
 namespace Forever2077\PhpHelper;
 
 use PHPMailer\PHPMailer\PHPMailer;
+use Egulias\EmailValidator\EmailValidator;
 
 class EmailHelper
 {
@@ -24,5 +25,15 @@ class EmailHelper
     public static function phpMailer(mixed $config = null): PHPMailer
     {
         return new PHPMailer($config);
+    }
+
+    /**
+     * 根据RFC规则验证电子邮件
+     * @link https://github.com/egulias/EmailValidator
+     * @return EmailValidator
+     */
+    public static function validator(): EmailValidator
+    {
+        return new EmailValidator();
     }
 }

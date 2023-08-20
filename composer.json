@@ -42,7 +42,8 @@
         "zanysoft/laravel-zip": "^2.0",
         "rinvex/countries": "^8.1",
         "respect/validation": "^2.2",
-        "webmozart/assert": "^1.11"
+        "webmozart/assert": "^1.11",
+        "egulias/email-validator": "^3.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",

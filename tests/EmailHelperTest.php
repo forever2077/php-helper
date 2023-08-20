@@ -4,6 +4,7 @@ use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\EmailHelper;
 use PHPMailer\PHPMailer\PHPMailer;
+use Egulias\EmailValidator\Validation\RFCValidation;
 
 class EmailHelperTest extends TestCase
 {
@@ -21,5 +22,11 @@ class EmailHelperTest extends TestCase
     {
         $mail = EmailHelper::phpMailer();
         $this->assertInstanceOf(PHPMailer::class, $mail);
+    }
+
+    public function testValidator()
+    {
+        $validator = EmailHelper::validator();
+        $this->assertIsBool($validator->isValid("example@example.com", new RFCValidation()));
     }
 }
