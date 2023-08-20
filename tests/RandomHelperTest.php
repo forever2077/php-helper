@@ -3,8 +3,8 @@
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\RandomHelper;
-use Stfn\RandomString\InvalidStringConfigException;
-use Stfn\RandomString\StringConfig;
+use Forever2077\RandomString\InvalidStringConfigException;
+use Forever2077\RandomString\StringConfig;
 
 class RandomHelperTest extends TestCase
 {
@@ -60,5 +60,12 @@ class RandomHelperTest extends TestCase
         } catch (InvalidStringConfigException $e) {
             $this->fail($e->getMessage());
         }
+    }
+
+    public function testUserAgent()
+    {
+        $this->assertIsString(RandomHelper::userAgent([
+            'os_type' => 'Windows', 'device_type' => 'Mobile'
+        ]));
     }
 }

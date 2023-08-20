@@ -2,8 +2,9 @@
 
 namespace Forever2077\PhpHelper;
 
-use Stfn\RandomString\RandomString;
-use Stfn\RandomString\StringConfig;
+use Forever2077\RandomString\RandomString;
+use Forever2077\RandomString\StringConfig;
+use Campo\UserAgent;
 
 class RandomHelper
 {
@@ -23,5 +24,20 @@ class RandomHelper
     {
         $config = $config ?? StringConfig::make($length);
         return new RandomString($config);
+    }
+
+    /**
+     * 生成随机UserAgent
+     * @link https://github.com/joecampo/random-user-agent
+     * @param array $filterBy
+     * @return string
+     */
+    public static function userAgent(array $filterBy = []): string
+    {
+        try {
+            return UserAgent::random($filterBy);
+        } catch (\Exception $e) {
+            return '';
+        }
     }
 }

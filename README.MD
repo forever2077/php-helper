@@ -842,8 +842,14 @@ RandomHelper::string(32,
         ->charset('~!@#$%^&*()_+85716253uygsdfdgfj')
 )->generate();
 
-安装 composer require stfn/php-random-string --ignore-platform-reqs
 文档 https://github.com/stfndamjanovic/php-random-string
+
+// 生成随机UserAgent
+RandomHelper::userAgent([
+    'os_type' => 'Windows', 'device_type' => 'Mobile'
+]);
+安装 composer require campo/random-user-agent
+文档 https://github.com/joecampo/random-user-agent
 ```
 
 ## 致谢 Thank
