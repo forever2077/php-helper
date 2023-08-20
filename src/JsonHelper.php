@@ -102,7 +102,7 @@ class JsonHelper
             $value = json_encode($value, JSON_UNESCAPED_UNICODE);
         }
 
-        if (is_string($value) && !ValidateHelper::isJson($value)) {
+        if (is_string($value) && !JsonHelper::isJson($value)) {
             throw new ParsingException('Invalid JSON string.');
         }
 
@@ -175,7 +175,7 @@ class JsonHelper
             $json = json_encode($json, JSON_UNESCAPED_UNICODE);
         }
 
-        if (is_string($json) && ValidateHelper::isJson($json)) {
+        if (is_string($json) && JsonHelper::isJson($json)) {
             $json = json_decode($json);
         }
 
@@ -201,7 +201,7 @@ class JsonHelper
      */
     public static function mapArray(array|string $json, mixed $array, array $options = [], string $class = null, string $parent_key = ''): mixed
     {
-        if (is_string($json) && ValidateHelper::isJson($json)) {
+        if (is_string($json) && JsonHelper::isJson($json)) {
             $json = json_decode($json);
         }
 
@@ -237,5 +237,10 @@ class JsonHelper
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
+    }
+
+    public static function isJson($value): bool
+    {
+        return Helper::validate()::json()->validate($value);
     }
 }
