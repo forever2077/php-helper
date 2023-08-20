@@ -20,7 +20,7 @@ class ValidateHelperTest extends TestCase
     public function testAssert()
     {
         try {
-            ValidateHelper::email('alganet@gmail.com', 'Email (%s) is invalid');
+            ValidateHelper::email('alganet.gmail.com', 'Email (%s) is invalid');
         } catch (\Webmozart\Assert\InvalidArgumentException $e) {
             $this->assertIsString($e->getMessage());
         }
