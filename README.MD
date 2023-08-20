@@ -330,6 +330,11 @@ try {
 }
 
 文档 https://github.com/PHPMailer/PHPMailer
+
+// 根据RPC规则验证邮件地址
+EmailHelper::validator()->isValid("example@example.com", new RFCValidation())；
+
+文档 https://github.com/egulias/EmailValidator
 ```
 
 ## 短信 SMS

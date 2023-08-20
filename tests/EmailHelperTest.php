@@ -26,7 +26,6 @@ class EmailHelperTest extends TestCase
 
     public function testValidator()
     {
-        $validator = EmailHelper::validator();
-        $this->assertIsBool($validator->isValid("example@example.com", new RFCValidation()));
+        $this->assertIsBool(EmailHelper::validator()->isValid("example@example.com", new RFCValidation()));
     }
 }
