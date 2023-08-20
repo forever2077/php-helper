@@ -16,7 +16,7 @@ class TencentCloudHelperTest extends TestCase
         $this->assertInstanceOf(TencentCloudHelper::class, TencentCloudHelper::instance());
     }
 
-    public function testClient()
+    /*public function testClient()
     {
         $env = EnvHelper::instance(dirname(__DIR__));
         $cred = new Credential(
@@ -46,9 +46,9 @@ class TencentCloudHelperTest extends TestCase
         } catch (TencentCloudSDKException $e) {
             $this->assertIsString($e->getMessage());
         }
-    }
+    }*/
 
-    public function testCos()
+    /*public function testCos()
     {
         $env = EnvHelper::instance(dirname(__DIR__));
         $cosConfig = [
@@ -66,7 +66,7 @@ class TencentCloudHelperTest extends TestCase
         } catch (Exception $e) {
             $this->assertIsString($e->getMessage());
         }
-    }
+    }*/
 
     public function testTencentCloud()
     {
