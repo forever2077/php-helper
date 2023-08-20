@@ -812,6 +812,23 @@ GeoHelper::getChinaArea(542500000000);
 数据 https://github.com/stefangabos/world_countries  https://github.com/kakuilan/china_area_mysql
 ```
 
+## 身份标识 Identity ID
+
+```php
+// 解析中国身份证号码
+$ID = IdentityHelper::parseChineseID();
+$passed = $ID->validateIDCard($pid);
+$area = $ID->getArea($pid);
+$gender = $ID->getGender($pid);
+$birthday = $ID->getBirth($pid);
+$age = $ID->getAge($pid);
+$constellation = $ID->getConstellation($pid);
+
+安装 composer require douyasi/identity-card
+文档 https://github.com/douyasi/identity-card
+
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...

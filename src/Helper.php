@@ -248,4 +248,9 @@ class Helper
     {
         return TerminalHelper::instance();
     }
+
+    public static function identity(): IdentityHelper
+    {
+        return IdentityHelper::instance();
+    }
 }

@@ -15,7 +15,7 @@ class PhpHelper
      * 修订号：根据辅助类方法数量定义
      * @var string
      */
-    public static string $version = '0.53.683';
+    public static string $version = '0.54.686';
 
     /**
      * 存储所有辅助类的单例
