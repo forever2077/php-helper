@@ -134,9 +134,9 @@ class Helper
         return PayHelper::instance();
     }
 
-    public static function random(mixed $args = null): RandomHelper
+    public static function random(): RandomHelper
     {
-        return new RandomHelper($args);
+        return RandomHelper::instance();
     }
 
     public static function runtime(): RuntimeHelper

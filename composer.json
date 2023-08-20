@@ -43,7 +43,8 @@
         "rinvex/countries": "^8.1",
         "respect/validation": "^2.2",
         "webmozart/assert": "^1.11",
-        "egulias/email-validator": "^3.2"
+        "egulias/email-validator": "^3.2",
+        "stfn/php-random-string": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",
