@@ -857,6 +857,23 @@ RandomHelper::userAgent([
 文档 https://github.com/joecampo/random-user-agent
 ```
 
+## 版本号 Version
+
+```php
+// 版本号是否符合要求
+VersionHelper::complies('^7.0', '7.0.0'); // true
+VersionHelper::complies('^7.0', '6.4.34'); // false
+VersionHelper::complies('~1.1.0', '1.1.4'); // true
+// 版本号对比
+$leftVersion = Helper::version('3.0.0-alpha.1');
+$rightVersion = Helper::version('3.0.0-alpha.2');
+$leftVersion->isGreaterThan($rightVersion);
+$rightVersion->isGreaterThan($leftVersion);
+
+安装 composer require phar-io/version
+文档 https://github.com/phar-io/version
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...

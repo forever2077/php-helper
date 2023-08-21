@@ -66,6 +66,7 @@
         "league/climate": "^3.8",
         "forever2077/api-php-sdk": "^4.16",
         "douyasi/identity-card": "^2.10",
-        "campo/random-user-agent": "^1.3"
+        "campo/random-user-agent": "^1.3",
+        "phar-io/version": "^3.2"
     }
 }

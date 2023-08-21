@@ -169,9 +169,9 @@ class Helper
         return ValidateHelper::instance();
     }
 
-    public static function version(mixed $args = null): VersionHelper
+    public static function version(mixed $args = null): \PharIo\Version\Version
     {
-        return new VersionHelper($args);
+        return VersionHelper::instance($args);
     }
 
     public static function xml(): \Sabre\Xml\Service
