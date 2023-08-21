@@ -5,12 +5,19 @@ namespace Forever2077\PhpHelper;
 use Respect\Validation\Factory;
 use Respect\Validation\Validator;
 use Webmozart\Assert\Assert;
+use Forever2077\PhpHelper\Validation\Common;
 
 /**
  * @link https://github.com/webmozarts/assert
  */
 class ValidateHelper extends Assert
 {
+    /**
+     * 由AI生成的常见验证规则
+     * todo: 测试用例
+     */
+    use Common;
+
     public static function instance(): Validator
     {
         return self::rule();

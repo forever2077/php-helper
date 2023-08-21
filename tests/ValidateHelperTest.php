@@ -30,4 +30,12 @@ class ValidateHelperTest extends TestCase
     {
         $this->assertTrue(ValidateHelper::isPassportNumber('EA1234567'));
     }
+
+    public function testCommon()
+    {
+        $this->assertTrue(ValidateHelper::isPassport('EA1234567'));
+        $this->assertTrue(ValidateHelper::isIdentityCard('42032319930606629x'));
+        $this->assertTrue(ValidateHelper::isLicensePlate('京Q58A77'));
+        $this->assertEquals('135****0001', ValidateHelper::formatMobile('13500000001'));
+    }
 }
