@@ -37,14 +37,13 @@ class SensitiveHelperTest extends TestCase
 
     public function testAc()
     {
+        $wordData = [
+            '察象蚂', '拆迁灭', '车牌隐',
+        ];
         $badWord = '这是敏感词：成 人 卡 通';
         $badWord = StrHelper::filterSpecialCharacters($badWord, true);
-
-        $handle = SensitiveHelper::ac();
         try {
-            $handle->add('察象蚂');
-            $handle->add('拆迁灭');
-            $handle->add('车牌隐');
+            $handle = SensitiveHelper::ac($wordData);
             $handle->add('成人电');
             $handle->add('成人卡通');
             $handle->finalize();

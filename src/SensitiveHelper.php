@@ -19,6 +19,8 @@ class SensitiveHelper
     /**
      * DFA算法过滤器
      * @link https://github.com/FireLustre/php-dfa-sensitive
+     * @param array|string $source 敏感词数组或者敏感词文件路径
+     * @return DfaSensitiveHelper
      * @throws PdsBusinessException
      */
     public static function dfa(array|string $source): DfaSensitiveHelper
@@ -39,10 +41,26 @@ class SensitiveHelper
     /**
      * AC算法过滤器
      * @link https://github.com/codeplea/ahocorasickphp
+     * @param array $source 敏感词数组
      * @return Ahocorasick
+     * @throws \Exception
      */
-    public static function ac(): Ahocorasick
+    public static function ac(array $source = []): Ahocorasick
     {
-        return new Ahocorasick();
+        $ac = new Ahocorasick();
+        if (!empty($source) && is_array($source)) {
+            foreach ($source as $item) {
+                try {
+                    if (is_string($item)) {
+                        $ac->add($item);
+                    } else {
+                        throw new \Exception('source must be string[]');
+                    }
+                } catch (\Exception $e) {
+                    throw new \Exception($e->getMessage());
+                }
+            }
+        }
+        return $ac;
     }
 }
