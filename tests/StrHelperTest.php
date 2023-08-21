@@ -29,4 +29,11 @@ class StrHelperTest extends TestCase
         $this->assertEquals(6, strlen(StrHelper::randStr(6, '0123456789')));
         $this->assertEquals(6, strlen(StrHelper::randStr(6, '0123456789', true)));
     }
+
+    public function testFilterSpecialCharacters()
+    {
+        $input = 'Ｈello~！@＃$％^&＊(）_+｀-＝｛｝｜[］＼:\";＇<＞?,./ Ｗorld！';
+        $output = StrHelper::filterSpecialCharacters($input, true);
+        $this->assertEquals("HelloWorld", $output);
+    }
 }

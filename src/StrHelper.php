@@ -91,4 +91,27 @@ class StrHelper
         }
         return $code;
     }
+
+    /**
+     * 过滤指定的字符集合（默认过滤键盘中常见符号集合）
+     * @param string $input
+     * @param bool $removeSpaces
+     * @param string $charactersToRemove
+     * @return string
+     */
+    public static function filterSpecialCharacters(
+        string $input,
+        bool   $removeSpaces = false,
+        string $charactersToRemove = '~!@#$%^&*()_+`-={}|[]\\:";\'<>?,./＼＇'
+    ): string
+    {
+        // 将全角英文字母、数字、空格转换为半角
+        $input = mb_convert_kana($input, 'rnas');
+        $result = str_replace(str_split($charactersToRemove), '', $input);
+        // 如果 removeSpaces 参数为 true，则去除空白字符
+        if ($removeSpaces) {
+            $result = str_replace(" ", "", $result);
+        }
+        return $result;
+    }
 }

@@ -49,9 +49,9 @@ class Helper
         return DateTimeHelper::instance($args);
     }
 
-    public static function dfa(mixed $args = null): DfaHelper
+    public static function sensitive(mixed $args = null): SensitiveHelper
     {
-        return new DfaHelper($args);
+        return new SensitiveHelper($args);
     }
 
     public static function email(mixed $args = null): \PHPMailer\PHPMailer\PHPMailer

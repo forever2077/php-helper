@@ -4,6 +4,9 @@ namespace Forever2077\PhpHelper;
 
 use Forever2077\PhpHelper\LruNode as Node;
 
+/**
+ * Class LruCacheHelper LRU缓存
+ */
 class LruCacheHelper
 {
     private $size;
