@@ -4,9 +4,10 @@ namespace Forever2077\PhpHelper;
 
 use DfaFilter\SensitiveHelper as DfaSensitiveHelper;
 use DfaFilter\Exceptions\PdsBusinessException;
+use Forever2077\PhpHelper\Sensitive\Ahocorasick;
 
 /**
- * Class DfaHelper 确定有穷自动机算法
+ * Class SensitiveHelper 敏感词过滤器
  */
 class SensitiveHelper
 {
@@ -16,7 +17,8 @@ class SensitiveHelper
     }
 
     /**
-     * 敏感词过滤器
+     * DFA算法过滤器
+     * @link https://github.com/FireLustre/php-dfa-sensitive
      * @throws PdsBusinessException
      */
     public static function dfa(array|string $source): DfaSensitiveHelper
@@ -32,5 +34,15 @@ class SensitiveHelper
         } catch (PdsBusinessException $e) {
             throw new PdsBusinessException($e->getMessage());
         }
+    }
+
+    /**
+     * AC算法过滤器
+     * @link https://github.com/codeplea/ahocorasickphp
+     * @return Ahocorasick
+     */
+    public static function ac(): Ahocorasick
+    {
+        return new Ahocorasick();
     }
 }

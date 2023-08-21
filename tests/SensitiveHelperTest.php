@@ -7,14 +7,14 @@ use Forever2077\PhpHelper\SensitiveHelper;
 use DfaFilter\Exceptions\PdsBusinessException;
 use DfaFilter\Exceptions\PdsSystemException;
 
-class DfaHelperTest extends TestCase
+class SensitiveHelperTest extends TestCase
 {
     public function testInstance()
     {
         $this->assertEquals(SensitiveHelper::class, Helper::sensitive()::class);
     }
 
-    public function testSensitiveWord()
+    public function testDfa()
     {
         $wordData = [
             '察象蚂', '拆迁灭', '车牌隐', '成人电', '成人卡通',
@@ -31,6 +31,26 @@ class DfaHelperTest extends TestCase
             $this->assertEquals('这是敏感词<mark>成人卡通</mark>', $handle->mark($badWord, '<mark>', '</mark>'));
             $this->assertEquals('成人卡通', $handle->getBadWord($badWord)[0]);
         } catch (PdsBusinessException|PdsSystemException $e) {
+            $this->fail($e->getMessage());
+        }
+    }
+
+    public function testAc()
+    {
+        $badWord = '这是敏感词：成 人 卡 通';
+        $badWord = StrHelper::filterSpecialCharacters($badWord, true);
+
+        $handle = SensitiveHelper::ac();
+        try {
+            $handle->add('察象蚂');
+            $handle->add('拆迁灭');
+            $handle->add('车牌隐');
+            $handle->add('成人电');
+            $handle->add('成人卡通');
+            $handle->finalize();
+            $found = $handle->search($badWord);
+            $this->assertIsArray($found);
+        } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
     }
