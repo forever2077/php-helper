@@ -28,6 +28,6 @@ class ValidateHelperTest extends TestCase
 
     public function testPassport()
     {
-        $this->assertTrue(ValidateHelper::rule()::passport()->validate('EA1234567'));
+        $this->assertTrue(ValidateHelper::isPassportNumber('EA1234567'));
     }
 }

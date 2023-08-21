@@ -157,8 +157,9 @@ ValidateHelper::rule()::email()->validate('alganet@gmail.com');
 文档 https://respect-validation.readthedocs.io/en/latest/list-of-rules/
 
 // 检查护照号格式是否正确（默认：中国）
-// 详细代码查看 Forever2077\PhpHelper\Validation\Rules\Passport
-ValidateHelper::rule()::passport('cn')->validate('EA1234567');
+ValidateHelper::isPassportNumber('EA1234567');
+// 计划从 validator.js 移植
+文档 https://github.com/validatorjs/validator.js
 ```
 
 ## 运行时 Runtime

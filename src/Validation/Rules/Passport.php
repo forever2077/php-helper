@@ -83,8 +83,11 @@ final class Passport extends AbstractRule
         ValidateHelper::string($input, 'Passport (%s) is invalid');
         // 删除所有空格，转换为大写
         $normalizedStr = strtoupper(preg_replace('/\s/', '', $input));
+        // 必须是有效的国家代码
+        if (!array_key_exists(strtoupper($this->countryCode), $this->passportRegexByCountryCode)) {
+            throw new \InvalidArgumentException(sprintf('Country code (%s) is invalid', $this->countryCode));
+        }
         // 检验护照格式
-        return array_key_exists(strtoupper($this->countryCode), $this->passportRegexByCountryCode) &&
-            preg_match($this->passportRegexByCountryCode[strtoupper($this->countryCode)], $normalizedStr);
+        return preg_match($this->passportRegexByCountryCode[strtoupper($this->countryCode)], $normalizedStr);
     }
 }

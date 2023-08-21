@@ -17,6 +17,7 @@ class ValidateHelper extends Assert
     }
 
     /**
+     * @link https://github.com/validatorjs/validator.js
      * @link https://respect-validation.readthedocs.io/en/latest/list-of-rules/
      * @return Validator
      */
@@ -28,5 +29,20 @@ class ValidateHelper extends Assert
                 ->withExceptionNamespace('Forever2077\\PhpHelper\\Validation\\Exceptions')
         );
         return Validator::create();
+    }
+
+    /**
+     * 检查字符串是否为有效的护照号码
+     * @param string $str
+     * @param string $countryCode
+     * @return mixed
+     */
+    public static function isPassportNumber(string $str, string $countryCode = 'CN'): bool
+    {
+        try {
+            return ValidateHelper::rule()::passport($countryCode)->validate($str);
+        } catch (\Exception $e) {
+            throw new \InvalidArgumentException($e->getMessage());
+        }
     }
 }
