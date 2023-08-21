@@ -2,7 +2,12 @@
 
 namespace Forever2077\PhpHelper;
 
-class BloomHelper
-{
+use Pleo\BloomFilter\BloomFilter;
 
+class BloomHelper extends BloomFilter
+{
+    public static function instance(int $approxSize, float $falsePosProb): BloomFilter
+    {
+        return BloomFilter::init($approxSize, $falsePosProb);
+    }
 }

@@ -874,6 +874,17 @@ $rightVersion->isGreaterThan($leftVersion);
 文档 https://github.com/phar-io/version
 ```
 
+## 布隆过滤器 BloomFilter
+
+```php
+$bf = Helper::bloom(100000, 0.001);
+$bf->add('item1');
+$bf->exists('item1');
+
+安装 composer require pleonasm/bloom-filter
+文档 https://github.com/pleonasm/bloom-filter
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...

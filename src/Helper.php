@@ -14,9 +14,9 @@ class Helper
         return new ArrayHelper($args);
     }
 
-    public static function bloom(mixed $args = null): BloomHelper
+    public static function bloom(int $approxSize, float $falsePosProb): \Pleo\BloomFilter\BloomFilter
     {
-        return new BloomHelper($args);
+        return BloomHelper::instance($approxSize, $falsePosProb);
     }
 
     public static function cache(mixed $args = null): CacheHelper
