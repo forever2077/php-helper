@@ -99,9 +99,9 @@ class Helper
         return new JwtHelper($args);
     }
 
-    public static function log(mixed $args = null): LogHelper
+    public static function log(string $name = 'default', array $handlers = [], array $processors = [], ?\DateTimeZone $timezone = null): \Monolog\Logger
     {
-        return new LogHelper($args);
+        return LogHelper::instance($name, $handlers, $processors, $timezone);
     }
 
     public static function lruCache(mixed $args = null): LruCacheHelper

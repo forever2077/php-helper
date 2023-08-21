@@ -908,6 +908,18 @@ $found = $handle->search($badWord);
 文档 https://github.com/codeplea/ahocorasickphp
 ```
 
+## 日志 Log
+
+```php
+$log = Helper::log();
+$log->pushHandler(new TestHandler());
+$log->warning('Foo');
+$log->error('bar');
+
+安装 composer require monolog/monolog
+文档 https://github.com/Seldaek/monolog/blob/2.x/README.md
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...
