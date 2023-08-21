@@ -159,11 +159,6 @@ class Helper
         return new SystemHelper($args);
     }
 
-    public static function tools(mixed $args = null): ToolsHelper
-    {
-        return new ToolsHelper($args);
-    }
-
     public static function validate(): \Respect\Validation\Validator
     {
         return ValidateHelper::instance();
@@ -192,11 +187,6 @@ class Helper
     public static function wechat(): WechatHelper
     {
         return WechatHelper::instance();
-    }
-
-    public static function dingtalk(mixed $args = null): DingtalkHelper
-    {
-        return new DingtalkHelper($args);
     }
 
     public static function baidu(): BaiduHelper
