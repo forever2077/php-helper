@@ -885,7 +885,7 @@ $bf->exists('item1');
 文档 https://github.com/pleonasm/bloom-filter
 ```
 
-敏感词过滤器 Sensitive
+## 敏感词过滤器 Sensitive
 
 ```php
 // DFA算法过滤器
