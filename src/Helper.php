@@ -243,4 +243,13 @@ class Helper
     {
         return IdentityHelper::instance();
     }
+
+    public static function debug(
+        bool|string|array|null $mode = null,
+        ?string                $logDirectory = null,
+        string|array|null      $email = null
+    ): void
+    {
+        DebugHelper::enable($mode, $logDirectory, $email);
+    }
 }

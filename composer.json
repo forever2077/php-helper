@@ -71,6 +71,7 @@
         "phar-io/version": "^3.2",
         "pleonasm/bloom-filter": "^1.0",
         "lustre/php-dfa-sensitive": "^1.4",
-        "monolog/monolog": "^2.9"
+        "monolog/monolog": "^2.9",
+        "tracy/tracy": "^2.10"
     }
 }

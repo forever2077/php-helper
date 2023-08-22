@@ -15,7 +15,7 @@ class PhpHelperTest extends TestCase
     {
         try {
             $str = PhpHelper::countPubMethod();
-            dump($str);
+            print_r($str);
             $this->assertIsString($str);
         } catch (Exception $e) {
             dump($e->getMessage());
