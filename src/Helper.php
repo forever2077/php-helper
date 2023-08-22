@@ -79,9 +79,9 @@ class Helper
         return ImageHelper::instance($args);
     }
 
-    public static function ip(mixed $args = null): IpHelper
+    public static function ip(): IpHelper
     {
-        return new IpHelper($args);
+        return new IpHelper();
     }
 
     public static function json(): JsonHelper
