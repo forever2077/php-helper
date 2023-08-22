@@ -109,11 +109,6 @@ class Helper
         return new MapHelper($args);
     }
 
-    public static function math(): MathHelper
-    {
-        return MathHelper::instance();
-    }
-
     public static function net(mixed $args = null): NetHelper
     {
         return new NetHelper($args);
