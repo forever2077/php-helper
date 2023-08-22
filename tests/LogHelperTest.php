@@ -2,7 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\LogHelper;
 use Monolog\Logger;
 use Monolog\Handler\TestHandler;
 
