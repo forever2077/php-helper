@@ -10,12 +10,9 @@ class PhpHelper
 {
     /**
      * PHP辅助类版本号
-     * 主版本号：根据是否有重大重构定义
-     * 次版本号：根据辅助类数量定义
-     * 修订号：根据辅助类方法数量定义
      * @var string
      */
-    public static string $version = '0.54.686';
+    public static string $version = '0.53.37';
 
     /**
      * 存储所有辅助类的单例

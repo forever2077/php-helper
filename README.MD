@@ -934,6 +934,19 @@ DebugHelper::log('Unexpected error');
 文档 https://github.com/nette/tracy
 ```
 
+## 异常 Exceptions
+
+```php
+try {
+    throw new \Exceptions\Data\NotFoundException();
+} catch (\Exceptions\Data\NotFoundException $e) {
+    $this->assertEquals('Data requested for cannot be found in the data source.', $e->getMessage());
+}
+
+安装 composer require crazycodr/standard-exceptions
+文档 https://github.com/crazycodr/standard-exceptions
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...

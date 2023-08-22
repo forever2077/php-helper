@@ -72,6 +72,7 @@
         "pleonasm/bloom-filter": "^1.0",
         "lustre/php-dfa-sensitive": "^1.4",
         "monolog/monolog": "^2.9",
-        "tracy/tracy": "^2.10"
+        "tracy/tracy": "^2.10",
+        "crazycodr/standard-exceptions": "^2.4"
     }
 }
