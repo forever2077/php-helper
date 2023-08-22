@@ -59,11 +59,6 @@ class Helper
         return EmailHelper::instance($args);
     }
 
-    public static function error(mixed $args = null): ErrorHelper
-    {
-        return new ErrorHelper($args);
-    }
-
     public static function file(): FileHelper
     {
         return FileHelper::instance();
