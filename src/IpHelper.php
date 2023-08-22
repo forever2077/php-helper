@@ -61,6 +61,7 @@ class IpHelper
 
     /**
      * 网络地址分析
+     * @link https://github.com/lukanetconsult/network-address-types
      * @param string $address
      * @return CIDRv4Address|IPv4Address|IPv6Address|MACAddress|CIDRv6Address|NetworkAddress
      */
