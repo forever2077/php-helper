@@ -114,9 +114,9 @@ class Helper
         return new MapHelper($args);
     }
 
-    public static function math(mixed $args = null): MathHelper
+    public static function math(): MathHelper
     {
-        return new MathHelper($args);
+        return MathHelper::instance();
     }
 
     public static function net(mixed $args = null): NetHelper

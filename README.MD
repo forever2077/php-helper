@@ -947,6 +947,23 @@ try {
 文档 https://github.com/crazycodr/standard-exceptions
 ```
 
+## 数学 Math
+
+```php
+use MathPHP\Algebra;
+$gcd = Algebra::gcd(8, 12);
+
+use MathPHP\Arithmetic;
+$√x = Arithmetic::isqrt(8);
+
+use MathPHP\Functions\Map;
+$x = [1, 2, 3, 4];
+$sums = Map\Single::add($x, 2);
+
+安装 composer require markrogoyski/math-php
+文档 https://github.com/markrogoyski/math-php
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...
