@@ -3,7 +3,10 @@
 ## 安装
 
 ```php
-composer require forever2077/php-helper:"@dev"
+// 初始化 composer.json
+composer require forever2077/php-helper:"@dev" --no-install
+// 仅安装主要依赖包，排除文件目录体积较大项目（阿里云、腾讯云、地理数据等）
+composer install --no-dev
 ```
 
 ## 辅助类
@@ -30,7 +33,6 @@ Helper::array()::toArray($foo);
 
 // 获取内存使用情况
 Helper::system()::getMemoryUsage();
-
 // 获取当前日期时间
 Helper::dateTime()::carbon()::now()->toDateTimeString();
 ```
@@ -41,11 +43,9 @@ Helper::dateTime()::carbon()::now()->toDateTimeString();
 // 冒泡排序
 $arr = [1, 3, 2, 5, 4];
 AlgorithmHelper::BubbleSort($arr);
-
 // 快速排序
 $arr = [1, 3, 2, 5, 4];
 AlgorithmHelper::QuickSort($arr);
-
 // 二分递归查找
 $arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 $target = 5;
@@ -374,7 +374,6 @@ SmsHelper::instance($config)->send('13500000001', [
         'code' => 6379
     ]
 ]);
-安装 composer require overtrue/easy-sms
 文档 https://github.com/overtrue/easy-sms
 ```
 
@@ -429,7 +428,7 @@ OfficeHelper::excel();
 
 // word文档处理实例
 OfficeHelper::world();
-安装 composer require phpoffice/phpword 
+
 文档 https://phpword.readthedocs.io
 ```
 
@@ -684,7 +683,6 @@ https://github.com/TencentCloud/tencentcloud-sdk-php
 
 // 腾讯云对象存储服务
 TencentCloudHelper::cos($cosConfig);
-安装 composer require qcloud/cos-sdk-v5
 文档 https://github.com/tencentyun/cos-php-sdk-v5
 ```
 
@@ -696,7 +694,6 @@ BaiduHelper::aipOcr($appId, $apiKey, $secretKey);
 // 人脸识别
 BaiduHelper::aipFace($appId, $apiKey, $secretKey);
 
-安装 composer require forever2077/api-php-sdk
 文档 https://ai.baidu.com/sdk
 ```
 
@@ -716,7 +713,6 @@ WechatHelper::work($config);
 // 企业微信开放平台
 WechatHelper::openWork($config);
 
-安装 composer require w7corp/easywechat
 文档 https://easywechat.com/6.x/
 ```
 
@@ -730,9 +726,6 @@ PayHelper::wechat($config);
 // 银联
 PayHelper::unipay($config);
 
-安装
-composer require hyperf/pimple
-composer require yansongda/pay
 文档 https://pay.yansongda.cn/docs/v3/
 ```
 
@@ -763,18 +756,14 @@ $user->getId();
 $user->getName();
 $user->getNickname();
 $user->getEmail();
-
-安装 composer require overtrue/socialite
 文档 https://github.com/overtrue/socialite
 
 // OAuth2.0 授权服务器
 OAuth2Helper::server(...);
-安装 composer require league/oauth2-server
 文档 https://oauth2.thephpleague.com
 
 // OAuth2.0 客户端
 OAuth2Helper::client(...);
-安装 composer require league/oauth2-client
 文档 https://oauth2-client.thephpleague.com
 ```
 
@@ -782,8 +771,6 @@ OAuth2Helper::client(...);
 
 ```php
 $pinyin = PinyinHelper::sentence('你好，世界');
-
-安装 composer require overtrue/pinyin
 文档 https://github.com/overtrue/pinyin
 ```
 
@@ -794,8 +781,6 @@ $pinyin = PinyinHelper::sentence('你好，世界');
 Helper::terminal()->red('Whoa now this text is red.');
 // 打印蓝色文字内容
 Helper::terminal()->blue('Blue? Wow!');
-
-安装 composer require league/climate
 文档 https://github.com/thephpleague/climate
 ```
 
@@ -814,6 +799,7 @@ GeoHelper::getChinaArea();
 GeoHelper::getChinaArea(542500000000);
 
 文档 https://github.com/rinvex/countries
+安装 composer require rinvex/countries
 数据 https://github.com/stefangabos/world_countries  https://github.com/kakuilan/china_area_mysql
 ```
 
@@ -829,7 +815,6 @@ $birthday = $ID->getBirth($pid);
 $age = $ID->getAge($pid);
 $constellation = $ID->getConstellation($pid);
 
-安装 composer require douyasi/identity-card
 文档 https://github.com/douyasi/identity-card
 ```
 
@@ -853,7 +838,7 @@ RandomHelper::string(32,
 RandomHelper::userAgent([
     'os_type' => 'Windows', 'device_type' => 'Mobile'
 ]);
-安装 composer require campo/random-user-agent
+
 文档 https://github.com/joecampo/random-user-agent
 ```
 
@@ -870,7 +855,6 @@ $rightVersion = Helper::version('3.0.0-alpha.2');
 $leftVersion->isGreaterThan($rightVersion);
 $rightVersion->isGreaterThan($leftVersion);
 
-安装 composer require phar-io/version
 文档 https://github.com/phar-io/version
 ```
 
@@ -881,7 +865,6 @@ $bf = Helper::bloom(100000, 0.001);
 $bf->add('item1');
 $bf->exists('item1');
 
-安装 composer require pleonasm/bloom-filter
 文档 https://github.com/pleonasm/bloom-filter
 ```
 
@@ -895,8 +878,6 @@ $handle->replace($badWord, '*', true);
 $handle->replace($badWord, '***');
 $handle->mark($badWord, '<mark>', '</mark>');
 $handle->getBadWord($badWord)[0];
-
-安装 composer require lustre/php-dfa-sensitive
 文档 https://github.com/FireLustre/php-dfa-sensitive
 
 // AC算法过滤器
@@ -904,7 +885,6 @@ $handle = SensitiveHelper::ac($wordData = []);
 $handle->add('...');
 $handle->finalize();
 $found = $handle->search($badWord);
-
 文档 https://github.com/codeplea/ahocorasickphp
 ```
 
@@ -915,8 +895,6 @@ $log = Helper::log();
 $log->pushHandler(new TestHandler());
 $log->warning('Foo');
 $log->error('bar');
-
-安装 composer require monolog/monolog
 文档 https://github.com/Seldaek/monolog/blob/2.x/README.md
 ```
 
@@ -929,8 +907,6 @@ DebugHelper::enable();
 DebugHelper::enable('23.75.345.200');
 // 记录异常
 DebugHelper::log('Unexpected error');
-
-安装 composer require tracy/tracy
 文档 https://github.com/nette/tracy
 ```
 
@@ -942,8 +918,6 @@ try {
 } catch (\Exceptions\Data\NotFoundException $e) {
     $this->assertEquals('Data requested for cannot be found in the data source.', $e->getMessage());
 }
-
-安装 composer require crazycodr/standard-exceptions
 文档 https://github.com/crazycodr/standard-exceptions
 ```
 
@@ -960,7 +934,6 @@ use MathPHP\Functions\Map;
 $x = [1, 2, 3, 4];
 $sums = Map\Single::add($x, 2);
 
-安装 composer require markrogoyski/math-php
 文档 https://github.com/markrogoyski/math-php
 ```
 
