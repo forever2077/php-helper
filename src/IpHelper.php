@@ -2,6 +2,8 @@
 
 namespace Forever2077\PhpHelper;
 
+use LUKA\Network\{IPv4\CIDRv4Address, IPv4\IPv4Address, IPv6\CIDRv6Address, IPv6\IPv6Address, MACAddress, NetworkAddress};
+
 class IpHelper
 {
     /**
@@ -11,25 +13,28 @@ class IpHelper
      */
     public static function remoteIp(bool $useProxy = false): string
     {
-        if (!$useProxy) {
-            //REMOTE_ADDR: 是你的客户端跟你的服务器“握手”时候的IP。如果使用了“匿名代理”，REMOTE_ADDR将显示代理服务器的IP。
-            return $_SERVER['REMOTE_ADDR'];
+        if ('cli' !== php_sapi_name()) {
+            if (!$useProxy) {
+                //REMOTE_ADDR: 是你的客户端跟你的服务器“握手”时候的IP。如果使用了“匿名代理”，REMOTE_ADDR将显示代理服务器的IP。
+                return $_SERVER['REMOTE_ADDR'];
+            }
+            $ip = '';
+            if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                //HTTP_CLIENT_IP 【可以伪造】是代理服务器发送的HTTP头。如果是“超级匿名代理”，则返回none值。同样，REMOTE_ADDR也会被替换为这个代理服务器的IP。
+                $ip = $_SERVER['HTTP_CLIENT_IP'];
+            } elseif (!empty($_SERVER['HTTP_X_REAL_IP'])) {
+                //【不可伪造】需要配置，比如nginx代理中 proxy_set_header X-Real-IP $remote_addr;
+                $ip = $_SERVER['HTTP_X_REAL_IP'];
+            } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                //【可以伪造】用户是在哪个IP使用的代理（有可能存在，也可以伪造） 如果存在，取第一个即可
+                $proxyIp = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+                $ip = $proxyIp[0];
+            } else {
+                $ip = $_SERVER['REMOTE_ADDR'];
+            }
+            return $ip;
         }
-        $ip = '';
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            //HTTP_CLIENT_IP 【可以伪造】是代理服务器发送的HTTP头。如果是“超级匿名代理”，则返回none值。同样，REMOTE_ADDR也会被替换为这个代理服务器的IP。
-            $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_REAL_IP'])) {
-            //【不可伪造】需要配置，比如nginx代理中 proxy_set_header X-Real-IP $remote_addr;
-            $ip = $_SERVER['HTTP_X_REAL_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            //【可以伪造】用户是在哪个IP使用的代理（有可能存在，也可以伪造） 如果存在，取第一个即可
-            $proxyIp = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-            $ip = $proxyIp[0];
-        } else {
-            $ip = $_SERVER['REMOTE_ADDR'];
-        }
-        return $ip;
+        return '';
     }
 
     /**
@@ -38,8 +43,6 @@ class IpHelper
      */
     public static function randChineseIp(): string
     {
-        //ip2long($ip)把ip转为int
-        //long2ip($int_ip)把int转回ip
         $ipLong = [
             ['607649792', '608174079'], //36.56.0.0-36.63.255.255
             ['1038614528', '1039007743'], //61.232.0.0-61.237.255.255
@@ -54,5 +57,15 @@ class IpHelper
         ];
         $randKey = mt_rand(0, 9);
         return long2ip(mt_rand($ipLong[$randKey][0], $ipLong[$randKey][1]));
+    }
+
+    /**
+     * 网络地址分析
+     * @param string $address
+     * @return CIDRv4Address|IPv4Address|IPv6Address|MACAddress|CIDRv6Address|NetworkAddress
+     */
+    public static function networkAddress(string $address): CIDRv4Address|IPv4Address|IPv6Address|MACAddress|CIDRv6Address|NetworkAddress
+    {
+        return NetworkAddress::fromString($address);
     }
 }
