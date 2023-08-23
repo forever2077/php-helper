@@ -15,12 +15,12 @@ composer repo:use tencent
 注意 有个别项目在某些源已不更新，可切换回composer官方源即可解决
 ```
 
-## 安装
+## 安装[](https://)
 
 ```php
 // 初始化 composer.json
 composer require forever2077/php-helper:"@dev" --no-install
-// 仅安装主要依赖包，排除文件目录体积较大项目（阿里云、腾讯云、地理数据等）
+// 仅安装主要依赖包，排除体积较大项目按需安装（阿里云、腾讯云、地理数据等）
 composer install --no-dev
 ```
 
