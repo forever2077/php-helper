@@ -67,7 +67,9 @@
         "w7corp/easywechat":"^6.12",
         "webmozart/assert":"^1.11",
         "yansongda/pay":"~3.5.0",
-        "zanysoft/laravel-zip":"^2.0"
+        "zanysoft/laravel-zip":"^2.0",
+        "amphp/amp": "^3.0",
+        "workerman/workerman": "^4.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",
