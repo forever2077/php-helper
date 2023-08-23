@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
 use Monolog\Logger;
+use Monolog\Level;
 use Monolog\Handler\TestHandler;
 
 class LogHelperTest extends TestCase
@@ -15,7 +16,7 @@ class LogHelperTest extends TestCase
     public function testLog()
     {
         $log = Helper::log();
-        $log->pushHandler(new TestHandler());
+        $log->pushHandler(new TestHandler(Level::Warning));
         $log->warning('Foo');
         $log->error('bar');
         $this->assertEquals('default', $log->getName());

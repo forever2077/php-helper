@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php": "~8.0",
+        "php": "~8.1.0",
         "ext-zip": "*",
         "ext-json": "*",
         "ext-sqlite3": "*",
@@ -41,10 +41,10 @@
         "league/csv":"^9.8",
         "league/oauth2-client":"^2.7",
         "league/oauth2-server":"^8.5",
-        "luka/network-address-types":"^1.1",
+        "luka/network-address-types":"1.1.1",
         "lustre/php-dfa-sensitive":"^1.4",
         "markrogoyski/math-php":"^2.8",
-        "monolog/monolog":"^2.9",
+        "monolog/monolog":"^3.4",
         "mtdowling/jmespath.php":"^2.6",
         "nesbot/carbon":"^2.68",
         "netresearch/jsonmapper":"^4.2",
@@ -64,7 +64,7 @@
         "symfony/yaml":"^6.0",
         "tracy/tracy":"^2.10",
         "vlucas/phpdotenv":"^5.4",
-        "w7corp/easywechat":"6.7",
+        "w7corp/easywechat":"^6.12",
         "webmozart/assert":"^1.11",
         "yansongda/pay":"~3.5.0",
         "zanysoft/laravel-zip":"^2.0"
@@ -76,5 +76,6 @@
         "alipaysdk/openapi":"^1.0",
         "tencentcloud/tencentcloud-sdk-php":"^3.0",
         "rinvex/countries":"^8.1"
-    }
+    },
+    "minimum-stability": "stable"
 }
