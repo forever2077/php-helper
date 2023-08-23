@@ -39,44 +39,42 @@ class AnnotationHelper
      */
     private static function processMethodAnnotations(ReflectionClass $class, ReflectionMethod $method, array $args): mixed
     {
+        // 目标类实例化
+        $instanceOfClass = $class->newInstance();
         // 获取目标所有注解
         $annotations = $method->getAttributes();
         // 获取目标类所有方法
         //$methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
-
-        foreach ($annotations as $annotation) {
-            if ($annotation->getName() === Annotations\BeforeMethod::class) {
-                $instance = $annotation->newInstance();
-                if (is_string($instance->methodName)) {
-                    call_user_func_array([$class->newInstance(), $instance->methodName], $instance->args);
-                } else if (is_array($instance->methodName)) {
-                    call_user_func_array([$instance->methodName[0], $instance->methodName[1]], $instance->args);
-                } else {
-                    throw new ReflectionException('methodName must be string or array');
-                }
-            }
-        }
-
-        try {
-            // 执行目标方法体
-            $rtn = $method->invokeArgs(null, $args);
-        } catch (ReflectionException $e) {
-            throw new ReflectionException($e->getMessage());
-        }
-
-        foreach ($annotations as $annotation) {
-            if ($annotation->getName() === Annotations\AfterMethod::class) {
-                $instance = $annotation->newInstance();
-                if (is_string($instance->methodName)) {
-                    call_user_func_array([$class->newInstance(), $instance->methodName], $instance->args);
-                } else if (is_array($instance->methodName)) {
-                    call_user_func_array([$instance->methodName[0], $instance->methodName[1]], $instance->args);
-                } else {
-                    throw new ReflectionException('methodName must be string or array');
-                }
-            }
-        }
-
+        // 类方法前置注解处理
+        self::handleAnnotations($annotations, Annotations\BeforeMethod::class, $instanceOfClass);
+        // 执行目标方法体
+        $rtn = $method->invokeArgs(null, $args);
+        // 类方法后置注解处理
+        self::handleAnnotations($annotations, Annotations\AfterMethod::class, $instanceOfClass);
+        // 返回目标方法执行结果
         return $rtn;
+    }
+
+    /**
+     * @param array $annotations
+     * @param string $targetAnnotation
+     * @param $classInstance
+     * @return void
+     * @throws ReflectionException
+     */
+    private static function handleAnnotations(array $annotations, string $targetAnnotation, $classInstance): void
+    {
+        foreach ($annotations as $annotation) {
+            if ($annotation->getName() === $targetAnnotation) {
+                $instance = $annotation->newInstance();
+                if (is_string($instance->methodName)) {
+                    call_user_func_array([$classInstance, $instance->methodName], $instance->args);
+                } else if (is_array($instance->methodName)) {
+                    call_user_func_array([$instance->methodName[0], $instance->methodName[1]], $instance->args);
+                } else {
+                    throw new ReflectionException('methodName must be string or array');
+                }
+            }
+        }
     }
 }
