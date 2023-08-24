@@ -2,7 +2,8 @@
 
 namespace Forever2077\PhpHelper\Annotations;
 
-use \Attribute;
+use Attribute;
+use Forever2077\PhpHelper\Annotations\Interface\Annotations;
 
 #[Attribute(Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
 final class Cache implements Annotations

@@ -2,7 +2,8 @@
 
 namespace Forever2077\PhpHelper\Annotations;
 
-use \Attribute;
+use Attribute;
+use Forever2077\PhpHelper\Annotations\Interface\Annotations;
 
 #[Attribute(Attribute::TARGET_METHOD)]
 final class Before implements Annotations

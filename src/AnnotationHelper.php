@@ -11,11 +11,15 @@ use Exception;
 class AnnotationHelper
 {
     private static array $beforeMethodAttribute = [
-        Annotations\Before::class
+        Annotations\Before::class,
+        Annotations\Limit::class,
     ];
 
     private static array $afterMethodAttribute = [
-        Annotations\After::class, Annotations\Cache::class, Annotations\Log::class
+        Annotations\After::class,
+        Annotations\Cache::class,
+        Annotations\Email::class,
+        Annotations\Log::class,
     ];
 
     /**
@@ -50,21 +54,24 @@ class AnnotationHelper
     {
         // 目标类实例化
         $instanceOfClass = $class->newInstance();
-
         // 获取目标所有注解
         $annotations = $method->getAttributes();
 
         // 类方法前置注解处理
-        foreach (self::$beforeMethodAttribute as $beforeMethodAttribute) {
-            self::handlerAdapter($annotations, $beforeMethodAttribute, $instanceOfClass);
+        foreach ($annotations as $annotation) {
+            if (in_array($annotation->getName(), self::$beforeMethodAttribute)) {
+                self::handlerAdapter($annotation, $instanceOfClass);
+            }
         }
 
         // 执行目标方法体
         $rtn = $method->invokeArgs(null, $args);
 
         // 类方法后置注解处理
-        foreach (self::$afterMethodAttribute as $afterMethodAttribute) {
-            self::handlerAdapter($annotations, $afterMethodAttribute, $instanceOfClass);
+        foreach ($annotations as $annotation) {
+            if (in_array($annotation->getName(), self::$afterMethodAttribute)) {
+                self::handlerAdapter($annotation, $instanceOfClass);
+            }
         }
 
         // 返回目标方法执行结果
@@ -72,29 +79,31 @@ class AnnotationHelper
     }
 
     /**
-     * @param array $annotations
-     * @param string $targetAnnotation
+     * @param ReflectionAttribute $annotation
      * @param object $classInstance
      * @return void
      * @throws ReflectionException
      */
-    private static function handlerAdapter(array $annotations, string $targetAnnotation, object $classInstance): void
+    private static function handlerAdapter(ReflectionAttribute $annotation, object $classInstance): void
     {
-        /** @var ReflectionAttribute $annotation */
-        foreach ($annotations as $annotation) {
-            if ($annotation->getName() === $targetAnnotation) {
+        $annotationInstance = $annotation->newInstance();
+        $_handlerMethod = 'run';
+        $_handlerClass = __NAMESPACE__ . '\Annotations\Handler\\' . ucfirst($annotationInstance->getHandler());
 
-                $instance = $annotation->newInstance();
-
-                $_handlerMethod = 'run';
-                $_handlerClass = __NAMESPACE__ . '\Annotations\Handler\\' . ucfirst($instance->getHandler());
-
-                if (!method_exists($_handlerClass, $_handlerMethod)) {
-                    throw new ReflectionException('handler not exists');
-                }
-
-                call_user_func([$_handlerClass, $_handlerMethod], $annotations, $targetAnnotation, $classInstance);
-            }
+        if (!method_exists($_handlerClass, $_handlerMethod)) {
+            throw new ReflectionException('handler not exists');
         }
+
+        if (!is_string($annotationInstance->methodName) && !is_array($annotationInstance->methodName)) {
+            throw new ReflectionException('methodName must be string or array');
+        }
+
+        $methodName = is_array($annotationInstance->methodName) ? $annotationInstance->methodName : [$classInstance, $annotationInstance->methodName];
+
+        if (!method_exists($methodName[0], $methodName[1])) {
+            throw new ReflectionException('method not exists');
+        }
+
+        call_user_func([$_handlerClass, $_handlerMethod], $methodName, $annotationInstance);
     }
 }

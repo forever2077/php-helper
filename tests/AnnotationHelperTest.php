@@ -23,10 +23,10 @@ class AnnotationHelperTest extends TestCase
      * @param int $b
      * @return bool
      */
-    #[Log]
-    #[Limit]
-    #[Cache]
-    #[Email]
+//    #[Log]
+//    #[Limit]
+//    #[Cache]
+//    #[Email]
     #[Before("beforeAction", ['a' => 3, 'b' => 4])]
     #[After(['AnnotationHelperTest', 'afterAction'], ['a' => 5, 'b' => 6])]
     public static function doAction(int $a = 0, int $b = 0): bool
