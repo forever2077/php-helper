@@ -1003,7 +1003,7 @@ $future2->await();
 
 ```php
 use Phpfastcache\CacheManager;
-// 缓存配置
+// 缓存配置(可选)
 CacheManager::setDefaultConfig(CacheHelper::config(['path' => __DIR__ . '/tmp']));
 // 创建本地文本缓存系统
 $cache = Helper::cache('files');
