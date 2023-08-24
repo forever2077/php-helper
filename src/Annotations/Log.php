@@ -19,6 +19,6 @@ final class Log implements Annotations
 
     public function getHandler(): string
     {
-        return 'LogMethod';
+        return 'Log';
     }
 }

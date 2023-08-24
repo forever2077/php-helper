@@ -19,6 +19,6 @@ final class Limit implements Annotations
 
     public function getHandler(): string
     {
-        return 'LimitMethod';
+        return 'Limit';
     }
 }

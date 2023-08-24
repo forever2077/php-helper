@@ -242,4 +242,9 @@ class Helper
     {
         DebugHelper::enable($mode, $logDirectory, $email);
     }
+
+    public static function annotation(array $callback, array $args = []): mixed
+    {
+        return AnnotationHelper::process($callback, $args);
+    }
 }

@@ -30,24 +30,15 @@ class AnnotationHelper
     ];
 
     /**
-     * 通过继承触发
-     * @throws Exception
-     */
-    public function __construct()
-    {
-        self::process();
-    }
-
-    /**
      * @param array $callback
      * @param array $args
      * @return mixed
      * @throws Exception
      */
-    public static function process(array $callback = [], array $args = []): mixed
+    public static function process(array $callback, array $args = []): mixed
     {
         try {
-            if (is_array($callback) && !empty($callback)) {
+            if (!empty($callback)) {
                 $class = new ReflectionClass($callback[0]);
                 $method = $class->getMethod($callback[1]);
                 return self::processAnnotations($class, $method, $args);
@@ -68,7 +59,6 @@ class AnnotationHelper
      */
     private static function processAnnotations(ReflectionClass &$class, ReflectionMethod &$method, array $args = []): mixed
     {
-        // 获取目标所有注解
         $annotations = $method->getAttributes();
 
         foreach ($annotations as $annotation) {
@@ -77,8 +67,11 @@ class AnnotationHelper
             }
         }
 
-        // 执行目标方法体
-        $rtn = $method->invokeArgs(null, $args);
+        if ($method->isStatic()) {
+            $rtn = $method->invokeArgs(null, $args);
+        } else {
+            $rtn = $method->invokeArgs($class->newInstance(), $args);
+        }
 
         foreach ($annotations as $annotation) {
             if (in_array($annotation->getName(), self::$afterMethodAttribute)) {
@@ -105,21 +98,6 @@ class AnnotationHelper
             throw new ReflectionException('handler not exists');
         }
 
-        if (!is_string($annotationInstance->methodName) && !is_array($annotationInstance->methodName)) {
-            throw new ReflectionException('methodName must be string or array');
-        }
-
-        if (is_array($annotationInstance->methodName)) {
-            $methodName = $annotationInstance->methodName;
-        } else {
-            $instanceOfClass = $class->newInstance();
-            $methodName = [$instanceOfClass, $annotationInstance->methodName];
-        }
-
-        if (!method_exists($methodName[0], $methodName[1])) {
-            throw new ReflectionException('method not exists');
-        }
-
-        call_user_func([$_handlerClass, $_handlerMethod], $methodName, $annotationInstance);
+        call_user_func([$_handlerClass, $_handlerMethod], $class, $annotationInstance);
     }
 }

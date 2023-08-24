@@ -19,6 +19,6 @@ final class Cache implements Annotations
 
     public function getHandler(): string
     {
-        return 'CacheMethod';
+        return 'Cache';
     }
 }

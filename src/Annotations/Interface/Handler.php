@@ -2,7 +2,9 @@
 
 namespace Forever2077\PhpHelper\Annotations\Interface;
 
+use ReflectionClass;
+
 interface Handler
 {
-    public static function run(array $methodName, object $annotationInstance): void;
+    public static function run(ReflectionClass $class, object $annotationInstance): void;
 }

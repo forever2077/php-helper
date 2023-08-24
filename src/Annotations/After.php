@@ -19,6 +19,6 @@ final class After implements Annotations
 
     public function getHandler(): string
     {
-        return 'BeforeAfterMethod';
+        return 'BeforeAfter';
     }
 }
