@@ -68,27 +68,28 @@ class AnnotationHelper
         }
 
         if ($method->isStatic()) {
-            $rtn = $method->invokeArgs(null, $args);
+            $targetMethodRtn = $method->invokeArgs(null, $args);
         } else {
-            $rtn = $method->invokeArgs($class->newInstance(), $args);
+            $targetMethodRtn = $method->invokeArgs($class->newInstance(), $args);
         }
 
         foreach ($annotations as $annotation) {
             if (in_array($annotation->getName(), self::$afterMethodAttribute)) {
-                self::handlerAdapter($annotation, $class);
+                self::handlerAdapter($annotation, $class, $targetMethodRtn);
             }
         }
 
-        return $rtn;
+        return $targetMethodRtn;
     }
 
     /**
      * @param ReflectionAttribute $annotation
      * @param ReflectionClass $class
+     * @param mixed|null $targetMethodRtn
      * @return void
      * @throws ReflectionException
      */
-    private static function handlerAdapter(ReflectionAttribute $annotation, ReflectionClass &$class): void
+    private static function handlerAdapter(ReflectionAttribute $annotation, ReflectionClass &$class, mixed $targetMethodRtn = null): void
     {
         $annotationInstance = $annotation->newInstance();
         $_handlerMethod = 'run';
@@ -98,6 +99,6 @@ class AnnotationHelper
             throw new ReflectionException('handler not exists');
         }
 
-        call_user_func([$_handlerClass, $_handlerMethod], $class, $annotationInstance);
+        call_user_func([$_handlerClass, $_handlerMethod], $class, $annotationInstance, $targetMethodRtn);
     }
 }

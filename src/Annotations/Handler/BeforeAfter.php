@@ -12,10 +12,11 @@ class BeforeAfter implements Handler
     /**
      * @param ReflectionClass $class
      * @param object $annotationInstance
+     * @param mixed|null $targetMethodRtn
      * @return void
      * @throws ReflectionException
      */
-    public static function run(ReflectionClass $class, object $annotationInstance): void
+    public static function run(ReflectionClass $class, object $annotationInstance, mixed $targetMethodRtn = null): void
     {
         if (!is_string($annotationInstance->methodName) && !is_array($annotationInstance->methodName)) {
             throw new ReflectionException('methodName must be string or array');
