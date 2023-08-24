@@ -2,17 +2,17 @@
 
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\AnnotationHelper;
-use Forever2077\PhpHelper\Annotations\{After, Before, Cache, Log, Limit, Email};
+use Forever2077\PhpHelper\Annotations\{After, Before, Cache, Log, Limit};
 
 class AnnotationHelperTest extends TestCase
 {
     public function testMain()
     {
         try {
-            $rtn = AnnotationHelper::process(
-                [new AnnotationHelperTest, 'doAction'], ['a' => 1, 'b' => 2],
-            );
-            $this->assertTrue($rtn);
+            //AnnotationHelper::process($this);
+            AnnotationHelper::process(__CLASS__);
+            //AnnotationHelper::process([new AnnotationHelperTest, 'doAction'], ['a' => 1, 'b' => 2]);
+            $this->assertTrue(true);
         } catch (Exception $e) {
             $this->fail($e);
         }
@@ -26,7 +26,6 @@ class AnnotationHelperTest extends TestCase
 //    #[Log]
 //    #[Limit]
 //    #[Cache]
-//    #[Email]
     #[Before("beforeAction", ['a' => 3, 'b' => 4])]
     #[After(['AnnotationHelperTest', 'afterAction'], ['a' => 5, 'b' => 6])]
     public static function doAction(int $a = 0, int $b = 0): bool

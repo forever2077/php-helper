@@ -10,36 +10,64 @@ use Exception;
 
 class AnnotationHelper
 {
+    /**
+     * 类方法前置注解处理
+     * @var array|string[]
+     */
     private static array $beforeMethodAttribute = [
         Annotations\Before::class,
         Annotations\Limit::class,
     ];
 
+    /**
+     * 类方法后置注解处理
+     * @var array|string[]
+     */
     private static array $afterMethodAttribute = [
         Annotations\After::class,
         Annotations\Cache::class,
-        Annotations\Email::class,
         Annotations\Log::class,
     ];
 
     /**
-     * @param array $callback
+     * 通过继承触发
+     * @throws Exception
+     */
+    public function __construct()
+    {
+        self::process();
+    }
+
+    /**
+     * @param array|string|object $callback
      * @param array $args
      * @return mixed
      * @throws Exception
      */
-    public static function process(array $callback, array $args = []): mixed
+    public static function process(array|string|object $callback = [], array $args = []): mixed
     {
-        if (!empty($callback)) {
-            try {
+        try {
+            if (is_array($callback) && !empty($callback)) {
                 $class = new ReflectionClass($callback[0]);
                 $method = $class->getMethod($callback[1]);
                 return self::processAnnotations($class, $method, $args);
-            } catch (Exception $e) {
-                throw new Exception('process', 0, $e);
+            } elseif (is_string($callback) || is_object($callback)) {
+                $rtn = [];
+                $class = new ReflectionClass($callback);
+                $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
+                foreach ($methods as $method) {
+                    if ($method->getDeclaringClass()->getName() == $class->getName()) {
+                        if ($method->getAttributes()) {
+                            $rtn[$method->getName()] = self::processAnnotations($class, $method, $args);
+                        }
+                    }
+                }
+                return $rtn;
+            } else {
+                throw new Exception('callback type error');
             }
-        } else {
-            throw new Exception('callback is empty');
+        } catch (Exception $e) {
+            throw new Exception('process', 0, $e);
         }
     }
 
@@ -50,41 +78,36 @@ class AnnotationHelper
      * @return mixed
      * @throws ReflectionException
      */
-    private static function processAnnotations(ReflectionClass $class, ReflectionMethod $method, array $args = []): mixed
+    private static function processAnnotations(ReflectionClass &$class, ReflectionMethod &$method, array $args = []): mixed
     {
-        // 目标类实例化
-        $instanceOfClass = $class->newInstance();
         // 获取目标所有注解
         $annotations = $method->getAttributes();
 
-        // 类方法前置注解处理
         foreach ($annotations as $annotation) {
             if (in_array($annotation->getName(), self::$beforeMethodAttribute)) {
-                self::handlerAdapter($annotation, $instanceOfClass);
+                self::handlerAdapter($annotation, $class);
             }
         }
 
         // 执行目标方法体
         $rtn = $method->invokeArgs(null, $args);
 
-        // 类方法后置注解处理
         foreach ($annotations as $annotation) {
             if (in_array($annotation->getName(), self::$afterMethodAttribute)) {
-                self::handlerAdapter($annotation, $instanceOfClass);
+                self::handlerAdapter($annotation, $class);
             }
         }
 
-        // 返回目标方法执行结果
         return $rtn;
     }
 
     /**
      * @param ReflectionAttribute $annotation
-     * @param object $classInstance
+     * @param ReflectionClass $class
      * @return void
      * @throws ReflectionException
      */
-    private static function handlerAdapter(ReflectionAttribute $annotation, object $classInstance): void
+    private static function handlerAdapter(ReflectionAttribute $annotation, ReflectionClass &$class): void
     {
         $annotationInstance = $annotation->newInstance();
         $_handlerMethod = 'run';
@@ -98,7 +121,12 @@ class AnnotationHelper
             throw new ReflectionException('methodName must be string or array');
         }
 
-        $methodName = is_array($annotationInstance->methodName) ? $annotationInstance->methodName : [$classInstance, $annotationInstance->methodName];
+        if (is_array($annotationInstance->methodName)) {
+            $methodName = $annotationInstance->methodName;
+        } else {
+            $instanceOfClass = $class->newInstance();
+            $methodName = [$instanceOfClass, $annotationInstance->methodName];
+        }
 
         if (!method_exists($methodName[0], $methodName[1])) {
             throw new ReflectionException('method not exists');
