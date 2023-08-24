@@ -2,8 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\AnnotationHelper;
-use Forever2077\PhpHelper\Annotations\AfterMethod;
-use Forever2077\PhpHelper\Annotations\BeforeMethod;
+use Forever2077\PhpHelper\Annotations\{After, Before, Cache, Log};
 
 class AnnotationHelperTest extends TestCase
 {
@@ -15,13 +14,20 @@ class AnnotationHelperTest extends TestCase
             );
             $this->assertTrue($rtn);
         } catch (Exception $e) {
-            $this->fail($e->getMessage());
+            $this->fail($e);
         }
     }
 
-    #[BeforeMethod("beforeAction", ['a' => 3, 'b' => 4])]
-    #[AfterMethod(['AnnotationHelperTest', 'afterAction'], ['a' => 5, 'b' => 6])]
-    public static function doAction($a = 0, $b = 0): bool
+    /**
+     * @param int $a
+     * @param int $b
+     * @return bool
+     */
+    #[Log]
+    #[Cache]
+    #[Before("beforeAction", ['a' => 3, 'b' => 4])]
+    #[After(['AnnotationHelperTest', 'afterAction'], ['a' => 5, 'b' => 6])]
+    public static function doAction(int $a = 0, int $b = 0): bool
     {
         echo "testAction：{$a}, {$b}" . PHP_EOL;
         return true;
@@ -32,7 +38,7 @@ class AnnotationHelperTest extends TestCase
         echo "beforeActionMethod：{$a}, {$b}" . PHP_EOL;
     }
 
-    public static function afterAction($a = 0, $b = 0): void
+    public function afterAction($a = 0, $b = 0): void
     {
         echo "beforeActionMethod：{$a}, {$b}" . PHP_EOL;
     }

@@ -5,7 +5,7 @@ namespace Forever2077\PhpHelper\Annotations;
 use \Attribute;
 
 #[Attribute(Attribute::TARGET_METHOD)]
-final class BeforeMethod implements MethodInterface
+final class Before implements Annotations
 {
     public string|array $methodName;
     public array $args;
@@ -14,5 +14,10 @@ final class BeforeMethod implements MethodInterface
     {
         $this->methodName = $methodName;
         $this->args = $args;
+    }
+
+    public function getHandler(): string
+    {
+        return 'BeforeAfterMethod';
     }
 }
