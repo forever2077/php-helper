@@ -3,8 +3,10 @@
 namespace Forever2077\PhpHelper\Annotations\Handler;
 
 use Forever2077\PhpHelper\Annotations\Interface\Handler;
+use Forever2077\PhpHelper\Helper;
+use Monolog\Handler\TestHandler;
+use Monolog\Level;
 use ReflectionClass;
-use ReflectionException;
 
 class Log implements Handler
 {
@@ -13,16 +15,15 @@ class Log implements Handler
      * @param object $annotationInstance
      * @param mixed|null $targetMethodRtn
      * @return void
-     * @throws ReflectionException
      */
     public static function run(ReflectionClass $class, object $annotationInstance, mixed $targetMethodRtn = null): void
     {
-        try {
-            dump($class);
-            dump($annotationInstance);
-            dump($targetMethodRtn);
-        } catch (ReflectionException $e) {
-            throw new ReflectionException(__CLASS__, 0, $e);
-        }
+        /*dump($class);
+        dump($annotationInstance);
+        dump($targetMethodRtn);
+
+        $log = Helper::log();
+        $log->pushHandler(new TestHandler(Level::Warning));
+        $log->addRecord(Level::Warning, $targetMethodRtn);*/
     }
 }

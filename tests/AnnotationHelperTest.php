@@ -20,8 +20,7 @@ class AnnotationHelperTest extends TestCase
      * @param int $b
      * @return string
      */
-//    #[Log]
-//    #[Limit]
+    //#[Limit]
     #[Before("beforeAction", ['a' => 3, 'b' => 4])]
     #[After(['AnnotationHelperTest', 'afterAction'], ['a' => 5, 'b' => 6])]
     public static function doAction(int $a = 0, int $b = 0): string
@@ -40,6 +39,8 @@ class AnnotationHelperTest extends TestCase
         return "afterAction：{$a}, {$b}";
     }
 
+    //#[Log]
+    //#[Log('自定义日志信息')]
     #[Cache]
     public function innerAction($a = 0, $b = 0): string
     {
