@@ -8,7 +8,7 @@ use Monolog\Logger;
 class LogHelper
 {
     /**
-     * @link https://github.com/Seldaek/monolog/blob/2.x/README.md
+     * @link https://seldaek.github.io/monolog/
      * @param string $name
      * @param array $handlers
      * @param array $processors

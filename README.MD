@@ -930,7 +930,7 @@ $log = Helper::log();
 $log->pushHandler(new TestHandler());
 $log->warning('Foo');
 $log->error('bar');
-文档 https://github.com/Seldaek/monolog/blob/2.x/README.md
+文档 https://seldaek.github.io/monolog/
 ```
 
 ## 调试器 Debugger
