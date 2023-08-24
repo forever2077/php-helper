@@ -9,9 +9,7 @@ class AnnotationHelperTest extends TestCase
     public function testMain()
     {
         try {
-            //AnnotationHelper::process($this);
-            AnnotationHelper::process(__CLASS__);
-            //AnnotationHelper::process([new AnnotationHelperTest, 'doAction'], ['a' => 1, 'b' => 2]);
+            AnnotationHelper::process([$this, 'doAction'], ['a' => 1, 'b' => 2]);
             $this->assertTrue(true);
         } catch (Exception $e) {
             $this->fail($e);

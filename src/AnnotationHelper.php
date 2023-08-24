@@ -39,30 +39,18 @@ class AnnotationHelper
     }
 
     /**
-     * @param array|string|object $callback
+     * @param array $callback
      * @param array $args
      * @return mixed
      * @throws Exception
      */
-    public static function process(array|string|object $callback = [], array $args = []): mixed
+    public static function process(array $callback = [], array $args = []): mixed
     {
         try {
             if (is_array($callback) && !empty($callback)) {
                 $class = new ReflectionClass($callback[0]);
                 $method = $class->getMethod($callback[1]);
                 return self::processAnnotations($class, $method, $args);
-            } elseif (is_string($callback) || is_object($callback)) {
-                $rtn = [];
-                $class = new ReflectionClass($callback);
-                $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
-                foreach ($methods as $method) {
-                    if ($method->getDeclaringClass()->getName() == $class->getName()) {
-                        if ($method->getAttributes()) {
-                            $rtn[$method->getName()] = self::processAnnotations($class, $method, $args);
-                        }
-                    }
-                }
-                return $rtn;
             } else {
                 throw new Exception('callback type error');
             }
