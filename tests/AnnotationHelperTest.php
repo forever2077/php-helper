@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\AnnotationHelper;
-use Forever2077\PhpHelper\Annotations\{After, Before, Cache, Log};
+use Forever2077\PhpHelper\Annotations\{After, Before, Cache, Log, Limit, Email};
 
 class AnnotationHelperTest extends TestCase
 {
@@ -24,7 +24,9 @@ class AnnotationHelperTest extends TestCase
      * @return bool
      */
     #[Log]
+    #[Limit]
     #[Cache]
+    #[Email]
     #[Before("beforeAction", ['a' => 3, 'b' => 4])]
     #[After(['AnnotationHelperTest', 'afterAction'], ['a' => 5, 'b' => 6])]
     public static function doAction(int $a = 0, int $b = 0): bool
