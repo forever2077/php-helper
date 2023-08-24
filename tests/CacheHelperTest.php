@@ -24,9 +24,7 @@ class CacheHelperTest extends TestCase
     public function testConfig()
     {
         try {
-            CacheManager::setDefaultConfig(CacheHelper::config([
-                'path' => __DIR__ . '\tmp',
-            ]));
+            CacheManager::setDefaultConfig(CacheHelper::config(['path' => __DIR__ . '/tmp']));
             $this->assertTrue(true);
         } catch (Exception $e) {
             $this->fail($e->getMessage());

@@ -999,6 +999,24 @@ $future2->await();
 文档 https://amphp.org/amp
 ```
 
+## 缓存 Cache
+
+```php
+use Phpfastcache\CacheManager;
+// 缓存配置
+CacheManager::setDefaultConfig(CacheHelper::config(['path' => __DIR__ . '/tmp']));
+// 创建本地文本缓存系统
+$cache = Helper::cache('files');
+$cache->set('name', 'forever2077');
+$cache->get('name');
+// 创建事件
+CacheHelper::event()->onCacheGetItem(function (ExtendedCacheItemPoolInterface $itemPool, ExtendedCacheItemInterface $item) {
+    $item->set('[HACKED BY EVENT] ' . $item->get());
+});
+
+文档 https://github.com/PHPSocialNetwork/phpfastcache
+```
+
 ## 致谢 Thank
 
 项目来之各开源项目收录和整理，持续更新中ing...
