@@ -19,9 +19,16 @@ class Helper
         return BloomHelper::instance($approxSize, $falsePosProb);
     }
 
-    public static function cache(mixed $args = null): CacheHelper
+    public static function cache(
+        string|\Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface $driver,
+        \Phpfastcache\Config\ConfigurationOptionInterface             $config = null
+    ): \Phpfastcache\Helper\Psr16Adapter
     {
-        return new CacheHelper($args);
+        try {
+            return CacheHelper::instance($driver, $config);
+        } catch (\Exception $e) {
+            throw new \Exception($e);
+        }
     }
 
     public static function captcha(mixed $args = null): CaptchaHelper
@@ -245,6 +252,10 @@ class Helper
 
     public static function annotation(array $callback, array $args = []): mixed
     {
-        return AnnotationHelper::process($callback, $args);
+        try {
+            return AnnotationHelper::process($callback, $args);
+        } catch (\Exception $e) {
+            throw new \Exception($e);
+        }
     }
 }
