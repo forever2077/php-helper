@@ -96,9 +96,9 @@ class Helper
         return new JsonHelper();
     }
 
-    public static function jwt(mixed $args = null): JwtHelper
+    public static function jwt(): JwtHelper
     {
-        return new JwtHelper($args);
+        return JwtHelper::instance();
     }
 
     public static function log(string $name = 'default', array $handlers = [], array $processors = [], ?\DateTimeZone $timezone = null): \Monolog\Logger
