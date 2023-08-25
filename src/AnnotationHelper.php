@@ -41,7 +41,7 @@ class AnnotationHelper
             if (!empty($callback)) {
                 $class = new ReflectionClass($callback[0]);
                 $method = $class->getMethod($callback[1]);
-                return self::processAnnotations($class, $method, $args);
+                return self::processMethodAnnotations($class, $method, $args);
             } else {
                 throw new Exception('callback type error');
             }
@@ -57,26 +57,30 @@ class AnnotationHelper
      * @return mixed
      * @throws ReflectionException
      */
-    private static function processAnnotations(ReflectionClass &$class, ReflectionMethod &$method, array $args = []): mixed
+    private static function processMethodAnnotations(ReflectionClass &$class, ReflectionMethod &$method, array $args = []): mixed
     {
-        $rtn = [];
+        $rtn = [
+            '__className' => $class->getName(),
+            '__methodName' => $method->getName(),
+            '__createTime' => microtime(true),
+        ];
         $annotations = $method->getAttributes();
 
         foreach ($annotations as $annotation) {
             if (in_array($annotation->getName(), self::$beforeMethodAttribute)) {
-                $rtn[$annotation->getName()] = self::handlerAdapter($annotation, $class);
+                $rtn[$annotation->getName()] = self::handlerAdapter($annotation, $class, $rtn);
             }
         }
 
         if ($method->isStatic()) {
-            $rtn['targetMethod'] = $method->invokeArgs(null, $args);
+            $rtn[$method->getName()] = $method->invokeArgs(null, $args);
         } else {
-            $rtn['targetMethod'] = $method->invokeArgs($class->newInstance(), $args);
+            $rtn[$method->getName()] = $method->invokeArgs($class->newInstance(), $args);
         }
 
         foreach ($annotations as $annotation) {
             if (in_array($annotation->getName(), self::$afterMethodAttribute)) {
-                $rtn[$annotation->getName()] = self::handlerAdapter($annotation, $class, $rtn['targetMethod']);
+                $rtn[$annotation->getName()] = self::handlerAdapter($annotation, $class, $rtn);
             }
         }
 
@@ -86,11 +90,11 @@ class AnnotationHelper
     /**
      * @param ReflectionAttribute $annotation
      * @param ReflectionClass $class
-     * @param mixed|null $targetMethodRtn
+     * @param mixed|null $methodRtn
      * @return mixed
      * @throws ReflectionException
      */
-    private static function handlerAdapter(ReflectionAttribute $annotation, ReflectionClass &$class, mixed $targetMethodRtn = null): mixed
+    private static function handlerAdapter(ReflectionAttribute $annotation, ReflectionClass &$class, mixed $methodRtn = null): mixed
     {
         $annotationInstance = $annotation->newInstance();
         $_handlerMethod = 'run';
@@ -100,6 +104,6 @@ class AnnotationHelper
             throw new ReflectionException('handler not exists');
         }
 
-        return call_user_func([$_handlerClass, $_handlerMethod], $class, $annotationInstance, $targetMethodRtn);
+        return call_user_func([$_handlerClass, $_handlerMethod], $class, $annotationInstance, $methodRtn);
     }
 }
