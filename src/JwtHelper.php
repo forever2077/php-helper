@@ -31,20 +31,32 @@ class JwtHelper
     public static function issuingTokens(): UnencryptedToken
     {
         try {
-            //$privateKeyPem = random_bytes(2048);
+            // Hmac
+            $privateKeyPem = random_bytes(512);
 
-            $res = openssl_pkey_new(array(
+            // Blake2b
+            //$privateKeyPem = sodium_crypto_generichash_keygen();
+
+            // Rsa >= 2048
+            /*$res = openssl_pkey_new(array(
                 'private_key_bits' => 2048,
                 'private_key_type' => OPENSSL_KEYTYPE_RSA,
             ));
-            openssl_pkey_export($res, $privateKeyPem);
+            openssl_pkey_export($res, $privateKeyPem);*/
+
+            // Ec Sha512(secp521r1)、Sha384(secp384r1)、Sha256(secp256k1)
+            /*$res = openssl_pkey_new([
+                "curve_name" => "secp256k1",
+                "private_key_type" => OPENSSL_KEYTYPE_EC,
+            ]);
+            openssl_pkey_export($res, $privateKeyPem);*/
 
         } catch (\Exception $e) {
             throw new \Exception($e);
         }
         $tokenBuilder = (new Builder(new JoseEncoder(), ChainedFormatter::default()));
         $signingKey = InMemory::plainText($privateKeyPem);
-        $algorithm = new Signer\Rsa\Sha512();
+        $algorithm = new Signer\Hmac\Sha512();
         $now = new DateTimeImmutable();
 
         return $tokenBuilder
