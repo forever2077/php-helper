@@ -70,7 +70,8 @@
         "zanysoft/laravel-zip":"^2.0",
         "amphp/amp": "^3.0",
         "workerman/workerman": "^4.1",
-        "phpfastcache/phpfastcache": "^9.1"
+        "phpfastcache/phpfastcache": "^9.1",
+        "lcobucci/jwt": "^5.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",

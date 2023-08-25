@@ -58,7 +58,7 @@ class AnnotationHelperTest extends TestCase
     //#[Log]
     //#[Log('自定义日志信息')]
     //#[Cache] // 默认
-    #[Cache(300, 'files', 'myDefined')] // 后续可通过自定义ID获取内容
+    #[Cache(300, 'files', 'myDefined')] // 后续通过自定义ID获取内容
     //#[Cache(300, 'redis', 'myDefined')]
     public function innerAction($a = 0, $b = 0): string
     {
