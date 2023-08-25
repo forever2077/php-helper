@@ -2,4 +2,6 @@
 composer.lock
 .idea
 .todo
+.env
 junit-log.xml
+/.env
