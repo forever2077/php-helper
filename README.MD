@@ -1014,6 +1014,19 @@ CacheHelper::event()->onCacheGetItem(function (ExtendedCacheItemPoolInterface $i
     $item->set('[HACKED BY EVENT] ' . $item->get());
 });
 
+// Redis 缓存
+$config = new RedisConfig([
+    'host' => getenv('CACHE_REDIS_HOST'),          // 服务器地址
+    'port' => (int)getenv('CACHE_REDIS_PORT'),     // 端口号
+    'password' => getenv('CACHE_REDIS_PASSWORD'),  // 密码 (如果有)
+    'database' => (int)getenv('CACHE_REDIS_DB'),   // 数据库索引
+    'optPrefix' => getenv('CACHE_REDIS_PREFIX'),   // 前缀
+]);
+$cache = Helper::cache('redis', $config);
+$cache->set('name', '......');
+$cache->get('name');
+$cache->delete('name');
+
 文档 https://github.com/PHPSocialNetwork/phpfastcache
 ```
 
