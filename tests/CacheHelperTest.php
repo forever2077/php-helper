@@ -1,6 +1,5 @@
 <?php
 
-use Forever2077\PhpHelper\EnvHelper;
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\CacheHelper;
@@ -8,6 +7,7 @@ use Phpfastcache\Helper\Psr16Adapter;
 use Phpfastcache\Core\Item\ExtendedCacheItemInterface;
 use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
 use Phpfastcache\CacheManager;
+use Forever2077\PhpHelper\EnvHelper;
 use Phpfastcache\Drivers\Redis\Config as RedisConfig;
 
 class CacheHelperTest extends TestCase
@@ -24,7 +24,7 @@ class CacheHelperTest extends TestCase
     public function testConfig()
     {
         try {
-            CacheManager::setDefaultConfig(CacheHelper::config(['path' => __DIR__ . '/tmp']));
+            CacheManager::setDefaultConfig(CacheHelper::config(['path' => dirname(__DIR__, 1) . '/data/temp']));
             $this->assertTrue(true);
         } catch (Exception $e) {
             $this->fail($e->getMessage());
@@ -86,7 +86,7 @@ class CacheHelperTest extends TestCase
             $redisInstance->set('name', 'forever2077');
             $retrievedValue = $redisInstance->get('name');
             $this->assertEquals('[HACKED BY EVENT] forever2077', $retrievedValue);
-            $redisInstance->delete('name');
+            //$redisInstance->delete('name');
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
