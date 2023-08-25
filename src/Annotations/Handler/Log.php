@@ -14,9 +14,9 @@ class Log implements Handler
      * @param ReflectionClass $class
      * @param object $annotationInstance
      * @param mixed|null $targetMethodRtn
-     * @return void
+     * @return mixed
      */
-    public static function run(ReflectionClass $class, object $annotationInstance, mixed $targetMethodRtn = null): void
+    public static function run(ReflectionClass $class, object $annotationInstance, mixed $targetMethodRtn = null): mixed
     {
         /*dump($class);
         dump($annotationInstance);
@@ -25,5 +25,7 @@ class Log implements Handler
         $log = Helper::log();
         $log->pushHandler(new TestHandler(Level::Warning));
         $log->addRecord(Level::Warning, $targetMethodRtn);*/
+
+        return true;
     }
 }

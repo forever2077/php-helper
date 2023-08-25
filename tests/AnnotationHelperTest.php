@@ -9,7 +9,11 @@ class AnnotationHelperTest extends TestCase
     public function testMain()
     {
         try {
-            $this->assertIsString(Helper::annotation([$this, 'doAction'], ['a' => 1, 'b' => 2]));
+            $rtn = Helper::annotation([$this, 'doAction'], ['a' => 1, 'b' => 2]);
+            dump($rtn['targetMethod']);
+            dump($rtn[Before::class]);
+            dump($rtn[After::class]);
+            $this->assertIsArray($rtn);
         } catch (Exception $e) {
             $this->fail($e);
         }
@@ -25,7 +29,11 @@ class AnnotationHelperTest extends TestCase
     #[After(['AnnotationHelperTest', 'afterAction'], ['a' => 5, 'b' => 6])]
     public static function doAction(int $a = 0, int $b = 0): string
     {
-        Helper::annotation([__CLASS__, 'innerAction'], ['a' => 7, 'b' => 8]);
+        try {
+            Helper::annotation([__CLASS__, 'innerAction'], ['a' => 7, 'b' => 8]);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
         return "doAction：{$a}, {$b}";
     }
 

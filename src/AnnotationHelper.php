@@ -59,37 +59,38 @@ class AnnotationHelper
      */
     private static function processAnnotations(ReflectionClass &$class, ReflectionMethod &$method, array $args = []): mixed
     {
+        $rtn = [];
         $annotations = $method->getAttributes();
 
         foreach ($annotations as $annotation) {
             if (in_array($annotation->getName(), self::$beforeMethodAttribute)) {
-                self::handlerAdapter($annotation, $class);
+                $rtn[$annotation->getName()] = self::handlerAdapter($annotation, $class);
             }
         }
 
         if ($method->isStatic()) {
-            $targetMethodRtn = $method->invokeArgs(null, $args);
+            $rtn['targetMethod'] = $method->invokeArgs(null, $args);
         } else {
-            $targetMethodRtn = $method->invokeArgs($class->newInstance(), $args);
+            $rtn['targetMethod'] = $method->invokeArgs($class->newInstance(), $args);
         }
 
         foreach ($annotations as $annotation) {
             if (in_array($annotation->getName(), self::$afterMethodAttribute)) {
-                self::handlerAdapter($annotation, $class, $targetMethodRtn);
+                $rtn[$annotation->getName()] = self::handlerAdapter($annotation, $class, $rtn['targetMethod']);
             }
         }
 
-        return $targetMethodRtn;
+        return $rtn;
     }
 
     /**
      * @param ReflectionAttribute $annotation
      * @param ReflectionClass $class
      * @param mixed|null $targetMethodRtn
-     * @return void
+     * @return mixed
      * @throws ReflectionException
      */
-    private static function handlerAdapter(ReflectionAttribute $annotation, ReflectionClass &$class, mixed $targetMethodRtn = null): void
+    private static function handlerAdapter(ReflectionAttribute $annotation, ReflectionClass &$class, mixed $targetMethodRtn = null): mixed
     {
         $annotationInstance = $annotation->newInstance();
         $_handlerMethod = 'run';
@@ -99,6 +100,6 @@ class AnnotationHelper
             throw new ReflectionException('handler not exists');
         }
 
-        call_user_func([$_handlerClass, $_handlerMethod], $class, $annotationInstance, $targetMethodRtn);
+        return call_user_func([$_handlerClass, $_handlerMethod], $class, $annotationInstance, $targetMethodRtn);
     }
 }

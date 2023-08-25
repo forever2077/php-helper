@@ -6,5 +6,5 @@ use ReflectionClass;
 
 interface Handler
 {
-    public static function run(ReflectionClass $class, object $annotationInstance): void;
+    public static function run(ReflectionClass $class, object $annotationInstance): mixed;
 }

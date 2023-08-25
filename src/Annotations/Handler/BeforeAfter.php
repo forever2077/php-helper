@@ -13,10 +13,10 @@ class BeforeAfter implements Handler
      * @param ReflectionClass $class
      * @param object $annotationInstance
      * @param mixed|null $targetMethodRtn
-     * @return void
+     * @return mixed
      * @throws ReflectionException
      */
-    public static function run(ReflectionClass $class, object $annotationInstance, mixed $targetMethodRtn = null): void
+    public static function run(ReflectionClass $class, object $annotationInstance, mixed $targetMethodRtn = null): mixed
     {
         if (!is_string($annotationInstance->methodName) && !is_array($annotationInstance->methodName)) {
             throw new ReflectionException('methodName must be string or array');
@@ -36,9 +36,9 @@ class BeforeAfter implements Handler
         try {
             $_method = new ReflectionMethod($methodName[0], $methodName[1]);
             if ($_method->isStatic()) {
-                $_method->invokeArgs(null, $annotationInstance->args);
+                return $_method->invokeArgs(null, $annotationInstance->args);
             } else {
-                $_method->invokeArgs(is_object($methodName[0]) ? $methodName[0] : new $methodName[0], $annotationInstance->args);
+                return $_method->invokeArgs(is_object($methodName[0]) ? $methodName[0] : new $methodName[0], $annotationInstance->args);
             }
         } catch (ReflectionException $e) {
             throw new ReflectionException(__CLASS__, 0, $e);
