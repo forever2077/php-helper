@@ -89,6 +89,9 @@ class AnnotationHelper
             }
         }
 
+        $rtn['__endTime'] = microtime(true);
+        $rtn['__timeConsuming'] = $rtn['__endTime'] - $rtn['__createTime'];
+
         return $rtn;
     }
 

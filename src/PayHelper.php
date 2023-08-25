@@ -51,4 +51,16 @@ class PayHelper
     {
         return Pay::unipay($config);
     }
+
+    /**
+     * PayPal
+     * @param array $config
+     * @return void
+     */
+    private static function paypal(array $config)
+    {
+        // https://github.com/Payum/Payum
+        // https://github.com/paypal/PayPal-PHP-SDK
+        // https://packagist.org/packages/omnipay/paypal
+    }
 }
