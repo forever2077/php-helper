@@ -55,6 +55,11 @@ class EnvHelperTest extends TestCase
         $this->assertEquals('foo', $env->get('bar'));
     }
 
+    public function testEnv()
+    {
+        $this->assertEquals('foo', getenv('bar'));
+    }
+
     public function testDelEnv()
     {
         unlink(__DIR__ . '/.env');

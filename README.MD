@@ -15,7 +15,7 @@ composer repo:use tencent
 注意 有个别项目在某些源已不更新，可切换回composer官方源即可解决
 ```
 
-## 安装[](https://)
+## 安装
 
 ```php
 // 初始化 composer.json

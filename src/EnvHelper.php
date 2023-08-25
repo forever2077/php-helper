@@ -18,7 +18,7 @@ class EnvHelper
      * @param string $path
      * @param string $filename
      */
-    protected function __construct(string $path = __DIR__, string $filename = '')
+    protected function __construct(string $path, string $filename = '')
     {
         $this->path = $path;
         $this->filename = $filename;
