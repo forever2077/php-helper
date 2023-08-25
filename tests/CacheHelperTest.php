@@ -1,14 +1,14 @@
 <?php
 
-use Phpfastcache\Config\ConfigurationOption;
-use Phpfastcache\Core\Item\ExtendedCacheItemInterface;
-use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
+use Forever2077\PhpHelper\EnvHelper;
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\CacheHelper;
 use Phpfastcache\Helper\Psr16Adapter;
+use Phpfastcache\Core\Item\ExtendedCacheItemInterface;
+use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
 use Phpfastcache\CacheManager;
-use Phpfastcache\Drivers\Redis\Config;
+use Phpfastcache\Drivers\Redis\Config as RedisConfig;
 
 class CacheHelperTest extends TestCase
 {
@@ -74,19 +74,18 @@ class CacheHelperTest extends TestCase
     /*public function testRedis()
     {
         try {
-            $redisConfig = new ConfigurationOption([
-                'defaultTtl' => 3600,
-                'defaultChmod' => 0777,
-                'redis' => new Config([
-                    'host' => '127.0.0.1', // Redis 服务器地址
-                    'port' => 6379,        // 端口号
-                    'password' => '',      // 密码 (如果有)
-                    'database' => 0        // 数据库索引
-                ])
+            $env = EnvHelper::instance(dirname(__DIR__));
+            $config = new RedisConfig([
+                'host' => $env->get('CACHE_REDIS_HOST'),          // 服务器地址
+                'port' => (int)$env->get('CACHE_REDIS_PORT'),     // 端口号
+                'password' => $env->get('CACHE_REDIS_PASSWORD'),  // 密码 (如果有)
+                'database' => (int)$env->get('CACHE_REDIS_DB'),   // 数据库索引
+                'optPrefix' => $env->get('CACHE_REDIS_PREFIX'),   // 前缀
             ]);
-            $redisInstance = Helper::cache('redis', $redisConfig);
+            $redisInstance = Helper::cache('redis', $config);
             $redisInstance->set('name', 'forever2077');
             $retrievedValue = $redisInstance->get('name');
+            $this->assertEquals('[HACKED BY EVENT] forever2077', $retrievedValue);
             $redisInstance->delete('name');
         } catch (Exception $e) {
             $this->fail($e->getMessage());
