@@ -2,11 +2,12 @@
 
 namespace Forever2077\PhpHelper;
 
-use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionMethod;
+use ReflectionAttribute;
 use ReflectionException;
 use Exception;
+use Forever2077\PhpHelper\Annotations\{After, Before, Cache, Log, Limit};
 
 class AnnotationHelper
 {
@@ -15,8 +16,7 @@ class AnnotationHelper
      * @var array|string[]
      */
     private static array $beforeMethodAttribute = [
-        Annotations\Before::class,
-        Annotations\Limit::class,
+        Cache::class, Before::class, Limit::class,
     ];
 
     /**
@@ -24,12 +24,11 @@ class AnnotationHelper
      * @var array|string[]
      */
     private static array $afterMethodAttribute = [
-        Annotations\After::class,
-        Annotations\Cache::class,
-        Annotations\Log::class,
+        Cache::class, After::class, Log::class,
     ];
 
     /**
+     * @link https://github.com/PHPSocialNetwork/phpfastcache
      * @param array $callback
      * @param array $args
      * @return mixed
@@ -72,10 +71,16 @@ class AnnotationHelper
             }
         }
 
-        if ($method->isStatic()) {
-            $rtn[$method->getName()] = $method->invokeArgs(null, $args);
+        // Bool类型不被作为缓存结果返回
+        if (isset($rtn[Cache::class]) && !is_bool($rtn[Cache::class])) {
+            $rtn[$method->getName()] = $rtn[Cache::class];
+            unset(self::$afterMethodAttribute[Cache::class]);
         } else {
-            $rtn[$method->getName()] = $method->invokeArgs($class->newInstance(), $args);
+            if ($method->isStatic()) {
+                $rtn[$method->getName()] = $method->invokeArgs(null, $args);
+            } else {
+                $rtn[$method->getName()] = $method->invokeArgs($class->newInstance(), $args);
+            }
         }
 
         foreach ($annotations as $annotation) {

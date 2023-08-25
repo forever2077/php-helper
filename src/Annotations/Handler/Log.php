@@ -20,9 +20,9 @@ class Log implements Handler
     {
         /*dump($class);
         dump($annotationInstance);
-        dump($targetMethodRtn);
+        dump($targetMethodRtn);*/
 
-        $log = Helper::log();
+        /*$log = Helper::log();
         $log->pushHandler(new TestHandler(Level::Warning));
         $log->addRecord(Level::Warning, $targetMethodRtn);*/
 
