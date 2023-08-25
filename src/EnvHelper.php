@@ -29,10 +29,15 @@ class EnvHelper
      * @param string $filePath 文件路径
      * @param string $filename 文件名
      * @return EnvHelper
+     * @throws \Exception
      */
     public static function instance(string $filePath, string $filename = '.env'): EnvHelper
     {
-        return self::dotenv($filePath, $filename);
+        try {
+            return self::dotenv($filePath, $filename);
+        } catch (\Exception $e) {
+            throw new \Exception($e);
+        }
     }
 
     /**
@@ -40,15 +45,20 @@ class EnvHelper
      * @param string $path .env 文件所在目录
      * @param string $filename .env 文件名
      * @return EnvHelper
+     * @throws \Exception
      */
     public static function dotenv(string $path, string $filename = '.env'): EnvHelper
     {
-        $instance = new self($path, $filename);
-        $instance->repository = RepositoryBuilder::createWithNoAdapters()
-            ->addAdapter(PutenvAdapter::class)
-            ->immutable()
-            ->make();
-        return $instance;
+        try {
+            $instance = new self($path, $filename);
+            $instance->repository = RepositoryBuilder::createWithNoAdapters()
+                ->addAdapter(PutenvAdapter::class)
+                ->immutable()
+                ->make();
+            return $instance;
+        } catch (\Exception $e) {
+            throw new \Exception($e);
+        }
     }
 
     /**
