@@ -34,6 +34,9 @@ class EnvHelper
     public static function instance(string $filePath, string $filename = '.env'): EnvHelper
     {
         try {
+            if (!file_exists($filePath . '/' . $filename)) {
+                throw new \Exception($filePath . '/' . $filename . ' - file not exists');
+            }
             return self::dotenv($filePath, $filename);
         } catch (\Exception $e) {
             throw new \Exception($e);

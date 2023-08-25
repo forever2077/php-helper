@@ -6,6 +6,12 @@ use Forever2077\PhpHelper\EnvHelper;
 
 class EnvHelperTest extends TestCase
 {
+    public function testCreateEnv()
+    {
+        Helper::file()::createFile(__DIR__ . '/.env', '');
+        $this->assertFileExists(__DIR__ . '/.env');
+    }
+
     public function testSave()
     {
         $env = EnvHelper::instance(__DIR__);
