@@ -3,8 +3,12 @@
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\JwtHelper;
-use Lcobucci\JWT\UnencryptedToken;
 use Lcobucci\JWT\Validation\Constraint\HasClaimWithValue;
+use Lcobucci\JWT\Validation\Constraint\RelatedTo;
+use Lcobucci\JWT\Validation\Constraint\PermittedFor;
+use Lcobucci\JWT\Validation\Constraint\IssuedBy;
+use Lcobucci\JWT\Validation\Constraint\IdentifiedBy;
+use Lcobucci\JWT\Validation\Constraint\SignedWith;
 
 class JwtHelperTest extends TestCase
 {
@@ -33,14 +37,17 @@ class JwtHelperTest extends TestCase
                     ],
                 ]
             ]);
-            dump($token->toString());
-
-            $rtn = JwtHelper::parsingTokens($token->toString());
+            //dump($token);
+            $rtn = JwtHelper::parsingTokens($token);
             dump($rtn);
-
             $this->assertEquals(1, $rtn->claims()->get('uid'));
-            $this->assertFalse($token->toString() instanceof UnencryptedToken);
-            $this->assertTrue(JwtHelper::validator($token, new HasClaimWithValue('uid', 1)));
+            $this->assertEquals('bar', $rtn->headers()->get('foo'));
+            $this->assertEquals('qux', $rtn->headers()->get('baz'));
+            $this->assertTrue(JwtHelper::validator($rtn, new HasClaimWithValue('uid', 1)));
+            $this->assertTrue(JwtHelper::validator($rtn, new RelatedTo('https://example.com')));
+            $this->assertTrue(JwtHelper::validator($rtn, new PermittedFor('https://example.org')));
+            $this->assertTrue(JwtHelper::validator($rtn, new IssuedBy('https://example.com')));
+            $this->assertTrue(JwtHelper::validator($rtn, new IdentifiedBy('4f1g23a12aa')));
         } catch (Exception $e) {
             $this->fail($e);
         }
