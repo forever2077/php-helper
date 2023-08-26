@@ -77,7 +77,7 @@ class JwtHelper
     }
 
     /**
-     * 用于生成一个未加密的 JWT（JSON Web Token）
+     * 生成JWT（JSON Web Token）
      * @param array $config 配置数组，可以包括以下选项：<br/>
      *    - signing_algorithm: 签名算法。可选值包括：<br/>
      *        - 'HS256': HMAC + SHA-256<br/>

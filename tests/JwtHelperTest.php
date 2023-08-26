@@ -8,7 +8,6 @@ use Lcobucci\JWT\Validation\Constraint\RelatedTo;
 use Lcobucci\JWT\Validation\Constraint\PermittedFor;
 use Lcobucci\JWT\Validation\Constraint\IssuedBy;
 use Lcobucci\JWT\Validation\Constraint\IdentifiedBy;
-use Lcobucci\JWT\Validation\Constraint\SignedWith;
 
 class JwtHelperTest extends TestCase
 {
@@ -39,7 +38,7 @@ class JwtHelperTest extends TestCase
             ]);
             //dump($token);
             $rtn = JwtHelper::parsingTokens($token);
-            dump($rtn);
+            //dump($rtn);
             $this->assertEquals(1, $rtn->claims()->get('uid'));
             $this->assertEquals('bar', $rtn->headers()->get('foo'));
             $this->assertEquals('qux', $rtn->headers()->get('baz'));
