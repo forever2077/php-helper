@@ -30,7 +30,9 @@ class JwtHelperTest extends TestCase
                     'issuedAt' => $now,
                     'expiresAt' => $now->modify('+1 hour'),
                     'canOnlyBeUsedAfter' => $now->modify('+1 minute'),
-                    'withClaim' => ['uid', 1],
+                    'withClaim' => [
+                        ['uid', 1], ['company', 'example']
+                    ],
                     'withHeader' => [
                         ['foo', 'bar'], ['baz', 'qux'],
                     ],
@@ -40,6 +42,7 @@ class JwtHelperTest extends TestCase
             $rtn = JwtHelper::parsingTokens($token);
             //dump($rtn);
             $this->assertEquals(1, $rtn->claims()->get('uid'));
+            $this->assertEquals('example', $rtn->claims()->get('company'));
             $this->assertEquals('bar', $rtn->headers()->get('foo'));
             $this->assertEquals('qux', $rtn->headers()->get('baz'));
             $this->assertTrue(JwtHelper::validator($rtn, new HasClaimWithValue('uid', 1)));

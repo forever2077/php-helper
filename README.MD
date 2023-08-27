@@ -1047,6 +1047,7 @@ public function doAction(int $a = 0, int $b = 0): string {}
 ```php
 $now = new DateTimeImmutable();
 $token = JwtHelper::issuingTokens([
+    // 支持：HS256、HS384、HS512、Blake2b、ES256、ES384、ES512、RS256、RS384、RS512
     'signing_algorithm' => 'ES512',
     'token_options' => [
         'issuedBy' => 'https://example.com',
@@ -1056,7 +1057,7 @@ $token = JwtHelper::issuingTokens([
         'issuedAt' => $now,
         'expiresAt' => $now->modify('+1 hour'),
         'canOnlyBeUsedAfter' => $now->modify('+1 minute'),
-        'withClaim' => ['uid', 1],
+        'withClaim' => ['uid', 1], // 支持二维数组
         'withHeader' => [
             ['foo', 'bar'], ['baz', 'qux'],
         ],
