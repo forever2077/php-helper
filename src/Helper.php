@@ -237,14 +237,14 @@ class Helper
         return new DbHelper($args);
     }
 
-    /**
-     * todo: 以下为未完成部分
-     */
-
     public static function lruCache(mixed $args = null): LruCacheHelper
     {
         return new LruCacheHelper($args);
     }
+
+    /**
+     * todo: 以下为未完成部分
+     */
 
     public static function dataStruct(mixed $args = null): DataStructHelper
     {
