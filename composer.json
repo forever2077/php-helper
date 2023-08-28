@@ -79,7 +79,8 @@
         "workerman/workerman": "^4.1",
         "phpfastcache/phpfastcache": "^9.1",
         "lcobucci/jwt": "^5.0",
-        "aimeos/map": "^3.5"
+        "aimeos/map": "^3.5",
+        "topthink/think-orm": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",

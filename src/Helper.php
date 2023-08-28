@@ -168,9 +168,9 @@ class Helper
         return BaiduHelper::instance();
     }
 
-    public static function config(array|string $values, string $parser = 'Json'): \Noodlehaus\Config
+    public static function config($values, \Noodlehaus\Parser\ParserInterface $parser = null, $string = false): ConfigHelper
     {
-        return ConfigHelper::instance($values, $parser);
+        return new ConfigHelper($values, $parser, $string);
     }
 
     public static function env(string $filePath, string $filename = ''): EnvHelper
@@ -230,6 +230,11 @@ class Helper
         } catch (\Exception $e) {
             throw new \Exception($e);
         }
+    }
+
+    public static function db(mixed $args = null): DbHelper
+    {
+        return new DbHelper($args);
     }
 
     /**
@@ -294,11 +299,6 @@ class Helper
     public static function cookie(mixed $args = null): CookieHelper
     {
         return new CookieHelper($args);
-    }
-
-    public static function db(mixed $args = null): DbHelper
-    {
-        return new DbHelper($args);
     }
 
     public static function upload(mixed $args = null): UploadHelper
