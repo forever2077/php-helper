@@ -19,10 +19,7 @@ class Helper
         return BloomHelper::instance($approxSize, $falsePosProb);
     }
 
-    public static function cache(
-        string|\Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface $driver,
-        \Phpfastcache\Config\ConfigurationOptionInterface             $config = null
-    ): \Phpfastcache\Helper\Psr16Adapter
+    public static function cache(string|\Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface $driver, \Phpfastcache\Config\ConfigurationOptionInterface $config = null): \Phpfastcache\Helper\Psr16Adapter
     {
         try {
             return CacheHelper::instance($driver, $config);
@@ -44,11 +41,6 @@ class Helper
     public static function csv(): CsvHelper
     {
         return CsvHelper::instance();
-    }
-
-    public static function dataStruct(mixed $args = null): DataStructHelper
-    {
-        return new DataStructHelper($args);
     }
 
     public static function dateTime(mixed $args = null): \Carbon\Carbon
@@ -104,21 +96,6 @@ class Helper
     public static function log(string $name = 'default', array $handlers = [], array $processors = [], ?\DateTimeZone $timezone = null): \Monolog\Logger
     {
         return LogHelper::instance($name, $handlers, $processors, $timezone);
-    }
-
-    public static function lruCache(mixed $args = null): LruCacheHelper
-    {
-        return new LruCacheHelper($args);
-    }
-
-    public static function map(mixed $args = null): MapHelper
-    {
-        return new MapHelper($args);
-    }
-
-    public static function net(mixed $args = null): NetHelper
-    {
-        return new NetHelper($args);
     }
 
     public static function office(): OfficeHelper
@@ -241,11 +218,7 @@ class Helper
         return IdentityHelper::instance();
     }
 
-    public static function debug(
-        bool|string|array|null $mode = null,
-        ?string                $logDirectory = null,
-        string|array|null      $email = null
-    ): void
+    public static function debug(bool|string|array|null $mode = null, ?string $logDirectory = null, string|array|null $email = null): void
     {
         DebugHelper::enable($mode, $logDirectory, $email);
     }
@@ -257,5 +230,46 @@ class Helper
         } catch (\Exception $e) {
             throw new \Exception($e);
         }
+    }
+
+
+    public static function lruCache(mixed $args = null): LruCacheHelper
+    {
+        return new LruCacheHelper($args);
+    }
+
+    public static function dataStruct(mixed $args = null): DataStructHelper
+    {
+        return new DataStructHelper($args);
+    }
+
+    public static function container(mixed $args = null): ContainerHelper
+    {
+        return new ContainerHelper($args);
+    }
+
+    public static function worldMap(mixed $args = null): WorldMapHelper
+    {
+        return new WorldMapHelper($args);
+    }
+
+    public static function session(mixed $args = null): SessionHelper
+    {
+        return new SessionHelper($args);
+    }
+
+    public static function api(mixed $args = null): ApiHelper
+    {
+        return new ApiHelper($args);
+    }
+
+    public static function template(mixed $args = null): TemplateHelper
+    {
+        return new TemplateHelper($args);
+    }
+
+    public static function net(mixed $args = null): NetHelper
+    {
+        return new NetHelper($args);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Forever2077\PhpHelper;
 
-class MapHelper
+class WorldMapHelper
 {
 
 }
