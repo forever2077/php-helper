@@ -4,7 +4,8 @@
     "keywords": [
         "function",
         "class",
-        "library"
+        "library",
+        "tools"
     ],
     "type": "library",
     "license": "MIT",
@@ -24,6 +25,7 @@
     ],
     "require": {
         "php": "~8.1.0",
+        "ext-gd": "*",
         "ext-zip": "*",
         "ext-json": "*",
         "ext-sqlite3": "*",

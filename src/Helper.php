@@ -31,9 +31,9 @@ class Helper
         }
     }
 
-    public static function captcha(mixed $args = null): CaptchaHelper
+    public static function captcha(): CaptchaHelper
     {
-        return new CaptchaHelper($args);
+        return CaptchaHelper::instance();
     }
 
     public static function crypto(): CryptoHelper
