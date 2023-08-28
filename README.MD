@@ -73,6 +73,7 @@ Helper::dateTime()::carbon()::now()->toDateTimeString();
 - [认证 Jwt](doc/Jwt.md)
 - [验证码 Captcha](doc/Captcha.md)
 - [数据库 ORM](doc/ORM.md)
+- [缓存 LruCache](doc/LRUCache.md)
 
 ## Composer 源管理工具（可选）
 
