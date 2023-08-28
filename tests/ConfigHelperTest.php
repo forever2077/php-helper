@@ -25,19 +25,20 @@ FOOBAR;
 
     public function testInstance()
     {
-        $this->assertEquals('Noodlehaus\Config', Helper::config([])::class);
+        $this->assertEquals(ConfigHelper::class, Helper::config([])::class);
     }
 
     public function testLoad()
     {
-        $jsonConfig = ConfigHelper::instance($this->settingsJson);
-        $this->assertEquals('configuration', $jsonConfig['application.name']);
+        $json = ConfigHelper::load($this->settingsJson, 'json', true);
+        $this->assertEquals('configuration', $json['application.name']);
+        $this->assertEquals('configuration', $json->get('application.name'));
     }
 
     public function testToIni()
     {
         $filename = __DIR__ . '/settings.ini';
-        $jsonConfig = ConfigHelper::instance($this->settingsJson);
+        $jsonConfig = ConfigHelper::load($this->settingsJson, 'json', true);
         $jsonConfig->toFile($filename, new Ini());
         $this->assertFileExists($filename);
         unlink($filename);

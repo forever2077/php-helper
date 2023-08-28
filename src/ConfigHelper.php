@@ -3,29 +3,19 @@
 namespace Forever2077\PhpHelper;
 
 use Noodlehaus\Config;
-use Noodlehaus\Parser\Json;
-use Noodlehaus\Parser\Yaml;
-use Noodlehaus\Parser\Ini;
-use Noodlehaus\Parser\Xml;
-use Noodlehaus\Parser\Php;
-use Noodlehaus\Parser\Serialize;
-use Noodlehaus\Parser\Properties;
+use Noodlehaus\Parser\{Json, Yaml, Ini, Xml, Php, Serialize, Properties};
 
-class ConfigHelper
+class ConfigHelper extends Config
 {
     /**
-     * 配置实例
-     * @param array|string $values
-     * @param string $parser
+     * @param array|string $values 配置文件或字符串
+     * @param string $parser 配置解析器
+     * @param false $string 启用从字符串加载
      * @return Config
+     * @link https://github.com/hassankhan/config
      */
-    public static function instance(array|string $values, string $parser = 'Json'): Config
+    public static function load($values, $parser = 'json', $string = false): Config
     {
-        $string = false;
-        if (is_string($values)) {
-            $string = true;
-        }
-
         $parser = strtolower($parser);
         $parser = match ($parser) {
             'yaml' => new Yaml(),
