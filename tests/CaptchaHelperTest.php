@@ -21,7 +21,7 @@ class CaptchaHelperTest extends TestCase
         try {
             $imgDir = dirname(__DIR__) . '/data/captcha/temp';
             $captcha = Helper::captcha()::image([
-                'imgDir' => $imgDir,          // 生成图像的目录，如果不存在则返回结果数组
+                //'imgDir' => $imgDir,          // 生成图像的目录，如果不存在则返回结果数组
                 'length' => 6,                // 验证码位数
                 'fontSize' => 30,             // 验证码字体大小(px)
                 'math' => false,              // 算术验证码
