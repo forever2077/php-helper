@@ -41,7 +41,7 @@ class CaptchaHelperTest extends TestCase
                 'gcFreq' => 10,               // 执行垃圾收集的频率
                 'expire' => 600,              // 验证码过期时间（s）
             ]);
-            dump($captcha);
+            //dump($captcha);
             $this->assertIsArray($captcha);
         } catch (Exception $e) {
             $this->fail($e);
