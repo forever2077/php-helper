@@ -1,6 +1,6 @@
 # PHP 助手类/工具包
 
-[![PHP 8.1](https://img.shields.io/badge/PHP-8.1-8892BF.svg)](https://www.php.net/releases/8.1/en.php) [![PHPUnit Tests](https://img.shields.io/badge/PHPUnit-Passed-brightgreen.svg)](https://phpunit.de/) [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![Development Status](https://img.shields.io/badge/Development-Active-brightgreen.svg)](https://your-project-repo-link)
+[![PHP 8.1](https://img.shields.io/badge/PHP-8.1-8892BF.svg)](https://www.php.net/releases/8.1/en.php) [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![PHPUnit Tests](https://img.shields.io/badge/PHPUnit-Passed-brightgreen.svg)](https://phpunit.de/) [![Development Status](https://img.shields.io/badge/Development-Active-brightgreen.svg)](https://your-project-repo-link)
 
 ## Composer源管理工具
 
@@ -15,7 +15,7 @@ composer repo:use tencent
 注意 有个别项目在某些源已不更新，可切换回composer官方源即可解决
 ```
 
-## 安装
+## 安装 Install
 
 ```php
 // 初始化 composer.json
@@ -24,7 +24,7 @@ composer require forever2077/php-helper:"@dev" --no-install
 composer install --no-dev
 ```
 
-## 辅助类
+## 辅助类 Helper
 
 ```php
 // 冒泡排序
@@ -224,7 +224,6 @@ SystemHelper::logMsg($msg, $file = './log.txt');
 CryptoHelper::aesEcbEncrypt($data, $key);
 // 使用 AES ECB 算法模式解密数据
 CryptoHelper::aesEcbDecrypt($data, $key);
-
 更多内容请查看 CryptoHelper
 ```
 
@@ -239,7 +238,6 @@ $tomorrow = $carbon::now()->addDay();
 $lastWeek = $carbon::now()->subWeek();
 // Rfc2822
 $officialDate = DateTimeHelper::carbon()::now()->toRfc2822String();
-
 文档 https://github.com/briannesbitt/Carbon
 ```
 
@@ -257,7 +255,6 @@ $image->text('Hello, world!', 200, 150, function ($font) {
 });
 $path = __DIR__ . '/output.jpg';
 $image->save($path);
-
 文档 https://image.intervention.io/v2/
 ```
 
@@ -276,20 +273,16 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
-
 // 从CSV文件读取数据并返回数组
 try {
     $result = CsvHelper::readToArray($filePath);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
-
 // CSV写入器
 CsvHelper::writer();
-
 // CSV读取器
 CsvHelper::reader();
-
 文档 https://csv.thephpleague.com/9.0/
 ```
 
@@ -325,7 +318,6 @@ $response = HttpHelper::post([
         'verify' => __DIR__ . '/cacert.pem',
     ],
 ]);
-
 文档 https://docs.guzzlephp.org/en/stable/
 ```
 
@@ -373,7 +365,6 @@ try {
 
 // 根据RPC规则验证邮件地址
 EmailHelper::validator()->isValid("example@example.com", new RFCValidation())；
-
 文档 https://github.com/egulias/EmailValidator
 ```
 
@@ -463,7 +454,6 @@ OfficeHelper::excel();
 
 // word文档处理实例
 OfficeHelper::world();
-
 文档 https://phpword.readthedocs.io
 ```
 
@@ -500,7 +490,6 @@ ConfigHelper::instance(['config.json', 'config.xml']);
 ConfigHelper::instance(__DIR__ . '/config');
 // 从可选文件加载值
 ConfigHelper::instance(['config.dist.json', '?config.json']);
-
 文档 https://github.com/hassankhan/config
 ```
 
@@ -522,7 +511,6 @@ $env->get('foo', function (Dotenv\Dotenv $dotenv) {
 $env->has('foo');
 // 设置bar值为foo
 $env->set('bar', 'foo');
-
 文档 https://github.com/vlucas/phpdotenv
 ```
 
@@ -553,7 +541,6 @@ $uuid = UuidHelper::uuid6();
 $uuid = UuidHelper::uuid8("\x00\x11\x22\x33\x44\x55\x66\x77\x88\x99\xaa\xbb\xcc\xdd\xee\xff");
 // GUID
 $guid = UuidHelper::guid($withBrackets = true);
-
 文档 https://uuid.ramsey.dev/en/stable/
 ```
 
@@ -605,7 +592,6 @@ $users = JsonHelper::parseStream('500MB-users.json');
 foreach ($users as $id => $user) {
     var_dump($user->name);
 }
-
 文档 https://github.com/halaxa/json-machine
 ```
 
@@ -631,7 +617,6 @@ $zip->setPath($this->path);
 $zip->add('test.txt');
 $zip->getArchive()->setEncryptionName('test.txt', ZipArchive::EM_AES_256, 's123123');
 $zip->close();
-
 文档 https://github.com/ZanySoft/Laravel-Zip
 ```
 
@@ -659,7 +644,6 @@ $xmlService->elementMap = [
     '{http://example.org/}article' => 'Sabre\Xml\Element\KeyValue',
 ];
 $output = $xmlService->parse($input);
-
 文档 https://github.com/sabre-io/xml
 ```
 
@@ -672,7 +656,6 @@ $this->assertEquals('www.baidu.com', $uri->getHost());
 $this->assertEquals('/s', $uri->getPath());
 $this->assertEquals('wd=php%20uri%20helper', $uri->getQuery());
 $this->assertEquals('hash', $uri->getFragment());
-
 文档 https://github.com/guzzle/psr7
 ```
 
@@ -728,7 +711,6 @@ TencentCloudHelper::cos($cosConfig);
 BaiduHelper::aipOcr($appId, $apiKey, $secretKey);
 // 人脸识别
 BaiduHelper::aipFace($appId, $apiKey, $secretKey);
-
 文档 https://ai.baidu.com/sdk
 ```
 
@@ -747,7 +729,6 @@ WechatHelper::openPlatform($config);
 WechatHelper::work($config);
 // 企业微信开放平台
 WechatHelper::openWork($config);
-
 文档 https://easywechat.com/6.x/
 ```
 
@@ -760,7 +741,6 @@ PayHelper::alipay($config);
 PayHelper::wechat($config);
 // 银联
 PayHelper::unipay($config);
-
 文档 https://pay.yansongda.cn/docs/v3/
 ```
 
@@ -849,7 +829,6 @@ $gender = $ID->getGender($pid);
 $birthday = $ID->getBirth($pid);
 $age = $ID->getAge($pid);
 $constellation = $ID->getConstellation($pid);
-
 文档 https://github.com/douyasi/identity-card
 ```
 
@@ -873,7 +852,6 @@ RandomHelper::string(32,
 RandomHelper::userAgent([
     'os_type' => 'Windows', 'device_type' => 'Mobile'
 ]);
-
 文档 https://github.com/joecampo/random-user-agent
 ```
 
@@ -889,7 +867,6 @@ $leftVersion = Helper::version('3.0.0-alpha.1');
 $rightVersion = Helper::version('3.0.0-alpha.2');
 $leftVersion->isGreaterThan($rightVersion);
 $rightVersion->isGreaterThan($leftVersion);
-
 文档 https://github.com/phar-io/version
 ```
 
@@ -899,7 +876,6 @@ $rightVersion->isGreaterThan($leftVersion);
 $bf = Helper::bloom(100000, 0.001);
 $bf->add('item1');
 $bf->exists('item1');
-
 文档 https://github.com/pleonasm/bloom-filter
 ```
 
@@ -995,7 +971,6 @@ $future2 = async(function () {
 
 $future1->await();
 $future2->await();
-
 文档 https://amphp.org/amp
 ```
 
@@ -1027,7 +1002,6 @@ $cache = Helper::cache('redis', $config);
 $cache->set('name', '......');
 $cache->get('name');
 $cache->delete('name');
-
 文档 https://github.com/PHPSocialNetwork/phpfastcache
 ```
 
@@ -1075,7 +1049,6 @@ $this->assertTrue(JwtHelper::validator($rtn, new RelatedTo('https://example.com'
 $this->assertTrue(JwtHelper::validator($rtn, new PermittedFor('https://example.org')));
 $this->assertTrue(JwtHelper::validator($rtn, new IssuedBy('https://example.com')));
 $this->assertTrue(JwtHelper::validator($rtn, new IdentifiedBy('4f1g23a12aa')));
-
 文档 https://lcobucci-jwt.readthedocs.io/en/stable/
 ```
 
@@ -1106,7 +1079,6 @@ $captcha = Helper::captcha()::image([
     'expire' => 600,              // 验证码过期时间（s）
 ]);
 dump($captcha);
-
 文档 https://github.com/top-think/think-captcha
 ```
 
