@@ -16,6 +16,12 @@ class ConfigHelper extends Config
      */
     public static function load($values, $parser = 'json', $string = false): Config
     {
+        if (is_string($values)) {
+            $ext = pathinfo($values, PATHINFO_EXTENSION);
+            if (in_array($ext, ['yaml', 'ini', 'xml', 'php', 'properties', 'serialize'])) {
+                $parser = $ext;
+            }
+        }
         $parser = strtolower($parser);
         $parser = match ($parser) {
             'yaml' => new Yaml(),
@@ -26,7 +32,6 @@ class ConfigHelper extends Config
             'properties' => new Properties(),
             default => new Json(),
         };
-
         return new Config($values, $parser, $string);
     }
 }
