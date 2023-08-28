@@ -246,49 +246,9 @@ class Helper
      * todo: 以下为未完成部分
      */
 
-    public static function dataStruct(mixed $args = null): DataStructHelper
-    {
-        return new DataStructHelper($args);
-    }
-
-    public static function container(mixed $args = null): ContainerHelper
-    {
-        return new ContainerHelper($args);
-    }
-
     public static function worldMap(mixed $args = null): WorldMapHelper
     {
         return new WorldMapHelper($args);
-    }
-
-    public static function session(mixed $args = null): SessionHelper
-    {
-        return new SessionHelper($args);
-    }
-
-    public static function api(mixed $args = null): ApiHelper
-    {
-        return new ApiHelper($args);
-    }
-
-    public static function template(mixed $args = null): TemplateHelper
-    {
-        return new TemplateHelper($args);
-    }
-
-    public static function net(mixed $args = null): NetHelper
-    {
-        return new NetHelper($args);
-    }
-
-    public static function form(mixed $args = null): FormHelper
-    {
-        return new FormHelper($args);
-    }
-
-    public static function translate(mixed $args = null): TranslateHelper
-    {
-        return new TranslateHelper($args);
     }
 
     public static function router(mixed $args = null): RouterHelper
@@ -301,6 +261,26 @@ class Helper
         return new CookieHelper($args);
     }
 
+    public static function session(mixed $args = null): SessionHelper
+    {
+        return new SessionHelper($args);
+    }
+
+    public static function template(mixed $args = null): TemplateHelper
+    {
+        return new TemplateHelper($args);
+    }
+
+    public static function form(mixed $args = null): FormHelper
+    {
+        return new FormHelper($args);
+    }
+
+    public static function server(mixed $args = null): ServerHelper
+    {
+        return new ServerHelper($args);
+    }
+
     public static function upload(mixed $args = null): UploadHelper
     {
         return new UploadHelper($args);
@@ -311,8 +291,28 @@ class Helper
         return new DownloadHelper($args);
     }
 
-    public static function server(mixed $args = null): ServerHelper
+    public static function api(mixed $args = null): ApiHelper
     {
-        return new ServerHelper($args);
+        return new ApiHelper($args);
+    }
+
+    public static function translate(mixed $args = null): TranslateHelper
+    {
+        return new TranslateHelper($args);
+    }
+
+    public static function net(mixed $args = null): NetHelper
+    {
+        return new NetHelper($args);
+    }
+
+    public static function dataStruct(mixed $args = null): DataStructHelper
+    {
+        return new DataStructHelper($args);
+    }
+
+    public static function container(mixed $args = null): ContainerHelper
+    {
+        return new ContainerHelper($args);
     }
 }
