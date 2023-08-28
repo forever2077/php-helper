@@ -407,11 +407,11 @@ class CryptoHelper
     /**
      * 在当前目录下创建 rsa 私钥文件和公钥文件
      */
-    public static function generateRsaKey($privateKeyFile, $publicKeyFile): void
+    public static function generateRsaKey($privateKeyFile, $publicKeyFile, $private_key_bits = 2048): void
     {
         $config = array(
             "digest_alg" => "sha512",
-            "private_key_bits" => 4096,
+            "private_key_bits" => $private_key_bits,
             "private_key_type" => OPENSSL_KEYTYPE_RSA,
         );
 
