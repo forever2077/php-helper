@@ -183,12 +183,16 @@ ValidateHelper::isPassportNumber('EA1234567');
 ## 运行时 Runtime
 
 ```php
-// 启动计时
-RuntimeHelper::instance()->start();
+// 启动计时 (单例)
+Helper::runtime()->start();
 // 结束计时并返回消耗的时间（单位 毫秒）
-RuntimeHelper::instance()->stop();
+Helper::runtime()->stop();
 // 重新开始计时
-RuntimeHelper::instance()->reset();
+Helper::runtime()->reset();
+// 获取当前毫秒时间
+Helper::runtime()->getMicroTime();
+// 计算消耗多长时间
+Helper::runtime()->consumeTime
 ```
 
 ## 系统 System

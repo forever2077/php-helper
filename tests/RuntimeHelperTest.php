@@ -13,9 +13,9 @@ class RuntimeHelperTest extends TestCase
 
     public function testRuntime()
     {
-        RuntimeHelper::instance()->start();
-        RuntimeHelper::instance()->stop();
-        RuntimeHelper::instance()->reset();
-        $this->assertIsFloat(RuntimeHelper::instance()->getMicroTime());
+        Helper::runtime()->start();
+        Helper::runtime()->stop();
+        Helper::runtime()->reset();
+        $this->assertIsFloat(Helper::runtime()->getMicroTime());
     }
 }
