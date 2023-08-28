@@ -1114,6 +1114,6 @@ dump($captcha);
 
 * 项目来之各开源项目收录和整理，持续更新中ing...
 
-### 版权和许可 Copyright and License
+### 许可 License
 
 * 本项目基于MIT许可，并包含了基于Apache 2.0许可的代码
