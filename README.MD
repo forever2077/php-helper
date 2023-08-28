@@ -2,19 +2,6 @@
 
 [![PHP 8.1](https://img.shields.io/badge/PHP-8.1-8892BF.svg)](https://www.php.net/releases/8.1/en.php) [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![PHPUnit Tests](https://img.shields.io/badge/PHPUnit-Passed-brightgreen.svg)](https://phpunit.de/) [![Development Status](https://img.shields.io/badge/Development-Active-brightgreen.svg)](https://your-project-repo-link)
 
-## Composer 源管理工具
-
-```php
-// 使用composer安装
-composer global require slince/composer-registry-manager
-// 列出可用的所有镜像源
-composer repo:ls
-// 使用镜像源
-composer repo:use tencent
-文档 https://github.com/slince/composer-registry-manager/blob/master/README-zh_CN.md
-注意 有个别项目在某些源已不更新，可切换回composer官方源即可解决
-```
-
 ## 安装 Install
 
 ```php
@@ -86,6 +73,19 @@ Helper::dateTime()::carbon()::now()->toDateTimeString();
 - [认证 Jwt](doc/Jwt.md)
 - [验证码 Captcha](doc/Captcha.md)
 - [数据库 ORM](doc/ORM.md)
+
+## Composer 源管理工具（可选）
+
+```php
+// 使用composer安装
+composer global require slince/composer-registry-manager
+// 列出可用的所有镜像源
+composer repo:ls
+// 使用镜像源
+composer repo:use tencent
+文档 https://github.com/slince/composer-registry-manager/blob/master/README-zh_CN.md
+注意 有个别项目在某些源已不更新，可切换回composer官方源即可解决
+```
 
 ### 致谢 Thank
 
