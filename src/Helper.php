@@ -232,6 +232,9 @@ class Helper
         }
     }
 
+    /**
+     * todo: 以下为未完成部分
+     */
 
     public static function lruCache(mixed $args = null): LruCacheHelper
     {
@@ -271,5 +274,45 @@ class Helper
     public static function net(mixed $args = null): NetHelper
     {
         return new NetHelper($args);
+    }
+
+    public static function form(mixed $args = null): FormHelper
+    {
+        return new FormHelper($args);
+    }
+
+    public static function translate(mixed $args = null): TranslateHelper
+    {
+        return new TranslateHelper($args);
+    }
+
+    public static function router(mixed $args = null): RouterHelper
+    {
+        return new RouterHelper($args);
+    }
+
+    public static function cookie(mixed $args = null): CookieHelper
+    {
+        return new CookieHelper($args);
+    }
+
+    public static function db(mixed $args = null): DbHelper
+    {
+        return new DbHelper($args);
+    }
+
+    public static function upload(mixed $args = null): UploadHelper
+    {
+        return new UploadHelper($args);
+    }
+
+    public static function download(mixed $args = null): DownloadHelper
+    {
+        return new DownloadHelper($args);
+    }
+
+    public static function server(mixed $args = null): ServerHelper
+    {
+        return new ServerHelper($args);
     }
 }
