@@ -30,22 +30,6 @@ composer install --no-dev
 // 冒泡排序
 $arr = [1, 3, 2, 5, 4];
 Helper::algorithm()::BubbleSort($arr);
-
-// 数组转对象
-class Foo
-{
-    public $a = 1;
-    public $b = 2;
-
-    public function __construct()
-    {
-        $this->a = 1;
-        $this->b = 2;
-    }
-}
-$foo = new Foo();
-Helper::array()::toArray($foo);
-
 // 获取内存使用情况
 Helper::system()::getMemoryUsage();
 // 获取当前日期时间
@@ -72,18 +56,17 @@ AlgorithmHelper::BinarySearch($arr, $low, $high, $target);
 ## 数组 Array
 
 ```php
-// 把对象或者数组对象，转成数组
-ArrayHelper::toArray($object, $properties = [], $recursive = true);
 // 获取对象或者数组的指定的值
 ArrayHelper::getValue($array, $key, $default = null);
-// 根据指定的key，建立key对应索引的数组，或者分组后的索引数组
-ArrayHelper::index($array, $key, $groups = []);
-// 把数组转成 key-value 的形式
-ArrayHelper::map($array, $from, $to, $group = null);
 // 检查数组是否是列索引
 ArrayHelper::isAssoc($array);
 // 递归获取指定下标数组
 ArrayHelper::getTree($array);
+// 获取元素值为b的下一组
+ArrayHelper::from([0 => 'b', 1 => 'a'])->after('b');
+// 数组排序
+ArrayHelper::from(['b' => 0, 'a' => 1])->arsort();
+文档 https://github.com/aimeos/map
 ```
 
 ## 文件 File

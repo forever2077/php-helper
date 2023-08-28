@@ -23,10 +23,12 @@ class ArrayHelperTest extends TestCase
         $this->assertEquals(ArrayHelper::Class, Helper::array()::class);
     }
 
-    public function testToArray()
+    public function testMap()
     {
-        $a1 = new Foo();
-        $this->assertEquals(['a' => 1, 'b' => 2], ArrayHelper::toArray($a1));
+        $map = ArrayHelper::from([0 => 'b', 1 => 'a'])->after('b');
+        $this->assertEquals([1 => 'a'], $map->toArray());
+        $map = ArrayHelper::from(['b' => 0, 'a' => 1])->arsort();
+        $this->assertEquals(['a' => 1, 'b' => 0], $map->toArray());
     }
 
     public function testGetValue()
