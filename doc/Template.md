@@ -31,7 +31,7 @@ $fileLoader = TemplateHelper::filesystem(
         '__loader' => true, // 返回加载器实例
     ]
 );
-$chainLoader = Helper::template()::chain([$arrayLoader, $fileLoader]);
+$chainLoader = TemplateHelper::chain([$arrayLoader, $fileLoader]);
 $this->assertEquals('<p>Hello World!</p>', $chainLoader->render('index.html', ['name' => 'World']));
 
 文档 https://twig.symfony.com/doc/3.x/
