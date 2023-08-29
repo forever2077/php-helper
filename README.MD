@@ -19,7 +19,7 @@ Helper::algorithm()::BubbleSort([1, 3, 2, 5, 4]);
 // 获取内存使用情况
 Helper::system()::getMemoryUsage();
 // 获取当前日期时间
-Helper::dateTime()::carbon()::now()->toDateTimeString();
+Helper::dateTime()::now()->toDateTimeString();
 支持所有辅助类;
 ```
 
