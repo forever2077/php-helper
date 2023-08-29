@@ -247,19 +247,14 @@ class Helper
         return new EmbedMapHelper();
     }
 
+    public static function router(): RouterHelper
+    {
+        return new RouterHelper();
+    }
+
     /**
      * todo: 以下为未完成部分
      */
-
-    public static function webAnalytics(mixed $args = null): WebAnalyticsHelper
-    {
-        return new WebAnalyticsHelper($args);
-    }
-
-    public static function router(mixed $args = null): RouterHelper
-    {
-        return new RouterHelper($args);
-    }
 
     public static function cookie(mixed $args = null): CookieHelper
     {

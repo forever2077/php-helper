@@ -2,7 +2,9 @@
 
 namespace Forever2077\PhpHelper;
 
-class RouterHelper
+use Pecee\SimpleRouter\SimpleRouter;
+
+class RouterHelper extends SimpleRouter
 {
 
 }
