@@ -41,6 +41,10 @@ Helper::dateTime()::now()->toDateTimeString();
 |    [时间日期 Datetime](doc/Datetime.md)    | [密码与安全 Validate/Assert](doc/ValidateAssert.md) |      [数据库 ORM](doc/ORM.md)      |                                              |
 |        [认证 OAuth2](doc/OAuth2.md)        |                                                    |    [拼音 Pinyin](doc/Pinyin.md)    |                                              |
 
+## 未分类 Unclassified
+
+- [嵌入地图 EmbedMap](doc/EmbedMap.md)
+
 ## Composer 源管理工具（可选）
 
 ```php

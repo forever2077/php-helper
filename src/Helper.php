@@ -242,13 +242,18 @@ class Helper
         return new LruCacheHelper($args);
     }
 
+    public static function embedMap(): EmbedMapHelper
+    {
+        return new EmbedMapHelper();
+    }
+
     /**
      * todo: 以下为未完成部分
      */
 
-    public static function worldMap(mixed $args = null): WorldMapHelper
+    public static function webAnalytics(mixed $args = null): WebAnalyticsHelper
     {
-        return new WorldMapHelper($args);
+        return new WebAnalyticsHelper($args);
     }
 
     public static function router(mixed $args = null): RouterHelper
