@@ -252,24 +252,14 @@ class Helper
         return new RouterHelper();
     }
 
+    public static function template(): TemplateHelper
+    {
+        return new TemplateHelper();
+    }
+
     /**
      * todo: 以下为未完成部分
      */
-
-    public static function cookie(mixed $args = null): CookieHelper
-    {
-        return new CookieHelper($args);
-    }
-
-    public static function session(mixed $args = null): SessionHelper
-    {
-        return new SessionHelper($args);
-    }
-
-    public static function template(mixed $args = null): TemplateHelper
-    {
-        return new TemplateHelper($args);
-    }
 
     public static function form(mixed $args = null): FormHelper
     {
