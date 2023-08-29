@@ -13,10 +13,17 @@ class RouterHelperTest extends TestCase
 
     public function testSimpleRouter()
     {
-        RouterHelper::setDefaultNamespace('Forever2077\PhpHelper');
         RouterHelper::get('/', function () {
             return 'hello';
         });
+
+        RouterHelper::match(['get', 'post'], '/user/{id}', function ($id) {
+            return "UserId：{$id}";
+        })->where(['id' => '[0-9]+']);;
+
+        RouterHelper::post('/user/{id}/profile', 'UserController@profile')
+            ->addMiddleware('AuthMiddleware');
+
         $this->assertIsBool(RouterHelper::router()->getRoutes()[0] instanceof Pecee\SimpleRouter\Route\RouteUrl);
     }
 }
