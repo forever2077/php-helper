@@ -15,3 +15,8 @@ RouterHelper::post('/user/{id}/profile', 'UserController@profile')->addMiddlewar
 RouterHelper::start();
 文档 https://github.com/skipperbent/simple-php-router
 ```
+
+```bash
+// 简单测试（项目根目录下执行指定入口文件）
+php -S 127.0.0.1:80 index.php
+```
