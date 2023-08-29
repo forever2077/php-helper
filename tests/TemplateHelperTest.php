@@ -4,55 +4,52 @@ use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\TemplateHelper;
 use Twig\Environment;
+use Twig\Loader\{ArrayLoader, FilesystemLoader, ChainLoader};
 
 class TemplateHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $arrayLoader = Helper::template()::array();
-        $this->assertInstanceOf(Environment::class, $arrayLoader);
-        $fileLoader = Helper::template()::filesystem();
-        $this->assertInstanceOf(Environment::class, $fileLoader);
-        $chainLoader = Helper::template()::chain();
-        $this->assertInstanceOf(Environment::class, $chainLoader);
+        $array = Helper::template()::array();
+        $this->assertInstanceOf(ArrayLoader::class, $array);
+        $file = Helper::template()::filesystem();
+        $this->assertInstanceOf(FilesystemLoader::class, $file);
+        $chain = Helper::template()::chain();
+        $this->assertInstanceOf(ChainLoader::class, $chain);
     }
 
     public function testArray()
     {
-        $arrayLoader = TemplateHelper::array([
+        $loader = TemplateHelper::array([
             'index' => 'Hello {{ name }}!',
         ]);
-        $this->assertEquals('Hello World!', $arrayLoader->render('index', ['name' => 'World']));
+        $twig = TemplateHelper::env($loader);
+        $this->assertEquals('Hello World!', $twig->render('index', ['name' => 'World']));
     }
 
     public function testFilesystem()
     {
-        $fileLoader = TemplateHelper::filesystem(
+        $loader = TemplateHelper::filesystem(
             dirname(__DIR__) . '/data/temp/templates',
-            null,
-            [
-                'cache' => dirname(__DIR__) . '/data/temp/templates/cache',
-            ]
         );
-        $this->assertEquals('<p>Hello World!</p>', $fileLoader->render('index.html', ['name' => 'World']));
+        $twig = TemplateHelper::env($loader, [
+            'cache' => dirname(__DIR__) . '/data/temp/templates/cache',
+        ]);
+        $this->assertEquals('<p>Hello World!</p>', $twig->render('index.html', ['name' => 'World']));
     }
 
     public function testChain()
     {
         $arrayLoader = TemplateHelper::array([
             'index' => 'Hello {{ name }}!',
-        ], [
-            '__loader' => true,
         ]);
         $fileLoader = TemplateHelper::filesystem(
             dirname(__DIR__) . '/data/temp/templates',
-            null,
-            [
-                'cache' => dirname(__DIR__) . '/data/temp/templates/cache',
-                '__loader' => true
-            ]
         );
-        $chainLoader = Helper::template()::chain([$arrayLoader, $fileLoader]);
-        $this->assertEquals('<p>Hello World!</p>', $chainLoader->render('index.html', ['name' => 'World']));
+        $chain = Helper::template()::chain([$arrayLoader, $fileLoader]);
+        $twig = TemplateHelper::env($chain, [
+            'cache' => dirname(__DIR__) . '/data/temp/templates/cache',
+        ]);
+        $this->assertEquals('<p>Hello World!</p>', $twig->render('index.html', ['name' => 'World']));
     }
 }
