@@ -24,7 +24,7 @@ $arrayLoader = TemplateHelper::array([
 $fileLoader = TemplateHelper::filesystem(
     dirname(__DIR__) . '/data/temp/templates',
 );
-$chain = Helper::template()::chain([$arrayLoader, $fileLoader]);
+$chain = TemplateHelper::chain([$arrayLoader, $fileLoader]);
 $twig = TemplateHelper::env($chain, [
     'cache' => dirname(__DIR__) . '/data/temp/templates/cache',
 ]);
