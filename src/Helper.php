@@ -272,6 +272,11 @@ class Helper
         return new ServerHelper($socket_name, $context_option);
     }
 
+    public static function translate(): TranslateHelper
+    {
+        return new TranslateHelper();
+    }
+
     /**
      * todo: 以下为未完成部分
      */
@@ -279,11 +284,6 @@ class Helper
     public static function api(mixed $args = null): ApiHelper
     {
         return new ApiHelper($args);
-    }
-
-    public static function translate(mixed $args = null): TranslateHelper
-    {
-        return new TranslateHelper($args);
     }
 
     public static function net(mixed $args = null): NetHelper

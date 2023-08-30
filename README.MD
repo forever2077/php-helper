@@ -49,6 +49,7 @@ Helper::dateTime()::now()->toDateTimeString();
 - [表单 Form](doc/Form.md)
 - [上传 Upload](doc/Upload.md)
 - [服务器 Server](doc/Server.md)
+- [翻译 Translate](doc/Translate.md)
 
 ## Composer 源管理工具（可选）
 
