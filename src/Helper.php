@@ -262,14 +262,14 @@ class Helper
         return new FormHelper();
     }
 
-    /**
-     * todo: 以下为未完成部分
-     */
-
     public static function upload($file, $lang = 'zn_CN'): \Verot\Upload\Upload
     {
         return UploadHelper::instance($file, $lang);
     }
+
+    /**
+     * todo: 以下为未完成部分
+     */
 
     public static function server(mixed $args = null): ServerHelper
     {
