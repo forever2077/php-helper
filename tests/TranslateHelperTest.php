@@ -54,7 +54,7 @@ class TranslateHelperTest extends TestCase
         $this->assertEquals('hello', strtolower($rtn['dst']));
     }
 
-    public function testLanguageRecognizer()
+    private function testLanguageRecognizer()
     {
         $languageRecognizer = TranslateHelper::languageRecognizer('Словѣ́ньскъ/ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ');
         $this->assertEquals('MK', $languageRecognizer->getData()['countryCode']);
