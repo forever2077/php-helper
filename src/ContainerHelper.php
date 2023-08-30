@@ -2,8 +2,12 @@
 
 namespace Forever2077\PhpHelper;
 
-class ContainerHelper
+use Pimple\Container;
+
+class ContainerHelper extends Container
 {
-    //https://github.com/silexphp/Pimple
-    //https://github.com/PHP-DI/PHP-DI
+    /**
+     * 容器
+     * @link https://github.com/silexphp/Pimple
+     */
 }

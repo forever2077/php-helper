@@ -277,6 +277,11 @@ class Helper
         return new TranslateHelper();
     }
 
+    public static function container(array $values = []): ContainerHelper
+    {
+        return new ContainerHelper($values);
+    }
+
     /**
      * todo: 以下为未完成部分
      */
@@ -294,10 +299,5 @@ class Helper
     public static function dataStruct(mixed $args = null): DataStructHelper
     {
         return new DataStructHelper($args);
-    }
-
-    public static function container(mixed $args = null): ContainerHelper
-    {
-        return new ContainerHelper($args);
     }
 }
