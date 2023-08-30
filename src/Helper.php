@@ -267,14 +267,14 @@ class Helper
         return UploadHelper::instance($file, $lang);
     }
 
+    public static function server($socket_name = '', array $context_option = array()): ServerHelper
+    {
+        return new ServerHelper($socket_name, $context_option);
+    }
+
     /**
      * todo: 以下为未完成部分
      */
-
-    public static function server(mixed $args = null): ServerHelper
-    {
-        return new ServerHelper($args);
-    }
 
     public static function api(mixed $args = null): ApiHelper
     {
