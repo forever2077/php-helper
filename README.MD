@@ -46,6 +46,7 @@ Helper::dateTime()::now()->toDateTimeString();
 - [嵌入地图 EmbedMap](doc/EmbedMap.md)
 - [路由器 Router](doc/Router.md)
 - [模板 Template](doc/Template.md)
+- [表单 Form](doc/Form.md)
 
 ## Composer 源管理工具（可选）
 
