@@ -47,6 +47,7 @@ Helper::dateTime()::now()->toDateTimeString();
 - [路由器 Router](doc/Router.md)
 - [模板 Template](doc/Template.md)
 - [表单 Form](doc/Form.md)
+- [上传 Upload](doc/Upload.md)
 
 ## Composer 源管理工具（可选）
 

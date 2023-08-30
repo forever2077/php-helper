@@ -266,14 +266,9 @@ class Helper
      * todo: 以下为未完成部分
      */
 
-    public static function upload(mixed $args = null): UploadHelper
+    public static function upload($file, $lang = 'zn_CN'): \Verot\Upload\Upload
     {
-        return new UploadHelper($args);
-    }
-
-    public static function download(mixed $args = null): DownloadHelper
-    {
-        return new DownloadHelper($args);
+        return UploadHelper::instance($file, $lang);
     }
 
     public static function server(mixed $args = null): ServerHelper
