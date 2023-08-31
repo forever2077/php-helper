@@ -2,12 +2,10 @@
 
 namespace Forever2077\PhpHelper;
 
-use GuzzleHttp\Exception\GuzzleException;
-
 class NetHelper
 {
     /**
-     * DNS 查询工具
+     * DNS查询
      * @param string $hostname
      * @param int $type
      * @param $authoritative_name_servers
@@ -20,20 +18,70 @@ class NetHelper
         return dns_get_record($hostname, $type, $authoritative_name_servers, $additional_records, $raw);
     }
 
-    // Whois 查询
-    public static function whoisQuery($domainName): string
+    /**
+     * DNS在线查询
+     * @param string $domainName
+     * @return bool|array
+     */
+    public static function dnsQueryOnline(string $domainName): bool|array
     {
         try {
-            $response = HttpHelper::get([
-                'url' => "https://www.whois.com/whois/{$domainName}",
-                'options' => [
-                    'timeout' => 15,
-                    'verify' => dirname(__DIR__) . '/data/http/cacert.pem',
-                ]
-            ]);
-            dump($response->getBody()->getContents());
+            $domainName = DomainHelper::resolve($domainName);
+        } catch (\Exception $e) {
             return false;
-        } catch (GuzzleException $e) {
+        }
+
+        $domainName = $domainName->domain()->toString();
+        $data = [];
+        $i = 0;
+
+        try {
+            $document = DomHelper::load("https://who.is/dns/{$domainName}");
+            $thead = $document->find('.queryResponseBodyKey table thead th');
+            $tbody = $document->find('.queryResponseBodyKey table tbody tr');
+            foreach ($thead as $th) {
+                $data[$i][] = $th->text();
+            }
+            foreach ($tbody as $tr) {
+                $i++;
+                foreach ($tr->find('td') as $td) {
+                    $data[$i][] = $td->text();
+                }
+            }
+            return $data;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Whois在线查询
+     * @param string $domainName 域名
+     * @param string $mode : whois / who
+     * @return string|false
+     */
+    public static function whoisQueryOnline(string $domainName, string $mode = 'whois'): string|false
+    {
+        try {
+            $domainName = DomainHelper::resolve($domainName);
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        $registrableDomain = $domainName->registrableDomain()->toString();
+
+        try {
+            switch ($mode) {
+                case 'who':
+                    $document = DomHelper::load("https://who.is/whois/{$registrableDomain}");
+                    $content = $document->find('.queryResponseBodyValue > pre');
+                    return $content[0]->text();
+                default:
+                    $document = DomHelper::load("https://www.whois.com/whois/{$registrableDomain}");
+                    $content = $document->find('#registrarData');
+                    return $content[0]->text();
+            }
+        } catch (\Exception $e) {
             return false;
         }
     }

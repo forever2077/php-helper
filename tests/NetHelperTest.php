@@ -13,12 +13,22 @@ class NetHelperTest extends TestCase
 
     public function testDnsQuery()
     {
-        /*$rtn = Helper::net()::dnsQuery('baidu.com', DNS_MX);
-        $this->assertEquals('baidu.com', $rtn['0']['host']);*/
+        $rtn = NetHelper::dnsQuery('baidu.com', DNS_MX);
+        $this->assertEquals('baidu.com', $rtn['0']['host']);
     }
 
-    public function testWhoisQuery()
+    private function testWhoisQuery()
     {
-        //dump(Helper::net()::whoisQuery('www.qq.com'));
+        $rs = NetHelper::whoisQueryOnline('www.baidu.com');
+        $this->assertStringContainsString('Domain Name: baidu.com', $rs);
+
+        $rs = NetHelper::whoisQueryOnline('www.baidu.com', 'who');
+        $this->assertStringContainsString('Domain Name: baidu.com', $rs);
+    }
+
+    private function testDnsQueryOnline()
+    {
+        $rtn = NetHelper::dnsQueryOnline('baidu.com');
+        $this->assertEquals('baidu.com', $rtn['1']['0']);
     }
 }
