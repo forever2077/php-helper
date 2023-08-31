@@ -18,7 +18,7 @@ class HttpHelperTest extends TestCase
             $response = HttpHelper::get([
                 'url' => 'https://www.baidu.com',
                 'options' => [
-                    'verify' => __DIR__ . '/cacert.pem',
+                    'verify' => dirname(__DIR__) . '/data/http/cacert.pem',
                 ],
             ]);
             $this->assertEquals(200, $response->getStatusCode());
@@ -33,7 +33,7 @@ class HttpHelperTest extends TestCase
             $response = HttpHelper::post([
                 'url' => 'https://www.baidu.com',
                 'options' => [
-                    'verify' => __DIR__ . '/cacert.pem',
+                    'verify' => dirname(__DIR__) . '/data/http/cacert.pem',
                 ],
             ]);
             $this->assertEquals(200, $response->getStatusCode());
