@@ -282,6 +282,11 @@ class Helper
         return new ContainerHelper($values);
     }
 
+    public static function domain(): DomainHelper
+    {
+        return new DomainHelper();
+    }
+
     /**
      * todo: 以下为未完成部分
      */
@@ -296,8 +301,8 @@ class Helper
         return new NetHelper($args);
     }
 
-    public static function dataStruct(mixed $args = null): DataStructHelper
+    public static function dom(mixed $args = null): DomHelper
     {
-        return new DataStructHelper($args);
+        return new DomHelper($args);
     }
 }

@@ -239,8 +239,20 @@ class JsonHelper
         }
     }
 
-    public static function isJson($value): bool
+    /**
+     * 判断给定的值是否为有效的 JSON。
+     * @param mixed $value 要检查的值。
+     * @return bool 如果值是有效的 JSON，则返回 true；否则返回 false。
+     */
+    public static function isJson(mixed $value): bool
     {
         return Helper::validate()::json()->validate($value);
     }
+
+    /**
+     * JSON Schema for PHP
+     * https://github.com/justinrainbow/json-schema
+     * A PHP Implementation for validating JSON Structures against a given Schema with support for Schemas of Draft-3 or Draft-4.
+     * Features of newer Drafts might not be supported. See Table of All Versions of Everything to get an overview of all existing Drafts.
+     */
 }
