@@ -292,6 +292,11 @@ class Helper
         return new DomHelper($args);
     }
 
+    public static function net(mixed $args = null): NetHelper
+    {
+        return new NetHelper($args);
+    }
+
     /**
      * todo: 以下为未完成部分
      */
@@ -299,10 +304,5 @@ class Helper
     public static function api(mixed $args = null): ApiHelper
     {
         return new ApiHelper($args);
-    }
-
-    public static function net(mixed $args = null): NetHelper
-    {
-        return new NetHelper($args);
     }
 }
