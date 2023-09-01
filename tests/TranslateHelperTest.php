@@ -47,7 +47,26 @@ class TranslateHelperTest extends TestCase
         $translator->config = [
             'http' => [
                 'verify' => false,
-                'proxy' => 'http://127.0.0.1:7890',
+                'proxy' => [
+                    'http' => 'http://127.0.0.1:27890',
+                    'https' => 'http://127.0.0.1:27890',
+                ],
+            ],
+        ];
+        $rtn = $translator->translate('你好');
+        $this->assertEquals('hello', strtolower($rtn['dst']));
+    }
+
+    private function testGoogle()
+    {
+        $translator = new TranslateHelper();
+        $translator->translator = 'google';
+        $translator->config = [
+            'http' => [
+                'proxy' => [
+                    'http' => 'http://127.0.0.1:27890',
+                    'https' => 'http://127.0.0.1:27890',
+                ],
             ],
         ];
         $rtn = $translator->translate('你好');

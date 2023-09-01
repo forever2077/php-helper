@@ -34,8 +34,12 @@ $this->assertEquals('hello', strtolower($rtn['dst']));
 $translator->translator = 'google';
 $translator->config = [
     'http' => [
-        'verify' => false,
-        'proxy' => 'http://127.0.0.1:7890',
+        // 'verify' => false,
+        // 'verify' => 'cacert.pem',
+        'proxy' => [
+            'http' => 'http://127.0.0.1:27890',
+            'https' => 'http://127.0.0.1:27890',
+        ],
     ],
 ];
 $rtn = $translator->translate('你好');
