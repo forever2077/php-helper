@@ -28,4 +28,27 @@ class AmphpTest extends TestCase
 
         $this->assertTrue($future1->isComplete() && $future2->isComplete());
     }
+
+    public function testAsync()
+    {
+        $future = [];
+        for ($i = 0; $i < 5; $i++) {
+            $future[] = async(function () use ($i) {
+                for ($j = 0; $j < 5; $j++) {
+                    //echo "Coroutine {$i} {$j}\n";
+                    delay(0.01);
+                }
+            });
+            delay(0.01);
+        }
+        /** @var Amp\Future $item */
+        foreach ($future as $item) {
+            $item->await();
+        }
+        $done = [];
+        foreach ($future as $item) {
+            $done[] = $item->isComplete();
+        }
+        $this->assertEquals(5, array_sum($done));
+    }
 }
