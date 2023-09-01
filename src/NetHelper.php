@@ -86,16 +86,69 @@ class NetHelper
         }
     }
 
-    // Ping 工具
-    public static function ping($ipAddress)
+    /**
+     * 对给定的 IP 地址执行 ping 操作。
+     *
+     * @param string $ipAddress 要 ping 的 IP 地址。
+     * @return bool 若 ping 成功，返回 true；否则返回 false。
+     */
+    public static function ping(string $ipAddress): bool
     {
-        // TODO: 实现 Ping 逻辑
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            $command = "ping -n 1 $ipAddress";
+        } else {
+            $command = "ping -c 1 $ipAddress";
+        }
+
+        exec($command, $output, $status);
+
+        return $status === 0;
     }
 
-    // 端口扫描器
-    public static function portScanner($ipAddress, $ports)
+    /**
+     * 扫描给定 IP 地址上的指定端口。
+     *
+     * @param string $ipAddress 要扫描的 IP 地址。
+     * @param array|string $ports 要扫描的端口数组。
+     * @return array|bool 包含开放端口的数组。
+     */
+    public static function portScanner(string $ipAddress, array|string $ports): array|bool
     {
-        // TODO: 实现端口扫描逻辑
+        $openPorts = [];
+
+        if (is_array($ports)) {
+            $portList = $ports;
+        } elseif (str_contains($ports, '-')) {
+            list($start, $end) = explode('-', $ports);
+            $portList = range((int)$start, (int)$end);
+        } else {
+            return false;
+        }
+
+        foreach ($portList as $port) {
+            $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+            socket_set_nonblock($socket);
+
+            $connection = @socket_connect($socket, $ipAddress, $port);
+
+            if ($connection || socket_last_error($socket) === SOCKET_EISCONN) {
+                $openPorts[] = $port;
+                socket_close($socket);
+                continue;
+            }
+
+            $read = $write = [$socket];
+            $except = null;
+            $selected = socket_select($read, $write, $except, 1);
+
+            if ($selected > 0) {
+                $openPorts[] = $port;
+            }
+
+            socket_close($socket);
+        }
+
+        return $openPorts;
     }
 
     // Traceroute 工具

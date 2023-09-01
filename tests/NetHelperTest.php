@@ -11,10 +11,10 @@ class NetHelperTest extends TestCase
         $this->assertEquals(NetHelper::class, Helper::net()::class);
     }
 
-    public function testDnsQuery()
+    private function testDnsQuery()
     {
         $rtn = NetHelper::dnsQuery('baidu.com', DNS_MX);
-        $this->assertEquals('baidu.com', $rtn['0']['host']);
+        $this->assertEquals('baidu.com', $rtn[0]['host']);
     }
 
     private function testWhoisQuery()
@@ -29,6 +29,18 @@ class NetHelperTest extends TestCase
     private function testDnsQueryOnline()
     {
         $rtn = NetHelper::dnsQueryOnline('baidu.com');
-        $this->assertEquals('baidu.com', $rtn['1']['0']);
+        $this->assertEquals('baidu.com', $rtn[1][0]);
+    }
+
+    private function testPing()
+    {
+        $this->assertTrue(NetHelper::ping('www.baidu.com'));
+    }
+
+    private function testPortScanner()
+    {
+        //dump(NetHelper::portScanner('www.baidu.com', '80-100'));
+        $rtn = NetHelper::portScanner('www.baidu.com', [80, 443, 8080]);
+        $this->assertEquals([80, 443], $rtn);
     }
 }

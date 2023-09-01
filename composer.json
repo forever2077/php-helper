@@ -69,6 +69,7 @@
         "ext-json": "*",
         "ext-sqlite3": "*",
         "ext-mbstring": "*",
+        "ext-sockets": "*",
         "ext-sodium": "*",
         "ext-openssl": ">=1.1.0",
         "aliyuncs/oss-sdk-php": "^2.6",
