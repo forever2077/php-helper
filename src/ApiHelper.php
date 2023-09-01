@@ -2,7 +2,22 @@
 
 namespace Forever2077\PhpHelper;
 
+use Tqdev\PhpCrudApi\Api;
+use Tqdev\PhpCrudApi\Config\Config;
+
 class ApiHelper
 {
-    // https://api-tools.getlaminas.org/documentation/api-primer/what-is-an-api
+    /**
+     * @param array $config
+     * @return Api
+     * @throws \Exception
+     */
+    public static function restful(array $config): Api
+    {
+        try {
+            return new Api(new Config($config));
+        } catch (\Exception $e) {
+            throw new \Exception($e);
+        }
+    }
 }

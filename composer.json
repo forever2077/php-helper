@@ -129,7 +129,8 @@
         "mouyong/translate": "^3.0",
         "pimple/pimple": "^3.5",
         "imangazaliev/didom": "^2.0",
-        "jeremykendall/php-domain-parser": "^6.3"
+        "jeremykendall/php-domain-parser": "^6.3",
+        "mevdschee/php-crud-api": "^2.14"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",
