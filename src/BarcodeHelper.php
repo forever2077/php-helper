@@ -101,6 +101,11 @@ class BarcodeHelper
         };
     }
 
+    /**
+     * 设置条码输出类型
+     * @param string $type (png、svg、html)
+     * @return void
+     */
     public static function setOutputDataType(string $type): void
     {
         $type = strtolower($type);
