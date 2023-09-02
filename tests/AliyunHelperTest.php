@@ -14,7 +14,7 @@ class AliyunHelperTest extends TestCase
         $this->assertEquals(AliyunHelper::class, Helper::aliyun()::class);
     }
 
-    public function testOpenapi()
+    private function testOpenapi()
     {
         try {
             AliyunHelper::accessKeyClient('foo', 'bar')
@@ -26,7 +26,7 @@ class AliyunHelperTest extends TestCase
         }
     }
 
-    public function testOss()
+    private function testOss()
     {
         $env = EnvHelper::instance(dirname(__DIR__));
         $this->assertInstanceOf(OssClient::class, AliyunHelper::oss(

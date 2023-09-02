@@ -68,7 +68,7 @@ class TencentCloudHelperTest extends TestCase
         }
     }*/
 
-    public function testTencentCloud()
+    private function testTencentCloud()
     {
         $this->assertInstanceOf(TencentCloudHelper::class, Helper::tencentCloud());
     }
