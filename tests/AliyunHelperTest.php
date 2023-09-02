@@ -9,7 +9,7 @@ use OSS\OssClient;
 
 class AliyunHelperTest extends TestCase
 {
-    public function testAliyun()
+    private function testAliyun()
     {
         $this->assertEquals(AliyunHelper::class, Helper::aliyun()::class);
     }

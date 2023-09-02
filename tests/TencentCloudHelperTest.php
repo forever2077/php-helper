@@ -11,12 +11,12 @@ use TencentCloud\Common\Profile\HttpProfile;
 
 class TencentCloudHelperTest extends TestCase
 {
-    public function testInstance()
+    private function testInstance()
     {
         $this->assertInstanceOf(TencentCloudHelper::class, TencentCloudHelper::instance());
     }
 
-    /*public function testClient()
+    private function testClient()
     {
         $env = EnvHelper::instance(dirname(__DIR__));
         $cred = new Credential(
@@ -46,9 +46,9 @@ class TencentCloudHelperTest extends TestCase
         } catch (TencentCloudSDKException $e) {
             $this->assertIsString($e->getMessage());
         }
-    }*/
+    }
 
-    /*public function testCos()
+    private function testCos()
     {
         $env = EnvHelper::instance(dirname(__DIR__));
         $cosConfig = [
@@ -66,7 +66,7 @@ class TencentCloudHelperTest extends TestCase
         } catch (Exception $e) {
             $this->assertIsString($e->getMessage());
         }
-    }*/
+    }
 
     private function testTencentCloud()
     {
