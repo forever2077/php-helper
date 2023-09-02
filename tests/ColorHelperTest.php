@@ -16,7 +16,7 @@ class ColorHelperTest extends TestCase
         $this->assertEquals('rgb(0,0,1)', ColorHelper::array2value([0, 0, 1], 'rgb'));
         $this->assertEquals('rgba(0,0,0,1)', ColorHelper::array2value([0, 0, 0, 1]));
         $this->assertEquals('rgba(0,0,0,1)', ColorHelper::array2value(['r' => 0, 'g' => 0, 'b' => 0, 'a' => 1]));
-        $this->assertEquals('#ff00ff', ColorHelper::array2value([255, 0, 255, 0.5], 'hex'));
+        $this->assertEquals('#ff00ff', ColorHelper::array2value([255, 0, 255], 'hex'));
         $this->assertEquals('cmyk(255,0,255,0.5)', ColorHelper::array2value([255, 0, 255, 0.5], 'cmyk'));
         $this->assertEquals('hsl(50,0%,100%)', ColorHelper::array2value([50, 0, 100], 'hsl'));
         $this->assertEquals('xyz(50,0,100)', ColorHelper::array2value([50, 0, 100], 'xyz'));

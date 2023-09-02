@@ -39,7 +39,7 @@ Helper::dateTime()::now()->toDateTimeString();
 | [文档处理 Office](doc/Office.md) | [翻译 Translate](doc/Translate.md) | [终端 Terminal](doc/Terminal.md) | [时间日期 Datetime](doc/Datetime.md) |
 | [文档处理 CSV](doc/CSV.md) | [嵌入地图 EmbedMap](doc/EmbedMap.md) | [系统 System](doc/System.md) | [图片处理 Image](doc/Image.md) |
 | [文档处理 XML](doc/XML.md) | [验证码 Captcha](doc/Captcha.md) | [环境变量 Env](doc/Env.md) | [压缩 Zip](doc/Zip.md) |
-| [文档对象 Dom](doc/Dom.md) | [身份标识 Identity ID](doc/IdentityID.md) |              |  |
+| [文档对象 Dom](doc/Dom.md) | [身份标识 Identity ID](doc/IdentityID.md) |              | [条形码 Barcode](doc/Barcode.md) |
 | [缓存 LruCache](doc/LRUCache.md) | [域名 Domain](doc/Domain.md) |              |            |
 | [缓存 Cache](doc/Cache.md) | [网络 Net](doc/Net.md) |              |            |
 
