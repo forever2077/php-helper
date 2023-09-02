@@ -8,6 +8,15 @@ use Twig\Loader\{ArrayLoader, FilesystemLoader, ChainLoader};
 
 class TemplateHelperTest extends TestCase
 {
+    public function testTempDir()
+    {
+        $path = dirname(__DIR__) . '/data/temp/templates';
+        if (!file_exists($path)) {
+            Helper::file()::createDir($path, 0777, true);
+        }
+        $this->assertFileExists($path);
+    }
+
     public function testInstance()
     {
         $array = Helper::template()::array();
