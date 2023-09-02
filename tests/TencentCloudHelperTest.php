@@ -11,7 +11,7 @@ use TencentCloud\Common\Profile\HttpProfile;
 
 class TencentCloudHelperTest extends TestCase
 {
-    private function testInstance()
+    public function testInstance()
     {
         $this->assertInstanceOf(TencentCloudHelper::class, TencentCloudHelper::instance());
     }
