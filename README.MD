@@ -33,13 +33,13 @@ Helper::dateTime()::now()->toDateTimeString();
 | [文件 File](doc/File.md) | [资源标识符 URI](doc/URI.md) | [异常 Exceptions](doc/Exceptions.md) | [版本号 Version](doc/Version.md) |
 | [表单 Form](doc/Form.md) | [上传 Upload](doc/Upload.md) | [验证/断言 Validate/Assert](doc/ValidateAssert.md) | [唯一标识符 UUID](doc/UUID.md) |
 | [拼音 Pinyin](doc/Pinyin.md) | [认证 Jwt](doc/Jwt.md) | [调试器 Debugger](doc/Debugger.md) | [算法 Algorithm](doc/Algorithm.md) |
-| [模板 Template](doc/Template.md) | [认证 OAuth2](doc/OAuth2.md) | [运行时 Runtime](doc/Runtime.md) | [数学 Math](doc/Math.md) |
+| [颜色 Color](doc/Color.md) | [认证 OAuth2](doc/OAuth2.md) | [运行时 Runtime](doc/Runtime.md) | [数学 Math](doc/Math.md) |
 | [随机字符串 RandStr](doc/RandomString.md) | [短信 SMS](doc/SMS.md) | [日志 Log](doc/Log.md) | [布隆过滤器 BloomFilter](doc/BloomFilter.md) |
-| [敏感词过滤器 Sensitive](doc/Sensitive.md) | [邮件 Email](doc/Email.md) | [配置 Config](doc/Config.md) | [时间日期 Datetime](doc/Datetime.md) |
-| [文档处理 Office](doc/Office.md) | [翻译 Translate](doc/Translate.md) | [终端 Terminal](doc/Terminal.md) | [地理国家 Geo/Country](doc/GeoCountry.md) |
+| [敏感词过滤器 Sensitive](doc/Sensitive.md) | [邮件 Email](doc/Email.md) | [配置 Config](doc/Config.md) | [地理国家 Geo/Country](doc/GeoCountry.md) |
+| [文档处理 Office](doc/Office.md) | [翻译 Translate](doc/Translate.md) | [终端 Terminal](doc/Terminal.md) | [时间日期 Datetime](doc/Datetime.md) |
 | [文档处理 CSV](doc/CSV.md) | [嵌入地图 EmbedMap](doc/EmbedMap.md) | [系统 System](doc/System.md) | [图片处理 Image](doc/Image.md) |
 | [文档处理 XML](doc/XML.md) | [验证码 Captcha](doc/Captcha.md) | [环境变量 Env](doc/Env.md) | [压缩 Zip](doc/Zip.md) |
-| [文档对象 Dom](doc/Dom.md) | [身份标识 Identity ID](doc/IdentityID.md) |              | [颜色 Color](doc/Color.md) |
+| [文档对象 Dom](doc/Dom.md) | [身份标识 Identity ID](doc/IdentityID.md) |              |  |
 | [缓存 LruCache](doc/LRUCache.md) | [域名 Domain](doc/Domain.md) |              |            |
 | [缓存 Cache](doc/Cache.md) | [网络 Net](doc/Net.md) |              |            |
 
@@ -50,7 +50,7 @@ Helper::dateTime()::now()->toDateTimeString();
 | [百度AI BaiduAi](doc/BaiduAi.md) | [路由器 Router](doc/Router.md) |
 | [支付宝 Alipay](doc/Alipay.md) | [容器 Container](doc/Container.md) |
 | [微信 Wechat](doc/Wechat.md) | [接口 Api](doc/Api.md) |
-| [支付 Payment](doc/Payment.md) |               |
+| [支付 Payment](doc/Payment.md) | [模板 Template](doc/Template.md) |
 
 ## Composer 源管理工具（可选）
 
