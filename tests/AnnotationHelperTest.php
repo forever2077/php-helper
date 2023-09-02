@@ -5,11 +5,17 @@ use Forever2077\PhpHelper\EnvHelper;
 use Phpfastcache\Drivers\Redis\Config as RedisConfig;
 use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
+use Forever2077\PhpHelper\AnnotationHelper;
 use Forever2077\PhpHelper\Annotations\{After, Before, Cache, Log, Limit};
 
 class AnnotationHelperTest extends TestCase
 {
-    public function testMain()
+    public function testInstance()
+    {
+        $this->assertEquals(AnnotationHelper::class, AnnotationHelper::class);
+    }
+
+    private function testMain()
     {
         try {
             $rtn = Helper::annotation([$this, 'doAction'], ['a' => 1, 'b' => 2]);
@@ -20,7 +26,7 @@ class AnnotationHelperTest extends TestCase
         }
     }
 
-    public function testLoadRedisConfigByEnv()
+    private function testLoadRedisConfigByEnv()
     {
         EnvHelper::instance(dirname(__DIR__));
         $this->assertIsString(getenv('ANNOTATION_CACHE_REDIS_HOST'));
@@ -59,13 +65,13 @@ class AnnotationHelperTest extends TestCase
     //#[Log('自定义日志信息')]
     //#[Cache] // 默认
     #[Cache(300, 'files', 'myDefined')] // 后续通过自定义ID获取内容
-    //#[Cache(300, 'redis', 'myDefined')]
+        //#[Cache(300, 'redis', 'myDefined')]
     public function innerAction($a = 0, $b = 0): string
     {
         return "innerAction：{$a}, {$b} - " . date('Y-m-d H:i:s');
     }
 
-    public function testGetTargetMethodCacheContentByFiles()
+    private function testGetTargetMethodCacheContentByFiles()
     {
         try {
             $cache = Helper::cache('files', CacheHelper::config([
