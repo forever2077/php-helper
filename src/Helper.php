@@ -301,4 +301,14 @@ class Helper
     {
         return new ApiHelper($args);
     }
+
+    public static function barcode(mixed $args = null): BarcodeHelper
+    {
+        return new BarcodeHelper($args);
+    }
+
+    public static function color(mixed $args = null): ColorHelper
+    {
+        return new ColorHelper($args);
+    }
 }
