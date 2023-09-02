@@ -43,14 +43,14 @@ Helper::dateTime()::now()->toDateTimeString();
 | [缓存 LruCache](doc/LRUCache.md) | [域名 Domain](doc/Domain.md) |              |            |
 | [缓存 Cache](doc/Cache.md) | [网络 Net](doc/Net.md) |              |            |
 
-| 开放平台与云服务商      | 后端开发核心组件        |
-| -------------- | --------------- |
+| 开放平台与云服务商      | 后端开发核心组件      |
+| -------------- |---------------|
 | [阿里云 Aliyun](doc/Aliyun.md) | [服务器 Server](doc/Server.md) |
 | [腾讯云 TencentCloud](doc/TencentCloud.md) | [数据库 ORM](doc/ORM.md) |
 | [百度AI BaiduAi](doc/BaiduAi.md) | [路由器 Router](doc/Router.md) |
 | [支付宝 Alipay](doc/Alipay.md) | [容器 Container](doc/Container.md) |
-| [微信 Wechat](doc/Wechat.md) |                 |
-| [支付 Payment](doc/Payment.md) |                 |
+| [微信 Wechat](doc/Wechat.md) | [接口 Api](doc/Api.md) |
+| [支付 Payment](doc/Payment.md) |               |
 
 ## Composer 源管理工具（可选）
 
