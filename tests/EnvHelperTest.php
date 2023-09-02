@@ -8,32 +8,32 @@ class EnvHelperTest extends TestCase
 {
     public function testCreateEnv()
     {
-        Helper::file()::createFile(__DIR__ . '/.env', '');
-        $this->assertFileExists(__DIR__ . '/.env');
+        Helper::file()::createFile(dirname(__FILE__) . '/.env', '');
+        $this->assertFileExists(dirname(__FILE__) . '/.env');
     }
 
     public function testSave()
     {
-        $env = EnvHelper::instance(__DIR__);
+        $env = EnvHelper::instance(dirname(__FILE__));
         $env->save(['foo' => 'bar']);
         $this->assertEquals('bar', $env->get('foo'));
     }
 
     public function testInstance()
     {
-        $env = Helper::env(__DIR__);
+        $env = Helper::env(dirname(__FILE__));
         $this->assertInstanceOf(EnvHelper::class, $env);
     }
 
     public function testDotenv()
     {
-        $env = EnvHelper::dotenv(__DIR__);
+        $env = EnvHelper::dotenv(dirname(__FILE__));
         $this->assertInstanceOf(EnvHelper::class, $env);
     }
 
     public function testGet()
     {
-        $env = EnvHelper::instance(__DIR__);
+        $env = EnvHelper::instance(dirname(__FILE__));
         $this->assertEquals('bar', $env->get('foo'));
         $this->assertEquals('bar', $env->get('foo', 'bar'));
         $this->assertEquals('bar', $env->get('foo', function (Dotenv\Dotenv $dotenv) {
@@ -43,14 +43,14 @@ class EnvHelperTest extends TestCase
 
     public function testHas()
     {
-        $env = EnvHelper::instance(__DIR__);
+        $env = EnvHelper::instance(dirname(__FILE__));
         $this->assertTrue($env->has('foo'));
         $this->assertFalse($env->has('bar'));
     }
 
     public function testSet()
     {
-        $env = EnvHelper::instance(__DIR__);
+        $env = EnvHelper::instance(dirname(__FILE__));
         $env->set('bar', 'foo');
         $this->assertEquals('foo', $env->get('bar'));
     }
@@ -62,7 +62,7 @@ class EnvHelperTest extends TestCase
 
     public function testDelEnv()
     {
-        unlink(__DIR__ . '/.env');
-        $this->assertFileDoesNotExist(__DIR__ . '/.env');
+        unlink(dirname(__FILE__) . '/.env');
+        $this->assertFileDoesNotExist(dirname(__FILE__) . '/.env');
     }
 }
