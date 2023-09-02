@@ -14,6 +14,7 @@ class TemplateHelperTest extends TestCase
         if (!file_exists($path)) {
             Helper::file()::createDir($path, 0777, true);
         }
+        file_put_contents($path . '/index.html', '<p>Hello {{ name }}!</p>');
         $this->assertFileExists($path);
     }
 
