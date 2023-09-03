@@ -9,6 +9,9 @@ ValidateHelper::email('alganet@gmail.com', 'Email (%s) is invalid');
 ValidateHelper::rule()::email()->validate('alganet@gmail.com');
 文档 https://respect-validation.readthedocs.io/en/latest/list-of-rules/
 
+// 检查文件名是否符合 Windows 和 Linux 系统的命名规范
+ValidateHelper::isValidFilename(string $filename, bool $replaceInvalid = false, array $options = []);
+
 // 检查护照号格式是否正确（默认：中国）
 ValidateHelper::isPassportNumber('EA1234567');
 // 计划从 validator.js 移植

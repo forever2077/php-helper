@@ -5,7 +5,7 @@ namespace Forever2077\PhpHelper;
 use Respect\Validation\Factory;
 use Respect\Validation\Validator;
 use Webmozart\Assert\Assert;
-use Forever2077\PhpHelper\Validation\Common;
+use Forever2077\PhpHelper\Validation\{Common, Custom};
 
 /**
  * @link https://github.com/webmozarts/assert
@@ -13,10 +13,11 @@ use Forever2077\PhpHelper\Validation\Common;
 class ValidateHelper extends Assert
 {
     /**
-     * 由AI生成的常见验证规则
+     * AI生成的常见验证规则
+     * 其他规则需使用 ValidateHelper 对象调用，ValidateHelper::isValidFilename();
      * todo: 测试用例
      */
-    use Common;
+    use Common, Custom;
 
     public static function instance(): Validator
     {

@@ -38,4 +38,11 @@ class ValidateHelperTest extends TestCase
         $this->assertTrue(ValidateHelper::isLicensePlate('京Q58A77'));
         $this->assertEquals('135****0001', ValidateHelper::formatMobile('13500000001'));
     }
+
+    public function testIsValidFilename()
+    {
+        $this->assertTrue(ValidateHelper::isValidFilename('test.txt'));
+        $this->assertFalse(ValidateHelper::isValidFilename('my|file.txt'));
+        $this->assertEquals('my_file.txt', ValidateHelper::isValidFilename("my|file.txt", true));
+    }
 }
