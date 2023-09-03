@@ -267,6 +267,11 @@ class Helper
         return UploadHelper::instance($file, $lang);
     }
 
+    public static function download(array $files): DownloadHelper
+    {
+        return new DownloadHelper($files);
+    }
+
     public static function server($socket_name = '', array $context_option = array()): ServerHelper
     {
         return new ServerHelper($socket_name, $context_option);
