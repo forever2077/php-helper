@@ -338,6 +338,7 @@ class FileHelper
 
     /**
      * 获取文件的真实MIME类型或扩展名
+     * @link https://github.com/adrienrn/php-mimetyper
      * @param string $filePath 文件的路径或URL
      * @param bool $returnExtension 是否返回文件预期的扩展名
      * @return string|array|bool 返回文件的MIME类型或扩展名(数组)，如果文件不存在或发生错误返回false
