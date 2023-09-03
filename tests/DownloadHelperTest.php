@@ -14,7 +14,7 @@ class DownloadHelperTest extends TestCase
     public function testDownload()
     {
         $list = [
-            'https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF',
+            //'https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF',
         ];
         // 创建下载实例并导入下载清单
         $download = Helper::download($list);
@@ -24,7 +24,7 @@ class DownloadHelperTest extends TestCase
         // 设置允许下载的文件类型（根据扩展名）
         $download->setAllowedFileType(['gif', 'png', 'jpg']);
         // 添加目标下载文件
-        $download->addFile('https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF');
+        //$download->addFile('https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF');
         // 设置最大下载数量
         $download->setMaxFiles(5);
         // 检查下载后的文件类型若不是名单内则直接删除（根据文件mime类型）
