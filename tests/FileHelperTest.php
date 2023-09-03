@@ -66,10 +66,17 @@ class FileHelperTest extends TestCase
     public function testGetRealFileType()
     {
         $path = __DIR__ . '/test.txt';
-        $this->assertTrue(FileHelper::createFile(['filename' => $path, 'content' => 'test1']));
+        FileHelper::createFile(['filename' => $path, 'content' => 'test1']);
+
         $this->assertEquals('text/plain', FileHelper::getRealFileType($path));
         $this->assertFalse(FileHelper::getRealFileType('NonexistentFile.txt'));
-        $this->assertTrue(FileHelper::removeFile(['filename' => $path]));
         //$this->assertEquals('image/jpeg', FileHelper::getRealFileType('https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF'));
+        $this->assertEquals('txt', FileHelper::getRealFileType($path, true)['ext']);
+
+        $this->assertEquals('jpeg', FileHelper::findMimeExtension('image/jpeg'));
+        $this->assertEquals(["jpeg", "jpg", "jpe"], FileHelper::findMimeExtensions('image/jpeg'));
+        $this->assertEquals('image/jpeg', FileHelper::findExtensionMime('jpg'));
+
+        $this->assertTrue(FileHelper::removeFile(['filename' => $path]));
     }
 }

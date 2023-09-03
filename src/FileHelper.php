@@ -7,6 +7,8 @@ use Exception;
 use FilesystemIterator;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
+use MimeTyper\Repository\MimeDbRepository;
+use MimeTyper\Repository\CompositeRepository;
 
 class FileHelper
 {
@@ -335,12 +337,13 @@ class FileHelper
     }
 
     /**
-     * 获取文件的真实MIME类型
+     * 获取文件的真实MIME类型或扩展名
      * @param string $filePath 文件的路径或URL
-     * @return string|bool 返回文件的MIME类型，如果文件不存在或发生错误返回 false
+     * @param bool $returnExtension 是否返回文件预期的扩展名
+     * @return string|array|bool 返回文件的MIME类型或扩展名(数组)，如果文件不存在或发生错误返回false
      * @throws Exception 如果创建 finfo 对象失败或其他未预期的错误
      */
-    public static function getRealFileType(string $filePath): string|bool
+    public static function getRealFileType(string $filePath, bool $returnExtension = false): string|array|bool
     {
         // 参数验证
         if (empty($filePath)) {
@@ -383,6 +386,39 @@ class FileHelper
             unlink($tempFile);
         }
 
+        if ($returnExtension) {
+            /**
+             * 数据源
+             * @link https://github.com/jshttp/mime-db
+             */
+            $mimeRepository = new MimeDbRepository(dirname(__DIR__) . '/data/mime/db.json');
+            $fileExts = $mimeRepository->findExtensions($fileType);
+            $fileExt = $mimeRepository->findExtension($fileType);
+            return [
+                'ext' => $fileExt,
+                'exts' => $fileExts,
+                'type' => $fileType,
+            ];
+        }
+
         return $fileType;
+    }
+
+    public static function findMimeExtension(string $mime): mixed
+    {
+        $mimeRepository = new MimeDbRepository(dirname(__DIR__) . '/data/mime/db.json');
+        return $mimeRepository->findExtension($mime);
+    }
+
+    public static function findMimeExtensions(string $mime): mixed
+    {
+        $mimeRepository = new MimeDbRepository(dirname(__DIR__) . '/data/mime/db.json');
+        return $mimeRepository->findExtensions($mime);
+    }
+
+    public static function findExtensionMime(string $extension)
+    {
+        $mimeRepository = new MimeDbRepository(dirname(__DIR__) . '/data/mime/db.json');
+        return $mimeRepository->findType($extension);
     }
 }
