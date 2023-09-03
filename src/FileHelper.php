@@ -2,10 +2,11 @@
 
 namespace Forever2077\PhpHelper;
 
+use finfo;
 use Exception;
 use FilesystemIterator;
-use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use RecursiveDirectoryIterator;
 
 class FileHelper
 {
@@ -331,5 +332,57 @@ class FileHelper
             return $ext;
         }
         return strtolower(trim($ext));
+    }
+
+    /**
+     * 获取文件的真实MIME类型
+     * @param string $filePath 文件的路径或URL
+     * @return string|null 返回文件的MIME类型，如果文件不存在或发生错误返回 null
+     * @throws Exception 如果创建 finfo 对象失败或其他未预期的错误
+     */
+    public static function getRealFileType(string $filePath): ?string
+    {
+        // 参数验证
+        if (empty($filePath)) {
+            throw new Exception("Invalid file path.");
+        }
+
+        // 判断是否为远程文件
+        $isRemote = filter_var($filePath, FILTER_VALIDATE_URL);
+
+        // 如果是远程文件，下载到临时文件
+        if ($isRemote) {
+            $tempFile = tempnam(sys_get_temp_dir(), 'remote_file_');
+            $fileContents = file_get_contents($filePath);
+
+            if ($fileContents === false) {
+                return null;
+            }
+
+            file_put_contents($tempFile, $fileContents);
+            $filePath = $tempFile;
+        }
+
+        // 检查文件是否存在
+        if (!file_exists($filePath)) {
+            return null;
+        }
+
+        // 创建一个新的finfo对象
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+
+        // 获取文件的MIME类型
+        try {
+            $fileType = $finfo->file($filePath);
+        } catch (Exception $e) {
+            throw new Exception("An error occurred while fetching the file type: " . $e->getMessage());
+        }
+
+        // 如果使用了临时文件，删除它
+        if ($isRemote) {
+            unlink($tempFile);
+        }
+
+        return $fileType;
     }
 }
