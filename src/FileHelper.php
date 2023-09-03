@@ -337,10 +337,10 @@ class FileHelper
     /**
      * 获取文件的真实MIME类型
      * @param string $filePath 文件的路径或URL
-     * @return string|null 返回文件的MIME类型，如果文件不存在或发生错误返回 null
+     * @return string|bool 返回文件的MIME类型，如果文件不存在或发生错误返回 false
      * @throws Exception 如果创建 finfo 对象失败或其他未预期的错误
      */
-    public static function getRealFileType(string $filePath): ?string
+    public static function getRealFileType(string $filePath): string|bool
     {
         // 参数验证
         if (empty($filePath)) {
@@ -356,7 +356,7 @@ class FileHelper
             $fileContents = file_get_contents($filePath);
 
             if ($fileContents === false) {
-                return null;
+                return false;
             }
 
             file_put_contents($tempFile, $fileContents);
@@ -365,7 +365,7 @@ class FileHelper
 
         // 检查文件是否存在
         if (!file_exists($filePath)) {
-            return null;
+            return false;
         }
 
         // 创建一个新的finfo对象
