@@ -6,6 +6,9 @@ use Aimeos\Map;
 
 class ArrayHelper extends Map
 {
+    /**
+     * @link https://github.com/aimeos/map
+     */
     public function __construct($elements = [])
     {
         parent::__construct($elements);
