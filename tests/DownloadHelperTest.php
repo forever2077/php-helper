@@ -42,7 +42,7 @@ class DownloadHelperTest extends TestCase
             // 执行下载任务
             $rtn = $download->downloadFiles();
             // 任务结果
-            dump($rtn);
+            //dump($rtn);
             $this->assertIsArray($rtn);
         } catch (Exception $e) {
             $this->fail($e);
