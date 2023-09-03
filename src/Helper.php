@@ -316,4 +316,9 @@ class Helper
     {
         return new ColorHelper($args);
     }
+
+    public static function pdf($options = null): \Dompdf\Dompdf
+    {
+        return PdfHelper::instance($options);
+    }
 }

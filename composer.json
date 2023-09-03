@@ -135,7 +135,10 @@
         "milon/barcode": "^10.0",
         "khanamiryan/qrcode-detector-decoder": "^2.0",
         "spatie/color": "^1.5",
-        "adrienrn/php-mimetyper": "^0.2.2"
+        "adrienrn/php-mimetyper": "^0.2.2",
+        "dompdf/dompdf": "^2.0",
+        "smalot/pdfparser": "^2.7",
+        "phenx/php-font-lib": "^0.5.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",
