@@ -11,6 +11,7 @@ use Yansongda\Pay\Provider\Wechat;
  * 支付辅助类
  * @link https://pay.yansongda.cn/docs/v3/
  * @link https://github.com/yansongda/pay
+ * @link https://github.com/thephpleague/omnipay
  */
 class PayHelper
 {
@@ -53,14 +54,20 @@ class PayHelper
     }
 
     /**
-     * PayPal
-     * @param array $config
-     * @return void
+     * paypal
+     * @link https://github.com/paypal/PayPal-PHP-SDK
      */
-    private static function paypal(array $config)
+    public static function paypal()
     {
-        // https://github.com/Payum/Payum
-        // https://github.com/paypal/PayPal-PHP-SDK
-        // https://packagist.org/packages/omnipay/paypal
+
+    }
+
+    /**
+     * stripe
+     * @link https://github.com/thephpleague/omnipay-stripe
+     */
+    public static function stripe()
+    {
+
     }
 }
