@@ -40,12 +40,12 @@ Helper::dateTime()::now()->toDateTimeString();
 | [图像处理 Image](doc/Image.md) | [验证码 Captcha](doc/Captcha.md) | [系统 System](doc/System.md) |                 |
 | [条形码 Barcode](doc/Barcode.md) |              | [环境变量 Env](doc/Env.md) |                 |
 
-| 开放平台与云服务商     | 后端开发核心组件      | 文档对象处理       | 数据进阶处理 | 第三方嵌入 |
-| ------------- | ------------- | ------------ |---------|---------|
-| [阿里云 Aliyun](doc/Aliyun.md) | [服务器 Server](doc/Server.md) | [文档处理 Office](doc/Office.md) | [随机字符串 RandStr](doc/RandomString.md) | [短信 SMS](doc/SMS.md) |
-| [腾讯云 TencentCloud](doc/TencentCloud.md) | [数据库 ORM](doc/ORM.md) | [文档处理 CSV](doc/CSV.md) | [敏感词过滤器 Sensitive](doc/Sensitive.md) | [邮件 Email](doc/Email.md) |
-| [百度AI BaiduAi](doc/BaiduAi.md) | [路由器 Router](doc/Router.md) | [文档处理 XML](doc/XML.md) | [身份标识 Identity ID](doc/IdentityID.md) | [翻译 Translate](doc/Translate.md) |
-| [支付宝 Alipay](doc/Alipay.md) | [容器 Container](doc/Container.md) | [文档处理 PDF](doc/Pdf.md) | [版本号 Version](doc/Version.md) | [嵌入地图 EmbedMap](doc/EmbedMap.md) |
+| 开放平台与云服务商     | 后端开发核心组件      | 文档对象处理       | 数据进阶处理 | 第三方嵌入                                                                 |
+| ------------- | ------------- | ------------ |---------|-----------------------------------------------------------------------|
+| [阿里云 Aliyun](doc/Aliyun.md) | [服务器 Server](doc/Server.md) | [文档处理 Office](doc/Office.md) | [随机字符串 RandStr](doc/RandomString.md) | [短信 SMS](doc/SMS.md)                                                  |
+| [腾讯云 TencentCloud](doc/TencentCloud.md) | [数据库 ORM](doc/ORM.md) | [文档处理 CSV](doc/CSV.md) | [敏感词过滤器 Sensitive](doc/Sensitive.md) | [邮件 Email](doc/Email.md)                                              |
+| [百度AI BaiduAi](doc/BaiduAi.md) | [路由器 Router](doc/Router.md) | [文档处理 XML](doc/XML.md) | [身份标识 Identity ID](doc/IdentityID.md) | [翻译 Translate](doc/Translate.md)                                      |
+| [支付宝 Alipay](doc/Alipay.md) | [容器 Container](doc/Container.md) | [文档处理 PDF](doc/Pdf.md) | [版本号 Version](doc/Version.md) | [<font style="font-size:14px;">嵌入地图 EmbedMap</font>](doc/EmbedMap.md) |
 | [微信 Wechat](doc/Wechat.md) | [接口 Api](doc/Api.md) | [文档对象 Dom](doc/Dom.md) | [唯一标识符 UUID](doc/UUID.md) |
 | [支付 Payment](doc/Payment.md) | [模板 Template](doc/Template.md) | [压缩 Zip](doc/Zip.md) | [地理国家 Geo/Country](doc/GeoCountry.md) |
 
