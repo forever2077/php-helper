@@ -36,4 +36,23 @@ class PayHelperTest extends TestCase
         $unipay = PayHelper::unipay([]);
         $this->assertInstanceOf(Unipay::class, $unipay);
     }
+
+    public function testPaypal()
+    {
+        $gateway = PayHelper::paypal();
+        $gateway->setUsername('adrian');
+        $gateway->setPassword('12345');
+        $settings = $gateway->getDefaultParameters();
+        dump($settings);
+        $this->assertIsBool(true);
+    }
+
+    public function testStripe()
+    {
+        $gateway = PayHelper::stripe();
+        $gateway->setApiKey('abc123');
+        $settings = $gateway->getDefaultParameters();
+        dump($settings);
+        $this->assertIsBool(true);
+    }
 }

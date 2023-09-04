@@ -6,6 +6,7 @@ use Yansongda\Pay\Pay;
 use Yansongda\Pay\Provider\Alipay;
 use Yansongda\Pay\Provider\Unipay;
 use Yansongda\Pay\Provider\Wechat;
+use Omnipay\Omnipay;
 
 /**
  * 支付辅助类
@@ -59,7 +60,7 @@ class PayHelper
      */
     public static function paypal()
     {
-
+        return Omnipay::create('PayPal_Express');
     }
 
     /**
@@ -68,6 +69,6 @@ class PayHelper
      */
     public static function stripe()
     {
-
+        return Omnipay::create('Stripe');
     }
 }
