@@ -321,4 +321,9 @@ class Helper
     {
         return PdfHelper::instance($options);
     }
+
+    public static function markdown(): MarkdownHelper
+    {
+        return new MarkdownHelper();
+    }
 }
