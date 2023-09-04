@@ -114,4 +114,14 @@ class StrHelper
         }
         return $result;
     }
+
+    /**
+     * 全角转半角符号
+     * @param $str
+     * @return string
+     */
+    public static function fullToHalf($str): string
+    {
+        return mb_convert_kana($str, 'rnaskhc');
+    }
 }
