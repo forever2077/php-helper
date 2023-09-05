@@ -1,10 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\JsonHelper;
 use Forever2077\PhpHelper\ValidateHelper;
-use PHPUnit\Framework\TestCase;
 use Forever2077\PhpHelper\Helper;
 use Forever2077\PhpHelper\OpenApiHelper;
+use Forever2077\PhpHelper\OpenApi;
 
 class OpenApiHelperTest extends TestCase
 {
@@ -16,7 +17,7 @@ class OpenApiHelperTest extends TestCase
     public function testReader()
     {
         $paths = [];
-        $openapi = Helper::openapi()->reader(dirname(__DIR__) . '/data/openapi/checkout_orders_v1.json');
+        $openapi = Helper::openapi()->reader(dirname(__DIR__) . '/data/openapi/test.json');
         foreach ($openapi->paths as $path => $definition) {
             $paths[] = $path;
         }
@@ -52,5 +53,29 @@ class OpenApiHelperTest extends TestCase
             $this->fail($e->getMessage());
         }
         $this->assertFileExists($filePath);
+    }
+
+    public function testGenerator()
+    {
+        try {
+            $rtn = OpenApiHelper::generator([
+                'src' => dirname(__DIR__) . '/data/openapi/test.json',
+                'out' => dirname(__DIR__) . '/src/OpenApi/Test.php',
+                'namespace' => 'Forever2077\PhpHelper\OpenApi',
+                'top-level' => 'test',
+                'lang' => 'php',
+                'with-get' => true,
+                'with-set' => true,
+                'fast-get' => false,
+                'with-closing' => false,
+                'acronym-styl' => 'original',
+                'alphabetize-properties' => true,
+                'all-properties-option' => true,
+            ]);
+            $this->assertIsBool($rtn);
+            $this->assertEquals(OpenApi\Test::class, OpenApi\Test::sample()::class);
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
     }
 }

@@ -120,14 +120,91 @@ class OpenApiHelper
         }
     }
 
-    public static function generator()
+    /**
+     * 生成器
+     * @link https://github.com/quicktype/quicktype
+     * @link https://app.quicktype.io/
+     * @param array $config
+     * @return bool
+     * @throws Exception
+     */
+    public static function generator(array $config = []): bool
     {
-        /**
-         * https://github.com/OpenAPITools/openapi-generator
-         * https://github.com/swagger-api/swagger-codegen
-         * https://github.com/quicktype/quicktype
-         * https://github.com/janephp/janephp
-         * https://github.com/wol-soft/php-json-schema-model-generator#Installation
-         */
+        $command = (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? "quicktype --version 2>nul" : "quicktype --version 2>&1";
+        exec($command, $output, $return_var);
+        if ($return_var === 0) {
+
+            $command = [];
+            $options = [];
+            $options = array_merge($options, $config ?? []);
+
+            // Base
+            $options['out'] = $options['out'] ?? ''; // The output file. Determines --lang and --top-level.
+            $options['top-level'] = $options['top-level'] ?? 'test'; // The name for the top level type.
+            $options['lang'] = $options['lang'] ?? 'php'; // The target language.
+            $options['src-lang'] = $options['src-lang'] ?? 'json'; // The source language (default is json).
+            $options['src'] = $options['src'] ?? ''; // The file, url, or data directory to type.
+            $options['namespace'] = $options['namespace'] ?? ''; // The class namespace.
+
+            if (empty($options['out'])) {
+                throw new Exception('Please specify the output file.');
+            }
+
+            if (empty($options['src'])) {
+                throw new Exception('Please specify the source file.');
+            }
+
+            foreach (['out', 'src', 'top-level', 'lang', 'src-lang'] as $name) {
+                $command[] = "--{$name} \"{$options[$name]}\"";
+            }
+
+            // Php
+            $options['fast-get'] = $options['fast-get'] ?? true; // getter without validation (off by default)
+            $options['with-get'] = $options['with-get'] ?? true; // Create Getter (on by default)
+            $options['with-set'] = $options['with-set'] ?? true; // Create Setter (off by default)
+            $options['with-closing'] = $options['with-closing'] ?? false; // PHP Closing Tag (off by default)
+            $options['acronym-style'] = $options['acronym-style'] ?? 'original'; // Acronym naming style;  original | pascal | camel | lowerCase
+
+            foreach (['with-get', 'fast-get', 'with-set', 'with-closing', 'acronym-style'] as $name) {
+                $command[] = match ($options[$name]) {
+                    true => "--{$name}",
+                    false => "--no-{$name}",
+                    default => "--{$name} \"{$options[$name]}\"",
+                };
+            }
+
+            // Common
+            $options['alphabetize-properties'] = $options['alphabetize-properties'] ?? true; // Alphabetize order of class properties.
+            $options['all-properties-optional'] = $options['all-properties-optional'] ?? true; // Make all class properties optional.
+
+            foreach (['alphabetize-properties', 'all-properties-optional'] as $name) {
+                if ($options[$name] === true) {
+                    $command[] = "--{$name}";
+                }
+            }
+
+            if (!empty($command) && is_array($command)) {
+                $command = implode(" ", $command);
+            }
+
+            $output = null;
+            $return_var = null;
+
+            exec("quicktype {$command}", $output, $return_var);
+
+            if (!$return_var) {
+                if (!empty($options['namespace']) && file_exists($options['out'])) {
+                    $filePath = $options['out'];
+                    $fileContent = file_get_contents($filePath);
+                    $newContent = "<?php\nnamespace {$options['namespace']};\n" . substr($fileContent, strlen("<?php\n"));
+                    file_put_contents($filePath, $newContent);
+                }
+            }
+
+            return !$return_var;
+
+        } else {
+            throw new Exception('Please visit https://github.com/quicktype/quicktype to complete the installation after continue to generate the target code');
+        }
     }
 }

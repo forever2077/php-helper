@@ -45,8 +45,6 @@ class PayHelperTest extends TestCase
         $parameters = $gateway->getDefaultParameters();
         //dump($parameters);
         $this->assertIsArray($parameters);
-
-        $gateway->purchase()->send();
     }
 
     public function testStripe()
