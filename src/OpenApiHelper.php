@@ -119,4 +119,15 @@ class OpenApiHelper
             };
         }
     }
+
+    public static function generator()
+    {
+        /**
+         * https://github.com/OpenAPITools/openapi-generator
+         * https://github.com/swagger-api/swagger-codegen
+         * https://github.com/quicktype/quicktype
+         * https://github.com/janephp/janephp
+         * https://github.com/wol-soft/php-json-schema-model-generator#Installation
+         */
+    }
 }
