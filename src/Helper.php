@@ -326,4 +326,14 @@ class Helper
     {
         return new MarkdownHelper();
     }
+
+    public static function invoice(): InvoiceHelper
+    {
+        return new InvoiceHelper();
+    }
+
+    public static function openapi(): OpenApiHelper
+    {
+        return new OpenApiHelper();
+    }
 }

@@ -58,6 +58,7 @@ class PayHelper
     /**
      * paypal
      * @link https://github.com/thephpleague/omnipay-paypal
+     * @link https://github.com/paypal/paypal-rest-api-specifications
      * @link https://github.com/paypal/PayPal-PHP-SDK
      */
     public static function paypal(): GatewayInterface
