@@ -84,7 +84,7 @@ class JsonHelper
                     return JmesPath\Env::search($expression, $data);
             }
         } catch (Exception $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e);
         }
     }
 
@@ -184,7 +184,7 @@ class JsonHelper
         try {
             return $mapper->map($json, $object);
         } catch (Exception $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e);
         }
     }
 
@@ -210,7 +210,7 @@ class JsonHelper
         try {
             return $mapper->mapArray($json, $array, $class, $parent_key);
         } catch (Exception $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e);
         }
     }
 
@@ -235,7 +235,7 @@ class JsonHelper
             return $items;
 
         } catch (Exception $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e);
         }
     }
 

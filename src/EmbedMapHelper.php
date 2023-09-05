@@ -46,7 +46,7 @@ class EmbedMapHelper
             }
             return $response;
         } catch (GuzzleException $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e);
         }
     }
 }

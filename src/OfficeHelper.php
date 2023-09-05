@@ -121,7 +121,7 @@ class OfficeHelper
         try {
             $writer->save($options['filePath']);
         } catch (Exception $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e);
         }
     }
 

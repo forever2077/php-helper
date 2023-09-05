@@ -36,7 +36,7 @@ class DomainHelper
         try {
             $domain = Domain::fromIDNA2008($domain);
         } catch (CannotProcessHost $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e);
         }
 
         try {
@@ -55,7 +55,7 @@ class DomainHelper
                     break;
             }
         } catch (UnableToResolveDomain $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e);
         }
 
         return $resolver ? $resolver->resolve($domain) : false;
@@ -78,7 +78,7 @@ class DomainHelper
                     default => Suffix::fromUnknown($domain),
                 };
             } catch (CannotProcessHost $e) {
-                throw new Exception($e->getMessage());
+                throw new Exception($e);
             }
         } else {
             throw new Exception('mode error');

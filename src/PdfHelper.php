@@ -47,7 +47,7 @@ class PdfHelper
         try {
             return Font::load($fontPath);
         } catch (FontNotFoundException $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e);
         }
     }
 
