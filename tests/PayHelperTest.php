@@ -42,17 +42,19 @@ class PayHelperTest extends TestCase
         $gateway = PayHelper::paypal();
         $gateway->setUsername('adrian');
         $gateway->setPassword('12345');
-        $settings = $gateway->getDefaultParameters();
-        dump($settings);
-        $this->assertIsBool(true);
+        $parameters = $gateway->getDefaultParameters();
+        //dump($parameters);
+        $this->assertIsArray($parameters);
+
+        $gateway->purchase()->send();
     }
 
     public function testStripe()
     {
         $gateway = PayHelper::stripe();
         $gateway->setApiKey('abc123');
-        $settings = $gateway->getDefaultParameters();
-        dump($settings);
-        $this->assertIsBool(true);
+        $parameters = $gateway->getDefaultParameters();
+        //dump($parameters);
+        $this->assertIsArray($parameters);
     }
 }

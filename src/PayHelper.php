@@ -7,6 +7,7 @@ use Yansongda\Pay\Provider\Alipay;
 use Yansongda\Pay\Provider\Unipay;
 use Yansongda\Pay\Provider\Wechat;
 use Omnipay\Omnipay;
+use Omnipay\Common\GatewayInterface;
 
 /**
  * 支付辅助类
@@ -56,9 +57,10 @@ class PayHelper
 
     /**
      * paypal
+     * @link https://github.com/thephpleague/omnipay-paypal
      * @link https://github.com/paypal/PayPal-PHP-SDK
      */
-    public static function paypal()
+    public static function paypal(): GatewayInterface
     {
         return Omnipay::create('PayPal_Express');
     }
@@ -67,7 +69,7 @@ class PayHelper
      * stripe
      * @link https://github.com/thephpleague/omnipay-stripe
      */
-    public static function stripe()
+    public static function stripe(): GatewayInterface
     {
         return Omnipay::create('Stripe');
     }
