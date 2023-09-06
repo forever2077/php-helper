@@ -57,6 +57,7 @@ Helper::dateTime()::now()->toDateTimeString();
 | [翻译 Translate](doc/Translate.md) |
 | [嵌入地图 EmbedMap](doc/EmbedMap.md) |
 | [开放接口 Openapi](doc/OpenApi.md) |
+| [表情符号 Emoji](doc/Emoji.md) |
 
 ## Composer 源管理工具（可选）
 

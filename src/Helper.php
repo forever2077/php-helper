@@ -341,4 +341,9 @@ class Helper
     {
         return new AccessHelper();
     }
+
+    public static function emoji(): EmojiHelper
+    {
+        return new EmojiHelper();
+    }
 }
