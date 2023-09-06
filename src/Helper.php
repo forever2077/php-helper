@@ -336,4 +336,9 @@ class Helper
     {
         return new OpenApiHelper();
     }
+
+    public static function access(): AccessHelper
+    {
+        return new AccessHelper();
+    }
 }

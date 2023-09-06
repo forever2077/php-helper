@@ -26,7 +26,7 @@ try {
     $this->fail($e->getMessage());
 }
   
-// 写入器 
+// 读取器 
 $paths = [];
 $openapi = Helper::openapi()->reader(dirname(__DIR__) . '/data/openapi/test.json');
 

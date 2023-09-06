@@ -38,8 +38,7 @@ Helper::dateTime()::now()->toDateTimeString();
 | [缓存 Cache](doc/Cache.md) | [上传 Upload](doc/Upload.md) | [配置 Config](doc/Config.md) |            |
 | [时间日期 Datetime](doc/Datetime.md) | [下载 Download](doc/Download.md) | [终端 Terminal](doc/Terminal.md) |            |
 | [图像处理 Image](doc/Image.md) | [验证码 Captcha](doc/Captcha.md) | [系统 System](doc/System.md) |            |
-| [条形码 Barcode](doc/Barcode.md) | [开放接口 Openapi](doc/OpenApi.md) | [环境变量 Env](doc/Env.md) |            |
-
+| [条形码 Barcode](doc/Barcode.md) | [权限控制 Access](doc/Access.md) | [环境变量 Env](doc/Env.md) |            |
 
 | 开放平台与云服务商                    | 后端核心组件                       | 数据进阶处理                               | 算法与编码                                    |
 | ------------------------------------- | ---------------------------------- | ------------------------------------------ | --------------------------------------------- |
@@ -57,6 +56,7 @@ Helper::dateTime()::now()->toDateTimeString();
 | [邮件 Email](doc/Email.md)           |
 | [翻译 Translate](doc/Translate.md)   |
 | [嵌入地图 EmbedMap](doc/EmbedMap.md) |
+| [开放接口 Openapi](doc/OpenApi.md) |
 
 ## Composer 源管理工具（可选）
 
