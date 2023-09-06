@@ -34,27 +34,27 @@ Helper::dateTime()::now()->toDateTimeString();
 | [表单 Form](doc/Form.md) | [域名 Domain](doc/Domain.md) | [验证/断言 Validate/Assert](doc/ValidateAssert.md) | [文档处理 PDF](doc/Pdf.md) |
 | [拼音 Pinyin](doc/Pinyin.md) | [资源标识符 URI](doc/URI.md) | [调试器 Debugger](doc/Debugger.md) | [文档对象 Dom](doc/Dom.md) |
 | [颜色 Color](doc/Color.md) | [认证 Jwt](doc/Jwt.md) | [运行时 Runtime](doc/Runtime.md) | [文档对象 Markdown](doc/Markdown.md) |
-| [缓存 LruCache](doc/LRUCache.md) | [认证 OAuth2](doc/OAuth2.md) | [日志 Log](doc/Log.md) | [压缩 Zip](doc/Zip.md) |
-| [缓存 Cache](doc/Cache.md) | [上传 Upload](doc/Upload.md) | [配置 Config](doc/Config.md) |            |
+| [缓存 Cache](doc/Cache.md) | [认证 OAuth2](doc/OAuth2.md) | [日志 Log](doc/Log.md) | |
+| [压缩 Zip](doc/Zip.md)  | [上传 Upload](doc/Upload.md) | [配置 Config](doc/Config.md) |            |
 | [时间日期 Datetime](doc/Datetime.md) | [下载 Download](doc/Download.md) | [终端 Terminal](doc/Terminal.md) |            |
 | [图像处理 Image](doc/Image.md) | [验证码 Captcha](doc/Captcha.md) | [系统 System](doc/System.md) |            |
 | [条形码 Barcode](doc/Barcode.md) | [权限控制 Access](doc/Access.md) | [环境变量 Env](doc/Env.md) |            |
 
-| 开放平台与云服务商                    | 后端核心组件                       | 数据进阶处理                               | 算法与编码                                    |
-| ------------------------------------- | ---------------------------------- | ------------------------------------------ | --------------------------------------------- |
-| [阿里云 Aliyun](doc/Aliyun.md)        | [服务器 Server](doc/Server.md)     | [随机字符串 RandStr](doc/RandomString.md)  | [编码 Json](doc/Json.md)                      |
-| [腾讯云 Tencent](doc/TencentCloud.md) | [数据库 ORM](doc/ORM.md)           | [敏感词过滤器 Sensitive](doc/Sensitive.md) | [编码加密 Encode/Crypto](doc/EncodeCrypto.md) |
-| [百度AI BaiduAi](doc/BaiduAi.md)      | [路由器 Router](doc/Router.md)     | [身份标识 Identity ID](doc/IdentityID.md)  | [数学 Math](doc/Math.md)                      |
-| [支付宝 Alipay](doc/Alipay.md)        | [容器 Container](doc/Container.md) | [版本号 Version](doc/Version.md)           | [算法 Algorithm](doc/Algorithm.md)            |
-| [微信 Wechat](doc/Wechat.md)          | [接口 Api](doc/Api.md)             | [唯一标识符 UUID](doc/UUID.md)             | [布隆过滤器 BloomFilter](doc/BloomFilter.md)  |
-| [支付 Payment](doc/Payment.md)        | [模板 Template](doc/Template.md)   | [地理国家 Geo/Country](doc/GeoCountry.md)  |                                               |
+| 开放平台与云服务商         | 后端核心组件          | 数据进阶处理          | 算法与编码                |
+| ----------------- | --------------- | --------------- | --------------------- |
+| [阿里云 Aliyun](doc/Aliyun.md) | [服务器 Server](doc/Server.md) | [随机字符串 RandStr](doc/RandomString.md) | [编码 Json](doc/Json.md) |
+| [腾讯云 Tencent](doc/TencentCloud.md) | [数据库 ORM](doc/ORM.md) | [敏感词过滤器 Sensitive](doc/Sensitive.md) | [编码加密 Encode/Crypto](doc/EncodeCrypto.md) |
+| [百度AI BaiduAi](doc/BaiduAi.md) | [路由器 Router](doc/Router.md) | [身份标识 Identity ID](doc/IdentityID.md) | [数学 Math](doc/Math.md) |
+| [支付宝 Alipay](doc/Alipay.md) | [容器 Container](doc/Container.md) | [版本号 Version](doc/Version.md) | [算法 Algorithm](doc/Algorithm.md) |
+| [微信 Wechat](doc/Wechat.md) | [接口 Api](doc/Api.md) | [唯一标识符 UUID](doc/UUID.md) | [布隆过滤器 BloomFilter](doc/BloomFilter.md) |
+| [支付 Payment](doc/Payment.md) | [模板 Template](doc/Template.md) | [地理国家 Geo/Country](doc/GeoCountry.md) | [缓存 LruCache](doc/LRUCache.md) |
 
 
-| 第三方嵌入                           |
-| ------------------------------------ |
-| [短信 SMS](doc/SMS.md)               |
-| [邮件 Email](doc/Email.md)           |
-| [翻译 Translate](doc/Translate.md)   |
+| 第三方嵌入          |
+| -------------- |
+| [短信 SMS](doc/SMS.md) |
+| [邮件 Email](doc/Email.md) |
+| [翻译 Translate](doc/Translate.md) |
 | [嵌入地图 EmbedMap](doc/EmbedMap.md) |
 | [开放接口 Openapi](doc/OpenApi.md) |
 
