@@ -53,7 +53,7 @@ Helper::dateTime()::now()->toDateTimeString();
 | 第三方嵌入          | 其他 |
 | -------------- |------------|
 | [短信 SMS](doc/SMS.md) | [设备唯一码 DeviceId](doc/DeviceId.md) |
-| [邮件 Email](doc/Email.md) |
+| [邮件 Email](doc/Email.md) | [双因素身份验证 Google2fa](doc/Google2fa.md) |
 | [翻译 Translate](doc/Translate.md) |
 | [嵌入地图 EmbedMap](doc/EmbedMap.md) |
 | [开放接口 Openapi](doc/OpenApi.md) |

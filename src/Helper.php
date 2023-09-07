@@ -351,4 +351,9 @@ class Helper
     {
         return new DeviceIdHelper();
     }
+
+    public static function google2fa(): Google2faHelper
+    {
+        return new Google2faHelper();
+    }
 }
