@@ -50,9 +50,9 @@ Helper::dateTime()::now()->toDateTimeString();
 | [支付 Payment](doc/Payment.md) | [模板 Template](doc/Template.md) | [地理国家 Geo/Country](doc/GeoCountry.md) | [缓存 LruCache](doc/LRUCache.md) |
 
 
-| 第三方嵌入          |
-| -------------- |
-| [短信 SMS](doc/SMS.md) |
+| 第三方嵌入          | 其他 |
+| -------------- |------------|
+| [短信 SMS](doc/SMS.md) | [设备唯一码 DeviceId](doc/DeviceId.md) |
 | [邮件 Email](doc/Email.md) |
 | [翻译 Translate](doc/Translate.md) |
 | [嵌入地图 EmbedMap](doc/EmbedMap.md) |

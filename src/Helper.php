@@ -346,4 +346,9 @@ class Helper
     {
         return new EmojiHelper();
     }
+
+    public static function deviceId(): DeviceIdHelper
+    {
+        return new DeviceIdHelper();
+    }
 }
