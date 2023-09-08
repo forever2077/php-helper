@@ -110,7 +110,7 @@ class Helper
 
     public static function random(): RandomHelper
     {
-        return RandomHelper::instance();
+        return new RandomHelper();
     }
 
     public static function runtime(): RuntimeHelper
@@ -360,5 +360,10 @@ class Helper
     public static function language(): LanguageHelper
     {
         return new LanguageHelper();
+    }
+
+    public static function userAgent(): UserAgentHelper
+    {
+        return new UserAgentHelper();
     }
 }

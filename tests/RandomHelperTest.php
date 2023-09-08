@@ -10,7 +10,7 @@ class RandomHelperTest extends TestCase
 {
     public function testInstance()
     {
-        $this->assertInstanceOf(RandomHelper::class, Helper::random());
+        $this->assertEquals(RandomHelper::class, Helper::random()::class);
     }
 
     public function testRandString()
@@ -60,12 +60,5 @@ class RandomHelperTest extends TestCase
         } catch (InvalidStringConfigException $e) {
             $this->fail($e->getMessage());
         }
-    }
-
-    public function testUserAgent()
-    {
-        $this->assertIsString(RandomHelper::userAgent([
-            'os_type' => 'Windows', 'device_type' => 'Mobile'
-        ]));
     }
 }
