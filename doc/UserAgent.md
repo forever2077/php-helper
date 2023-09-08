@@ -9,9 +9,13 @@ UserAgentHelper::random([
 	'os_type' => 'Windows', 'device_type' => 'Mobile'
 ]);
 
+文档 https://github.com/joecampo/random-user-agent
+
 // 解释用户UA
 $uaInfo = UserAgentHelper::parser();
 //platform
 //browser
 //browserVersion
+
+文档 https://github.com/donatj/PhpUserAgent
 ```
