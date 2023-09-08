@@ -356,4 +356,9 @@ class Helper
     {
         return new Google2faHelper();
     }
+
+    public static function language(): LanguageHelper
+    {
+        return new LanguageHelper();
+    }
 }

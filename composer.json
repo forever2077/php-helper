@@ -107,7 +107,8 @@
         "zanysoft/laravel-zip": "^2.0",
         "pragmarx/google2fa": "^8.0",
         "wilon/php-number2chinese": "^1.0",
-        "kwn/number-to-words": "^2.6"
+        "kwn/number-to-words": "^2.6",
+        "patrickschur/language-detection": "^5.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",

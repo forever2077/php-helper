@@ -55,7 +55,7 @@ Helper::dateTime()::now()->toDateTimeString();
 | [短信 SMS](doc/SMS.md) | [硬件唯一码 DeviceId](doc/DeviceId.md) |
 | [邮件 Email](doc/Email.md) | [双因素身份验证 Google2fa](doc/Google2fa.md) |
 | [翻译 Translate](doc/Translate.md) | [表情符号 Emoji](doc/Emoji.md) |
-| [嵌入地图 EmbedMap](doc/EmbedMap.md) |
+| [嵌入地图 EmbedMap](doc/EmbedMap.md) | [语言 Language](doc/Language.md) |
 | [开放接口 Openapi](doc/OpenApi.md) |
 
 ## Composer 源管理工具（可选）
