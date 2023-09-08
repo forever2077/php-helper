@@ -104,6 +104,4 @@ class StrHelper
             return $numberTransformer->toWords($number);
         }
     }
-
-
 }

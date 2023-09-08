@@ -13,9 +13,7 @@ UserAgentHelper::random([
 
 // 解释用户UA
 $uaInfo = UserAgentHelper::parser();
-//platform
-//browser
-//browserVersion
+// Array ( [browser] => Chrome [platform] => Windows [browserVersion] => 116.0.0.0 )
 
 文档 https://github.com/donatj/PhpUserAgent
 ```

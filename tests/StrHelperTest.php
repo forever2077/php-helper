@@ -55,6 +55,4 @@ class StrHelperTest extends TestCase
         $this->assertEquals('five thousand one hundred twenty', StrHelper::number2words(5120, 'en'));
         $this->assertEquals('fifty-one dollars twenty cents', StrHelper::number2words(5120, 'en', 'USD'));
     }
-
-
 }
