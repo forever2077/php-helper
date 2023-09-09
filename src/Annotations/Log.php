@@ -1,9 +1,9 @@
 <?php
 
-namespace Forever2077\PhpHelper\Annotations;
+namespace Helpful\Annotations;
 
 use Attribute;
-use Forever2077\PhpHelper\Annotations\Interface\Annotations;
+use Helpful\Annotations\Interface\Annotations;
 
 #[Attribute(Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
 final class Log implements Annotations

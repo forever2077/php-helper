@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\HttpHelper;
+use Helpful\Helper;
+use Helpful\HttpHelper;
 use GuzzleHttp\Exception\GuzzleException;
 
 class HttpHelperTest extends TestCase

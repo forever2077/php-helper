@@ -9,7 +9,7 @@ $conn = $db->connect();
 $rows = $conn->table('user')->where(['id' => 1])->findOrEmpty();
 
 // 使用User模型查询id=1的记录
-use Forever2077\PhpHelper\Db\User;
+use Helpful\Db\User;
 $user = new User();
 $rows = $user->where(['id' => 1])->findOrEmpty();
 

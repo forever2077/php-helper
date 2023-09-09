@@ -2,8 +2,8 @@
 
 use FormBuilder\Exception\FormBuilderException;
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\FormHelper;
+use Helpful\Helper;
+use Helpful\FormHelper;
 
 class FormHelperTest extends TestCase
 {

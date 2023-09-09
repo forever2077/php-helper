@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\PayHelper;
+use Helpful\Helper;
+use Helpful\PayHelper;
 use Yansongda\Pay\Provider\Alipay;
 use Yansongda\Pay\Provider\Wechat;
 use Yansongda\Pay\Provider\Unipay;

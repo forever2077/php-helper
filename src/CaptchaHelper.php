@@ -9,7 +9,7 @@
 // | Author: yunwuxin <448901948@qq.com>
 // +----------------------------------------------------------------------
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use GdImage;
 use Exception;

@@ -1,10 +1,10 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\DbHelper;
-use Forever2077\PhpHelper\ContainerHelper;
-use Forever2077\PhpHelper\TemplateHelper;
+use Helpful\Helper;
+use Helpful\DbHelper;
+use Helpful\ContainerHelper;
+use Helpful\TemplateHelper;
 
 class ContainerHelperTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use PharIo\Version\Version;
 use PharIo\Version\VersionConstraintParser;

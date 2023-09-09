@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\DeviceIdHelper;
+use Helpful\Helper;
+use Helpful\DeviceIdHelper;
 
 class DeviceIdHelperTest extends TestCase
 {

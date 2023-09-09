@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\Google2faHelper;
+use Helpful\Helper;
+use Helpful\Google2faHelper;
 use PragmaRX\Google2FA\Support\Constants;
 
 class Google2faHelperTest extends TestCase

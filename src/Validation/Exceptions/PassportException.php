@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper\Validation\Exceptions;
+namespace Helpful\Validation\Exceptions;
 
 use Respect\Validation\Exceptions\ValidationException;
 

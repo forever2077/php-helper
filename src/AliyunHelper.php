@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use AlibabaCloud\Client\SDK;
 use AlibabaCloud\IdeHelper;

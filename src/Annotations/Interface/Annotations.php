@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper\Annotations\Interface;
+namespace Helpful\Annotations\Interface;
 
 interface Annotations
 {

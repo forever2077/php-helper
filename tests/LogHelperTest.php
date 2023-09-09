@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
+use Helpful\Helper;
 use Monolog\Logger;
 use Monolog\Level;
 use Monolog\Handler\TestHandler;

@@ -1,12 +1,12 @@
 <?php
 
-use Forever2077\PhpHelper\CacheHelper;
-use Forever2077\PhpHelper\EnvHelper;
+use Helpful\CacheHelper;
+use Helpful\EnvHelper;
 use Phpfastcache\Drivers\Redis\Config as RedisConfig;
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\AnnotationHelper;
-use Forever2077\PhpHelper\Annotations\{After, Before, Cache, Log, Limit};
+use Helpful\Helper;
+use Helpful\AnnotationHelper;
+use Helpful\Annotations\{After, Before, Cache, Log, Limit};
 
 class AnnotationHelperTest extends TestCase
 {

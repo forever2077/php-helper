@@ -1,13 +1,13 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\CacheHelper;
+use Helpful\Helper;
+use Helpful\CacheHelper;
 use Phpfastcache\Helper\Psr16Adapter;
 use Phpfastcache\Core\Item\ExtendedCacheItemInterface;
 use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
 use Phpfastcache\CacheManager;
-use Forever2077\PhpHelper\EnvHelper;
+use Helpful\EnvHelper;
 use Phpfastcache\Drivers\Redis\Config as RedisConfig;
 
 class CacheHelperTest extends TestCase

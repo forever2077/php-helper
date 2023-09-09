@@ -1,9 +1,9 @@
 <?php
 
-use Forever2077\PhpHelper\StrHelper;
+use Helpful\StrHelper;
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\SensitiveHelper;
+use Helpful\Helper;
+use Helpful\SensitiveHelper;
 use DfaFilter\Exceptions\PdsBusinessException;
 use DfaFilter\Exceptions\PdsSystemException;
 

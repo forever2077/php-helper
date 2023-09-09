@@ -1,9 +1,9 @@
 <?php
 
-namespace Forever2077\PhpHelper\Annotations\Handler;
+namespace Helpful\Annotations\Handler;
 
-use Forever2077\PhpHelper\Annotations\Interface\Handler;
-use Forever2077\PhpHelper\Helper;
+use Helpful\Annotations\Interface\Handler;
+use Helpful\Helper;
 use Monolog\Handler\TestHandler;
 use Monolog\Level;
 use ReflectionClass;

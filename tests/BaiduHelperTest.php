@@ -1,9 +1,9 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\BaiduHelper;
-use Forever2077\PhpHelper\EnvHelper;
+use Helpful\Helper;
+use Helpful\BaiduHelper;
+use Helpful\EnvHelper;
 
 class BaiduHelperTest extends TestCase
 {

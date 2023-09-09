@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\RandomHelper;
+use Helpful\Helper;
+use Helpful\RandomHelper;
 use Forever2077\RandomString\InvalidStringConfigException;
 use Forever2077\RandomString\StringConfig;
 

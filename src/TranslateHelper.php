@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use MouYong\Translate\Kernel\Contracts\TranslatorInterface;
 use MouYong\Translate\Translator\{Baidu, Google\Google, Youdao, Jinshan};

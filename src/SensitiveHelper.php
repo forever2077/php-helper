@@ -1,10 +1,10 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use DfaFilter\SensitiveHelper as DfaSensitiveHelper;
 use DfaFilter\Exceptions\PdsBusinessException;
-use Forever2077\PhpHelper\Sensitive\Ahocorasick;
+use Helpful\Sensitive\Ahocorasick;
 
 /**
  * Class SensitiveHelper 敏感词过滤器

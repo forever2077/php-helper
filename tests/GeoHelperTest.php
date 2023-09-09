@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\GeoHelper;
+use Helpful\Helper;
+use Helpful\GeoHelper;
 use Rinvex\Country\CountryLoaderException;
 
 class GeoHelperTest extends TestCase

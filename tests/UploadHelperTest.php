@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
+use Helpful\Helper;
 use Verot\Upload\Upload;
 
 class UploadHelperTest extends TestCase

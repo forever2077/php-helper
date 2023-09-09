@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\ColorHelper;
+use Helpful\Helper;
+use Helpful\ColorHelper;
 
 class ColorHelperTest extends TestCase
 {

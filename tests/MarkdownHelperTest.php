@@ -2,8 +2,8 @@
 
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\MarkdownHelper;
+use Helpful\Helper;
+use Helpful\MarkdownHelper;
 
 class MarkdownHelperTest extends TestCase
 {

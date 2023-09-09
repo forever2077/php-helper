@@ -1,8 +1,8 @@
 <?php
 
-namespace Forever2077\PhpHelper\Annotations\Handler;
+namespace Helpful\Annotations\Handler;
 
-use Forever2077\PhpHelper\Annotations\Interface\Handler;
+use Helpful\Annotations\Interface\Handler;
 use ReflectionClass;
 
 class Limit implements Handler

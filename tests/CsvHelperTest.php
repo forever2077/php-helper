@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\CsvHelper;
+use Helpful\Helper;
+use Helpful\CsvHelper;
 use League\Csv\Reader;
 use League\Csv\Writer;
 

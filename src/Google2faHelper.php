@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use Exception;
 use PragmaRX\Google2FA\Google2FA;

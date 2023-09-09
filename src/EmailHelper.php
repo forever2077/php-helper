@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use Egulias\EmailValidator\EmailValidator;

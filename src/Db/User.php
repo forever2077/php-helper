@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper\Db;
+namespace Helpful\Db;
 
 use think\Model;
 

@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\TemplateHelper;
+use Helpful\Helper;
+use Helpful\TemplateHelper;
 use Twig\Environment;
 use Twig\Loader\{ArrayLoader, FilesystemLoader, ChainLoader};
 

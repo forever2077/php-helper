@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use Exception;
-use Forever2077\PhpHelper\WorldMap\Baidu;
-use Forever2077\PhpHelper\WorldMap\Google;
+use Helpful\WorldMap\Baidu;
+use Helpful\WorldMap\Google;
 use GuzzleHttp\Exception\GuzzleException;
 
 class EmbedMapHelper

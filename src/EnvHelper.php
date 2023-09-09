@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use Dotenv\Dotenv;
 use Dotenv\Repository\Adapter\PutenvAdapter;

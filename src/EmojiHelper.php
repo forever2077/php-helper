@@ -1,8 +1,8 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
-use Forever2077\PhpHelper\Emoji\Data;
+use Helpful\Emoji\Data;
 
 /**
  * @link https://github.com/iamcal/php-emoji

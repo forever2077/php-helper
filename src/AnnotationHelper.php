@@ -1,13 +1,13 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionAttribute;
 use ReflectionException;
 use Exception;
-use Forever2077\PhpHelper\Annotations\{After, Before, Cache, Log, Limit};
+use Helpful\Annotations\{After, Before, Cache, Log, Limit};
 
 class AnnotationHelper
 {

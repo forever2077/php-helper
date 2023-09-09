@@ -6,8 +6,8 @@ use LUKA\Network\IPv6\CIDRv6Address;
 use LUKA\Network\IPv6\IPv6Address;
 use LUKA\Network\MACAddress;
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\IpHelper;
+use Helpful\Helper;
+use Helpful\IpHelper;
 
 class IpHelperTest extends TestCase
 {

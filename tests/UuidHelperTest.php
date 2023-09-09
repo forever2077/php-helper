@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\UuidHelper;
+use Helpful\Helper;
+use Helpful\UuidHelper;
 use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer;

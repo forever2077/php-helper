@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\TerminalHelper;
+use Helpful\Helper;
+use Helpful\TerminalHelper;
 use League\CLImate\CLImate;
 
 class TerminalHelperTest extends TestCase

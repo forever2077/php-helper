@@ -1,9 +1,9 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\FileHelper;
-use Forever2077\PhpHelper\JsonHelper;
+use Helpful\Helper;
+use Helpful\FileHelper;
+use Helpful\JsonHelper;
 use Seld\JsonLint\ParsingException;
 
 class Contact

@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use TencentCloud\Common\CommonClient;
 use TencentCloud\Common\Credential;

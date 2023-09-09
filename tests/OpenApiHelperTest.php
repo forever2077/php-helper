@@ -1,11 +1,11 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\JsonHelper;
-use Forever2077\PhpHelper\ValidateHelper;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\OpenApiHelper;
-use Forever2077\PhpHelper\OpenApi;
+use Helpful\JsonHelper;
+use Helpful\ValidateHelper;
+use Helpful\Helper;
+use Helpful\OpenApiHelper;
+use Helpful\OpenApi;
 
 class OpenApiHelperTest extends TestCase
 {
@@ -61,7 +61,7 @@ class OpenApiHelperTest extends TestCase
             $rtn = OpenApiHelper::generator([
                 'src' => dirname(__DIR__) . '/data/openapi/test.json',
                 'out' => dirname(__DIR__) . '/src/OpenApi/Test.php',
-                'namespace' => 'Forever2077\PhpHelper\OpenApi',
+                'namespace' => 'Helpful\OpenApi',
                 'top-level' => 'test',
                 'lang' => 'php',
                 'with-get' => true,

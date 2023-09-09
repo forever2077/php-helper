@@ -3,9 +3,9 @@
 ini_set("memory_limit", "256M");
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\PdfHelper;
-use Forever2077\PhpHelper\StrHelper;
+use Helpful\Helper;
+use Helpful\PdfHelper;
+use Helpful\StrHelper;
 use Dompdf\Options;
 
 class PdfHelperTest extends TestCase

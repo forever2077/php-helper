@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use LUKA\Network\{IPv4\CIDRv4Address, IPv4\IPv4Address, IPv6\CIDRv6Address, IPv6\IPv6Address, MACAddress, NetworkAddress};
 

@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\UriHelper;
+use Helpful\Helper;
+use Helpful\UriHelper;
 
 class UriHelperTest extends TestCase
 {

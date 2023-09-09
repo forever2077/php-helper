@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper\Lru;
+namespace Helpful\Lru;
 
 class ListNode
 {

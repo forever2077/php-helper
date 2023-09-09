@@ -12,7 +12,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Forever2077\\PhpHelper\\": "src/"
+            "Helpful\\": "src/"
         },
         "files": [
             "src/functions.php"

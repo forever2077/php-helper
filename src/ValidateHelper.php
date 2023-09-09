@@ -1,11 +1,11 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use Respect\Validation\Factory;
 use Respect\Validation\Validator;
 use Webmozart\Assert\Assert;
-use Forever2077\PhpHelper\Validation\{Common, Custom};
+use Helpful\Validation\{Common, Custom};
 
 /**
  * @link https://github.com/webmozarts/assert
@@ -33,8 +33,8 @@ class ValidateHelper extends Assert
     {
         Factory::setDefaultInstance(
             (new Factory())
-                ->withRuleNamespace('Forever2077\\PhpHelper\\Validation\\Rules')
-                ->withExceptionNamespace('Forever2077\\PhpHelper\\Validation\\Exceptions')
+                ->withRuleNamespace('Helpful\\Validation\\Rules')
+                ->withExceptionNamespace('Helpful\\Validation\\Exceptions')
         );
         return Validator::create();
     }

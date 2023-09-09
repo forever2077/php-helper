@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\ConfigHelper;
+use Helpful\Helper;
+use Helpful\ConfigHelper;
 use Noodlehaus\Writer\Ini;
 
 class ConfigHelperTest extends TestCase

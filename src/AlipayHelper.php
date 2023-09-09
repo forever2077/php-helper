@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use Alipay\OpenAPISDK\Api\AlipayTradeApi;
 use Alipay\OpenAPISDK\Configuration;

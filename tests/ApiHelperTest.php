@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\ApiHelper;
+use Helpful\Helper;
+use Helpful\ApiHelper;
 use Workerman\Protocols\Http\Request;
 use Workerman\Connection\TcpConnection;
 use Tqdev\PhpCrudApi\RequestFactory;

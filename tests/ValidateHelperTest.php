@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\ValidateHelper;
+use Helpful\Helper;
+use Helpful\ValidateHelper;
 use Respect\Validation\Validator;
 
 class ValidateHelperTest extends TestCase

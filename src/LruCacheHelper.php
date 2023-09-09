@@ -1,9 +1,9 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use Exception;
-use Forever2077\PhpHelper\Lru\LRUCache;
+use Helpful\Lru\LRUCache;
 
 /**
  * Class LruCacheHelper LRU缓存

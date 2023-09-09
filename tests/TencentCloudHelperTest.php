@@ -1,9 +1,9 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\EnvHelper;
-use Forever2077\PhpHelper\TencentCloudHelper;
+use Helpful\Helper;
+use Helpful\EnvHelper;
+use Helpful\TencentCloudHelper;
 use TencentCloud\Common\Credential;
 use TencentCloud\Common\Exception\TencentCloudSDKException;
 use TencentCloud\Common\Profile\ClientProfile;

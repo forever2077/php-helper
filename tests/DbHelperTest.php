@@ -1,9 +1,9 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\ConfigHelper;
-use Forever2077\PhpHelper\DbHelper;
-use Forever2077\PhpHelper\Db\User;
+use Helpful\ConfigHelper;
+use Helpful\DbHelper;
+use Helpful\Db\User;
 
 class DbHelperTest extends TestCase
 {

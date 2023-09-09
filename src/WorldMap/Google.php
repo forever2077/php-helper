@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper\WorldMap;
+namespace Helpful\WorldMap;
 
 use Exception;
 

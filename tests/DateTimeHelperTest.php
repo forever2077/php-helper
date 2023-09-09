@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\DateTimeHelper;
+use Helpful\Helper;
+use Helpful\DateTimeHelper;
 use Carbon\Carbon;
 
 class DateTimeHelperTest extends TestCase

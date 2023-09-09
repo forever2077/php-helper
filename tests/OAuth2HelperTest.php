@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\OAuth2Helper;
+use Helpful\Helper;
+use Helpful\OAuth2Helper;
 
 class OAuth2HelperTest extends TestCase
 {

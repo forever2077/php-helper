@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use Forever2077\RandomString\RandomString;
 use Forever2077\RandomString\StringConfig;

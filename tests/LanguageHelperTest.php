@@ -2,8 +2,8 @@
 
 use LanguageDetection\Tokenizer\TokenizerInterface;
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\LanguageHelper;
+use Helpful\Helper;
+use Helpful\LanguageHelper;
 
 class LanguageHelperTest extends TestCase
 {

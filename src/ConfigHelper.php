@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use Noodlehaus\Config;
 use Noodlehaus\Parser\{Json, Yaml, Ini, Xml, Php, Serialize, Properties};

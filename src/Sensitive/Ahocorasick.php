@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper\Sensitive;
+namespace Helpful\Sensitive;
 
 /*
  * ahocorasick - fast string searching in php

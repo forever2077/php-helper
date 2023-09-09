@@ -1,8 +1,8 @@
 <?php
 
-namespace Forever2077\PhpHelper\Validation\Rules;
+namespace Helpful\Validation\Rules;
 
-use Forever2077\PhpHelper\ValidateHelper;
+use Helpful\ValidateHelper;
 use Respect\Validation\Rules\AbstractRule;
 
 final class Passport extends AbstractRule

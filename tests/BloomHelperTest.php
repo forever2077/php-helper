@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
+use Helpful\Helper;
 use Pleo\BloomFilter\BloomFilter;
 
 class BloomHelperTest extends TestCase

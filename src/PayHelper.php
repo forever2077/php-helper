@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use Yansongda\Pay\Pay;
 use Yansongda\Pay\Provider\Alipay;

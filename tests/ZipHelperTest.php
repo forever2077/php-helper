@@ -1,9 +1,9 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\ZipHelper;
-use Forever2077\PhpHelper\FileHelper;
+use Helpful\Helper;
+use Helpful\ZipHelper;
+use Helpful\FileHelper;
 
 class ZipHelperTest extends TestCase
 {

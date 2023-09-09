@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\IdentityHelper;
+use Helpful\Helper;
+use Helpful\IdentityHelper;
 
 class IdentityHelperTest extends TestCase
 {

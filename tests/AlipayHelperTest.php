@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\AlipayHelper;
+use Helpful\Helper;
+use Helpful\AlipayHelper;
 use Alipay\OpenAPISDK\Api\AlipayTradeApi;
 use Alipay\EasySDK\Kernel\Factory;
 use Alipay\EasySDK\Kernel\Payment;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use Overtrue\Socialite\SocialiteManager;
 use League\OAuth2\Server\AuthorizationServer;

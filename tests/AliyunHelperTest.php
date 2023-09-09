@@ -1,9 +1,9 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\EnvHelper;
-use Forever2077\PhpHelper\AliyunHelper;
+use Helpful\Helper;
+use Helpful\EnvHelper;
+use Helpful\AliyunHelper;
 use AlibabaCloud\Client\Exception\ClientException;
 use OSS\OssClient;
 

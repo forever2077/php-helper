@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\NetHelper;
+use Helpful\Helper;
+use Helpful\NetHelper;
 
 class NetHelperTest extends TestCase
 {

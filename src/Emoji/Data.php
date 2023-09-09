@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper\Emoji;
+namespace Helpful\Emoji;
 
 class Data
 {

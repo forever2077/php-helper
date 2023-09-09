@@ -1,9 +1,9 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\BarcodeHelper;
-use Forever2077\PhpHelper\ValidateHelper;
+use Helpful\Helper;
+use Helpful\BarcodeHelper;
+use Helpful\ValidateHelper;
 use Zxing\QrReader;
 
 class BarcodeHelperTest extends TestCase

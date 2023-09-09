@@ -2,8 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 use DiDom\Document;
-use Forever2077\PhpHelper\Helper;
-use Forever2077\PhpHelper\DomHelper;
+use Helpful\Helper;
+use Helpful\DomHelper;
 
 class DomHelperTest extends TestCase
 {

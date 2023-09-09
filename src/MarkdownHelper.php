@@ -1,6 +1,6 @@
 <?php
 
-namespace Forever2077\PhpHelper;
+namespace Helpful;
 
 use League\CommonMark\Exception\CommonMarkException;
 use League\HTMLToMarkdown\HtmlConverter;
