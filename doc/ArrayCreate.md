@@ -3,6 +3,8 @@ $arr = ArrayHelper::create([...]);
 $arr->unique()
     ->reverse()
     ->implode(',');
+
+文档 https://github.com/voku/Arrayy
 ```
 
 ```php

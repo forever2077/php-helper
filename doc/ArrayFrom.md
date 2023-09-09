@@ -6,6 +6,8 @@ $map->push( ['id' => 'three', 'value' => 'value3'] ) // 添加元素
     ->sort()                                         // 对元素进行排序
     ->col( 'value', 'id' )                           // 创建 ['three' => 'value3']
     ->first();                                       // 获取第一个元素
+
+文档 https://github.com/aimeos/map
 ```
 
 ### Create
