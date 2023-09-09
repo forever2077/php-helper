@@ -366,4 +366,9 @@ class Helper
     {
         return new UserAgentHelper();
     }
+
+    public static function xss(): XssHelper
+    {
+        return new XssHelper();
+    }
 }

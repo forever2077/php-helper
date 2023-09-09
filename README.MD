@@ -54,7 +54,7 @@ Helper::dateTime()::now()->toDateTimeString();
 |[表情符号 Emoji](doc/Emoji.md) | [硬件唯一码 DeviceId](doc/DeviceId.md) |
 |[用户代理 UserAgent](doc/UserAgent.md) | [双因素身份验证 Google2fa](doc/Google2fa.md) |
 |[地理国家 Geo/Country](doc/GeoCountry.md) | [布隆过滤器 BloomFilter](doc/BloomFilter.md) |
-| | [敏感词过滤器 Sensitive](doc/Sensitive.md) |
+|[跨站点脚本 Xss](doc/Xss.md)| [敏感词过滤器 Sensitive](doc/Sensitive.md) |
 
 
 ## Composer 源管理工具（可选）
