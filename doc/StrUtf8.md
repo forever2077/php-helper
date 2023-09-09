@@ -1669,4 +1669,5 @@ StrHelper::utf8()::wordwrap_per_line(string $str, int $width): string {}
  */
 StrHelper::utf8()::ws(string $str): string {}
 
+文档 https://github.com/voku/portable-utf8
 ```
