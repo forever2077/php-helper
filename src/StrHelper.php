@@ -3,12 +3,44 @@
 namespace Forever2077\PhpHelper;
 
 use Exception;
+use Stringy\Stringy;
+use voku\helper\UTF8;
+use voku\helper\ASCII;
 use NumberToWords\NumberToWords;
 use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 use NumberToWords\Exception\{InvalidArgumentException, NumberToWordsException};
 
 class StrHelper
 {
+    /**
+     * @link https://github.com/voku/portable-utf8
+     * @return UTF8
+     */
+    public static function utf8(): UTF8
+    {
+        return new UTF8();
+    }
+
+    /**
+     * @link https://github.com/voku/portable-ascii
+     * @return ASCII
+     */
+    public static function ascii(): ASCII
+    {
+        return new ASCII();
+    }
+
+    /**
+     * @link https://github.com/voku/Stringy
+     * @param mixed $str
+     * @param string|null $encoding
+     * @return Stringy
+     */
+    public static function string(mixed $str = '', string $encoding = null): Stringy
+    {
+        return new Stringy($str, $encoding);
+    }
+
     /**
      * 生成唯一数字（日期+随机数）
      * 格式：YYYY-MMDD-HHII-SS-NNNN,NNNN-CC，其中：YYYY=年份，MM=月份，DD=日期，HH=24格式小时，II=分，SS=秒，NNNNNNNN=随机数，CC=检查码

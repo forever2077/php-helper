@@ -109,7 +109,11 @@
         "wilon/php-number2chinese": "^1.0",
         "kwn/number-to-words": "^2.6",
         "patrickschur/language-detection": "^5.3",
-        "donatj/phpuseragentparser": "^1.7"
+        "donatj/phpuseragentparser": "^1.7",
+        "voku/portable-utf8": "^6.0",
+        "voku/portable-ascii": "^2.0",
+        "voku/stringy": "^6.5",
+        "voku/anti-xss": "^4.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",

@@ -55,4 +55,12 @@ class StrHelperTest extends TestCase
         $this->assertEquals('five thousand one hundred twenty', StrHelper::number2words(5120, 'en'));
         $this->assertEquals('fifty-one dollars twenty cents', StrHelper::number2words(5120, 'en', 'USD'));
     }
+
+    public function testStatic()
+    {
+        $this->assertEquals('FÒÔBÀŘ', StrHelper::utf8()::strtoupper('fòôbàř'));
+        $this->assertEquals('Duesseldorf', StrHelper::ascii()::to_ascii('�Düsseldorf�', 'de'));
+        $this->assertEquals('FÒÔ BÀŘ', StrHelper::string('fòô bàř')->collapseWhitespace()->swapCase()->toString());
+        $this->assertEquals('FÒÔ BÀŘ', StrHelper::string('fòô bàř')->toUpperCase()->toString());
+    }
 }
