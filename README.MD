@@ -39,6 +39,7 @@ Helper::dateTime()::now()->toDateTimeString();
 | [时间日期 Datetime](doc/Datetime.md) | [下载 Download](doc/Download.md) | [终端 Terminal](doc/Terminal.md) |            |
 | [图像处理 Image](doc/Image.md) | [验证码 Captcha](doc/Captcha.md) | [系统 System](doc/System.md) |            |
 | [条形码 Barcode](doc/Barcode.md) | [权限控制 Access](doc/Access.md) | [环境变量 Env](doc/Env.md) |            |
+| [字符串 Str（UTF-8）](doc/StrUtf8.md)
 
 | 开放平台与云服务商              | 后端核心组件           | 数据进阶处理                | 算法与编码         |
 |------------------------|------------------|-----------------------| ------------- |
