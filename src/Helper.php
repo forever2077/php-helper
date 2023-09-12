@@ -371,4 +371,9 @@ class Helper
     {
         return new XssHelper();
     }
+
+    public static function word(): WordCutHelper
+    {
+        return new WordCutHelper();
+    }
 }

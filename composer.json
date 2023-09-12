@@ -122,7 +122,8 @@
         "alipaysdk/easysdk": "^2.2",
         "alipaysdk/openapi": "^1.0",
         "tencentcloud/tencentcloud-sdk-php": "^3.0",
-        "rinvex/countries": "^8.1"
+        "rinvex/countries": "^8.1",
+        "forever2077/jieba-php": "^0.1.1"
     },
     "minimum-stability": "stable",
     "config": {
