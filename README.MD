@@ -72,10 +72,14 @@ composer repo:use tencent
 注意 有个别项目在某些源已不更新，可切换回composer官方源即可解决
 ```
 
-## 致谢 Thank
+### 致谢 Thank
 
 * 项目来之各开源项目收录和整理，持续更新中ing...
 
-## 许可 License
+### 许可 License
 
 * 本项目基于MIT许可，并包含了基于Apache 2.0许可的代码
+
+### 感谢JetBrains支持
+
+![图片描述](./doc/JetBrains.png)
