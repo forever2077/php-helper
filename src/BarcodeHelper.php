@@ -74,8 +74,8 @@ class BarcodeHelper
     public static function encode(
         string       $content,
         string       $type = BarcodeHelper::QRCODE,
-        int          $w = 3,
-        int          $h = 3,
+        int          $w = 0,
+        int          $h = 0,
         array|string $color = [0, 0, 0],
         bool         $showCode = false,
         bool         $inline = false
@@ -83,8 +83,16 @@ class BarcodeHelper
     {
         if (in_array($type, ['QRCODE', 'PDF417', 'DATAMATRIX'])) {
             $encode = new DNS2D();
+            if ($w === 0 && $h === 0) {
+                $w = 3;
+                $h = 3;
+            }
         } else {
             $encode = new DNS1D();
+            if ($w === 0 && $h === 0) {
+                $w = 2;
+                $h = 30;
+            }
         }
 
         self::setStorePath($encode);
