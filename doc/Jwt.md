@@ -3,13 +3,14 @@
 ```php
 $signingAlgorithm = 'ES512';
 $signingKeys = JwtHelper::generateKey($signingAlgorithm);
+$privateKeyPem = $signingKeys['privateKeyPem'];
 $keyPem = $signingKeys['publicKeyPem'] ?? $signingKeys['privateKeyPem'];
 
 $now = new DateTimeImmutable();
 $token = JwtHelper::issuingTokens([
     // 支持：HS256、HS384、HS512、Blake2b、ES256、ES384、ES512、RS256、RS384、RS512
     'signingAlgorithm' => 'ES512',
-    'signingKeys' => $signingKeys,
+    'signingKeys' => $privateKeyPem,
     'tokenOptions' => [
         'issuedBy' => 'https://example.com',
         'relatedTo' => 'https://example.com',

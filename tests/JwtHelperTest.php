@@ -21,12 +21,13 @@ class JwtHelperTest extends TestCase
         try {
             $signingAlgorithm = 'ES512';
             $signingKeys = JwtHelper::generateKey($signingAlgorithm);
+            $privateKeyPem = $signingKeys['privateKeyPem'];
             $keyPem = $signingKeys['publicKeyPem'] ?? $signingKeys['privateKeyPem'];
 
             $now = new DateTimeImmutable();
             $token = JwtHelper::issuingTokens([
                 'signingAlgorithm' => $signingAlgorithm,
-                'signingKeys' => $signingKeys,
+                'signingKeys' => $privateKeyPem,
                 'tokenOptions' => [
                     'issuedBy' => 'https://example.com',
                     'relatedTo' => 'https://example.com',

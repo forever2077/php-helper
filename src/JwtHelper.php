@@ -168,17 +168,21 @@ class JwtHelper
             default => throw new Exception("Unknown signing algorithm"),
         };
 
+        if (empty($config['signingKeys'])) {
+            throw new Exception('Missing signingKeys');
+        }
+
         if (in_array($config['signingAlgorithm'], ['HS256', 'HS384', 'HS512', 'BLAKE2B'])) {
             /*对称加密*/
             $configuration = Configuration::forSymmetricSigner(
                 $algorithm,
-                InMemory::plainText($config['signingKeys']['privateKeyPem'])
+                InMemory::plainText($config['signingKeys'])
             );
         } else {
             /*非对称加密*/
             $configuration = Configuration::forAsymmetricSigner(
                 $algorithm,
-                InMemory::plainText($config['signingKeys']['privateKeyPem']),
+                InMemory::plainText($config['signingKeys']),
                 InMemory::base64Encoded(self::$verificationKey),
             );
         }
