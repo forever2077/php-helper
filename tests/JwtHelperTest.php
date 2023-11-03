@@ -19,10 +19,15 @@ class JwtHelperTest extends TestCase
     public function testIssuingTokens()
     {
         try {
+            $signingAlgorithm = 'ES512';
+            $signingKeys = JwtHelper::generateKey($signingAlgorithm);
+            $keyPem = $signingKeys['publicKeyPem'] ?? $signingKeys['privateKeyPem'];
+
             $now = new DateTimeImmutable();
             $token = JwtHelper::issuingTokens([
-                'signing_algorithm' => 'ES512',
-                'token_options' => [
+                'signingAlgorithm' => $signingAlgorithm,
+                'signingKeys' => $signingKeys,
+                'tokenOptions' => [
                     'issuedBy' => 'https://example.com',
                     'relatedTo' => 'https://example.com',
                     'permittedFor' => 'https://example.org',
@@ -39,7 +44,7 @@ class JwtHelperTest extends TestCase
                 ]
             ]);
             //dump($token);
-            $rtn = JwtHelper::parsingTokens($token);
+            $rtn = JwtHelper::parsingTokens($token, $keyPem);
             //dump($rtn);
             $this->assertEquals(1, $rtn->claims()->get('uid'));
             $this->assertEquals('example', $rtn->claims()->get('company'));

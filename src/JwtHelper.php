@@ -2,14 +2,14 @@
 
 namespace Helpful;
 
+use Exception;
+use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Encoding\JoseEncoder;
-use Lcobucci\JWT\Encoding\ChainedFormatter;
 use Lcobucci\JWT\Encoding\CannotDecodeContent;
 use Lcobucci\JWT\Signer;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Token;
 use Lcobucci\JWT\Token\Parser;
-use Lcobucci\JWT\Token\Builder;
 use Lcobucci\JWT\Token\InvalidTokenStructure;
 use Lcobucci\JWT\Token\UnsupportedHeaderFound;
 use Lcobucci\JWT\Validation\Constraint;
@@ -26,54 +26,100 @@ class JwtHelper
         return new self();
     }
 
+    private static string $verificationKey = 'mBC5v3sOKVvbdEitdSBenu16nfNfhwkedkJVNabosTw=';
+
     /**
-     * 生成密钥
-     * @param array $options
+     * 生成公钥和密钥
+     * @param string $encryptionMethod
      *  - encryption_method: rsa, hmac, blake2b, ec
      *  - hmac_bytes: >= 256 bits
      *  - rsa_bits: >= 2048 bits
      *  - curve_name: secp256k1, secp384r1, secp521r1
-     * @return string
-     * @throws \Exception
+     * @return array
+     * @throws Exception
      */
-    public static function generateKey(array $options = []): string
+    public static function generateKey(string $encryptionMethod = 'HS256'): array
     {
-        $privateKeyPem = '';
+        $options = [];
+        $keys = [];
+        $encryptionMethod = strtoupper($encryptionMethod);
+
+        switch ($encryptionMethod) {
+            case 'RS256':
+            case 'RS384':
+            case 'RS512':
+                $options['encryption_method'] = 'rsa';
+                $options['private_key_bits'] = $options['private_key_bits'] ?? 2048;
+                break;
+            case 'ES256':
+                $options['encryption_method'] = 'ec';
+                $options['curve_name'] = 'secp256k1';
+                $options['private_key_bits'] = 256;
+                break;
+            case 'ES384':
+                $options['encryption_method'] = 'ec';
+                $options['curve_name'] = 'secp384r1';
+                $options['private_key_bits'] = 384;
+                break;
+            case 'ES512':
+                $options['encryption_method'] = 'ec';
+                $options['curve_name'] = 'secp521r1';
+                $options['private_key_bits'] = 521;
+                break;
+            case 'HS256':
+                $options['encryption_method'] = 'hmac';
+                $options['private_key_bits'] = 256;
+                break;
+            case 'HS384':
+                $options['encryption_method'] = 'hmac';
+                $options['private_key_bits'] = 384;
+                break;
+            case 'HS512':
+                $options['encryption_method'] = 'hmac';
+                $options['private_key_bits'] = 512;
+                break;
+            case 'BLAKE2B':
+                $options['encryption_method'] = 'BLAKE2B';
+                $options['private_key_bits'] = false;
+                break;
+            default:
+                throw new Exception("Unknown signing algorithm");
+        }
 
         try {
             switch ($options['encryption_method']) {
+                case 'hmac':
+                    $keys['privateKeyPem'] = random_bytes($options['private_key_bits']);
+                    break;
+                case 'BLAKE2B':
+                    $keys['privateKeyPem'] = sodium_crypto_generichash_keygen();
+                    break;
                 case 'rsa':
                     $res = openssl_pkey_new([
                         'private_key_bits' => $options['private_key_bits'],
                         'private_key_type' => OPENSSL_KEYTYPE_RSA,
                     ]);
-                    openssl_pkey_export($res, $privateKeyPem);
+                    openssl_pkey_export($res, $keys['privateKeyPem']);
+                    $publicKey = openssl_pkey_get_details($res);
+                    $keys['publicKeyPem'] = $publicKey['key'];
                     break;
-
-                case 'hmac':
-                    $privateKeyPem = random_bytes($options['private_key_bits']);
-                    break;
-
-                case 'blake2b':
-                    $privateKeyPem = sodium_crypto_generichash_keygen();
-                    break;
-
                 case 'ec':
                     $res = openssl_pkey_new([
                         'curve_name' => $options['curve_name'],
                         'private_key_type' => OPENSSL_KEYTYPE_EC,
                     ]);
-                    openssl_pkey_export($res, $privateKeyPem);
+                    openssl_pkey_export($res, $keys['privateKeyPem']);
+                    $publicKey = openssl_pkey_get_details($res);
+                    $keys['publicKeyPem'] = $publicKey['key'];
                     break;
-
                 default:
-                    throw new \Exception("Unsupported encryption method");
+                    throw new Exception("Unsupported encryption method");
             }
-        } catch (\Exception $e) {
-            throw new \Exception($e);
+        } catch (Exception $e) {
+            throw new Exception($e);
         }
 
-        return $privateKeyPem;
+        return $keys;
     }
 
     /**
@@ -104,85 +150,43 @@ class JwtHelper
      *          - withClaim: 自定义声明，支持二维数组<br/>
      *          - withHeader: 自定义头部，支持二维数组<br/>
      * @return string
-     * @throws \Exception 如果生成令牌过程中出现问题，将抛出异常
+     * @throws Exception 如果生成令牌过程中出现问题，将抛出异常
      */
     public static function issuingTokens(array $config): string
     {
-        $defaultConfig = [
-            'signing_algorithm' => 'HS256',
-        ];
-        $config = array_merge($defaultConfig, $config);
-
-        switch ($config['signing_algorithm']) {
-            case 'RS256':
-            case 'RS384':
-            case 'RS512':
-                $config['encryption_method'] = 'rsa';
-                $config['private_key_bits'] = $config['private_key_bits'] ?? 2048;
-                break;
-            case 'ES256':
-                $config['encryption_method'] = 'ec';
-                $config['curve_name'] = 'secp256k1';
-                $config['private_key_bits'] = 256;
-                break;
-            case 'ES384':
-                $config['encryption_method'] = 'ec';
-                $config['curve_name'] = 'secp384r1';
-                $config['private_key_bits'] = 384;
-                break;
-            case 'ES512':
-                $config['encryption_method'] = 'ec';
-                $config['curve_name'] = 'secp521r1';
-                $config['private_key_bits'] = 521;
-                break;
-            case 'HS256':
-                $config['encryption_method'] = 'hmac';
-                $config['private_key_bits'] = 256;
-                break;
-            case 'HS384':
-                $config['encryption_method'] = 'hmac';
-                $config['private_key_bits'] = 384;
-                break;
-            case 'HS512':
-                $config['encryption_method'] = 'hmac';
-                $config['private_key_bits'] = 512;
-                break;
-            case 'Blake2b':
-                $config['encryption_method'] = 'blake2b';
-                $config['private_key_bits'] = false;
-                break;
-            default:
-                throw new \Exception("Unknown signing algorithm");
-        }
-
-        try {
-            $privateKeyPem = self::generateKey([
-                'encryption_method' => $config['encryption_method'],
-                'private_key_bits' => $config['private_key_bits'],
-                'curve_name' => $config['curve_name'],
-            ]);
-        } catch (\Exception $e) {
-            throw new \Exception($e);
-        }
-
-        $tokenBuilder = (new Builder(new JoseEncoder(), ChainedFormatter::default()));
-        $signingKey = InMemory::plainText($privateKeyPem);
-
-        $algorithm = match ($config['signing_algorithm']) {
+        $algorithm = match ($config['signingAlgorithm']) {
             'HS256' => new Signer\Hmac\Sha256(),
             'HS384' => new Signer\Hmac\Sha384(),
             'HS512' => new Signer\Hmac\Sha512(),
-            'Blake2b' => new Signer\Blake2b(),
+            'BLAKE2B' => new Signer\Blake2b(),
             'ES256' => new Signer\Ecdsa\Sha256(),
             'ES384' => new Signer\Ecdsa\Sha384(),
             'ES512' => new Signer\Ecdsa\Sha512(),
             'RS256' => new Signer\Rsa\Sha256(),
             'RS384' => new Signer\Rsa\Sha384(),
             'RS512' => new Signer\Rsa\Sha512(),
-            default => throw new \Exception("Unknown signing algorithm"),
+            default => throw new Exception("Unknown signing algorithm"),
         };
 
-        foreach ($config['token_options'] as $key => $value) {
+        if (in_array($config['signingAlgorithm'], ['HS256', 'HS384', 'HS512', 'BLAKE2B'])) {
+            /*对称加密*/
+            $configuration = Configuration::forSymmetricSigner(
+                $algorithm,
+                InMemory::plainText($config['signingKeys']['privateKeyPem'])
+            );
+        } else {
+            /*非对称加密*/
+            $configuration = Configuration::forAsymmetricSigner(
+                $algorithm,
+                InMemory::plainText($config['signingKeys']['privateKeyPem']),
+                InMemory::base64Encoded(self::$verificationKey),
+            );
+        }
+
+        $signingKey = $configuration->signingKey();
+        $tokenBuilder = $configuration->builder();
+
+        foreach ($config['tokenOptions'] as $key => $value) {
             switch ($key) {
                 case 'issuedBy':
                     $tokenBuilder = $tokenBuilder->issuedBy($value);
@@ -233,16 +237,67 @@ class JwtHelper
         return $token->toString();
     }
 
-    public static function parsingTokens(string $jwtString): Token
+    /**
+     * 解析Token
+     * @param string $jwtString
+     * @param string $signingKeys
+     * @return Token
+     * @throws Exception
+     */
+    public static function parsingTokens(string $jwtString, string $signingKeys): Token
     {
         $parser = new Parser(new JoseEncoder());
+
         try {
-            return $parser->parse($jwtString);
+            $token = $parser->parse($jwtString);
         } catch (CannotDecodeContent|InvalidTokenStructure|UnsupportedHeaderFound $e) {
-            throw new \Exception($e->getMessage());
+            throw new Exception($e->getMessage());
+        }
+
+        $signingAlgorithm = $token->headers()->get('alg');
+
+        $algorithm = match ($signingAlgorithm) {
+            'HS256' => new Signer\Hmac\Sha256(),
+            'HS384' => new Signer\Hmac\Sha384(),
+            'HS512' => new Signer\Hmac\Sha512(),
+            'BLAKE2B' => new Signer\Blake2b(),
+            'ES256' => new Signer\Ecdsa\Sha256(),
+            'ES384' => new Signer\Ecdsa\Sha384(),
+            'ES512' => new Signer\Ecdsa\Sha512(),
+            'RS256' => new Signer\Rsa\Sha256(),
+            'RS384' => new Signer\Rsa\Sha384(),
+            'RS512' => new Signer\Rsa\Sha512(),
+            default => throw new Exception("Unknown signing algorithm"),
+        };
+
+        if (in_array($signingAlgorithm, ['HS256', 'HS384', 'HS512', 'BLAKE2B'])) {
+            /*对称加密*/
+            $configuration = Configuration::forSymmetricSigner(
+                $algorithm,
+                InMemory::plainText($signingKeys)
+            );
+        } else {
+            /*非对称加密*/
+            $configuration = Configuration::forAsymmetricSigner(
+                $algorithm,
+                InMemory::plainText($signingKeys),
+                InMemory::base64Encoded(self::$verificationKey),
+            );
+        }
+
+        if ($configuration->signer()->verify($token->signature()->hash(), $token->payload(), $configuration->signingKey())) {
+            return $token;
+        } else {
+            throw new Exception('Token is invalid');
         }
     }
 
+    /**
+     * 校验器
+     * @param Token $token
+     * @param Constraint ...$constraints
+     * @return bool
+     */
     public static function validator(Token $token, Constraint ...$constraints): bool
     {
         $validator = new Validator();
